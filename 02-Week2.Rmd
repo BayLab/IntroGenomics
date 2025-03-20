@@ -22,6 +22,13 @@ We will be following some of the data carpentry tutorial (Copyright 2016 @ Softw
 
 + How can I work with hidden directories and hidden files?
 
++ How can I view and search file contents?
+
++ How can I create, copy and delete files and directories?
+
++ How can I control who has permission to modify a file?
+
++ How can I repeat recently used commands?
 
 ## Navigational shortcuts
 
@@ -82,29 +89,27 @@ No one can possibly learn all of these arguments, that’s what the manual page 
 Let's navigate to our individual folders and make a directory for class this week named `week2'
 ```html
 $ cd `yourdirectory`
-$ mkdir week2
 $ ls
 ```
 Now let's download some data to work with! 
 
-There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If theres a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in the MarineGenomicsData folder and save it in a folder called data.
-
+There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If there's a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in our individual directory
 ```html
-$ wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week1_quarter.tar.gz
+$ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/week2.tar.gz
 
-# use the tar command to uncompress the file. This will also automatically make a week1 folder
+# use the tar command to uncompress the file. This will also automatically make a week2 directory in your directory
 
-tar -xzvf week1_quarter.tar.gz
+tar -xzvf week2.tar.gz
 ```
 
-Now that we have something in our MarineGenomics directory we can use the `ls` command a bit more.
+Now that we have something in our directory we can use the `ls` command a bit more.
 
 ...
 
-Let’s go into the Week1 directory and see what is in there.
+Let’s go into the week2 directory and see what is in there.
 
 ```html
-$ cd Week1
+$ cd week2
 $ ls -F
 ```
 
@@ -126,10 +131,10 @@ prints the contents of `/home`.
 
 Let's explore a few more properties of the `ls` function
 
-Go back to your home directory.
+Go back to your directory.
 
 ```html
-$ cd
+$ cd ..
 ```
 
 Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text)
@@ -141,9 +146,6 @@ The `-a` option is short for all and says that it causes `ls` to “not ignore e
 
 ```html
 $ ls -a
-
-.   .ICEauthority  .Rhistory    .ansible       .bash_logout  .cache   .dbus     .fontconfig  .local    .r                .ssh  .wget-hsts        Desktop    Downloads  Pictures  Templates
-..  .Renviron      .Xauthority  .bash_history  .bashrc       .config  .emacs.d  .gnupg       .profile  .rstudio-desktop  .vnc  .xsession-errors  Documents  Music      Public    Videos
 
 ```
 You'll see there are many more files shown now that we can look at the hidden ones. 
@@ -157,42 +159,24 @@ $ ls -laF
 
 ## Examining the contents of other directories
 
-By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your home directory if you are not already there.
+By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your directory if you are not already there.
 
 ```html
-$ cd
+$ cd /group/rbaygrp/eve198-genomics/
 ```
 
 Then enter the command:
 
 ```html
-$ ls MarineGenomics
+$ ls 'yourdirectory'
 
 data
 ```
 
-This will list the contents of the MarineGenomics directory without you needing to navigate there.
-
-The `cd` command works in a similar way.
-
-Try entering:
-
-```html
-$ cd
-$ cd MarineGenomics/data
-```
-This will take you to the MarineGenomics directory without having to go through the intermediate directory.
+This will list the contents of the your directory without you needing to navigate there.
 
 
-Navigating practice
 
-Navigate to your home directory. From there, list the contents of the Week1 directory.
-
-```html
-$ cd
-$ ls MarineGenomics/data/Week1
-
-SRR6805880_1.fastq SRR6805880_2.fastq
 ```
 
 ## Key Points
@@ -200,4 +184,10 @@ SRR6805880_1.fastq SRR6805880_2.fastq
 
 + Most commands take options (flags) which begin with a -.
 
++ You can view file contents using `less`, `cat`, `head` or `tail`.
 
++ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
+
++ You can view file permissions using `ls -l` and change permissions using `chmod`.
+
++ The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.

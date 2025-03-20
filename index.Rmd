@@ -1,0 +1,39 @@
+--- 
+title: "Introduction to Genomics in Natural Populations"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# Course Information
+
+Intro to Genomics in Natural Populations
+Wednesdays 10-11:50am, Storer 1350
+
+Instructors:  Rachael Bay (rbay@ucdavis.edu) & Madison Armstrong (mlarmstrong@ucdavis.edu), Office Hours: TBD
+
+
+
+## Course Learning Objectives
+In this course we will focus on the rapidly developing field of genomics and explore examples across marine and terrestrial systems. Students will gain hands-on coding skills in command-line and R. By the end of this class, students will be able to use HPC computing resources at UC Davis, write basic scripts in bash and perform genomic analyses modifying template scripts in R. Students will also be able to describe the general bioinformatics pipeline and  evaluate figures from published literature.quired, and is also your first book chapter. It will be the homepage when you render the book.
+
+## Meet your instructors!
+
+Madison Armstrong, PhD student, instructor (mlarmstrong@ucdavis.edu)-- [Website](https://madisonarmstrong.me/)
+
+Rachael Bay, Assistant Professor, co-instructor (rbay@ucdavis.edu)-- [Website](https://baylab.github.io/).
+
+## Schedule
+Wednesdays 10-11:50am, Storer 1350
+
+Office hours TBD
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
