@@ -11,10 +11,10 @@ output:
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
-#Week 2- Bash/UNIX coding: working with files
+# Week 2- Working with files
 We will be following some of the data carpentry tutorial (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
 
-#Questions to Answer:
+## Questions to Answer:
 
 + What are some navigational shortcuts I can use to make my work more efficient?
 

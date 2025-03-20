@@ -18,7 +18,7 @@ Welcome to Introduction to Genomics in Natural Populations at UC Davis!
 
 This page has code modified from the Data Carpentry's introduction to the shell tutorial, which can be found here <https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html>
 
-# Main Objectives
+## Main Objectives
 -   Take Pre-class assessment
 -   Introduction to genomics & shell computing (via slideshow here: x)
 -   Accessing terminal via Farm OnDemand
