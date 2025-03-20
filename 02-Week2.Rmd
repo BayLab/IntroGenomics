@@ -22,10 +22,6 @@ We will be following some of the data carpentry tutorial (Copyright 2016 @ Softw
 
 + How can I work with hidden directories and hidden files?
 
-+ How can I view and search file contents?
-
-+ How can I create, copy and delete files and directories?
-
 + How can I control who has permission to modify a file?
 
 + How can I repeat recently used commands?
@@ -86,108 +82,37 @@ $ ls -l
 No one can possibly learn all of these arguments, that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
 
 
-Let's navigate to our individual folders and make a directory for class this week named `week2'
+Let's navigate to our individual folders: 
 ```html
 $ cd `yourdirectory`
 $ ls
 ```
 Now let's download some data to work with! 
 
-There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If there's a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in our individual directory
-```html
-$ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/week2.tar.gz
-
-# use the tar command to uncompress the file. This will also automatically make a week2 directory in your directory
-
-tar -xzvf week2.tar.gz
-```
-
-Now that we have something in our directory we can use the `ls` command a bit more.
-
-...
-
-Let’s go into the week2 directory and see what is in there.
-
-```html
-$ cd week2
-$ ls -F
-```
-
-```html
-SRR6805880_1.fastq SRR6805880_2.fastq
-```
-
-This directory contains two files with .fastq extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
-
-
-From this output, we can see that `..` did indeed take us back one level in our file system.
-
-You can chain these together like so:
-
-```html
-$ ls ../../
-```
-prints the contents of `/home`.
-
-Let's explore a few more properties of the `ls` function
-
-Go back to your directory.
-
-```html
-$ cd ..
-```
-
-Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text)
-
-```html
-$ man ls
-```
-The `-a` option is short for all and says that it causes `ls` to “not ignore entries starting with .” This is the option we want.
-
-```html
-$ ls -a
-
-```
-You'll see there are many more files shown now that we can look at the hidden ones. 
-
-In most commands the flags can be combined together in no particular order to obtain the desired results/output.
-
-```html
-$ ls -Fa
-$ ls -laF
-```
-
-## Examining the contents of other directories
-
-By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your directory if you are not already there.
-
-```html
-$ cd /group/rbaygrp/eve198-genomics/
-```
-
-Then enter the command:
-
-```html
-$ ls 'yourdirectory'
-
-data
-```
-
-This will list the contents of the your directory without you needing to navigate there.
-
 ## Our data set: FASTQ files
 
+There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If there's a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in our individual directory
+```html
+$ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week2.tar.gz
+# use the tar command to uncompress the file. This will also automatically make a week2 directory in your directory
+tar -xzvf week2.tar.gz
+```
+Check out what is in this directory:
+
+```html
+untrimmed_fastq sra_metadata TableS2_QTL_Bay_2017.txt
+```
 Now that we know how to navigate around our directory structure, let's
 start working with our sequencing files. We did a sequencing experiment and 
 have two results files, which are stored in our `untrimmed_fastq` directory. 
 
 ## Wildcards
 
-Navigate to your `untrimmed_fastq` directory:
+Navigate to your `untrimmed_fastq` directory in your individual directory
 
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/group/rbaygrp/eve198-genomics/week2/untrimmed_fastq
 ```
 
 
@@ -236,6 +161,10 @@ $ ls /usr/bin/*.sh
 Lists every file in `/usr/bin` that ends in the characters `.sh`.
 Note that the output displays __full__ paths to files, since
 each result starts with `/`.
+
+This directory contains two files with .fastq extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
+
+
 
 > ## Exercise
 > Do each of the following tasks from your current directory using a single
@@ -387,12 +316,6 @@ For more information on advanced usage of `history`, read section 9.3 of
 
 ## Key Points
 + The /, ~, and .. characters represent important navigational shortcuts.
-
-+ Most commands take options (flags) which begin with a -.
-
-+ You can view file contents using `less`, `cat`, `head` or `tail`.
-
-+ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
 
 + You can view file permissions using `ls -l` and change permissions using `chmod`.
 

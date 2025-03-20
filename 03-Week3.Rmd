@@ -11,10 +11,18 @@ output:
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
-# Week 3-Examining Files-STILL NEED TO UPDATE
+# Week 3-Examining Files-Still fixing
 
 We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
+
+## Questions to Answer
+
++ How can I view and search file contents?
+
++ How can I create, copy and delete files and directories?
+
+## Viewing Files
 
 One way to examine a file is to print out all of the
 contents using the program `cat`. 
@@ -358,3 +366,10 @@ three characters specify what other users outside of your group can do with the 
 that deal with your permissions (as the file owner). 
 
 ![Permissions breakdown](./figs/fig_week2/rwx_figure.png)
+
+
+## Key Points
+
++ You can view file contents using `less`, `cat`, `head` or `tail`.
+
++ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.

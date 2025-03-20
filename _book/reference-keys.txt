@@ -1,7 +1,6 @@
 intro-to-genomics-in-natural-populations
 course-learning-objectives
 meet-your-instructors
-schedule
 week-1--welcome
 main-objectives
 how-to-access-the-shell-via-farm-ondemand
@@ -22,4 +21,3 @@ copying-files
 creating-directories
 moving-renaming
 file-permissions
-week-3-examining-files-still-need-to-update

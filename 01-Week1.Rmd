@@ -28,7 +28,7 @@ This page has code modified from the Data Carpentry's introduction to the shell 
 
 For this course we will be using Farm OnDemand. First go to UCDavis HiPPO (the high-performance personnel onboarding) site and make an account: <https://hippo.ucdavis.edu/Farm/myaccount>. The group will be: rbay-eve198-genomics-grp and the supervising PI is: Rachael Bay. If you already have access to a farm account, click “request access to another group” and fill in the same information.
 
-A text box with pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
+A text box will pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
 
 Once your account has been processed (you will get an email!) you will go to <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>. Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:<https://canvas.ucdavis.edu/files/27138561/download?download_frd=1>
 
@@ -54,7 +54,7 @@ $ pwd
 /home/madarm11 
 ```
 
-Let’s look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`, which stands for “listing”. It may show other things than just the directories listed below if you have been in Farm before (which is why mine looks different below)
+Let’s look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`, which stands for “list”. It may show other things than just the directories listed below if you have been in Farm before (which is why mine looks different below)
 
 ``` html
 $ ls
@@ -70,7 +70,7 @@ Downloads  Pictures            Videos     miniconda
 
 First we will need to navigate to the correct directory that we will be working in for this class. The command to change locations in our file system is cd, followed by a directory name to change our working directory. cd stands for “change directory”.
 
-Our class directory is in group/rbaygrp/eve198-genomics. If we want to navigate into eve198-genomics that is housed in the rbaygrp directory inside the group directory we can use the following command to get there:
+Our class directory is in group/rbaygrp/eve198-genomics. ALL work for this class will take place inside the eve198-genomics directory If we want to navigate into eve198-genomics that is housed in the rbaygrp directory inside the group directory we can use the following command to get there:
 
 ``` html
 $ cd group
@@ -129,7 +129,8 @@ $ cd /ev
 
 Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
 
-##Creating our own directories to work in for class We will now make a new subdirectory for each person in the class so that everyone can run code individually.
+## Creating our own directories 
+We willnow each make our own directory in the eve198-genomics diectory so that everyone can run code individually.
 
 To make a new directory type the command `mkdir` followed by the name of the directory, in this case 'mlarmstrong'. You can do your ucdavis email name or your first intial and last name, just make sure it is specific to you.
 
@@ -144,7 +145,7 @@ $ ls
 ```
 
 ``` html
-mlarmstrong
+mlarmstrong week1
 ```
 
 ## Full vs Relative Paths
@@ -158,7 +159,7 @@ $ cd
 $ pwd
 ```
 
-You should see home/yourusername:
+You should see home/'yourusername':
 
 ``` html
 /home/madarm11
@@ -201,9 +202,67 @@ $ ls
 
 It should be empty because we just created it and haven't put anything in it yet. Next class we will learn to work with files!
 
+
+Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text)
+
+```html
+$ man ls
+```
+The `-a` option is short for all and says that it causes `ls` to “not ignore entries starting with .” This is the option we want.
+
+```html
+$ ls -a
+
+```
+You'll see there are many more files shown now that we can look at the hidden ones. 
+
+In most commands the flags can be combined together in no particular order to obtain the desired results/output.
+
+```html
+$ ls -Fa
+$ ls -laF
+```
+
+## Examining the contents of other directories
+
+By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your directory if you are not already there.
+
+```html
+$ cd /group/rbaygrp/eve198-genomics/
+```
+
+Then enter the command:
+
+```html
+$ ls 'yourdirectory'
+
+data
+```
+
+This will list the contents of the your directory without you needing to navigate there.
+
+If you want to move around multiple directories without necessarily looking in each one, you can chain these together like so:
+
+```html
+$ cd ../../
+```
+moves you back two directories. If you just want to look in that directory but not move there you can change the command to:
+
+```html
+$ ls ../../
+```
+
+
 We now know how to move around our file system using the command line. This gives us an advantage over interacting with the file system through a GUI as it allows us to work on a remote server, carry out the same set of operations on a large number of files quickly, and opens up many opportunities for using bioinformatic software that is only available in command line versions.
 
-# Key Points
+## Group Work Activity- Treasure Hunt!
+Let's practice moving around in directories. You can form a small group with nearby classmates but make sure everyone practices navigating on their own computer.
+
+Move to your home directory to start the activity. Then navigate to the week1 directory in eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it copy the full path to that directory and screenshot the contents of the directory. Submit on canvas under the 'Assignments' tab for 'Week 1: Treasure Hunt'
+
+
+## Key Points
+- Most commands take options (flags) which begin with a -.
 
 -   The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI.
 
