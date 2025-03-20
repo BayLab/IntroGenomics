@@ -1,6 +1,7 @@
 intro-to-genomics-in-natural-populations
 course-learning-objectives
 meet-your-instructors
+getting-your-farm-account-set-up-class-specific
 week-1--welcome
 main-objectives
 how-to-access-the-shell-via-farm-ondemand
@@ -17,17 +18,17 @@ navigational-shortcuts
 our-data-set-fastq-files
 wildcards
 command-history
+examining-files
 details-on-the-fastq-format
+group-work-activity--examining-files
+key-points-1
+week-3--working-with-files-part-2
+questions-to-answer-1
 creating-moving-copying-and-removing
 copying-files
 creating-directories
 moving-renaming
 file-permissions
-key-points-1
-examining-files
-group-work-activity--examining-files
-week-3--working-with-files-part-2
-questions-to-answer-1
 removing
 redirections
 searching-files
@@ -43,4 +44,3 @@ uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix
 awk
 group-work-activity--writing-your-own-script
 key-points-2
-getting-your-farm-account-set-up-class-specific
