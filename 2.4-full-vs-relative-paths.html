@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="2.4 Full vs Relative Paths | 01-Week1.Rmd" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="M. Armstrong" />
+
+<meta name="date" content="2025-03-19" />
+
+
+<meta name="description" content="2.4 Full vs Relative Paths | 01-Week1.Rmd">
+
+<title>2.4 Full vs Relative Paths | 01-Week1.Rmd</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="1-week-1--welcome.html#week-1--welcome" id="toc-week-1--welcome"><span class="toc-section-number">1</span> Week 1- Welcome!</a></li>
+<li class="has-sub"><a href="2-main-objectives.html#main-objectives" id="toc-main-objectives"><span class="toc-section-number">2</span> Main Objectives</a>
+<ul>
+<li><a href="2.1-how-to-access-the-shell-via-farm-ondemand.html#how-to-access-the-shell-via-farm-ondemand" id="toc-how-to-access-the-shell-via-farm-ondemand"><span class="toc-section-number">2.1</span> How to access the shell via Farm OnDemand</a></li>
+<li><a href="2.2-navigating-your-file-system.html#navigating-your-file-system" id="toc-navigating-your-file-system"><span class="toc-section-number">2.2</span> Navigating your file system</a></li>
+<li><a href="2.3-shortcut-tab-completion.html#shortcut-tab-completion" id="toc-shortcut-tab-completion"><span class="toc-section-number">2.3</span> Shortcut: Tab Completion</a></li>
+<li><a href="2.4-full-vs-relative-paths.html#full-vs-relative-paths" id="toc-full-vs-relative-paths"><span class="toc-section-number">2.4</span> Full vs Relative Paths</a></li>
+</ul></li>
+<li><a href="3-key-points.html#key-points" id="toc-key-points"><span class="toc-section-number">3</span> Key Points</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="full-vs-relative-paths" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Full vs Relative Paths</h2>
+<p>The <code>cd</code> command takes an argument which is a directory name. Directories can be specified using either a relative path or a full absolute path. The directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy.</p>
+<p>Navigate to the home directory, then enter the <code>pwd</code> command.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="2.4-full-vs-relative-paths.html#cb17-1" tabindex="-1"></a>$ cd</span>
+<span id="cb17-2"><a href="2.4-full-vs-relative-paths.html#cb17-2" tabindex="-1"></a>$ pwd</span></code></pre></div>
+<p>You should see home/yourusername:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="2.4-full-vs-relative-paths.html#cb18-1" tabindex="-1"></a>/home/madarm11</span></code></pre></div>
+<p>This is the full name of your home directory. This tells me that I are in a directory called <code>madarm11</code>, and yours will be named with your username. This directory sits inside a directory called home which sits inside the very top directory in the hierarchy. The very top of the hierarchy is a directory called <code>/</code> which is usually referred to as the <code>root</code> directory. So, to summarize: <code>madarm11</code> is a directory in <code>home</code> which is a directory in /. More on <code>root</code> and <code>home</code> in the next section.</p>
+<p>Now enter the following command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="2.4-full-vs-relative-paths.html#cb19-1" tabindex="-1"></a>$ cd /group/rbaygrp/eve198-genomics</span></code></pre></div>
+<p>This jumps several levels to the class directory. Now go back to the home directory.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="2.4-full-vs-relative-paths.html#cb20-1" tabindex="-1"></a>$ cd </span></code></pre></div>
+<p>You can also navigate to the class directory using:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="2.4-full-vs-relative-paths.html#cb21-1" tabindex="-1"></a>$ cd group/rbaygrp/eve198-genomics</span></code></pre></div>
+<p>These two commands have the same effect, they both take us to the class directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.</p>
+<p>A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.</p>
+<p>You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.</p>
+<p>Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.</p>
+<p>Now navigate inside of your individual directory and run the command ‘ls’.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb22-1"><a href="2.4-full-vs-relative-paths.html#cb22-1" tabindex="-1"></a>$ cd mlarmstrong</span>
+<span id="cb22-2"><a href="2.4-full-vs-relative-paths.html#cb22-2" tabindex="-1"></a>$ ls</span></code></pre></div>
+<p>It should be empty because we just created it and haven’t put anything in it yet. Next class we will learn to work with files!</p>
+<p>We now know how to move around our file system using the command line. This gives us an advantage over interacting with the file system through a GUI as it allows us to work on a remote server, carry out the same set of operations on a large number of files quickly, and opens up many opportunities for using bioinformatic software that is only available in command line versions.</p>
+</div>
+<!-- </div> -->
+<p style="text-align: center;">
+<a href="2.3-shortcut-tab-completion.html"><button class="btn btn-default">Previous</button></a>
+<a href="3-key-points.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
