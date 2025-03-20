@@ -1,0 +1,1024 @@
+--- 
+title: "Introduction to Genomics in Natural Populations"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# Course Information
+
+Intro to Genomics in Natural Populations
+Wednesdays 10-11:50am, Storer 1350
+
+Instructors:  Rachael Bay (rbay@ucdavis.edu) & Madison Armstrong (mlarmstrong@ucdavis.edu), Office Hours: TBD
+
+
+
+## Course Learning Objectives
+In this course we will focus on the rapidly developing field of genomics and explore examples across marine and terrestrial systems. Students will gain hands-on coding skills in command-line and R. By the end of this class, students will be able to use HPC computing resources at UC Davis, write basic scripts in bash and perform genomic analyses modifying template scripts in R. Students will also be able to describe the general bioinformatics pipeline and  evaluate figures from published literature.quired, and is also your first book chapter. It will be the homepage when you render the book.
+
+## Meet your instructors!
+
+Madison Armstrong, PhD student, instructor (mlarmstrong@ucdavis.edu)-- [Website](https://madisonarmstrong.me/)
+
+Rachael Bay, Assistant Professor, co-instructor (rbay@ucdavis.edu)-- [Website](https://baylab.github.io/).
+
+## Schedule
+Wednesdays 10-11:50am, Storer 1350
+
+Office hours TBD
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+---
+title: "01-Week1.Rmd"
+author: "M. Armstrong"
+date: "2025-03-19"
+output:
+  bookdown::html_book:
+    toc: yes
+    css: toc.css
+---
+
+```{r setupq1, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
+```
+
+# Week 1- Welcome!
+
+Welcome to Introduction to Genomics in Natural Populations at UC Davis!
+
+This page has code modified from the Data Carpentry's introduction to the shell tutorial, which can be found here <https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html>
+
+## Main Objectives
+-   Take Pre-class assessment
+-   Introduction to genomics & shell computing (via slideshow here: x)
+-   Accessing terminal via Farm OnDemand
+-   Learn how to use the command line interface to move around in your file system
+
+## How to access the shell via Farm OnDemand
+
+For this course we will be using Farm OnDemand. First go to UCDavis HiPPO (the high-performance personnel onboarding) site and make an account: <https://hippo.ucdavis.edu/Farm/myaccount>. The group will be: rbay-eve198-genomics-grp and the supervising PI is: Rachael Bay. If you already have access to a farm account, click “request access to another group” and fill in the same information.
+
+A text box with pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
+
+Once your account has been processed (you will get an email!) you will go to <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>. Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:<https://canvas.ucdavis.edu/files/27138561/download?download_frd=1>
+
+## Navigating your file system
+
+The part of the operating system responsible for managing files and directories is called the file system. It organizes our data into files, which hold information, and directories (also called “folders” but we will call them directories in class), which hold files or other directories.
+
+Several commands are frequently used to create, inspect, rename, and delete files and directories.
+
+``` html
+$
+```
+
+The dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
+
+Let’s find out where we are by running a command called pwd (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/yourusername, which is the top level directory within our cloud system. Below I show what it looks like from my end with my username, madarm11:
+
+``` html
+$ pwd
+```
+
+``` html
+/home/madarm11 
+```
+
+Let’s look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`, which stands for “listing”. It may show other things than just the directories listed below if you have been in Farm before (which is why mine looks different below)
+
+``` html
+$ ls
+```
+
+``` html
+Desktop    Mambaforge-Linux-x86_64.sh  Public     get-pip.py  miniconda.sh
+Documents  Music               Templates  mambaforge  ondemand
+Downloads  Pictures            Videos     miniconda
+```
+
+`ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns.
+
+First we will need to navigate to the correct directory that we will be working in for this class. The command to change locations in our file system is cd, followed by a directory name to change our working directory. cd stands for “change directory”.
+
+Our class directory is in group/rbaygrp/eve198-genomics. If we want to navigate into eve198-genomics that is housed in the rbaygrp directory inside the group directory we can use the following command to get there:
+
+``` html
+$ cd group
+$ cd rbaygrp
+$ cd eve198-genomics
+```
+
+``` html
+$ pwd
+```
+
+``` html
+/group/rbaygrp/eve198-genomics
+```
+
+Use `ls` to see what is inside eve198-genomics
+
+``` html
+$ ls
+```
+
+We have a special command to tell the computer to move us back or up one directory level. If we want to navigate out of eve198-genomics we can do the following command:
+
+``` html
+$ cd ..
+```
+
+The two periods after cd takes us back one directory. Type ls to see what other directories are in the rbaygrp directory.
+
+What happens when you type in just cd?
+
+``` html
+$ cd 
+```
+
+We are back to where we started!
+
+## Shortcut: Tab Completion
+
+Typing out file or directory names can waste a lot of time and it’s easy to make typing mistakes. Instead we can use tab complete as a shortcut. When you start typing out the name of a directory or file, then hit the Tab key, the shell will try to fill in the rest of the directory or file name.
+
+Since we are already in our home directory type 'cd gr' and then hit tab:
+
+``` html
+$ cd gr
+```
+
+The shell will fill in the rest of the directory name for `group`.
+
+Now continue into the rbaygrp directory and then the eve198-genomics directory by using tab to fill in the rest of the names:
+
+``` html
+$ cd /rbayg
+$ cd /ev
+```
+
+Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
+
+##Creating our own directories to work in for class We will now make a new subdirectory for each person in the class so that everyone can run code individually.
+
+To make a new directory type the command `mkdir` followed by the name of the directory, in this case 'mlarmstrong'. You can do your ucdavis email name or your first intial and last name, just make sure it is specific to you.
+
+``` html
+$ mkdir mlamstrong
+```
+
+Check that it's there with ls. As other people make directories those will pop up too!
+
+``` html
+$ ls
+```
+
+``` html
+mlarmstrong
+```
+
+## Full vs Relative Paths
+
+The `cd` command takes an argument which is a directory name. Directories can be specified using either a relative path or a full absolute path. The directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy.
+
+Navigate to the home directory, then enter the `pwd` command.
+
+``` html
+$ cd
+$ pwd
+```
+
+You should see home/yourusername:
+
+``` html
+/home/madarm11
+```
+
+This is the full name of your home directory. This tells me that I are in a directory called `madarm11`, and yours will be named with your username. This directory sits inside a directory called home which sits inside the very top directory in the hierarchy. The very top of the hierarchy is a directory called `/` which is usually referred to as the `root` directory. So, to summarize: `madarm11` is a directory in `home` which is a directory in /. More on `root` and `home` in the next section.
+
+Now enter the following command:
+
+``` html
+$ cd /group/rbaygrp/eve198-genomics
+```
+
+This jumps several levels to the class directory. Now go back to the home directory.
+
+``` html
+$ cd 
+```
+
+You can also navigate to the class directory using:
+
+``` html
+$ cd group/rbaygrp/eve198-genomics
+```
+
+These two commands have the same effect, they both take us to the class directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.
+
+A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.
+
+You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.
+
+Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.
+
+Now navigate inside of your individual directory and run the command 'ls'.
+
+``` html
+$ cd mlarmstrong
+$ ls
+```
+
+It should be empty because we just created it and haven't put anything in it yet. Next class we will learn to work with files!
+
+We now know how to move around our file system using the command line. This gives us an advantage over interacting with the file system through a GUI as it allows us to work on a remote server, carry out the same set of operations on a large number of files quickly, and opens up many opportunities for using bioinformatic software that is only available in command line versions.
+
+# Key Points
+
+-   The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI.
+
+-   Useful commands for navigating your file system include: ls, pwd, and cd.
+
+-   Tab completion can reduce errors from mistyping and make work more efficient in the shell.
+
+-   Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
+
+<!--chapter:end:01-Week1.Rmd-->
+
+---
+title: "02-Week2.Rmd"
+author: "M. Armstrong"
+date: "2025-03-19"
+output:
+  bookdown::html_book:
+    toc: yes
+    css: toc.css
+---
+```{r setupq1, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
+```
+
+# Week 2- Working with files
+We will be following some of the data carpentry tutorial (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
+
+## Questions to Answer:
+
++ What are some navigational shortcuts I can use to make my work more efficient?
+
++ How can I perform operations on files outside of my working directory?
+
++ How can I work with hidden directories and hidden files?
+
++ How can I view and search file contents?
+
++ How can I create, copy and delete files and directories?
+
++ How can I control who has permission to modify a file?
+
++ How can I repeat recently used commands?
+
+## Navigational shortcuts
+
+The root directory is the highest level directory in your file system and contains files that are important for your computer to perform its daily work. While you will be using the root (/) at the beginning of your absolute paths, it is important that you avoid working with data in these higher-level directories, as your commands can permanently alter files that the operating system needs to function. In many cases, trying to run commands in root directories will require special permissions which will be discussed later, so it’s best to avoid them and work within your home directory. Dealing with the home directory is very common. The tilde character, ~, is a shortcut for your home directory. In our case, the root directory is two levels above our home directory, so cd or cd ~ will take you to `/home/margeno` and cd `/` will take you to `/`. 
+
+Navigate to your home directory if you aren't there already and enter the command:
+```html
+$ cd 
+$ ls ~
+
+Desktop    Mambaforge-Linux-x86_64.sh  Public	  get-pip.py  miniconda.sh
+Documents  Music		       Templates  mambaforge  ondemand
+Downloads  Pictures		       Videos	  miniconda
+
+```
+
+This prints the contents of your home directory, without you needing to type the full path.
+
+The commands `cd`, and `cd ~` are very useful for quickly navigating back to your home directory. We will be using the ~ character in later lessons to specify our home directory.
+
+
+We can make the ls output more comprehensible by using the flag -F, which tells ls to add a trailing / to the names of directories. First make sure you are in the eve198-genomics directory by printing your working directory
+```html
+$ cd /group/rbaygrp/eve198-genomics
+$ pwd
+```
+```html
+/group/rbaygrp/eve198-genomics
+```
+Then type ls -F. It should show your and all your classmates' directories. 
+
+```html
+$ ls -F
+```
+```html
+mlarmstrong/
+```
+
+Anything with a “/” after it is a directory. Things with a “*” after them are programs. If there are no decorations, it’s a file.
+
+`ls` has lots of other options. To find out what they are, we can type
+
+```html
+$ man ls
+```
+
+`man` (short for manual) displays detailed documentation (also referred as man page or man file) for `bash` commands. It is a powerful resource to explore bash commands, understand their usage and flags. Some manual files are very long. You can scroll through the file using your keyboard’s down arrow or use the Space key to go forward one page and the `b` key to go backwards one page. When you are done reading, hit `q` to quit.
+
+Use the `-l` option for the `ls` command to display more information for each item in the directory. What is one piece of additional information this long format gives you that you don’t see with the bare `ls` command?
+
+```html
+$ ls -l
+```
+
+No one can possibly learn all of these arguments, that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
+
+
+Let's navigate to our individual folders and make a directory for class this week named `week2'
+```html
+$ cd `yourdirectory`
+$ ls
+```
+Now let's download some data to work with! 
+
+There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If there's a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in our individual directory
+```html
+$ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/week2.tar.gz
+
+# use the tar command to uncompress the file. This will also automatically make a week2 directory in your directory
+
+tar -xzvf week2.tar.gz
+```
+
+Now that we have something in our directory we can use the `ls` command a bit more.
+
+...
+
+Let’s go into the week2 directory and see what is in there.
+
+```html
+$ cd week2
+$ ls -F
+```
+
+```html
+SRR6805880_1.fastq SRR6805880_2.fastq
+```
+
+This directory contains two files with .fastq extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
+
+
+From this output, we can see that `..` did indeed take us back one level in our file system.
+
+You can chain these together like so:
+
+```html
+$ ls ../../
+```
+prints the contents of `/home`.
+
+Let's explore a few more properties of the `ls` function
+
+Go back to your directory.
+
+```html
+$ cd ..
+```
+
+Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text)
+
+```html
+$ man ls
+```
+The `-a` option is short for all and says that it causes `ls` to “not ignore entries starting with .” This is the option we want.
+
+```html
+$ ls -a
+
+```
+You'll see there are many more files shown now that we can look at the hidden ones. 
+
+In most commands the flags can be combined together in no particular order to obtain the desired results/output.
+
+```html
+$ ls -Fa
+$ ls -laF
+```
+
+## Examining the contents of other directories
+
+By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your directory if you are not already there.
+
+```html
+$ cd /group/rbaygrp/eve198-genomics/
+```
+
+Then enter the command:
+
+```html
+$ ls 'yourdirectory'
+
+data
+```
+
+This will list the contents of the your directory without you needing to navigate there.
+
+## Our data set: FASTQ files
+
+Now that we know how to navigate around our directory structure, let's
+start working with our sequencing files. We did a sequencing experiment and 
+have two results files, which are stored in our `untrimmed_fastq` directory. 
+
+## Wildcards
+
+Navigate to your `untrimmed_fastq` directory:
+
+
+```html
+$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+```
+
+
+We are interested in looking at the FASTQ files in this directory. We can list
+all files with the .fastq extension using the command:
+
+```html
+$ ls *.fastq
+```
+
+
+```html
+SRR097977.fastq  SRR098026.fastq
+```
+
+
+The `*` character is a special type of character called a wildcard, which can be used to represent any number of any type of character. 
+Thus, `*.fastq` matches every file that ends with `.fastq`. 
+
+This command: 
+
+```html
+$ ls *977.fastq
+```
+
+
+```html
+SRR097977.fastq
+```
+
+
+lists only the file that ends with `977.fastq`.
+
+This command:
+
+```html
+$ ls /usr/bin/*.sh
+```
+
+
+```html
+/usr/bin/gettext.sh  /usr/bin/rescan-scsi-bus.sh
+```
+
+
+Lists every file in `/usr/bin` that ends in the characters `.sh`.
+Note that the output displays __full__ paths to files, since
+each result starts with `/`.
+
+> ## Exercise
+> Do each of the following tasks from your current directory using a single
+> `ls` command for each:
+> 
+> 1.  List all of the files in `/usr/bin` that start with the letter 'c'.
+> 2.  List all of the files in `/usr/bin` that contain the letter 'a'. 
+> 3.  List all of the files in `/usr/bin` that end with the letter 'o'.
+>
+> Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
+> letter 'c'.
+> 
+> Hint: The bonus question requires a Unix wildcard that we haven't talked about
+> yet. Try searching the internet for information about Unix wildcards to find
+> what you need to solve the bonus problem.
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+> > ## Solution
+> > 1. `ls /usr/bin/c*`
+> > 2. `ls /usr/bin/*a*`
+> > 3. `ls /usr/bin/*o`  
+> > Bonus: `ls /usr/bin/*[ac]*`
+> > 
+> 
+
+</p>
+</details>
+&nbsp;
+
+> ## Exercise
+> `echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
+> The `echo` command can also be used with pattern matching characters, such as wildcard characters. 
+> Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
+> 
+> ```html
+> $ echo *.fastq
+> ```
+> 
+> 
+> ```html
+> SRR097977.fastq SRR098026.fastq
+> ```
+> 
+> 
+> The `*` is expanded to include any file that ends with `.fastq`. We can see that the output of
+> `echo *.fastq` is the same as that of `ls *.fastq`.
+> 
+> What would the output look like if the wildcard could *not* be matched? Compare the outputs of
+> `echo *.missing` and `ls *.missing`.
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+
+> > ## Solution
+> > ```html
+> > $ echo *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > $ ls *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > ls: cannot access '*.missing': No such file or directory
+> > ```
+> > 
+> > 
+> 
+
+</p>
+</details>
+&nbsp;
+
+## Command History
+
+If you want to repeat a command that you've run recently, you can access previous
+commands using the up arrow on your keyboard to go back to the most recent
+command. Likewise, the down arrow takes you forward in the command history.
+
+A few more useful shortcuts: 
+
+- <kbd>Ctrl</kbd>+<kbd>C</kbd> will cancel the command you are writing, and give you a 
+fresh prompt.
+- <kbd>Ctrl</kbd>+<kbd>R</kbd> will do a reverse-search through your command history.  This
+is very useful.
+- <kbd>Ctrl</kbd>+<kbd>L</kbd> or the `clear` command will clear your screen.
+
+You can also review your recent commands with the `history` command, by entering:
+
+```html
+$ history
+```
+
+
+to see a numbered list of recent commands. You can reuse one of these commands
+directly by referring to the number of that command.
+
+For example, if your history looked like this:
+
+```html
+259  ls *
+260  ls /usr/bin/*.sh
+261  ls *R1*fastq
+```
+
+
+then you could repeat command #260 by entering:
+
+```html
+$ !260
+```
+
+
+Type `!` (exclamation point) and then the number of the command from your history.
+You will be glad you learned this when you need to re-run very complicated commands.
+For more information on advanced usage of `history`, read section 9.3 of
+[Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html).
+
+> ## Exercise
+> Find the line number in your history for the command that listed all the .sh
+> files in `/usr/bin`. Rerun that command.
+>
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+> > ## Solution
+> > First type `history`. Then use `!` followed by the line number to rerun that command.
+> 
+
+</p>
+</details>
+&nbsp;
+
+
+```
+
+## Key Points
++ The /, ~, and .. characters represent important navigational shortcuts.
+
++ Most commands take options (flags) which begin with a -.
+
++ You can view file contents using `less`, `cat`, `head` or `tail`.
+
++ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
+
++ You can view file permissions using `ls -l` and change permissions using `chmod`.
+
++ The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.
+
+<!--chapter:end:02-Week2.Rmd-->
+
+---
+title: "03-Week3.Rmd"
+author: "M. Armstrong"
+date: "2025-03-19"
+output:
+  bookdown::html_book:
+    toc: yes
+    css: toc.css
+---
+```{r setupq1, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
+```
+
+# Week 3-Examining Files-STILL NEED TO UPDATE
+
+We now know how to switch directories, run programs, and look at the
+contents of directories, but how do we look at the contents of files?
+
+One way to examine a file is to print out all of the
+contents using the program `cat`. 
+
+Enter the following command from within the `untrimmed_fastq` directory: 
+
+```html
+$ cat SRR098026.fastq
+```
+
+
+This will print out all of the contents of the `SRR098026.fastq` to the screen.
+
+
+> ## Exercise
+> 
+> 1. Print out the contents of the `~/data_week2/Week2/data_week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
+> 2.  From your home directory, and without changing directories,
+> use one short command to print the contents of all of the files in
+> the `./data_week2/Week2/data_week2/untrimmed_fastq` directory.
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+
+> > ## Solution
+> > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
+> > 2. `cat ./data_week2/Week2/data_week2/untrimmed_fastq/*`
+> 
+
+</p>
+</details>
+&nbsp;
+
+`cat` is a terrific program, but when the file is really big, it can
+be annoying to use. The program, `less`, is useful for this
+case. `less` opens the file as read only, and lets you navigate through it. The navigation commands
+are identical to the `man` program.
+
+Enter the following command:
+
+```html
+$ less SRR097977.fastq
+```
+
+
+Some navigation commands in `less`:
+
+| key     | action |
+| ------- | ---------- |
+| <kbd>Space</kbd> | to go forward |
+|  <kbd>b</kbd>    | to go backward |
+|  <kbd>g</kbd>    | to go to the beginning |
+|  <kbd>G</kbd>    | to go to the end |
+|  <kbd>q</kbd>    | to quit |
+
+`less` also gives you a way of searching through files. Use the
+"/" key to begin a search. Enter the word you would like
+to search for and press `enter`. The screen will jump to the next location where
+that word is found. 
+
+**Shortcut:** If you hit "/" then "enter", `less` will  repeat
+the previous search. `less` searches from the current location and
+works its way forward. Scroll up a couple lines on your terminal to verify
+you are at the beginning of the file. Note, if you are at the end of the file and search
+for the sequence "CAA", `less` will not find it. You either need to go to the
+beginning of the file (by typing `g`) and search again using `/` or you
+can use `?` to search backwards in the same way you used `/` previously.
+
+For instance, let's search forward for the sequence `TTTTT` in our file. 
+You can see that we go right to that sequence, what it looks like,
+and where it is in the file. If you continue to type `/` and hit return, you will move 
+forward to the next instance of this sequence motif. If you instead type `?` and hit 
+return, you will search backwards and move up the file to previous examples of this motif.
+
+> ## Exercise
+>
+> What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+> > ## Solution
+> > `CAC`
+> 
+
+</p>
+</details>
+&nbsp;
+
+Remember, the `man` program actually uses `less` internally and
+therefore uses the same commands, so you can search documentation
+using "/" as well!
+
+There's another way that we can look at files, and in this case, just
+look at part of them. This can be particularly useful if we just want
+to see the beginning or end of the file, or see how it's formatted.
+
+The commands are `head` and `tail` and they let you look at
+the beginning and end of a file, respectively.
+
+```html
+$ head SRR098026.fastq
+```
+
+
+```html
+@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
++SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+@SRR098026.2 HWUSI-EAS1599_1:2:1:0:312 length=35
+NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
++SRR098026.2 HWUSI-EAS1599_1:2:1:0:312 length=35
+!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+@SRR098026.3 HWUSI-EAS1599_1:2:1:0:570 length=35
+NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
+```
+
+
+```html
+$ tail SRR098026.fastq
+```
+
+
+```html
++SRR098026.247 HWUSI-EAS1599_1:2:1:2:1311 length=35
+#!##!#################!!!!!!!######
+@SRR098026.248 HWUSI-EAS1599_1:2:1:2:118 length=35
+GNTGNGGTCATCATACGCGCCCNNNNNNNGGCATG
++SRR098026.248 HWUSI-EAS1599_1:2:1:2:118 length=35
+B!;?!A=5922:##########!!!!!!!######
+@SRR098026.249 HWUSI-EAS1599_1:2:1:2:1057 length=35
+CNCTNTATGCGTACGGCAGTGANNNNNNNGGAGAT
++SRR098026.249 HWUSI-EAS1599_1:2:1:2:1057 length=35
+A!@B!BBB@ABAB#########!!!!!!!######
+```
+
+
+The `-n` option to either of these commands can be used to print the
+first or last `n` lines of a file. 
+
+```html
+$ head -n 1 SRR098026.fastq
+```
+
+
+```html
+@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+```
+
+
+```html
+$ tail -n 1 SRR098026.fastq
+```
+
+
+```html
+A!@B!BBB@ABAB#########!!!!!!!######
+```
+
+
+
+## Details on the FASTQ format
+
+Although it looks complicated (and it is), it's easy to understand the
+[fastq](https://en.wikipedia.org/wiki/FASTQ_format) format with a little decoding. Some rules about the format
+include...
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@' and then information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+' and sometimes the same info in line 1|
+|4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
+
+We can view the first complete read in one of the files in our dataset by using `head` to look at
+the first four lines.
+
+```html
+$ head -n 4 SRR098026.fastq
+```
+
+
+```html
+@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
++SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+```
+
+
+All but one of the nucleotides in this read are unknown (`N`). This is a pretty bad read!
+
+Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the 
+probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call 
+accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality
+score, the numerical score is converted into a code where each individual character 
+represents the numerical quality score for an individual nucleotide. For example, in the line
+above, the quality score line is: 
+
+```html
+!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+```
+
+
+The `#` character and each of the `!` characters represent the encoded quality for an 
+individual nucleotide. The numerical value assigned to each of these characters depends on the 
+sequencing platform that generated the reads. The sequencing machine used to generate our data 
+uses the standard Sanger quality PHRED score encoding, Illumina version 1.8 onwards.
+
+Here is a link showing what those different symbols mean for quality scores:  https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm
+
+
+Each character is assigned a quality score between 0 and 42 as shown in the chart below.
+
+```html
+Quality encoding: !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJK
+                  |         |         |         |         |
+Quality score:    0........10........20........30........40..                          
+```
+
+
+Each quality score represents the probability that the corresponding nucleotide call is
+incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a
+base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%. 
+These probability values are the results from the base calling algorithm and dependent on how 
+much signal was captured for the base incorporation. 
+
+Looking back at our read: 
+
+```html
+@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
++SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+```
+
+
+we can now see that the quality of each of the `N`s is 0 and the quality of the only
+nucleotide call (`C`) is also very poor (`#` = a quality score of 2). This is indeed a very
+bad read. 
+
+
+## Creating, moving, copying, and removing
+
+Now we can move around in the file structure, look at files, and search files. But what if we want to copy files or move
+them around or get rid of them? Most of the time, you can do these sorts of file manipulations without the command line,
+but there will be some cases (like when you're working with a remote computer like we are for this lesson) where it will be
+impossible. You'll also find that you may be working with hundreds of files and want to do similar manipulations to all 
+of those files. In cases like this, it's much faster to do these operations at the command line.
+
+### Copying Files
+
+When working with computational data, it's important to keep a safe copy of that data that can't be accidentally overwritten or deleted. 
+For this lesson, our raw data is our FASTQ files.  We don't want to accidentally change the original files, so we'll make a copy of them
+and change the file permissions so that we can read from, but not write to, the files.
+
+First, let's make a copy of one of our FASTQ files using the `cp` command. 
+
+Navigate to the `~/data_week2/Week2/data_week2/untrimmed_fastq` directory and enter:
+
+```html
+$ cp SRR098026.fastq SRR098026-copy.fastq
+$ ls -F
+```
+
+
+```html
+SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
+```
+
+
+We now have two copies of the `SRR098026.fastq` file, one of them named `SRR098026-copy.fastq`. We'll move this file to a new directory
+called `backup` where we'll store our backup data files.
+
+### Creating Directories
+
+The `mkdir` command is used to make a directory. Enter `mkdir`
+followed by a space, then the directory name you want to create:
+
+```html
+$ mkdir backup
+```
+
+
+### Moving / Renaming 
+
+We can now move our backup file to this directory. We can
+move files around using the command `mv`: 
+
+```html
+$ mv SRR098026-copy.fastq backup
+$ ls backup
+```
+
+ 
+```html
+SRR098026-copy.fastq
+```
+
+
+The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
+
+```html
+$ cd backup
+$ mv SRR098026-copy.fastq SRR098026-backup.fastq
+$ ls
+```
+
+
+```html
+SRR098026-backup.fastq
+```
+
+
+### File Permissions
+
+We've now made a backup copy of our file, but just because we have two copies, it doesn't make us safe. We can still accidentally delete or 
+overwrite both copies. To make sure we can't accidentally mess up this backup file, we're going to change the permissions on the file so
+that we're only allowed to read (i.e. view) the file, not write to it (i.e. make new changes).
+
+View the current permissions on a file using the `-l` (long) flag for the `ls` command: 
+
+```html
+$ ls -l
+```
+
+
+```html
+-rw-rw-r-- 1 margeno margeno 43K Apr 6 12:15 SRR098026-backup.fastq
+```
+
+
+The first part of the output for the `-l` flag gives you information about the file's current permissions. There are ten slots in the
+permissions list. The first character in this list is related to file type, not permissions, so we'll ignore it for now. The next three
+characters relate to the permissions that the file owner has, the next three relate to the permissions for group members, and the final
+three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
+that deal with your permissions (as the file owner). 
+
+![Permissions breakdown](./figs/fig_week2/rwx_figure.png)
+
+<!--chapter:end:03-Week3.Rmd-->
+

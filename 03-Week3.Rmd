@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
-# Week 3-Examining Files
+# Week 3-Examining Files-STILL NEED TO UPDATE
 
 We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
