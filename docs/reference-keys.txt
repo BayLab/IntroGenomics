@@ -24,7 +24,3 @@ creating-directories
 moving-renaming
 file-permissions
 key-points-1
-week-3-examining-files-still-fixing
-questions-to-answer-1
-viewing-files
-key-points-2
