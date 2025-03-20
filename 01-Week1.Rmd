@@ -25,12 +25,8 @@ This page has code modified from the Data Carpentry's introduction to the shell 
 -   Learn how to use the command line interface to move around in your file system
 
 ## How to access the shell via Farm OnDemand
-
-For this course we will be using Farm OnDemand. First go to UCDavis HiPPO (the high-performance personnel onboarding) site and make an account: <https://hippo.ucdavis.edu/Farm/myaccount>. The group will be: rbay-eve198-genomics-grp and the supervising PI is: Rachael Bay. If you already have access to a farm account, click “request access to another group” and fill in the same information.
-
-A text box will pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
-
-Once your account has been processed (you will get an email!) you will go to <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>. Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:<https://canvas.ucdavis.edu/files/27138561/download?download_frd=1>
+Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:
+https://canvas.ucdavis.edu/courses/978599/files?preview=27151921
 
 ## Navigating your file system
 
@@ -258,7 +254,7 @@ We now know how to move around our file system using the command line. This give
 ## Group Work Activity- Treasure Hunt!
 Let's practice moving around in directories. You can form a small group with nearby classmates but make sure everyone practices navigating on their own computer.
 
-Move to your home directory to start the activity. Then navigate to the week1 directory in eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it copy the full path to that directory and screenshot the contents of the directory. Submit on canvas under the 'Assignments' tab for 'Week 1: Treasure Hunt'
+Move to your home directory to start the activity. Then navigate to the week1_activity directory in eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it copy the full path to that directory and screenshot the contents of the directory. Submit on canvas under the 'Assignments' tab for 'Week 1: Treasure Hunt'
 
 
 ## Key Points

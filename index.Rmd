@@ -26,6 +26,13 @@ Madison Armstrong, PhD student, instructor (mlarmstrong@ucdavis.edu)-- [Website]
 Rachael Bay, Assistant Professor, co-instructor (rbay@ucdavis.edu)-- [Website](https://baylab.github.io/).
 ![](./figs/Rachael.jpg)
 
+## Getting your Farm Account set up (class specific)
+For this course we will be using Farm OnDemand. First go to UCDavis HiPPO (the high-performance personnel onboarding) site and make an account: <https://hippo.ucdavis.edu/Farm/myaccount>. The group will be: rbay-eve198-genomics-grp and the supervising PI is: Rachael Bay. If you already have access to a farm account, click “request access to another group” and fill in the same information.
+
+A text box will pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
+
+Once your account has been processed (you will get an email!) you will use this site to complete all coursework: <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>.
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
