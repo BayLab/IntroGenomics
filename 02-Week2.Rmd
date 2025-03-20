@@ -568,7 +568,7 @@ Next you will need to unzip the fastq file. To do this we will use the command "
 gunzip CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz
 ```
 
-Then answer the following questions and submit them to the "Week 2: Examining Files" assignment on canvas.I would not recommend using 'less' or 'cat' on this file due to its size.
+Then answer the following questions and submit them to the "Week 2: Examining Files" assignment on canvas. I would not recommend using 'less' or 'cat' on this file due to its size.
 
 1. Write out the first two lines of CCGPMC004_M0D060025C_S150_L003_R1_001.fastq 
 2. Remember that line 4 in a fastq file shows the quality (phred) scores. If you look at line 4 and reference the score table from the link I shared before, what is the most common symbol, Q-score and error probability for most of our nucleotide calls? 
