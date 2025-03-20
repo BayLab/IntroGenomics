@@ -8,6 +8,7 @@ how-to-access-the-shell-via-farm-ondemand
 navigating-your-file-system
 shortcut-tab-completion
 full-vs-relative-paths
+key-points
 week-2--working-with-files
 questions-to-answer
 navigational-shortcuts
@@ -15,12 +16,9 @@ examining-the-contents-of-other-directories
 our-data-set-fastq-files
 wildcards
 command-history
-key-points
-week-3-examining-files-still-need-to-update
 details-on-the-fastq-format
 creating-moving-copying-and-removing
 copying-files
 creating-directories
 moving-renaming
 file-permissions
-key-points-1

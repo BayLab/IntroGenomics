@@ -7,7 +7,7 @@ output:
     toc: yes
     css: toc.css
 ---
-```{r setupq1, include=FALSE}
+```{r setupq3, include=FALSE}
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
