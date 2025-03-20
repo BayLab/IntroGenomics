@@ -1,4 +1,4 @@
-course-information
+intro-to-genomics-in-natural-populations
 course-learning-objectives
 meet-your-instructors
 schedule
@@ -22,3 +22,4 @@ copying-files
 creating-directories
 moving-renaming
 file-permissions
+week-3-examining-files-still-need-to-update
