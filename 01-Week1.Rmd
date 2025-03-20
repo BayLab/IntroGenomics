@@ -20,7 +20,7 @@ This page has code modified from the Data Carpentry's introduction to the shell 
 
 # Main Objectives
 -   Take Pre-class assessment
--   Introduction to genomics & shell computing (via slideshow here: X )
+-   Introduction to genomics & shell computing (via slideshow here: x)
 -   Accessing terminal via Farm OnDemand
 -   Learn how to use the command line interface to move around in your file system
 
@@ -30,7 +30,7 @@ For this course we will be using Farm OnDemand. First go to UCDavis HiPPO (the h
 
 A text box with pop up. Fill out name and other information for a farm account. Two boxes will be clicked: unclick SSH (you will not have an SSH key) and make sure “ondemand” is clicked.
 
-Once your account has been processed (you will get an email!) you will go to <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>. Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class: PDF X
+Once your account has been processed (you will get an email!) you will go to <https://ondemand.farm.hpc.ucdavis.edu/pun/sys/dashboard/>. Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:<https://canvas.ucdavis.edu/files/27138561/download?download_frd=1>
 
 ## Navigating your file system
 
