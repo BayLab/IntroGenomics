@@ -175,6 +175,212 @@ data
 
 This will list the contents of the your directory without you needing to navigate there.
 
+## Our data set: FASTQ files
+
+Now that we know how to navigate around our directory structure, let's
+start working with our sequencing files. We did a sequencing experiment and 
+have two results files, which are stored in our `untrimmed_fastq` directory. 
+
+## Wildcards
+
+Navigate to your `untrimmed_fastq` directory:
+
+
+```html
+$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+```
+
+
+We are interested in looking at the FASTQ files in this directory. We can list
+all files with the .fastq extension using the command:
+
+```html
+$ ls *.fastq
+```
+
+
+```html
+SRR097977.fastq  SRR098026.fastq
+```
+
+
+The `*` character is a special type of character called a wildcard, which can be used to represent any number of any type of character. 
+Thus, `*.fastq` matches every file that ends with `.fastq`. 
+
+This command: 
+
+```html
+$ ls *977.fastq
+```
+
+
+```html
+SRR097977.fastq
+```
+
+
+lists only the file that ends with `977.fastq`.
+
+This command:
+
+```html
+$ ls /usr/bin/*.sh
+```
+
+
+```html
+/usr/bin/gettext.sh  /usr/bin/rescan-scsi-bus.sh
+```
+
+
+Lists every file in `/usr/bin` that ends in the characters `.sh`.
+Note that the output displays __full__ paths to files, since
+each result starts with `/`.
+
+> ## Exercise
+> Do each of the following tasks from your current directory using a single
+> `ls` command for each:
+> 
+> 1.  List all of the files in `/usr/bin` that start with the letter 'c'.
+> 2.  List all of the files in `/usr/bin` that contain the letter 'a'. 
+> 3.  List all of the files in `/usr/bin` that end with the letter 'o'.
+>
+> Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
+> letter 'c'.
+> 
+> Hint: The bonus question requires a Unix wildcard that we haven't talked about
+> yet. Try searching the internet for information about Unix wildcards to find
+> what you need to solve the bonus problem.
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+> > ## Solution
+> > 1. `ls /usr/bin/c*`
+> > 2. `ls /usr/bin/*a*`
+> > 3. `ls /usr/bin/*o`  
+> > Bonus: `ls /usr/bin/*[ac]*`
+> > 
+> 
+
+</p>
+</details>
+&nbsp;
+
+> ## Exercise
+> `echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
+> The `echo` command can also be used with pattern matching characters, such as wildcard characters. 
+> Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
+> 
+> ```html
+> $ echo *.fastq
+> ```
+> 
+> 
+> ```html
+> SRR097977.fastq SRR098026.fastq
+> ```
+> 
+> 
+> The `*` is expanded to include any file that ends with `.fastq`. We can see that the output of
+> `echo *.fastq` is the same as that of `ls *.fastq`.
+> 
+> What would the output look like if the wildcard could *not* be matched? Compare the outputs of
+> `echo *.missing` and `ls *.missing`.
+> 
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+
+> > ## Solution
+> > ```html
+> > $ echo *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > $ ls *.missing
+> > ```
+> > 
+> > 
+> > ```html
+> > ls: cannot access '*.missing': No such file or directory
+> > ```
+> > 
+> > 
+> 
+
+</p>
+</details>
+&nbsp;
+
+## Command History
+
+If you want to repeat a command that you've run recently, you can access previous
+commands using the up arrow on your keyboard to go back to the most recent
+command. Likewise, the down arrow takes you forward in the command history.
+
+A few more useful shortcuts: 
+
+- <kbd>Ctrl</kbd>+<kbd>C</kbd> will cancel the command you are writing, and give you a 
+fresh prompt.
+- <kbd>Ctrl</kbd>+<kbd>R</kbd> will do a reverse-search through your command history.  This
+is very useful.
+- <kbd>Ctrl</kbd>+<kbd>L</kbd> or the `clear` command will clear your screen.
+
+You can also review your recent commands with the `history` command, by entering:
+
+```html
+$ history
+```
+
+
+to see a numbered list of recent commands. You can reuse one of these commands
+directly by referring to the number of that command.
+
+For example, if your history looked like this:
+
+```html
+259  ls *
+260  ls /usr/bin/*.sh
+261  ls *R1*fastq
+```
+
+
+then you could repeat command #260 by entering:
+
+```html
+$ !260
+```
+
+
+Type `!` (exclamation point) and then the number of the command from your history.
+You will be glad you learned this when you need to re-run very complicated commands.
+For more information on advanced usage of `history`, read section 9.3 of
+[Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html).
+
+> ## Exercise
+> Find the line number in your history for the command that listed all the .sh
+> files in `/usr/bin`. Rerun that command.
+>
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+> > ## Solution
+> > First type `history`. Then use `!` followed by the line number to rerun that command.
+> 
+
+</p>
+</details>
+&nbsp;
 
 
 ```
