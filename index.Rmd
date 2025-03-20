@@ -5,9 +5,8 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: ""
+description: " "
 ---
-
 # Course Information
 
 Intro to Genomics in Natural Populations
