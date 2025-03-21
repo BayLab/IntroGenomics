@@ -44,3 +44,7 @@ uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix
 awk
 group-work-activity--writing-your-own-script
 key-points-2
+main-objectives-1
+main-objectives-2
+file-extensions
+additional-information-on-working-with-files

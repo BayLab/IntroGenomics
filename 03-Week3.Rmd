@@ -16,13 +16,12 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 We now know how to switch directories, run programs, look at the
 contents of directories and files, but how do we manipulate files?
 
-## Questions to Answer
-
-+ How can I create, copy and delete files and directories?
-
-+ How can I control who has permission to modify a file?
-
-+ How do I write a script and work with data in terminal?
+## Main Objectives
+- Learn how to create, copy and delete files/directories
+- Learn how to modify permissions for a file
+- Construct command pipelines with two or more stages
+- Use `for` loops to run the same command for several input files.
+- Practice writing scripts to work with data in terminal
 
 ## Creating, moving, copying, and removing
 
@@ -183,9 +182,9 @@ $ rm -r backup
 This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory, 
 you will be asked whether you want to override your permission settings. 
 
-> ## Exercise
+> ## Class Exercise 1
 >
-> Starting in the `~/data_week2/Week2/data_week2/untrimmed_fastq/` directory, do the following:
+> Starting in 'yourdirectory', navigate to 'cd /week2/untrimmed_fastq' and do the following:
 > 1. Make sure that you have deleted your backup directory and all files it contains.  
 > 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't 
 > learned yet how to do this
@@ -193,49 +192,6 @@ you will be asked whether you want to override your permission settings.
 > 3. Use a wildcard to move all of your backup files to a new backup directory.   
 > 4. Change the permissions on all of your backup files to be write-protected.  
 >
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-
-> > ## Solution
-> >
-> > 1. `rm -r backup`  
-> > 2. `cp SRR098026.fastq SRR098026-backup.fastq` and `cp SRR097977.fastq SRR097977-backup.fastq`  
-> > 3. `mkdir backup` and `mv *-backup.fastq backup`
-> > 4. `chmod -w backup/*-backup.fastq`   
-> > It's always a good idea to check your work with `ls -l backup`. You should see something like: 
-> > 
-> > ```html
-> > -r--r--r-- 1 dcuser dcuser 47552 Nov 15 23:06 SRR097977-backup.fastq
-> > -r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq
-> > ```
-> > 
-> 
-
-</p>
-</details>
-&nbsp;
-
-
-## Redirections
-
-* Questions:
-  + How can I search within files?
-  + How can I combine existing commands to do new things?
-* Objectives:
-  + Employ the `grep` command to search for information within files.
-  + Print the results of a command to a file.
-  + Construct command pipelines with two or more stages.
-  + Use `for` loops to run the same command for several input files.
-* Keypoints:
-  + `grep` is a powerful search tool with many options for customization.
-  + `>`, `>>`, and `|` are different ways of redirecting output.
-  + `command > file` redirects a command's output to a file.
-  + `command >> file` redirects a command's output to a file without overwriting the existing contents of the file.
-  + `command_1 | command_2` redirects the output of the first command as input to the second command.
-  + `for` loops are used for iteration.
-  + `basename` gets rid of repetitive parts of names.
 
 ## Searching files
 
@@ -262,21 +218,11 @@ We'll search for strings inside of our fastq files. Let's first make sure we are
 directory:
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
 ```
 
 
-Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).
-
-> ### Determining quality
-> 
-> In this lesson, we're going to be manually searching for strings of `N`s within our sequence
-> results to illustrate some principles of file searching. It can be really useful to do this
-> type of searching to get a feel for the quality of your sequencing results, however, in your 
-> research you will most likely use a bioinformatics tool that has a built-in program for
-> filtering out low-quality reads. You'll learn how to use one such tool in 
-> [a later lesson](https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html).
-> 
+Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).To determine the quality of our data, we're going to be manually searching for strings of `N`s within our sequence results to illustrate some principles of file searching. It can be really useful to do this type of searching to get a feel for the quality of your sequencing results, however, in your research you will most likely use a bioinformatics tool that has a built-in program for filtering out low-quality reads. You'll learn how to use one such tool in [a later lesson](https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html).
 
 
 Let's search for the string NNNNNNNNNN in the SRR098026 file:
@@ -302,7 +248,6 @@ matching line, so we add `-B1 -A2` to our grep command:
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq
 ```
 
-
 One of the sets of lines returned by this command is: 
 
 ```html
@@ -313,7 +258,7 @@ CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 ```
 
 
-> ### Exercise
+> ### Class Exercise 2
 >
 > 1. Search for the sequence `GNATNACCACTTCC` in the `SRR098026.fastq` file.
 > Have your search return all matching lines and the name (or identifier) for each sequence
@@ -324,51 +269,6 @@ CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 > that contains a match.
 > 
 
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-
-> > ### Solution  
-> > 1. `grep -B1 GNATNACCACTTCC SRR098026.fastq` 
-> > 
-> >     ```
-> >     @SRR098026.245 HWUSI-EAS1599_1:2:1:2:801 length=35
-> >     GNATNACCACTTCCAGTGCTGANNNNNNNGGGATG
-> >     ```
-> > 
-> > 2. `grep -B1 AAGTT *.fastq`
-> >
-> >     ```
-> > SRR097977.fastq-@SRR097977.11 209DTAAXX_Lenski2_1_7:8:3:247:351 length=36
-> > SRR097977.fastq:GATTGCTTTAATGAAAAAGTCATATAAGTTGCCATG
-> > --
-> > SRR097977.fastq-@SRR097977.67 209DTAAXX_Lenski2_1_7:8:3:544:566 length=36
-> > SRR097977.fastq:TTGTCCACGCTTTTCTATGTAAAGTTTATTTGCTTT
-> > --
-> > SRR097977.fastq-@SRR097977.68 209DTAAXX_Lenski2_1_7:8:3:724:110 length=36
-> > SRR097977.fastq:TGAAGCCTGCTTTTTTATACTAAGTTTGCATTATAA
-> > --
-> > SRR097977.fastq-@SRR097977.80 209DTAAXX_Lenski2_1_7:8:3:258:281 length=36
-> > SRR097977.fastq:GTGGCGCTGCTGCATAAGTTGGGTTATCAGGTCGTT
-> > --
-> > SRR097977.fastq-@SRR097977.92 209DTAAXX_Lenski2_1_7:8:3:353:318 length=36
-> > SRR097977.fastq:GGCAAAATGGTCCTCCAGCCAGGCCAGAAGCAAGTT
-> > --
-> > SRR097977.fastq-@SRR097977.139 209DTAAXX_Lenski2_1_7:8:3:703:655 length=36
-> > SRR097977.fastq:TTTATTTGTAAAGTTTTGTTGAAATAAGGGTTGTAA
-> > --
-> > SRR097977.fastq-@SRR097977.238 209DTAAXX_Lenski2_1_7:8:3:592:919 length=36
-> > SRR097977.fastq:TTCTTACCATCCTGAAGTTTTTTCATCTTCCCTGAT
-> > --
-> > SRR098026.fastq-@SRR098026.158 HWUSI-EAS1599_1:2:1:1:1505 length=35
-> > SRR098026.fastq:GNNNNNNNNCAAAGTTGATCNNNNNNNNNTGTGCG
-> >     ```
-> > 
-> 
-
-</p>
-</details>
-&nbsp;
 
 ## Redirecting output
 
@@ -393,39 +293,25 @@ $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ```
 
 
-> ### File extensions
-> 
-> You might be confused about why we're naming our output file with a `.txt` extension. After all,
-> it will be holding FASTQ formatted data that we're extracting from our FASTQ files. Won't it 
-> also be a FASTQ file? The answer is, yes - it will be a FASTQ file and it would make sense to 
-> name it with a `.fastq` extension. However, using a `.fastq` extension will lead us to problems
-> when we move to using wildcards later in this episode. We'll point out where this becomes
-> important. For now, it's good that you're thinking about file extensions! 
-> 
-
-
+## File extensions
+You might be confused about why we're naming our output file with a `.txt` extension. After all, it will be holding FASTQ formatted data that we're extracting from our FASTQ files. Won't it also be a FASTQ file? The answer is, yes - it will be a FASTQ file and it would make sense to name it with a `.fastq` extension. However, using a `.fastq` extension will lead us to problems when we move to using wildcards later in this episode. We'll point out where this becomes important. For now, it's good that you're thinking about file extensions! 
 
 The prompt should sit there a little bit, and then it should look like nothing
 happened. But type `ls`. You should see a new file called `bad_reads.txt`. 
 
 We can check the number of lines in our new file using a command called `wc`. 
 `wc` stands for **word count**. This command counts the number of words, lines, and characters
-in a file. The FASTQ file may change over time, so given the potential for updates, 
-make sure your file matches your instructor's output. 
+in a file. The FASTQ file may change over time, so given the potential for updates we are using a file downloaded in 2020.
 
-As of Sept. 2020, wc gives the following output:  
-
-
+The command wc gives the following output:  
 
 ```html
 $ wc bad_reads.txt
 ```
 
-
 ```html
   537  1073 23217 bad_reads.txt
 ```
-
 
 This will tell us the number of lines, words and characters in the file. If we
 want only the number of lines, we can use the `-l` flag for `lines`.
@@ -440,65 +326,13 @@ $ wc -l bad_reads.txt
 ```
 
 
-> ### Exercise
+> ### Class Exercise 3
 >
-> How many sequences are there in `SRR098026.fastq`? Remember that every sequence is formed by four lines.
+> 1. How many sequences are there in `SRR098026.fastq`? Remember that every sequence is formed by four lines.
 >
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-
->> ### Solution
->>
->>
->> ```html
->> $ wc -l SRR098026.fastq
->> ```
->> 
->>
->> ```html
->> 996
->> ```
->> 
->>
-> 
-> Now you can divide this number by four to get the number of sequences in your fastq file
-
-</p>
-</details>
-&nbsp;
-
-
-> ### Exercise
 >
-> How many sequences in `SRR098026.fastq` contain at least 3 consecutive Ns?
+> 2. How many sequences in `SRR098026.fastq` contain at least 3 consecutive Ns?
 >
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-
->> ### Solution
->>  
->>
->> ```html
->> $ grep NNN SRR098026.fastq > bad_reads.txt
->> $ wc -l bad_reads.txt
->> ```
->> 
->> 
->> ```html
->> 249
->> ```
->> 
->>
-> 
-
-</p>
-</details>
-&nbsp;
-
 
 We might want to search multiple FASTQ files for sequences that match our search pattern.
 However, we need to be careful, because each time we use the `>` command to redirect output
@@ -742,7 +576,7 @@ foo is abcEFG
 Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
 ```
 
 
@@ -818,38 +652,15 @@ $ for filename in *.fastq
 > echo ${name}
 > done
 ```
+If we want to print the file prefix of all of the `.txt` files in our current directory, we would run the following code:
 
-<details><summary>Exercise</summary>
-<p>
-
-
-> ### Exercise
->
-> Print the file prefix of all of the `.txt` files in our current directory.
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
->
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *.txt
->> > do
->> > name=$(basename ${filename} .txt)
->> > echo ${name}
->> > done
->> ```
->> 
->>
-> 
-
-</p>
-</details>
-&nbsp;
-
-
+ ```html
+$ for filename in *.txt
+> do
+> name=$(basename ${filename} .txt)
+> echo ${name}
+done
+```
 One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
 
 ```html
@@ -863,92 +674,102 @@ $ for filename in *.txt
 <details><summary>Exercise</summary>
 <p>
 
-> ### Exercise
+> ### Class Exercise 4
 >
 > Remove `_2019` from all of the `.txt` files. 
 >
 
+## Moving and Downloading Data
 
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
+Below we'll show you some commands to download data onto your instance, or to move data between your computer and the cloud.
 
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *_2019.txt
->> > do
->> > name=$(basename ${filename} _2019.txt)
->> > mv ${filename} ${name}.txt
->> > done
->> ```
->> 
->>
-> 
+### Getting data from the cloud
 
-</p>
-</details>
-&nbsp;
+There are two programs that will download data from a remote server to your local
+(or remote) machine: ``wget`` and ``curl``. They were designed to do slightly different
+tasks by default, so you'll need to give the programs somewhat different options to get
+the same behaviour, but they are mostly interchangeable.
 
+ - ``wget`` is short for "world wide web get", and it's basic function is to *download*
+ web pages or data at a web address.
 
-</p>
-</details>
-&nbsp;
+ - ``cURL`` is a pun, it is supposed to be read as "see URL", so its basic function is
+ to *display* webpages or data at a web address.
 
-## Writing Scripts and Working with Data
+Which one you need to use mostly depends on your operating system, as most computers will
+only have one or the other installed by default.
 
-* Questions:
-  + How can we automate a commonly used set of commands?
-* Objectives:
-  + Use the `nano` text editor to modify text files.
-  + Write a basic shell script.
-  + Use the `bash` command to execute a shell script.
-  + Use `chmod` to make a script an executable program.
-* Keypoints:
-  + Scripts are a collection of commands executed together.
-  + Transferring information to and from virtual and local computers.
-
-<script language="javascript" type="text/javascript">
-function set_page_view_defaults() {
-    document.getElementById('div_win').style.display = 'block';
-    document.getElementById('div_unix').style.display = 'none';
-};
-
-function change_content_by_platform(form_control){
-    if (!form_control || document.getElementById(form_control).value == 'win') {
-        set_page_view_defaults();
-    } else if (document.getElementById(form_control).value == 'unix') {
-        document.getElementById('div_win').style.display = 'none';
-        document.getElementById('div_unix').style.display = 'block';
-    } else {
-        alert("Error: Missing platform value for 'change_content_by_platform()' script!");
-    }
-}
-
-window.onload = set_page_view_defaults;
-</script>
+Today we will use wget to download some data from Ensembl.
 
 
-## Writing files
+Before we can start our download, we need to know whether we're using ``curl`` or ``wget``.
 
-We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
+To see which program you have, type:
+ 
+```html
+$ which curl
+$ which wget
+```
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/data_week2/Week2/data_week2/untrimmed_fastq`.
+``which`` is a BASH program that looks through everything you have
+installed, and tells you what folder it is installed to. If it can't
+find the program you asked for, it returns nothing, i.e. gives you no
+results.
 
-This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
+On Mac OSX, you'll likely get the following output:
 
-Let's change our working directory to `~/data_week2/Week2/data_week2/untrimmed_fastq` using `cd`,
-then run `nano` to create a file called `README.txt`:
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
-$ nano README.txt
+$ which wget
 ```
 
 
+```html
+$ /usr/bin/wget
+```
+
+Once you know whether you have ``curl`` or ``wget``, use one of the
+following commands to download the file:
+
+</p>
+</details>
+&nbsp;
+
+
+```html
+$ cd
+$ wget ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBacteria.txt
+```
+
+Let's see if the file from ensembl downloaded
+
+```html
+ls species_EnsemblBacteria.txt
+```
+
+It did! Woo!
+
+
+
+## Writing Scripts and Working with Data
+
+We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
+
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq`.
+
+This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
+
+Let's change our working directory to `~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq` using `cd`,
+then run `nano` to create a file called `README.txt`:
+
+```html
+$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
+$ nano README.txt
+```
+
 You should see something like this: 
 
-![nano201711.png](./figs/img_week2/nano201711.png)
+![nano201711.png](./figs/nano201711 copy.png)
 
 The text at the bottom of the screen shows the keyboard shortcuts for performing various tasks in `nano`. We will talk more about how to interpret this information soon.
 
@@ -1014,35 +835,6 @@ return to the shell.
 Now you've written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `nano`.
 
 
-<details><summary>Exercise</summary>
-<p>
-
-> ### Exercise
->
-> Open `README.txt` and add the date to the top of the file and save the file. 
->
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-> > ### Solution
-> > 
-> > Use `nano README.txt` to open the file.  
-> > Add today's date and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
-> >
-> 
->
-
-</p>
-</details>
-&nbsp;
-
-
-</p>
-</details>
-&nbsp;
-
-
 ## Writing scripts
 
 A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
@@ -1080,164 +872,131 @@ $ bash bad-reads-script.sh
 
 It will look like nothing happened, but now if you look at `scripted_bad_reads.txt`, you can see that there are now reads in the file.
 
+If we want our 'bad-reads-script.sh' to tell us when it is done running, we can add this line at the end:
+```html
+grep echo "Script finished!"
+```
+If you run the bash bad-reads-script.sh command again and it will print out "Script finished!"
 
-<details><summary>Exercise</summary>
-<p>
 
-> ### Exercise
->
-> We want the script to tell us when it's done.  
-> 1. Open `bad-reads-script.sh` and add the line `echo "Script finished!"` after the `grep` command and save the file.  
-> 2. Run the updated script.
->
+## Group Work Activity- Writing your own script
+** still working on this** 
+
+## Key Points
+
++ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
+
++ You can view file permissions using `ls -l` and change permissions using `chmod`.
+
++ `grep` is a powerful search tool with many options for customization.
+
++ `>`, `>>`, and `|` are different ways of redirecting output.
+
++ `command > file` redirects a command's output to a file whle `command >> file` redirects a command's output to a file without overwriting the existing contents of the file.
+
++ `command_1 | command_2` redirects the output of the first command as input to the second command.
+
++ `for` loops are used for iteration.
+
++ `basename` gets rid of repetitive parts of names.
+
++ Scripts are a collection of commands executed together.
+
 
 <details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
-> > ### Solution
-> > 
-> >    ```
-> >   $ bash bad-reads-script.sh
-> >   Script finished!
-> >   ```
+> > ## Class Exercise Solutions
+> > ## Exercise 1: Solution
 > >
+> > 1. `rm -r backup`  
+> > 2. `cp SRR098026.fastq SRR098026-backup.fastq` and `cp SRR097977.fastq SRR097977-backup.fastq`  
+> > 3. `mkdir backup` and `mv *-backup.fastq backup`
+> > 4. `chmod -w backup/*-backup.fastq`   
+> > It's always a good idea to check your work with `ls -l backup`. You should see something like: 
+> > 
+> > ```html
+> > -r--r--r-- 1 dcuser dcuser 47552 Nov 15 23:06 SRR097977-backup.fastq
+> > -r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq
+> > ```
+> > 
+> > ### Exercise 2: Solution  
+> > 1. `grep -B1 GNATNACCACTTCC SRR098026.fastq` 
+> > 
+> >     ```
+> >     @SRR098026.245 HWUSI-EAS1599_1:2:1:2:801 length=35
+> >     GNATNACCACTTCCAGTGCTGANNNNNNNGGGATG
+> >     ```
+> > 
+> > 2. `grep -B1 AAGTT *.fastq`
+> >
+> >     ```
+> > SRR097977.fastq-@SRR097977.11 209DTAAXX_Lenski2_1_7:8:3:247:351 length=36
+> > SRR097977.fastq:GATTGCTTTAATGAAAAAGTCATATAAGTTGCCATG
+> > --
+> > SRR097977.fastq-@SRR097977.67 209DTAAXX_Lenski2_1_7:8:3:544:566 length=36
+> > SRR097977.fastq:TTGTCCACGCTTTTCTATGTAAAGTTTATTTGCTTT
+> > --
+> > SRR097977.fastq-@SRR097977.68 209DTAAXX_Lenski2_1_7:8:3:724:110 length=36
+> > SRR097977.fastq:TGAAGCCTGCTTTTTTATACTAAGTTTGCATTATAA
+> > --
+> > SRR097977.fastq-@SRR097977.80 209DTAAXX_Lenski2_1_7:8:3:258:281 length=36
+> > SRR097977.fastq:GTGGCGCTGCTGCATAAGTTGGGTTATCAGGTCGTT
+> > --
+> > SRR097977.fastq-@SRR097977.92 209DTAAXX_Lenski2_1_7:8:3:353:318 length=36
+> > SRR097977.fastq:GGCAAAATGGTCCTCCAGCCAGGCCAGAAGCAAGTT
+> > --
+> > SRR097977.fastq-@SRR097977.139 209DTAAXX_Lenski2_1_7:8:3:703:655 length=36
+> > SRR097977.fastq:TTTATTTGTAAAGTTTTGTTGAAATAAGGGTTGTAA
+> > --
+> > SRR097977.fastq-@SRR097977.238 209DTAAXX_Lenski2_1_7:8:3:592:919 length=36
+> > SRR097977.fastq:TTCTTACCATCCTGAAGTTTTTTCATCTTCCCTGAT
+> > --
+> > SRR098026.fastq-@SRR098026.158 HWUSI-EAS1599_1:2:1:1:1505 length=35
+> > SRR098026.fastq:GNNNNNNNNCAAAGTTGATCNNNNNNNNNTGTGCG
+> >     ```
+> > 
+>> ### Exercise 3: Solution
+>>
+>> 1. 
+>> ```html
+>> $ wc -l SRR098026.fastq
+>> ```
+>> 
+>>
+>> ```html
+>> 996
+>> ```
+>> Now you can divide this number by four to get the number of sequences in your fastq file
+>>2.
+>> ```html
+>> $ grep NNN SRR098026.fastq > bad_reads.txt
+>> $ wc -l bad_reads.txt
+>> ```
+>> 
+>> ```html
+>> 249
+>> ```
+>> 
+>>
+>> ### Exercise 4: Solution
+>>
+>> ```html
+>> $ for filename in *_2019.txt
+>> > do
+>> > name=$(basename ${filename} _2019.txt)
+>> > mv ${filename} ${name}.txt
+>> > done
+>> ```
+>> 
+>>
 > 
-
-</p>
-</details>
-&nbsp;
-
 </p>
 </details>
 &nbsp;
 
 
-<details><summary>Making the script into a program Exercise</summary>
-<p>
-
-We had to type `bash` because we needed to tell the computer what program to use to run this script. Instead, we can turn this script into its own program. We need to tell it that it's a program by making it executable. We can do this by changing the file permissions. We talked about permissions in [an earlier episode](http://www.datacarpentry.org/shell-genomics/03-working-with-files/).
-
-First, let's look at the current permissions.
-
-```html
-$ ls -l bad-reads-script.sh
-```
-
-
-```html
--rw-rw-r-- 1 margeno margeno 75 Apr  8 12:46 bad-reads-script.sh
-```
-
-
-We see that it says `-rw-r--r--`. This shows that the file can be read by any user and written to by the file owner (you). We want to change these permissions so that the file can be executed as a program using `./` . 
-
-We use the command `chmod` like we did earlier when we removed write permissions. Here we are adding (`+`) executable permissions (`+x`).
-
-
-```html
-$ chmod +x bad-reads-script.sh
-```
-
-
-Now let's look at the permissions again.
-
-```html
-$ ls -l bad-reads-script.sh
-```
-
-
-```html
--rwxrwxr-x 1 margeno margeno 75 Apr  8 12:48 bad-reads-script.sh
-```
-
-
-Now we see that it says `-rwxr-xr-x`. The `x`'s that are there now tell us we can run it as a program. So, let's try it! We'll need to put `./` at the beginning so the computer knows to look here in this directory for the program.
-
-```html
-$ ./bad-reads-script.sh
-```
-
-The script should run the same way as before, but now we've created our very own computer program!
-
-</p>
-</details>
-&nbsp;
-
-
-## Moving and Downloading Data
-
-Below we'll show you some commands to download data onto your instance, or to move data between your computer and the cloud.
-
-### Getting data from the cloud
-
-There are two programs that will download data from a remote server to your local
-(or remote) machine: ``wget`` and ``curl``. They were designed to do slightly different
-tasks by default, so you'll need to give the programs somewhat different options to get
-the same behaviour, but they are mostly interchangeable.
-
- - ``wget`` is short for "world wide web get", and it's basic function is to *download*
- web pages or data at a web address.
-
- - ``cURL`` is a pun, it is supposed to be read as "see URL", so its basic function is
- to *display* webpages or data at a web address.
-
-Which one you need to use mostly depends on your operating system, as most computers will
-only have one or the other installed by default.
-
-Today we will use wget to download some data from Ensembl.
-
-
-<details><summary>Exercise</summary>
-<p>
-
-Before we can start our download, we need to know whether we're using ``curl`` or ``wget``.
-
-To see which program you have, type:
- 
-```html
-$ which curl
-$ which wget
-```
-
-
-``which`` is a BASH program that looks through everything you have
-installed, and tells you what folder it is installed to. If it can't
-find the program you asked for, it returns nothing, i.e. gives you no
-results.
-
-On Mac OSX, you'll likely get the following output:
-
-
-```html
-$ which wget
-```
-
-
-```html
-$ /usr/bin/wget
-```
-
-Once you know whether you have ``curl`` or ``wget``, use one of the
-following commands to download the file:
-
-</p>
-</details>
-&nbsp;
-
-
-```html
-$ cd
-$ wget ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBacteria.txt
-```
-
-Let's see if the file from ensembl downloaded
-
-```html
-ls species_EnsemblBacteria.txt
-```
-
-it did!
-
+## Additional Information on working with files: 
 
 ### Uploading and Downloading Data to your Virtual Machine with scp - UNIX
 
@@ -1263,7 +1022,7 @@ If you wanted to download data from your virtual machine, we would put the locat
 $  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/margeno/data_week2/Week2/data_week2/untrimmed_fastq/
 ```
 
-## Awk
+### Awk
 
 `Awk` is a fast and versatile pattern matching programming language. `Awk` can do the same tasks that `sed`, `grep`, `cat`, and `wc`; and then it can do a lot more https://www.gnu.org/software/gawk/manual/gawk.html. This program deserves a full class to go into details, so instead we just have this section to make you aware that the program exists. 
 
@@ -1350,23 +1109,8 @@ $ awk '/chrXIV/' TableS2_QTL_Bay_2017.txt
 ```
 This chromosome had two significant QTL Loci for mate choice and morphology. 
 
-</p>
-</details>
-&nbsp;
-
-
 When to use awk? 
 
  *  for search and replacement of large files (it's fast!)
  *  when manipulating multiple large files
-
-
-
-## Group Work Activity- Writing your own script
-
-
-## Key Points
-
-+ The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
-
-+ You can view file permissions using `ls -l` and change permissions using `chmod`.
+ 

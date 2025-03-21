@@ -14,17 +14,10 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 # Week 2- Working with Files
 We will be following some of the data carpentry tutorial (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
 
-## Questions to Answer:
-
-+ What are some navigational shortcuts I can use to make my work more efficient?
-
-+ How can I perform operations on files outside of my working directory?
-
-+ How can I work with hidden directories and hidden files?
-
-+ How can I repeat recently used commands?
-
-+ How can I view and search file contents?
+## Main Objectives:
+- Learn how to use navigational shortcuts and repeat recently used commands to make coding more efficient
+- Learn how to view and work with hidden directories and hidden files
+- Learn how to view and search file contents
 
 ## Navigational shortcuts
 
@@ -112,7 +105,7 @@ Navigate to your `untrimmed_fastq` directory in your individual directory
 
 
 ```html
-$ cd ~/group/rbaygrp/eve198-genomics/week2/untrimmed_fastq
+$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
 ```
 
 
@@ -164,9 +157,41 @@ each result starts with `/`.
 
 This directory contains two files with .fastq extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
 
+`echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
+The `echo` command can also be used with pattern matching characters, such as wildcard characters. 
+Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
 
+ ```html
+ $ echo *.fastq
+```
+ ```html
+ SRR097977.fastq SRR098026.fastq
+ ```
+ 
 
-> ## Exercise
+The `*` is expanded to include any file that ends with `.fastq`. We can see that the output of
+`echo *.fastq` is the same as that of `ls *.fastq`.
+
+What would the output look like if the wildcard could *not* be matched? Compare the outputs of
+`echo *.missing` and `ls *.missing`.
+
+ ```html
+$ echo *.missing
+ ```
+
+```html
+*.missing
+```
+
+```html
+$ ls *.missing
+```
+
+```html
+ls: cannot access '*.missing': No such file or directory
+```
+
+> ## Class Exercise 1
 > Do each of the following tasks from your current directory using a single
 > `ls` command for each:
 > 
@@ -185,70 +210,6 @@ This directory contains two files with .fastq extensions. FASTQ is a format for 
 <details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
-> > ## Solution
-> > 1. `ls /usr/bin/c*`
-> > 2. `ls /usr/bin/*a*`
-> > 3. `ls /usr/bin/*o`  
-> > Bonus: `ls /usr/bin/*[ac]*`
-> > 
-> 
-
-</p>
-</details>
-&nbsp;
-
-> ## Exercise
-> `echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
-> The `echo` command can also be used with pattern matching characters, such as wildcard characters. 
-> Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
-> 
-> ```html
-> $ echo *.fastq
-> ```
-> 
-> 
-> ```html
-> SRR097977.fastq SRR098026.fastq
-> ```
-> 
-> 
-> The `*` is expanded to include any file that ends with `.fastq`. We can see that the output of
-> `echo *.fastq` is the same as that of `ls *.fastq`.
-> 
-> What would the output look like if the wildcard could *not* be matched? Compare the outputs of
-> `echo *.missing` and `ls *.missing`.
-> 
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-
-> > ## Solution
-> > ```html
-> > $ echo *.missing
-> > ```
-> > 
-> > 
-> > ```html
-> > *.missing
-> > ```
-> > 
-> > 
-> > ```html
-> > $ ls *.missing
-> > ```
-> > 
-> > 
-> > ```html
-> > ls: cannot access '*.missing': No such file or directory
-> > ```
-> > 
-> > 
-> 
-
-</p>
-</details>
-&nbsp;
 
 ## Command History
 
@@ -295,21 +256,6 @@ You will be glad you learned this when you need to re-run very complicated comma
 For more information on advanced usage of `history`, read section 9.3 of
 [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html).
 
-> ## Exercise
-> Find the line number in your history for the command that listed all the .sh
-> files in `/usr/bin`. Rerun that command.
->
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-> > ## Solution
-> > First type `history`. Then use `!` followed by the line number to rerun that command.
-> 
-
-</p>
-</details>
-&nbsp;
 
 ## Examining Files
 
@@ -329,26 +275,15 @@ $ cat SRR098026.fastq
 This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 
-> ## Exercise
+> ## Class Exercise 2
 > 
-> 1. Print out the contents of the `~/data_week2/Week2/data_week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
+> 1. Print out the contents of the `~/group/rbaygrp/eve198-genomics/'yourdirectory'/Week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
 > 2.  From your home directory, and without changing directories,
 > use one short command to print the contents of all of the files in
-> the `./data_week2/Week2/data_week2/untrimmed_fastq` directory.
+> the `group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq` directory.
 > 
 
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
 
-
-> > ## Solution
-> > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
-> > 2. `cat ./data_week2/Week2/data_week2/untrimmed_fastq/*`
-> 
-
-</p>
-</details>
-&nbsp;
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
@@ -391,21 +326,11 @@ and where it is in the file. If you continue to type `/` and hit return, you wil
 forward to the next instance of this sequence motif. If you instead type `?` and hit 
 return, you will search backwards and move up the file to previous examples of this motif.
 
-> ## Exercise
+> ## Class Exercise 3
 >
 > What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
 > 
 
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-> > ## Solution
-> > `CAC`
-> 
-
-</p>
-</details>
-&nbsp;
 
 Remember, the `man` program actually uses `less` internally and
 therefore uses the same commands, so you can search documentation
@@ -583,3 +508,23 @@ https://help.basespace.illumina.com/files-used-by-basespace/quality-scores
 + The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.
 
 + You can view file contents using `less`, `cat`, `head` or `tail`.
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+> > ## Class Exercise Solutions
+> > ### Exercise 1: Solution
+> > 1. `ls /usr/bin/c*`
+> > 2. `ls /usr/bin/*a*`
+> > 3. `ls /usr/bin/*o`  
+> > Bonus: `ls /usr/bin/*[ac]*`
+> > 
+> > ### Exercise 2: Solution
+> > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
+> > 2. `cat ./~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq/*`
+> > ### Exercise 3: Solution
+> > `CAC`
+>
+
+</p>
+</details>
+&nbsp;

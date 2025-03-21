@@ -16,13 +16,13 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 
 Welcome to Introduction to Genomics in Natural Populations at UC Davis!
 
-This page has code modified from the Data Carpentry's introduction to the shell tutorial, which can be found here <https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html>
+This page has code modified from the Data Carpentry's introduction to the shell tutorial, which can be found here <https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html> This tutorial is also modified from previous tutorials compiled by Serena Caplins: <https://baylab.github.io/MarineGenomics/>  
 
 ## Main Objectives
--   Take Pre-class assessment
+-   Take Pre-class assessment (link on syllabus)
 -   Introduction to genomics & shell computing (via slideshow here: x)
--   Accessing terminal via Farm OnDemand
--   Learn how to use the command line interface to move around in your file system
+-   Learn how to access terminal via Farm OnDemand
+-   Learn how to interact with the command line interface and move around in your file system
 
 ## How to access the shell via Farm OnDemand
 Instructions on how to get your terminal window running are on this PDF and we will walk through this together in class:
@@ -252,9 +252,9 @@ $ ls ../../
 We now know how to move around our file system using the command line. This gives us an advantage over interacting with the file system through a GUI as it allows us to work on a remote server, carry out the same set of operations on a large number of files quickly, and opens up many opportunities for using bioinformatic software that is only available in command line versions.
 
 ## Group Work Activity- Treasure Hunt!
-Let's practice moving around in directories. You can form a small group with nearby classmates but make sure everyone practices navigating on their own computer.
+Let's practice moving around in directories. Form a small group with nearby classmates but make sure everyone practices navigating on their own computer.
 
-Move to your home directory to start the activity. Then navigate to the week1_activity directory in eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it copy the full path to that directory and screenshot the contents of the directory. Submit on canvas under the 'Assignments' tab for 'Week 1: Treasure Hunt'
+Start in your home directory. Then navigate to the week1_activity directory in the eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it, copy the full path to that directory and screenshot the contents of the directory. Submit both the full path and the screnshot on canvas under the 'Assignments' tab for 'Week 1: Treasure Hunt'.
 
 
 ## Key Points
