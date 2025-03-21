@@ -509,19 +509,18 @@ https://help.basespace.illumina.com/files-used-by-basespace/quality-scores
 
 + You can view file contents using `less`, `cat`, `head` or `tail`.
 
-<details><summary><span style="color: orange;">Solution</span></summary>
+<details><summary><span style="color: orange;">Class Exercise Solutions</span></summary>
 <p>
-> > ## Class Exercise Solutions
-> > ### Exercise 1: Solution
+> > ## Exercise 1: Solution
 > > 1. `ls /usr/bin/c*`
 > > 2. `ls /usr/bin/*a*`
 > > 3. `ls /usr/bin/*o`  
 > > Bonus: `ls /usr/bin/*[ac]*`
 > > 
-> > ### Exercise 2: Solution
+> > ## Exercise 2: Solution
 > > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
 > > 2. `cat ./~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq/*`
-> > ### Exercise 3: Solution
+> > ## Exercise 3: Solution
 > > `CAC`
 >
 

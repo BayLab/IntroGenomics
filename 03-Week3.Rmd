@@ -903,10 +903,9 @@ If you run the bash bad-reads-script.sh command again and it will print out "Scr
 + Scripts are a collection of commands executed together.
 
 
-<details><summary><span style="color: orange;">Solution</span></summary>
+<details><summary><span style="color: orange;">Class Exercise Solutions</span></summary>
 <p>
 
-> > ## Class Exercise Solutions
 > > ## Exercise 1: Solution
 > >
 > > 1. `rm -r backup`  
