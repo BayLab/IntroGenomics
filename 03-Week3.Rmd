@@ -182,14 +182,16 @@ $ rm -r backup
 This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory, 
 you will be asked whether you want to override your permission settings. 
 
-> ## Class Exercise 1
+> ### Class Exercise 1
 >
 > Starting in 'yourdirectory', navigate to 'cd /week2/untrimmed_fastq' and do the following:
-> 1. Make sure that you have deleted your backup directory and all files it contains.  
-> 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't 
-> learned yet how to do this
-> with a wildcard.)  
-> 3. Use a wildcard to move all of your backup files to a new backup directory.   
+>
+> 1. Make sure that you have deleted your backup directory and all files it contains. 
+>
+> 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't earned yet how to do this with a wildcard.)  
+>
+> 3. Use a wildcard to move all of your backup files to a new backup directory.
+>
 > 4. Change the permissions on all of your backup files to be write-protected.  
 >
 
