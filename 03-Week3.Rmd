@@ -673,9 +673,6 @@ $ for filename in *.txt
 > done
 ```
 
-<details><summary>Exercise</summary>
-<p>
-
 > ### Class Exercise 4
 >
 > Remove `_2019` from all of the `.txt` files. 
