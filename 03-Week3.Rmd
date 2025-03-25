@@ -868,7 +868,6 @@ Now comes the neat part. We can run this script. Type:
 $ bash bad-reads-script.sh
 ```
 
-
 It will look like nothing happened, but now if you look at `scripted_bad_reads.txt`, you can see that there are now reads in the file.
 
 If we want our 'bad-reads-script.sh' to tell us when it is done running, we can add this line at the end:
@@ -879,7 +878,11 @@ If you run the bash bad-reads-script.sh command again and it will print out "Scr
 
 
 ## Group Work Activity- Writing your own script
-** still working on this** 
+modified from <https://www.cyberciti.biz/faq/hello-world-bash-shell-script/>
+
+Now let's work in small groups to write our own scripts. The script should be called "hello.sh" and you  want it to say "Hello World! Isn't genomics so fun?" 
+
+Remember your script should start with `#!/bin/bash`. Submit a copy of your script and a screenshot of what happens when your script finishes on canvas under the 'Assignments' tab for 'Week 3: Writing your own script'.
 
 ## Key Points
 
@@ -1027,14 +1030,14 @@ $  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/margeno/d
 Let's see how awk can behave like `wc`.
 
 ```html
-$ cd /home/margeno/data_week2/Week2/data_week2
+$ cd /group/rbaygrp/eve198-genomics/`yourdirectory`/Week2
 ```
 
 ```html
 $ ls TableS2_QTL_Bay_2017.txt  sra_metadata  untrimmed_fastq
 ```
 
-This table is from the Bay et al. 2017 publication ~/data_week2/Week2/data_week2/TableS2_QTL_Bay_2017.txt and we will use it as our example file for this section.
+This table is from the Bay et al. 2017 publication `TableS2_QTL_Bay_2017.txt` and we will use it as our example file for this section.
 
 We can look inside the file by using `cat` or `awk`
 

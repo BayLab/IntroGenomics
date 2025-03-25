@@ -12,7 +12,7 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
 # Week 2- Working with Files
-We will be following some of the data carpentry tutorial (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
+We will be following some of the data carpentry tutorial again (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
 
 ## Main Objectives:
 - Learn how to use navigational shortcuts and repeat recently used commands to make coding more efficient
@@ -457,6 +457,7 @@ Here is a link showing what those different symbols mean for quality scores:  ht
 
 Each character is assigned a quality score between 0 and 42 as shown in the chart below.
 
+
 ```html
 Quality encoding: !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJK
                   |         |         |         |         |
@@ -484,7 +485,7 @@ we can now see that the quality of each of the `N`s is 0 and the quality of the 
 nucleotide call (`C`) is also very poor (`#` = a quality score of 2). This is indeed a very
 bad read. 
 
-## Group Work Activity- Examining Files
+## Group Work Activity- Examining a Fastq File
 Navigate to eve198-genomics and copy the 'CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz' file in the week2_activity directory to your individual directory. 
 
 Next you will need to unzip the fastq file. To do this we will use the command "gunzip". This unzips a gzipped file. "gzip" zips a file again. It will take a second since this is a larger file than our previous examples. It is actually an urchin sample from a recent genomics project Rachael and I worked on! 
@@ -496,10 +497,12 @@ gunzip CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz
 Then answer the following questions and submit them to the "Week 2: Examining Files" assignment on canvas. I would not recommend using 'less' or 'cat' on this file due to its size.
 
 1. Write out the first two lines of CCGPMC004_M0D060025C_S150_L003_R1_001.fastq 
-2. Remember that line 4 in a fastq file shows the quality (phred) scores. If you look at line 4 and reference the score table from the link I shared before, what is the most common symbol, Q-score and error probability for most of our nucleotide calls? 
+2. Remember that line 4 in a fastq file shows the quality (phred) scores. If you look at line 4 and reference the score table from the link and figures below. What is the most common symbol, Q-score and error probability for most of our nucleotide calls?
 
 https://help.basespace.illumina.com/files-used-by-basespace/quality-scores
-
+![QC Error Table](./figs/QC-errortable.png)
+![Score Table](./figs/scoretable1.jpg)
+![Score Table](./figs/scoretable2.jpg)
 
 
 ## Key Points

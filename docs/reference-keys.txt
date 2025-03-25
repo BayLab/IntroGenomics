@@ -48,3 +48,15 @@ main-objectives-1
 main-objectives-2
 file-extensions
 additional-information-on-working-with-files
+group-work-activity--examining-a-fastq-file
+week-3--what-is-a-genetic-variant
+main-objectives-3
+to-get-started-lets-dowload-the-data-and-install-a-few-programs
+raw-read-quality-control
+trimming-to-remove-adapters
+building-an-index-of-our-genome
+map-reads-to-the-genome
+sam-to-bam-file-conversion
+genotype-likelihoods
+group-work-activity--calling-variants-at-a-larger-scale
+key-points-3
