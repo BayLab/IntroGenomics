@@ -7,11 +7,11 @@ output:
     toc: yes
     css: toc.css
 ---
-```{r setupq3, include=FALSE}
+```{r setupq4, include=FALSE}
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
-# Week 3- What is a Genetic Variant?
+# Week 4- What is a Genetic Variant?
 
 You'll find the lecture discussing the definition and identification of genetic variation here ()
 
