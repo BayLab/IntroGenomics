@@ -162,11 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#main-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Main Objectives:</a></li>
 <li class="chapter" data-level="3.2" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#navigational-shortcuts"><i class="fa fa-check"></i><b>3.2</b> Navigational shortcuts</a></li>
-<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.3</b> Our data set: FASTQ files</a></li>
-<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.4</b> Wildcards</a></li>
-<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.5</b> Command History</a></li>
-<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.6</b> Examining Files</a></li>
-<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.7</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.3</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.4</b> Our data set: FASTQ files</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.5</b> Wildcards</a></li>
+<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.6</b> Command History</a></li>
+<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.7</b> Examining Files</a></li>
 <li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.8</b> Group Work Activity- Examining a Fastq File</a></li>
 <li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.9</b> Key Points</a></li>
 </ul></li>
@@ -305,8 +305,7 @@ that deal with your permissions (as the file owner).</p>
 </div>
 <p>Here the three positions that relate to the file owner are <code>rw-</code>. The <code>r</code> means that you have permission to read the file, the <code>w</code>
 indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a <code>-</code>, indicating that you
-don’t have permission to carry out the ability encoded by that space (this is the space where <code>x</code> or executable ability is stored, we’ll
-talk more about this in <a href="http://www.datacarpentry.org/shell-genomics/05-writing-scripts/">a later lesson</a>).</p>
+don’t have permission to carry out the ability encoded by that space (this is the space where <code>x</code> or executable ability is stored.</p>
 <p>Our goal for now is to change permissions on this file so that you no longer have <code>w</code> or write permissions. We can do this using the <code>chmod</code> (change mode) command and subtracting (<code>-</code>) the write permission <code>-w</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="week-3--working-with-files-part-2.html#cb10-1" tabindex="-1"></a>$ chmod -w SRR098026-backup.fastq</span>
 <span id="cb10-2"><a href="week-3--working-with-files-part-2.html#cb10-2" tabindex="-1"></a>$ ls -l </span></code></pre></div>
