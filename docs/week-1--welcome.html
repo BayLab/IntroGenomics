@@ -167,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.5</b> Command History</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.6</b> Examining Files</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.7</b> Details on the FASTQ format</a></li>
-<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-files"><i class="fa fa-check"></i><b>3.8</b> Group Work Activity- Examining Files</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.8</b> Group Work Activity- Examining a Fastq File</a></li>
 <li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.9</b> Key Points</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html"><i class="fa fa-check"></i><b>4</b> Week 3- Working with Files Part 2</a>
@@ -200,6 +200,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.13.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.13.2</b> Awk</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>5</b> Week 3- What is a Genetic Variant?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#main-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#to-get-started-lets-dowload-the-data-and-install-a-few-programs"><i class="fa fa-check"></i><b>5.2</b> To get started lets dowload the data and install a few programs</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#raw-read-quality-control"><i class="fa fa-check"></i><b>5.3</b> Raw read quality control</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#trimming-to-remove-adapters"><i class="fa fa-check"></i><b>5.4</b> Trimming to remove adapters</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#building-an-index-of-our-genome"><i class="fa fa-check"></i><b>5.5</b> Building an index of our genome</a></li>
+<li class="chapter" data-level="5.6" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#map-reads-to-the-genome"><i class="fa fa-check"></i><b>5.6</b> Map reads to the genome</a></li>
+<li class="chapter" data-level="5.7" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>5.7</b> sam to bam file conversion</a></li>
+<li class="chapter" data-level="5.8" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#genotype-likelihoods"><i class="fa fa-check"></i><b>5.8</b> Genotype likelihoods</a></li>
+<li class="chapter" data-level="5.9" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale"><i class="fa fa-check"></i><b>5.9</b> Group Work Activity- Calling Variants at a Larger Scale</a></li>
+<li class="chapter" data-level="5.10" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#key-points-3"><i class="fa fa-check"></i><b>5.10</b> Key Points</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -223,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="week-1--welcome" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number"> 2</span> Week 1- Welcome!<a href="week-1--welcome.html#week-1--welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Welcome to Introduction to Genomics in Natural Populations at UC Davis!</p>
-<p>This page has code modified from the Data Carpentry’s introduction to the shell tutorial, which can be found here <a href="https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html" class="uri">https://datacarpentry.org/shell-genomics/02-the-filesystem/index.html</a> This tutorial is also modified from previous tutorials compiled by Serena Caplins: <a href="https://baylab.github.io/MarineGenomics/" class="uri">https://baylab.github.io/MarineGenomics/</a></p>
+<p>This class has code modified from the Data Carpentry’s introduction to the shell tutorial, which can be found here <a href="https://datacarpentry.github.io/shell-genomics/01-introduction.html" class="uri">https://datacarpentry.github.io/shell-genomics/01-introduction.html</a> This tutorial is also modified from previous tutorials compiled by Serena Caplins: <a href="https://baylab.github.io/MarineGenomics/" class="uri">https://baylab.github.io/MarineGenomics/</a></p>
 <div id="main-objectives" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Main Objectives<a href="week-1--welcome.html#main-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -339,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="group-work-activity--treasure-hunt" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Group Work Activity- Treasure Hunt!<a href="week-1--welcome.html#group-work-activity--treasure-hunt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s practice moving around in directories. Form a small group with nearby classmates but make sure everyone practices navigating on their own computer.</p>
-<p>Start in your home directory. Then navigate to the week1_activity directory in the eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it, copy the full path to that directory and screenshot the contents of the directory. Submit both the full path and the screnshot on canvas under the ‘Assignments’ tab for ‘Week 1: Treasure Hunt’.</p>
+<p>Start in your home directory. Then navigate to the week1_activity directory in the eve198-genomics directory. Move around directories until you find a directory with the scientific name of the Wolverine (which you can google the name)! Once you find it, copy the full path to that directory and screenshot the contents of the directory. Submit both the full path and the screenshot on canvas under the ‘Assignments’ tab for ‘Week 1: Treasure Hunt’.</p>
 </div>
 <div id="key-points" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Key Points<a href="week-1--welcome.html#key-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
