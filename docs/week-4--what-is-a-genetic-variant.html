@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 5 Week 4- What is a Genetic Variant? | 04-Week4.Rmd</title>
+  <meta name="description" content=" 5 Week 4- What is a Genetic Variant? | 04-Week4.Rmd" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 5 Week 4- What is a Genetic Variant? | 04-Week4.Rmd" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 5 Week 4- What is a Genetic Variant? | 04-Week4.Rmd" />
+  
+  
+  
+
+<meta name="author" content="M. Armstrong" />
+
+
+<meta name="date" content="2025-03-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-3--working-with-files-part-2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Genomics in Natural Populations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro to Genomics in Natural Populations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#course-learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Course Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#meet-your-instructors"><i class="fa fa-check"></i><b>1.2</b> Meet your instructors!</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-your-farm-account-set-up-class-specific"><i class="fa fa-check"></i><b>1.3</b> Getting your Farm Account set up (class specific)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1--welcome.html"><a href="week-1--welcome.html"><i class="fa fa-check"></i><b>2</b> Week 1- Welcome!</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1--welcome.html"><a href="week-1--welcome.html#main-objectives"><i class="fa fa-check"></i><b>2.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="week-1--welcome.html"><a href="week-1--welcome.html#how-to-access-the-shell-via-farm-ondemand"><i class="fa fa-check"></i><b>2.2</b> How to access the shell via Farm OnDemand</a></li>
+<li class="chapter" data-level="2.3" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-your-file-system"><i class="fa fa-check"></i><b>2.3</b> Navigating your file system</a></li>
+<li class="chapter" data-level="2.4" data-path="week-1--welcome.html"><a href="week-1--welcome.html#shortcut-tab-completion"><i class="fa fa-check"></i><b>2.4</b> Shortcut: Tab Completion</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1--welcome.html"><a href="week-1--welcome.html#creating-our-own-directories"><i class="fa fa-check"></i><b>2.5</b> Creating our own directories</a></li>
+<li class="chapter" data-level="2.6" data-path="week-1--welcome.html"><a href="week-1--welcome.html#full-vs-relative-paths"><i class="fa fa-check"></i><b>2.6</b> Full vs Relative Paths</a></li>
+<li class="chapter" data-level="2.7" data-path="week-1--welcome.html"><a href="week-1--welcome.html#examining-the-contents-of-other-directories"><i class="fa fa-check"></i><b>2.7</b> Examining the contents of other directories</a></li>
+<li class="chapter" data-level="2.8" data-path="week-1--welcome.html"><a href="week-1--welcome.html#group-work-activity--treasure-hunt"><i class="fa fa-check"></i><b>2.8</b> Group Work Activity- Treasure Hunt!</a></li>
+<li class="chapter" data-level="2.9" data-path="week-1--welcome.html"><a href="week-1--welcome.html#key-points"><i class="fa fa-check"></i><b>2.9</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html"><i class="fa fa-check"></i><b>3</b> Week 2- Working with Files</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#main-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#navigational-shortcuts"><i class="fa fa-check"></i><b>3.2</b> Navigational shortcuts</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.3</b> Our data set: FASTQ files</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.4</b> Wildcards</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.5</b> Command History</a></li>
+<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.6</b> Examining Files</a></li>
+<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.7</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.8</b> Group Work Activity- Examining a Fastq File</a></li>
+<li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.9</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html"><i class="fa fa-check"></i><b>4</b> Week 3- Working with Files Part 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#main-objectives-2"><i class="fa fa-check"></i><b>4.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-moving-copying-and-removing"><i class="fa fa-check"></i><b>4.2</b> Creating, moving, copying, and removing</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#copying-files"><i class="fa fa-check"></i><b>4.2.1</b> Copying Files</a></li>
+<li class="chapter" data-level="4.2.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-directories"><i class="fa fa-check"></i><b>4.2.2</b> Creating Directories</a></li>
+<li class="chapter" data-level="4.2.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#moving-renaming"><i class="fa fa-check"></i><b>4.2.3</b> Moving / Renaming</a></li>
+<li class="chapter" data-level="4.2.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-permissions"><i class="fa fa-check"></i><b>4.2.4</b> File Permissions</a></li>
+<li class="chapter" data-level="4.2.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#removing"><i class="fa fa-check"></i><b>4.2.5</b> Removing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#searching-files"><i class="fa fa-check"></i><b>4.3</b> Searching files</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#redirecting-output"><i class="fa fa-check"></i><b>4.4</b> Redirecting output</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-extensions"><i class="fa fa-check"></i><b>4.5</b> File extensions</a></li>
+<li class="chapter" data-level="4.6" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-for-loops"><i class="fa fa-check"></i><b>4.6</b> Writing for loops</a></li>
+<li class="chapter" data-level="4.7" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#using-basename-in-for-loops"><i class="fa fa-check"></i><b>4.7</b> Using Basename in for loops</a></li>
+<li class="chapter" data-level="4.8" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#moving-and-downloading-data"><i class="fa fa-check"></i><b>4.8</b> Moving and Downloading Data</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#getting-data-from-the-cloud"><i class="fa fa-check"></i><b>4.8.1</b> Getting data from the cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-and-working-with-data"><i class="fa fa-check"></i><b>4.9</b> Writing Scripts and Working with Data</a></li>
+<li class="chapter" data-level="4.10" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts"><i class="fa fa-check"></i><b>4.10</b> Writing scripts</a></li>
+<li class="chapter" data-level="4.11" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script"><i class="fa fa-check"></i><b>4.11</b> Group Work Activity- Writing your own script</a></li>
+<li class="chapter" data-level="4.12" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#key-points-2"><i class="fa fa-check"></i><b>4.12</b> Key Points</a></li>
+<li class="chapter" data-level="4.13" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#additional-information-on-working-with-files"><i class="fa fa-check"></i><b>4.13</b> Additional Information on working with files:</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>4.13.1</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX</a></li>
+<li class="chapter" data-level="4.13.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.13.2</b> Awk</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>5</b> Week 4- What is a Genetic Variant?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#main-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#to-get-started-lets-dowload-the-data-and-install-a-few-programs"><i class="fa fa-check"></i><b>5.2</b> To get started lets dowload the data and install a few programs</a></li>
+<li class="chapter" data-level="5.3" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#raw-read-quality-control"><i class="fa fa-check"></i><b>5.3</b> Raw read quality control</a></li>
+<li class="chapter" data-level="5.4" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#trimming-to-remove-adapters"><i class="fa fa-check"></i><b>5.4</b> Trimming to remove adapters</a></li>
+<li class="chapter" data-level="5.5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#building-an-index-of-our-genome"><i class="fa fa-check"></i><b>5.5</b> Building an index of our genome</a></li>
+<li class="chapter" data-level="5.6" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#map-reads-to-the-genome"><i class="fa fa-check"></i><b>5.6</b> Map reads to the genome</a></li>
+<li class="chapter" data-level="5.7" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>5.7</b> sam to bam file conversion</a></li>
+<li class="chapter" data-level="5.8" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#genotype-likelihoods"><i class="fa fa-check"></i><b>5.8</b> Genotype likelihoods</a></li>
+<li class="chapter" data-level="5.9" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale"><i class="fa fa-check"></i><b>5.9</b> Group Work Activity- Calling Variants at a Larger Scale</a></li>
+<li class="chapter" data-level="5.10" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#key-points-3"><i class="fa fa-check"></i><b>5.10</b> Key Points</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">04-Week4.Rmd</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-4--what-is-a-genetic-variant" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number"> 5</span> Week 4- What is a Genetic Variant?<a href="week-4--what-is-a-genetic-variant.html#week-4--what-is-a-genetic-variant" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>You’ll find the lecture discussing the definition and identification of genetic variation here ()</p>
+<div id="main-objectives-3" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Main Objectives<a href="week-4--what-is-a-genetic-variant.html#main-objectives-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Be able to define what a genetic variant is</li>
+<li>Understand the pipeline for identifying genetic variants</li>
+<li>Understand the difference between SAM and BAM file formats and their use</li>
+<li>Learn how to call a genotype and quantify genotype likelihoods</li>
+</ul>
+</div>
+<div id="to-get-started-lets-dowload-the-data-and-install-a-few-programs" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> To get started lets dowload the data and install a few programs<a href="week-4--what-is-a-genetic-variant.html#to-get-started-lets-dowload-the-data-and-install-a-few-programs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Download the data from the IntroGenomics_Data Week 4 repository on github in your individual directory.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="week-4--what-is-a-genetic-variant.html#cb1-1" tabindex="-1"></a>wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week4.zip</span></code></pre></div>
+<p>And then unzip week4 so we can work with the data inside</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="week-4--what-is-a-genetic-variant.html#cb2-1" tabindex="-1"></a>unzip week4.zip</span></code></pre></div>
+<p>Next we need to install a few programs that will allow us to do what we need to do. This will all take a few minutes and help your neighbors if yours downloads faster!</p>
+<p>*The programs that we are installing
++ samtools: allows us to filter and view our mapped data
++ bowtie2: to map our reads to the reference genome
++ cutadapt: will trim adaptor sequences from the reads
++ fastqc: used to view the quality of the read files</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="week-4--what-is-a-genetic-variant.html#cb3-1" tabindex="-1"></a>  sudo apt-get -y update <span class="er">&amp;&amp;</span> \</span>
+<span id="cb3-2"><a href="week-4--what-is-a-genetic-variant.html#cb3-2" tabindex="-1"></a>  sudo apt-get -y install samtools bowtie2 cutadapt fastqc </span>
+<span id="cb3-3"><a href="week-4--what-is-a-genetic-variant.html#cb3-3" tabindex="-1"></a>  </span></code></pre></div>
+<p>And one more program that we’ll install separately. This is <code>angsd</code> which we will use to find variants in our data. The first command navigates you to your home directory.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="week-4--what-is-a-genetic-variant.html#cb4-1" tabindex="-1"></a>  cd</span>
+<span id="cb4-2"><a href="week-4--what-is-a-genetic-variant.html#cb4-2" tabindex="-1"></a>  git clone --recursive https://github.com/samtools/htslib.git</span>
+<span id="cb4-3"><a href="week-4--what-is-a-genetic-variant.html#cb4-3" tabindex="-1"></a>  git clone https://github.com/ANGSD/angsd.git </span>
+<span id="cb4-4"><a href="week-4--what-is-a-genetic-variant.html#cb4-4" tabindex="-1"></a>  cd htslib;make;cd ../angsd ;make HTSSRC=../htslib</span>
+<span id="cb4-5"><a href="week-4--what-is-a-genetic-variant.html#cb4-5" tabindex="-1"></a>  </span></code></pre></div>
+<p>This is the general pipeline of what we will be doing today:
+<img src="figs/pipeline_variants.png" alt="Finding Variants Pipeline" /></p>
+<p>Now we’re ready to get going. The first thing we’ll do is have a look at our data and directories to make sure we know where everything is.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="week-4--what-is-a-genetic-variant.html#cb5-1" tabindex="-1"></a>$ ls</span>
+<span id="cb5-2"><a href="week-4--what-is-a-genetic-variant.html#cb5-2" tabindex="-1"></a></span></code></pre></div>
+<p>Change directories so that you are inside the week4 directory with the data. If you <code>ls</code> into this directory you should see 6 files with a <code>.fastq.gz</code> extension and 1 tiny genome file with a <code>.fna.gz</code> extension.</p>
+</div>
+<div id="raw-read-quality-control" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Raw read quality control<a href="week-4--what-is-a-genetic-variant.html#raw-read-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Next let’s use the program fastqc to check the quality of our data files:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="week-4--what-is-a-genetic-variant.html#cb6-1" tabindex="-1"></a>$ fastqc SRR6805880.tiny.fastq.gz</span></code></pre></div>
+<ul>
+<li>Readout should say:
+<ul>
+<li>Started analysis for SRR6805880.tiny.fastq.gz</li>
+<li>Analysis complete for SRR6805880.tiny.fastq.gz</li>
+</ul></li>
+</ul>
+<p>Let’s look to see that it worked</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="week-4--what-is-a-genetic-variant.html#cb7-1" tabindex="-1"></a>$ ls</span>
+<span id="cb7-2"><a href="week-4--what-is-a-genetic-variant.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="week-4--what-is-a-genetic-variant.html#cb7-3" tabindex="-1"></a>Ppar_tinygenome.fna.gz       SRR6805880.tiny_fastqc.zip  SRR6805883.tiny.fastq.gz</span>
+<span id="cb7-4"><a href="week-4--what-is-a-genetic-variant.html#cb7-4" tabindex="-1"></a>SRR6805880.tiny.fastq.gz     SRR6805881.tiny.fastq.gz    SRR6805884.tiny.fastq.gz</span>
+<span id="cb7-5"><a href="week-4--what-is-a-genetic-variant.html#cb7-5" tabindex="-1"></a>SRR6805880.tiny_fastqc.html  SRR6805882.tiny.fastq.gz    SRR6805885.tiny.fastq.gz</span>
+<span id="cb7-6"><a href="week-4--what-is-a-genetic-variant.html#cb7-6" tabindex="-1"></a></span></code></pre></div>
+<p>Looks good! Fastqc generated two outputs for us, a <code>.html</code> and a <code>.zip</code> directory</p>
+<p>Let’s run fastqc on the remaining files, and then we’ll take a look at the output. You may have noticed fastqc just used the same file name to produce our output with different extensions. We can take advantage of that by running fastqc on all our datafiles with the wildcard <code>*</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="week-4--what-is-a-genetic-variant.html#cb8-1" tabindex="-1"></a>$ fastqc SRR680588*</span></code></pre></div>
+<p>You’ll see you initially get an error message because fastqc doesn’t see the .fastq file extension on some of our files. It simply skips these and moves on the the next file.</p>
+<p>To view the output of fastqc, we’ll minimize our terminal and look at our <code>Home</code> folder on our jetstream desktop. This is the same home directory that we’ve been working in through the terminal. Go to the directory where you were running fastqc and find an .html file. Double click it and it should open a web browser with the output data. We’ll go over how to interpret this file in class.</p>
+</div>
+<div id="trimming-to-remove-adapters" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Trimming to remove adapters<a href="week-4--what-is-a-genetic-variant.html#trimming-to-remove-adapters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many programs to trim sequence files. We’ll use the same paper that was used in the Xuereb et al. 2018 paper [here]. Cutadapt is relatively easy to run with the code below, once we have identified our adaptor sequence and takes the general form below.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="week-4--what-is-a-genetic-variant.html#cb9-1" tabindex="-1"></a>$ cutadapt -g SEQUENCETOTRIM -o name_of_input_file name_of_output_file </span></code></pre></div>
+<p>Let’s do this on one of our files to test it out.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="week-4--what-is-a-genetic-variant.html#cb10-1" tabindex="-1"></a>cutadapt -g TGCAG SRR6805880.tiny.fastq.gz -o SRR6805880.tiny_trimmed.fastq.gz </span></code></pre></div>
+<p>This works for a single file, but if we want to do it for all our read files we need to either do them all individually (slow and error prone) or use a for loop.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="week-4--what-is-a-genetic-variant.html#cb11-1" tabindex="-1"></a>for filename in *.tiny.fastq.gz</span>
+<span id="cb11-2"><a href="week-4--what-is-a-genetic-variant.html#cb11-2" tabindex="-1"></a>do</span>
+<span id="cb11-3"><a href="week-4--what-is-a-genetic-variant.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="week-4--what-is-a-genetic-variant.html#cb11-4" tabindex="-1"></a>  base=$(basename $filename .tiny.fastq.gz)</span>
+<span id="cb11-5"><a href="week-4--what-is-a-genetic-variant.html#cb11-5" tabindex="-1"></a>  echo ${base}</span>
+<span id="cb11-6"><a href="week-4--what-is-a-genetic-variant.html#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="week-4--what-is-a-genetic-variant.html#cb11-7" tabindex="-1"></a>  cutadapt -g TGCAG ${base}.tiny.fastq.gz -o ${base}.tiny_trimmed.fastq.gz </span>
+<span id="cb11-8"><a href="week-4--what-is-a-genetic-variant.html#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="week-4--what-is-a-genetic-variant.html#cb11-9" tabindex="-1"></a>done</span></code></pre></div>
+<p>Yay! You should see a little report for each of these files that showing how many reads were trimmed and some other info (how long are the reads, etc)</p>
+<p>You can check if the trimmed files are there with:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="week-4--what-is-a-genetic-variant.html#cb12-1" tabindex="-1"></a>ls *trimmed*</span></code></pre></div>
+<p>Our reads are now ready to be mapped to the genome.</p>
+</div>
+<div id="building-an-index-of-our-genome" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Building an index of our genome<a href="week-4--what-is-a-genetic-variant.html#building-an-index-of-our-genome" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First we have to index our genome. We’ll do that with the bowtie2-build command. This will generate a lot of files that describe different aspects of our genome</p>
+<p>We give bowtie2-build two things, the name of our genome, and a general name to label the output files. I always keep the name of the output files the same as the original genome file (without the .fna.gz extension) to avoid confusion (what’s this file for?).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="week-4--what-is-a-genetic-variant.html#cb13-1" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="week-4--what-is-a-genetic-variant.html#cb13-2" tabindex="-1"></a>bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome</span></code></pre></div>
+<p>This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)</p>
+</div>
+<div id="map-reads-to-the-genome" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Map reads to the genome<a href="week-4--what-is-a-genetic-variant.html#map-reads-to-the-genome" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s map those reads using a for loop</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="week-4--what-is-a-genetic-variant.html#cb14-1" tabindex="-1"></a>for filename in *.tiny_trimmed.fastq.gz</span>
+<span id="cb14-2"><a href="week-4--what-is-a-genetic-variant.html#cb14-2" tabindex="-1"></a>do</span>
+<span id="cb14-3"><a href="week-4--what-is-a-genetic-variant.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="week-4--what-is-a-genetic-variant.html#cb14-4" tabindex="-1"></a>  base=$(basename $filename .tiny_trimmed.fastq.gz)</span>
+<span id="cb14-5"><a href="week-4--what-is-a-genetic-variant.html#cb14-5" tabindex="-1"></a>  echo ${base}</span>
+<span id="cb14-6"><a href="week-4--what-is-a-genetic-variant.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="week-4--what-is-a-genetic-variant.html#cb14-7" tabindex="-1"></a>  bowtie2 -x Ppar_tinygenome -U ${base}.tiny_trimmed.fastq.gz -S ${base}.sam</span>
+<span id="cb14-8"><a href="week-4--what-is-a-genetic-variant.html#cb14-8" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="week-4--what-is-a-genetic-variant.html#cb14-9" tabindex="-1"></a>done</span></code></pre></div>
+<p>You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we’re getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset.</p>
+<p>You’ll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let’s use <code>less</code> to look at one of these files using <code>less</code></p>
+<p>There are several columns of data in a sam file</p>
+</div>
+<div id="sam-to-bam-file-conversion" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> sam to bam file conversion<a href="week-4--what-is-a-genetic-variant.html#sam-to-bam-file-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd the program we’re going to use to call SNPs.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="week-4--what-is-a-genetic-variant.html#cb15-1" tabindex="-1"></a>for filename in *.sam</span>
+<span id="cb15-2"><a href="week-4--what-is-a-genetic-variant.html#cb15-2" tabindex="-1"></a>do</span>
+<span id="cb15-3"><a href="week-4--what-is-a-genetic-variant.html#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="week-4--what-is-a-genetic-variant.html#cb15-4" tabindex="-1"></a>  base=$(basename $filename .sam)</span>
+<span id="cb15-5"><a href="week-4--what-is-a-genetic-variant.html#cb15-5" tabindex="-1"></a>  echo ${base}</span>
+<span id="cb15-6"><a href="week-4--what-is-a-genetic-variant.html#cb15-6" tabindex="-1"></a>  </span>
+<span id="cb15-7"><a href="week-4--what-is-a-genetic-variant.html#cb15-7" tabindex="-1"></a>  samtools view -bhS ${base}.sam | samtools sort -o ${base}.bam</span>
+<span id="cb15-8"><a href="week-4--what-is-a-genetic-variant.html#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="week-4--what-is-a-genetic-variant.html#cb15-9" tabindex="-1"></a>done</span></code></pre></div>
+</div>
+<div id="genotype-likelihoods" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Genotype likelihoods<a href="week-4--what-is-a-genetic-variant.html#genotype-likelihoods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many ways and many programs that call genotypes. The program that we will use calculates genotype likelihoods, which account for uncertainty due to sequencing errors and/or mapping errors and is one of several programs in the package ANGSD. The purpose of this class is not to discuss which program is the “best”, but to teach you to use some commonly used programs.</p>
+<p>angsd needs a text file with the <code>.bam</code> file names listed. We can make that by running the command below</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="week-4--what-is-a-genetic-variant.html#cb16-1" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="week-4--what-is-a-genetic-variant.html#cb16-2" tabindex="-1"></a>ls *.bam &gt; bam.filelist</span></code></pre></div>
+<p>Look at the list:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="week-4--what-is-a-genetic-variant.html#cb17-1" tabindex="-1"></a>cat bam.filelist</span></code></pre></div>
+<p>Run the following code to calculate genotype likelihoods</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="week-4--what-is-a-genetic-variant.html#cb18-1" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="week-4--what-is-a-genetic-variant.html#cb18-2" tabindex="-1"></a>../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
+<p>This will generate two files, one with a .arg extension, this has a record of the script we ran to generate the output, and a .maf file that will give you the minor allele frequencies and is the main output file. If you see these two files, Yay!! We did it!</p>
+<blockquote>
+<h3 id="class-exercise" class="hasAnchor">Class Exercise<a href="week-4--what-is-a-genetic-variant.html#class-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</blockquote>
+<blockquote>
+<p>Look back at the beginning of the lesson and work in small groups through these exercises!</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Run fastqc on our .trimmed reads and compare the html with the untrimmed files. What main difference do you see between them?</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a for loop to map the untrimmed files to the genome. How do the alignments compare?</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>use cutadapt to trim the sequences to 70 bp like they did in the Xuereb et al. 2018 paper. Write the output of cutadapt to an .70bp.trimmed.fastq.gz and then map these 70bp, trimmed reads to the genome. How do they compare to our .trimmed reads?</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4" style="list-style-type: decimal">
+<li>Run the mapping for loop as a shell script using bash (i.e., store the for loop in a text editor (NANOs or other) and execute the .sh script with bash)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>change the parameters of the angsd genotype likelihoods command. How many more/less SNPs do we recover if we lower or raise the SNP p-value?</li>
+</ol>
+<p>To see what the other parameters do run `../../angsd/angsd -h</p>
+</blockquote>
+</div>
+<div id="group-work-activity--calling-variants-at-a-larger-scale" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Group Work Activity- Calling Variants at a Larger Scale<a href="week-4--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this exercise we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you’re in). Make a new directory called <code>raw_data</code> and <code>mv</code> the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called <code>old_outputs</code>. Now rerun our code making a directory for the <code>trimmed_reads</code> and <code>sam_bam</code> files each. Submit the commands you ran, starting at making the raw_data directory, for this activity on canvas under the ‘Assignments’ tab for ‘Week 4: Calling Variants’.</p>
+</div>
+<div id="key-points-3" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Key Points<a href="week-4--what-is-a-genetic-variant.html#key-points-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>The general pipeline for identifying genetic variants first starts with trimming adaptors from the sample reads, indexing the reference genome, mapping the reads to the genome, converting the sam file to a bam (binary) file and then calculating the genotype likelihoods.</li>
+<li>There are many tools that are useful for calling genetic variants, including samtools, bowtie2, cutadapt and</li>
+<li>SAM and BAM files are similar, but BAM files are in a binary format which makes it easier to process and call SNPs</li>
+<li>ANGSD is a useful program for calculating genotype likelihoods and accounts for uncertainty due to sequencing errors and/or mapping errors</li>
+</ul>
+<details>
+<summary>
+<span style="color: orange;">Class Exercise Solutions</span>
+</summary>
+<p>
+<blockquote>
+<blockquote>
+<h2 id="exercise-solutions" class="hasAnchor">Exercise: Solutions<a href="week-4--what-is-a-genetic-variant.html#exercise-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li>We should no longer see the red error flag for the per base sequence quality or base pairs conten. code: fastqc *trimmed.fastq.gz</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>As a for loop:
+<code>for filename in *tiny.fastq.gz; do; base=$(basename $filename .tiny.fastq.gz); echo=${base}; bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam; done</code></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>to find the parameter for maximum read length in cutadapt: <code>cutadapt - help</code> There are a few ways to do this.
+<code>cutadapt -g TGCAG ${base}.tiny.fastq.gz -u 70 -o ${base}.tiny_70bp_trimmed.fastq.gz</code></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4" style="list-style-type: decimal">
+<li>this can be done by copying and pasting the for loop in a text editor that you save as for example <code>map_samples_bowtie2.sh</code>. This script is then executed by <code>bash map_samples_bowtie2.sh</code></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>If we remove the <code>-SNP_pval</code> command entirely we get ~72000 sites retained! Wow! That seems like a lot given our ~20% maping rate. If you instead increase the p-value threshold to 1e-3 we find 3 SNPs.</li>
+</ol>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-3--working-with-files-part-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
