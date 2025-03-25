@@ -82,8 +82,22 @@ $ ls
 ```
 Now let's download some data to work with! 
 
-## Our data set: FASTQ files
+## Details on the FASTQ format
+A fastq file is a text file with information on the quality of the sequence data
 
+Although it looks complicated (and it is), it's easy to understand the
+[fastq](https://knowledge.illumina.com/software/general/software-general-reference_material-list/000002211) format with a little decoding. Some rules about the format
+include...
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@' and then information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+' and sometimes the same info in line 1|
+|4|Has a string of characters which represent the quality (phred) scores; must have same number of characters as line 2|
+
+
+## Our data set: FASTQ files
 There are two main ways to do this. We can use the command `wget` which needs a link to the file that we want to download. If there's a file saved on a website somewhere (anywhere on the internet) `wget` will download it for you. If our data file is on github, which is where most of our data will be stored, we'll use the command `git-clone` In this example we're going to download all the material in our individual directory
 ```html
 $ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week2.tar.gz
@@ -402,21 +416,6 @@ $ tail -n 1 SRR098026.fastq
 ```html
 A!@B!BBB@ABAB#########!!!!!!!######
 ```
-
-
-
-## Details on the FASTQ format
-
-Although it looks complicated (and it is), it's easy to understand the
-[fastq](https://en.wikipedia.org/wiki/FASTQ_format) format with a little decoding. Some rules about the format
-include...
-
-|Line|Description|
-|----|-----------|
-|1|Always begins with '@' and then information about the read|
-|2|The actual DNA sequence|
-|3|Always begins with a '+' and sometimes the same info in line 1|
-|4|Has a string of characters which represent the quality (phred) scores; must have same number of characters as line 2|
 
 We can view the first complete read in one of the files in our dataset by using `head` to look at
 the first four lines.
