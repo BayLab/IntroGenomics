@@ -20,7 +20,7 @@ This class has code modified from the Data Carpentry's introduction to the shell
 
 ## Main Objectives
 -   Take Pre-class assessment (link on syllabus)
--   Introduction to genomics & shell computing (via slideshow here: x)
+-   Introduction to genomics & shell computing (via slideshow here: [Week 1 Slides](./figs/W1_introcoding.pdf)
 -   Learn how to access terminal via Farm OnDemand
 -   Learn how to interact with the command line interface and move around in your file system
 
