@@ -268,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>ls</code> prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns.</p>
 <p>First we will need to navigate to the correct directory that we will be working in for this class. The command to change locations in our file system is cd, followed by a directory name to change our working directory. cd stands for “change directory”.</p>
 <p>Our class directory is in group/rbaygrp/eve198-genomics. ALL work for this class will take place inside the eve198-genomics directory If we want to navigate into eve198-genomics that is housed in the rbaygrp directory inside the group directory we can use the following command to get there:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="week-1--welcome.html#cb6-1" tabindex="-1"></a>$ cd group</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="week-1--welcome.html#cb6-1" tabindex="-1"></a>$ cd /group</span>
 <span id="cb6-2"><a href="week-1--welcome.html#cb6-2" tabindex="-1"></a>$ cd rbaygrp</span>
 <span id="cb6-3"><a href="week-1--welcome.html#cb6-3" tabindex="-1"></a>$ cd eve198-genomics</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="week-1--welcome.html#cb7-1" tabindex="-1"></a>$ pwd</span></code></pre></div>
@@ -286,16 +286,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.4</span> Shortcut: Tab Completion<a href="week-1--welcome.html#shortcut-tab-completion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Typing out file or directory names can waste a lot of time and it’s easy to make typing mistakes. Instead we can use tab complete as a shortcut. When you start typing out the name of a directory or file, then hit the Tab key, the shell will try to fill in the rest of the directory or file name.</p>
 <p>Since we are already in our home directory type ‘cd gr’ and then hit tab:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="week-1--welcome.html#cb12-1" tabindex="-1"></a>$ cd gr</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="week-1--welcome.html#cb12-1" tabindex="-1"></a>$ cd /gr</span></code></pre></div>
 <p>The shell will fill in the rest of the directory name for <code>group</code>.</p>
 <p>Now continue into the rbaygrp directory and then the eve198-genomics directory by using tab to fill in the rest of the names:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="week-1--welcome.html#cb13-1" tabindex="-1"></a>$ cd /rbayg</span>
-<span id="cb13-2"><a href="week-1--welcome.html#cb13-2" tabindex="-1"></a>$ cd /ev</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="week-1--welcome.html#cb13-1" tabindex="-1"></a>$ cd rbayg</span>
+<span id="cb13-2"><a href="week-1--welcome.html#cb13-2" tabindex="-1"></a>$ cd ev</span></code></pre></div>
 <p>Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.</p>
 </div>
 <div id="creating-our-own-directories" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Creating our own directories<a href="week-1--welcome.html#creating-our-own-directories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We willnow each make our own directory in the eve198-genomics diectory so that everyone can run code individually.</p>
+<p>We will now each make our own directory in the eve198-genomics directory so that everyone can run code individually.</p>
 <p>To make a new directory type the command <code>mkdir</code> followed by the name of the directory, in this case ‘mlarmstrong’. You can do your ucdavis email name or your first intial and last name, just make sure it is specific to you.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="week-1--welcome.html#cb14-1" tabindex="-1"></a>$ mkdir mlamstrong</span></code></pre></div>
 <p>Check that it’s there with ls. As other people make directories those will pop up too!</p>
@@ -315,12 +315,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="week-1--welcome.html#cb19-1" tabindex="-1"></a>$ cd /group/rbaygrp/eve198-genomics</span></code></pre></div>
 <p>This jumps several levels to the class directory. Now go back to the home directory.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="week-1--welcome.html#cb20-1" tabindex="-1"></a>$ cd </span></code></pre></div>
-<p>You can also navigate to the class directory using:</p>
+<p>But you can’t navigate to the class directory using this command:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="week-1--welcome.html#cb21-1" tabindex="-1"></a>$ cd group/rbaygrp/eve198-genomics</span></code></pre></div>
-<p>These two commands have the same effect, they both take us to the class directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.</p>
-<p>A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.</p>
-<p>You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.</p>
-<p>Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.</p>
+<p>Why not? The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.</p>
+<p>A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now. We need to have a full path since we need to be able to navigate to the broadest directory using <code>cd</code> from our home directory, and then move into the group directory. using <code>cd /group</code></p>
 <p>Now navigate inside of your individual directory and run the command ‘ls’.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb22-1"><a href="week-1--welcome.html#cb22-1" tabindex="-1"></a>$ cd mlarmstrong</span>
 <span id="cb22-2"><a href="week-1--welcome.html#cb22-2" tabindex="-1"></a>$ ls</span></code></pre></div>
@@ -331,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb24"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb24-1"><a href="week-1--welcome.html#cb24-1" tabindex="-1"></a>$ ls -a</span></code></pre></div>
 <p>You’ll see there are many more files shown now that we can look at the hidden ones.</p>
 <p>In most commands the flags can be combined together in no particular order to obtain the desired results/output.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb25-1"><a href="week-1--welcome.html#cb25-1" tabindex="-1"></a>$ ls -Fa</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb25-1"><a href="week-1--welcome.html#cb25-1" tabindex="-1"></a>$ ls -Fa </span>
 <span id="cb25-2"><a href="week-1--welcome.html#cb25-2" tabindex="-1"></a>$ ls -laF</span></code></pre></div>
 </div>
 <div id="examining-the-contents-of-other-directories" class="section level2 hasAnchor" number="2.7">
