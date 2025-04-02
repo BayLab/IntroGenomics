@@ -69,7 +69,7 @@ First we will need to navigate to the correct directory that we will be working 
 Our class directory is in group/rbaygrp/eve198-genomics. ALL work for this class will take place inside the eve198-genomics directory If we want to navigate into eve198-genomics that is housed in the rbaygrp directory inside the group directory we can use the following command to get there:
 
 ``` html
-$ cd group
+$ cd /group
 $ cd rbaygrp
 $ cd eve198-genomics
 ```
@@ -111,7 +111,7 @@ Typing out file or directory names can waste a lot of time and it’s easy to ma
 Since we are already in our home directory type 'cd gr' and then hit tab:
 
 ``` html
-$ cd gr
+$ cd /gr
 ```
 
 The shell will fill in the rest of the directory name for `group`.
@@ -119,14 +119,14 @@ The shell will fill in the rest of the directory name for `group`.
 Now continue into the rbaygrp directory and then the eve198-genomics directory by using tab to fill in the rest of the names:
 
 ``` html
-$ cd /rbayg
-$ cd /ev
+$ cd rbayg
+$ cd ev
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
 
 ## Creating our own directories 
-We willnow each make our own directory in the eve198-genomics diectory so that everyone can run code individually.
+We will now each make our own directory in the eve198-genomics directory so that everyone can run code individually.
 
 To make a new directory type the command `mkdir` followed by the name of the directory, in this case 'mlarmstrong'. You can do your ucdavis email name or your first intial and last name, just make sure it is specific to you.
 
@@ -175,19 +175,16 @@ This jumps several levels to the class directory. Now go back to the home direct
 $ cd 
 ```
 
-You can also navigate to the class directory using:
+But you can't  navigate to the class directory using this command:
 
 ``` html
 $ cd group/rbaygrp/eve198-genomics
 ```
 
-These two commands have the same effect, they both take us to the class directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.
+Why not? The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.
 
-A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.
+A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now. We need to have a full path since we need to be able to navigate to the broadest directory using `cd` from our home directory, and then move into the group directory. using `cd /group`
 
-You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.
-
-Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.
 
 Now navigate inside of your individual directory and run the command 'ls'.
 
@@ -215,7 +212,7 @@ You'll see there are many more files shown now that we can look at the hidden on
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
 ```html
-$ ls -Fa
+$ ls -Fa 
 $ ls -laF
 ```
 
