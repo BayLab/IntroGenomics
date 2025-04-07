@@ -63,3 +63,17 @@ key-points-3
 week-4--what-is-a-genetic-variant
 writing-scripts-bash
 writing-scripts-slurm
+week-5--welcome-to-the-r-environment
+lesson-1-orientation-to-r
+manipulating-a-vector-object
+operations-act-on-each-element-of-a-vector
+operations-can-also-work-with-two-vectors
+a-few-tips-below-for-working-with-objects
+practice-r-operations
+characterizing-a-dataframe
+how-to-access-parts-of-the-data
+data-manipulation
+practice-exploring-a-dataframe
+subsetting-datasets-logicals
+class-activity-exploring-data-in-r-practice-subsetting-datasetslogicals
+group-work-activity-practice-exploring-data-in-r
