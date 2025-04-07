@@ -191,13 +191,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#getting-data-from-the-cloud"><i class="fa fa-check"></i><b>4.8.1</b> Getting data from the cloud</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-and-working-with-data"><i class="fa fa-check"></i><b>4.9</b> Writing Scripts and Working with Data</a></li>
-<li class="chapter" data-level="4.10" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts"><i class="fa fa-check"></i><b>4.10</b> Writing scripts</a></li>
-<li class="chapter" data-level="4.11" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script"><i class="fa fa-check"></i><b>4.11</b> Group Work Activity- Writing your own script</a></li>
-<li class="chapter" data-level="4.12" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#key-points-2"><i class="fa fa-check"></i><b>4.12</b> Key Points</a></li>
-<li class="chapter" data-level="4.13" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#additional-information-on-working-with-files"><i class="fa fa-check"></i><b>4.13</b> Additional Information on working with files:</a>
+<li class="chapter" data-level="4.10" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-bash"><i class="fa fa-check"></i><b>4.10</b> Writing scripts: Bash</a></li>
+<li class="chapter" data-level="4.11" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-slurm"><i class="fa fa-check"></i><b>4.11</b> Writing scripts: Slurm</a></li>
+<li class="chapter" data-level="4.12" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script"><i class="fa fa-check"></i><b>4.12</b> Group Work Activity- Writing your own script</a></li>
+<li class="chapter" data-level="4.13" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#key-points-2"><i class="fa fa-check"></i><b>4.13</b> Key Points</a></li>
+<li class="chapter" data-level="4.14" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#additional-information-on-working-with-files"><i class="fa fa-check"></i><b>4.14</b> Additional Information on working with files:</a>
 <ul>
-<li class="chapter" data-level="4.13.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>4.13.1</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX</a></li>
-<li class="chapter" data-level="4.13.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.13.2</b> Awk</a></li>
+<li class="chapter" data-level="4.14.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>4.14.1</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX</a></li>
+<li class="chapter" data-level="4.14.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.14.2</b> Awk</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>5</b> Week 4- What is a Genetic Variant?</a>
@@ -740,8 +741,8 @@ file.</p>
 </blockquote>
 <p>Now you’ve written a file. You can take a look at it with <code>less</code> or <code>cat</code>, or open it up again and edit it with <code>nano</code>.</p>
 </div>
-<div id="writing-scripts" class="section level2 hasAnchor" number="4.10">
-<h2><span class="header-section-number">4.10</span> Writing scripts<a href="week-3--working-with-files-part-2.html#writing-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="writing-scripts-bash" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Writing scripts: Bash<a href="week-3--working-with-files-part-2.html#writing-scripts-bash" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.</p>
 <p>One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what’s going on with them. We’re going to look for reads with long sequences of N’s like we did before, but now we’re going to write a script, so we can run it each time we get new sequences, rather than type the code in by hand each time.</p>
 <p>We’re going to create a new file to put this command in. We’ll call it <code>bad-reads-script.sh</code>. The <code>sh</code> isn’t required, but using that extension tells us that it’s a shell script.</p>
@@ -761,14 +762,52 @@ are using <code>-h</code> to “Suppress the prefixing of file names on output�
 <div class="sourceCode" id="cb64"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb64-1"><a href="week-3--working-with-files-part-2.html#cb64-1" tabindex="-1"></a>grep echo &quot;Script finished!&quot;</span></code></pre></div>
 <p>If you run the bash bad-reads-script.sh command again and it will print out “Script finished!”</p>
 </div>
-<div id="group-work-activity--writing-your-own-script" class="section level2 hasAnchor" number="4.11">
-<h2><span class="header-section-number">4.11</span> Group Work Activity- Writing your own script<a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>modified from <a href="https://www.cyberciti.biz/faq/hello-world-bash-shell-script/" class="uri">https://www.cyberciti.biz/faq/hello-world-bash-shell-script/</a></p>
-<p>Now let’s work in small groups to write our own scripts. The script should be called “hello.sh” and you want it to say “Hello World! Isn’t genomics so fun?”</p>
-<p>Remember your script should start with <code>#!/bin/bash</code>. Submit a copy of your script and a screenshot of what happens when your script finishes on canvas under the ‘Assignments’ tab for ‘Week 3: Writing your own script’.</p>
+<div id="writing-scripts-slurm" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Writing scripts: Slurm<a href="week-3--working-with-files-part-2.html#writing-scripts-slurm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can also write scripts using a resource manager called “Slurm” (It is a reference to the show Futurama where there is a soda called slurm). Slurm can be really helpful for writing scripts and submitting jobs since you can schedule and run larger jobs. I use this personally in my own research. The set up is pretty similar. First let’s create a simple script:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb65-1"><a href="week-3--working-with-files-part-2.html#cb65-1" tabindex="-1"></a>nano HelloWorld.sh</span></code></pre></div>
+<p>For a slurm script we need more information in the header of our script so that it knows what account to run on and the amount of time you want to give to your job:</p>
+<ul>
+<li>All scripts start with <code>#!/bin/bash</code></li>
+<li>The next line is your email address so you can get an email when your job finishes</li>
+<li>Then add information on if you want an email for all notifications (began, ended, failed, etc)</li>
+<li>Next is the name of the job, or job ID</li>
+<li>The name of your error log file</li>
+<li>The name of your output log file (usually the same name as your error)</li>
+<li>The number of processors per task</li>
+<li>The minimum number of nodes you need for your job. Small jobs don’t need a lot of nodes/memory</li>
+<li>The amount of memory for your job</li>
+<li>The requested time for your job. Some jobs take a really long time, I had one run for several months! For this class you only need to put in 90 minutes.</li>
+<li>The partition to submit to, high2 is the one we will be using</li>
+</ul>
+<p>After those headers you write out your script!</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb66-1"><a href="week-3--working-with-files-part-2.html#cb66-1" tabindex="-1"></a>#!/bin/bash</span>
+<span id="cb66-2"><a href="week-3--working-with-files-part-2.html#cb66-2" tabindex="-1"></a>#SBATCH --mail-user=mlarmstrong@ucdavis.edu         # YOUR EMAIL ADDRESS</span>
+<span id="cb66-3"><a href="week-3--working-with-files-part-2.html#cb66-3" tabindex="-1"></a>#SBATCH --mail-type=ALL                         # NOTIFICATIONS OF SLURM JOB STATUS - ALL, NONE, BEGIN, END, FAIL, REQUEUE</span>
+<span id="cb66-4"><a href="week-3--working-with-files-part-2.html#cb66-4" tabindex="-1"></a>#SBATCH -J HelloWorld                           # JOB ID</span>
+<span id="cb66-5"><a href="week-3--working-with-files-part-2.html#cb66-5" tabindex="-1"></a>#SBATCH -e HelloWorld.j%j.err                   # STANDARD ERROR FILE TO WRITE TO</span>
+<span id="cb66-6"><a href="week-3--working-with-files-part-2.html#cb66-6" tabindex="-1"></a>#SBATCH -o HelloWorld.j%j.out                   # STANDARD OUTPUT FILE TO WRITE TO</span>
+<span id="cb66-7"><a href="week-3--working-with-files-part-2.html#cb66-7" tabindex="-1"></a>#SBATCH -c 1                                    # NUMBER OF PROCESSORS PER TASK</span>
+<span id="cb66-8"><a href="week-3--working-with-files-part-2.html#cb66-8" tabindex="-1"></a>#SBATCH --ntasks=1                              # MINIMUM NUMBER OF NODES TO ALLOCATE TO JOB</span>
+<span id="cb66-9"><a href="week-3--working-with-files-part-2.html#cb66-9" tabindex="-1"></a>#SBATCH --mem=1Gb                               # MEMORY POOL TO ALL CORES</span>
+<span id="cb66-10"><a href="week-3--working-with-files-part-2.html#cb66-10" tabindex="-1"></a>#SBATCH --time=00-00:11:00                      # REQUESTED WALL TIME</span>
+<span id="cb66-11"><a href="week-3--working-with-files-part-2.html#cb66-11" tabindex="-1"></a>#SBATCH -p high2                               # PARTITION TO SUBMIT TO</span>
+<span id="cb66-12"><a href="week-3--working-with-files-part-2.html#cb66-12" tabindex="-1"></a></span>
+<span id="cb66-13"><a href="week-3--working-with-files-part-2.html#cb66-13" tabindex="-1"></a>echo &quot;Hello World!&quot; &gt; hello_world_output.txt</span></code></pre></div>
+<p>Then when you are ready to run your job you type</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb67-1"><a href="week-3--working-with-files-part-2.html#cb67-1" tabindex="-1"></a>sbatch HelloWorld.sh</span></code></pre></div>
+<p>Want to check the status of your job? Type <code>squeue -u</code>yourusername<code>Once your job is done, type</code>ls<code>. There should be a new text file in your directory called</code>hello_world_output.txt`. What does it say?</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb68-1"><a href="week-3--working-with-files-part-2.html#cb68-1" tabindex="-1"></a>cat hello_world_output.txt</span></code></pre></div>
+<p>More information on slurm scripts in on the hpc webpage: <a href="https://hpc.ucdavis.edu/faq/slurm" class="uri">https://hpc.ucdavis.edu/faq/slurm</a></p>
 </div>
-<div id="key-points-2" class="section level2 hasAnchor" number="4.12">
-<h2><span class="header-section-number">4.12</span> Key Points<a href="week-3--working-with-files-part-2.html#key-points-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="group-work-activity--writing-your-own-script" class="section level2 hasAnchor" number="4.12">
+<h2><span class="header-section-number">4.12</span> Group Work Activity- Writing your own script<a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>modified from <a href="https://www.cyberciti.biz/faq/hello-world-bash-shell-script/" class="uri">https://www.cyberciti.biz/faq/hello-world-bash-shell-script/</a></p>
+<p>Now let’s work in small groups to write our own slurm scripts. The script should be called “hello.sh” and you want it to write a text file that says “Hello World! Isn’t genomics so fun?”</p>
+<p>Remember your script should start with <code>#!/bin/bash</code>. Submit a copy of your script on canvas under the ‘Assignments’ tab for ‘Week 3: Writing your own script’.</p>
+</div>
+<div id="key-points-2" class="section level2 hasAnchor" number="4.13">
+<h2><span class="header-section-number">4.13</span> Key Points<a href="week-3--working-with-files-part-2.html#key-points-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>The commands <code>cp</code>, <code>mv</code>, and <code>mkdir</code> are useful for manipulating existing files and creating new directories.</p></li>
 <li><p>You can view file permissions using <code>ls -l</code> and change permissions using <code>chmod</code>.</p></li>
@@ -797,8 +836,8 @@ are using <code>-h</code> to “Suppress the prefixing of file names on output�
 <li><code>chmod -w backup/*-backup.fastq</code><br />
 It’s always a good idea to check your work with <code>ls -l backup</code>. You should see something like:</li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb65-1"><a href="week-3--working-with-files-part-2.html#cb65-1" tabindex="-1"></a>-r--r--r-- 1 dcuser dcuser 47552 Nov 15 23:06 SRR097977-backup.fastq</span>
-<span id="cb65-2"><a href="week-3--working-with-files-part-2.html#cb65-2" tabindex="-1"></a>-r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb69-1"><a href="week-3--working-with-files-part-2.html#cb69-1" tabindex="-1"></a>-r--r--r-- 1 dcuser dcuser 47552 Nov 15 23:06 SRR097977-backup.fastq</span>
+<span id="cb69-2"><a href="week-3--working-with-files-part-2.html#cb69-2" tabindex="-1"></a>-r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq</span></code></pre></div>
 <h3 id="exercise-2-solution" class="hasAnchor">Exercise 2: Solution<a href="week-3--working-with-files-part-2.html#exercise-2-solution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p><code>grep -B1 GNATNACCACTTCC SRR098026.fastq</code></p>
@@ -833,48 +872,48 @@ SRR098026.fastq:GNNNNNNNNCAAAGTTGATCNNNNNNNNNTGTGCG</code></pre></li>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb68"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb68-1"><a href="week-3--working-with-files-part-2.html#cb68-1" tabindex="-1"></a>$ wc -l SRR098026.fastq</span></code></pre></div>
-<div class="sourceCode" id="cb69"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb69-1"><a href="week-3--working-with-files-part-2.html#cb69-1" tabindex="-1"></a>996</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb72-1"><a href="week-3--working-with-files-part-2.html#cb72-1" tabindex="-1"></a>$ wc -l SRR098026.fastq</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb73-1"><a href="week-3--working-with-files-part-2.html#cb73-1" tabindex="-1"></a>996</span></code></pre></div>
 <p>Now you can divide this number by four to get the number of sequences in your fastq file
 2.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb70-1"><a href="week-3--working-with-files-part-2.html#cb70-1" tabindex="-1"></a>$ grep NNN SRR098026.fastq &gt; bad_reads.txt</span>
-<span id="cb70-2"><a href="week-3--working-with-files-part-2.html#cb70-2" tabindex="-1"></a>$ wc -l bad_reads.txt</span></code></pre></div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb71-1"><a href="week-3--working-with-files-part-2.html#cb71-1" tabindex="-1"></a>249</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb74-1"><a href="week-3--working-with-files-part-2.html#cb74-1" tabindex="-1"></a>$ grep NNN SRR098026.fastq &gt; bad_reads.txt</span>
+<span id="cb74-2"><a href="week-3--working-with-files-part-2.html#cb74-2" tabindex="-1"></a>$ wc -l bad_reads.txt</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb75-1"><a href="week-3--working-with-files-part-2.html#cb75-1" tabindex="-1"></a>249</span></code></pre></div>
 <h3 id="exercise-4-solution" class="hasAnchor">Exercise 4: Solution<a href="week-3--working-with-files-part-2.html#exercise-4-solution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb72"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb72-1"><a href="week-3--working-with-files-part-2.html#cb72-1" tabindex="-1"></a>$ for filename in *_2019.txt</span>
-<span id="cb72-2"><a href="week-3--working-with-files-part-2.html#cb72-2" tabindex="-1"></a>&gt; do</span>
-<span id="cb72-3"><a href="week-3--working-with-files-part-2.html#cb72-3" tabindex="-1"></a>&gt; name=$(basename ${filename} _2019.txt)</span>
-<span id="cb72-4"><a href="week-3--working-with-files-part-2.html#cb72-4" tabindex="-1"></a>&gt; mv ${filename} ${name}.txt</span>
-<span id="cb72-5"><a href="week-3--working-with-files-part-2.html#cb72-5" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb76-1"><a href="week-3--working-with-files-part-2.html#cb76-1" tabindex="-1"></a>$ for filename in *_2019.txt</span>
+<span id="cb76-2"><a href="week-3--working-with-files-part-2.html#cb76-2" tabindex="-1"></a>&gt; do</span>
+<span id="cb76-3"><a href="week-3--working-with-files-part-2.html#cb76-3" tabindex="-1"></a>&gt; name=$(basename ${filename} _2019.txt)</span>
+<span id="cb76-4"><a href="week-3--working-with-files-part-2.html#cb76-4" tabindex="-1"></a>&gt; mv ${filename} ${name}.txt</span>
+<span id="cb76-5"><a href="week-3--working-with-files-part-2.html#cb76-5" tabindex="-1"></a>&gt; done</span></code></pre></div>
 </blockquote>
 </blockquote>
 </p>
 </details>
 <p> </p>
 </div>
-<div id="additional-information-on-working-with-files" class="section level2 hasAnchor" number="4.13">
-<h2><span class="header-section-number">4.13</span> Additional Information on working with files:<a href="week-3--working-with-files-part-2.html#additional-information-on-working-with-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix" class="section level3 hasAnchor" number="4.13.1">
-<h3><span class="header-section-number">4.13.1</span> Uploading and Downloading Data to your Virtual Machine with scp - UNIX<a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="additional-information-on-working-with-files" class="section level2 hasAnchor" number="4.14">
+<h2><span class="header-section-number">4.14</span> Additional Information on working with files:<a href="week-3--working-with-files-part-2.html#additional-information-on-working-with-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix" class="section level3 hasAnchor" number="4.14.1">
+<h3><span class="header-section-number">4.14.1</span> Uploading and Downloading Data to your Virtual Machine with scp - UNIX<a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This section is for your general knowledge.</p>
 <p><code>scp</code> stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files
 between computers. The simplest way to use <code>scp</code> is to run it in your local terminal,
 and use it to copy a single file:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb73-1"><a href="week-3--working-with-files-part-2.html#cb73-1" tabindex="-1"></a>scp <span class="dt">&lt;</span><span class="kw">file</span><span class="ot"> I want to move</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">where</span><span class="ot"> I want to move it</span><span class="dt">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb77-1"><a href="week-3--working-with-files-part-2.html#cb77-1" tabindex="-1"></a>scp <span class="dt">&lt;</span><span class="kw">file</span><span class="ot"> I want to move</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">where</span><span class="ot"> I want to move it</span><span class="dt">&gt;</span></span></code></pre></div>
 <p>In terminal,you can use the <code>scp</code> command to upload a file (e.g. local_file.txt) to the cluster home directory:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb74-1"><a href="week-3--working-with-files-part-2.html#cb74-1" tabindex="-1"></a>$  scp local_file.txt UserName@cluster.address:/scratch/</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb78-1"><a href="week-3--working-with-files-part-2.html#cb78-1" tabindex="-1"></a>$  scp local_file.txt UserName@cluster.address:/scratch/</span></code></pre></div>
 <p>If you wanted to download data from your virtual machine, we would put the location of the folder within the virtual machine in the location of <file I want to move></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb75-1"><a href="week-3--working-with-files-part-2.html#cb75-1" tabindex="-1"></a>$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/margeno/data_week2/Week2/data_week2/untrimmed_fastq/</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb79-1"><a href="week-3--working-with-files-part-2.html#cb79-1" tabindex="-1"></a>$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/margeno/data_week2/Week2/data_week2/untrimmed_fastq/</span></code></pre></div>
 </div>
-<div id="awk" class="section level3 hasAnchor" number="4.13.2">
-<h3><span class="header-section-number">4.13.2</span> Awk<a href="week-3--working-with-files-part-2.html#awk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="awk" class="section level3 hasAnchor" number="4.14.2">
+<h3><span class="header-section-number">4.14.2</span> Awk<a href="week-3--working-with-files-part-2.html#awk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>Awk</code> is a fast and versatile pattern matching programming language. <code>Awk</code> can do the same tasks that <code>sed</code>, <code>grep</code>, <code>cat</code>, and <code>wc</code>; and then it can do a lot more <a href="https://www.gnu.org/software/gawk/manual/gawk.html" class="uri">https://www.gnu.org/software/gawk/manual/gawk.html</a>. This program deserves a full class to go into details, so instead we just have this section to make you aware that the program exists.</p>
 <p>Let’s see how awk can behave like <code>wc</code>.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb76-1"><a href="week-3--working-with-files-part-2.html#cb76-1" tabindex="-1"></a>$ cd /group/rbaygrp/eve198-genomics/`yourdirectory`/Week2</span></code></pre></div>
-<div class="sourceCode" id="cb77"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb77-1"><a href="week-3--working-with-files-part-2.html#cb77-1" tabindex="-1"></a>$ ls TableS2_QTL_Bay_2017.txt  sra_metadata  untrimmed_fastq</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb80-1"><a href="week-3--working-with-files-part-2.html#cb80-1" tabindex="-1"></a>$ cd /group/rbaygrp/eve198-genomics/`yourdirectory`/Week2</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb81-1"><a href="week-3--working-with-files-part-2.html#cb81-1" tabindex="-1"></a>$ ls TableS2_QTL_Bay_2017.txt  sra_metadata  untrimmed_fastq</span></code></pre></div>
 <p>This table is from the Bay et al. 2017 publication <code>TableS2_QTL_Bay_2017.txt</code> and we will use it as our example file for this section.</p>
 <p>We can look inside the file by using <code>cat</code> or <code>awk</code></p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb78-1"><a href="week-3--working-with-files-part-2.html#cb78-1" tabindex="-1"></a>$ awk &#39;{print $0}&#39; TableS2_QTL_Bay_2017.txt</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb82-1"><a href="week-3--working-with-files-part-2.html#cb82-1" tabindex="-1"></a>$ awk &#39;{print $0}&#39; TableS2_QTL_Bay_2017.txt</span></code></pre></div>
 <p>The instructions are enclosed in single quotes</p>
 <p>This command has the same output of “cat”: it prints each line from the example file TableS2_QTL_Bay_2017.txt</p>
 <p>The structure of the instruction is the following:
@@ -882,39 +921,39 @@ and use it to copy a single file:</p>
 - print is the instruction that sends its arguments to the terminal
 - $0 is a variable, it means “the content of the current line”</p>
 <p>As you can see, the file contains a table.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb79-1"><a href="week-3--working-with-files-part-2.html#cb79-1" tabindex="-1"></a>Trait   n   LOD Chr Position (cM)   Nearest SNP </span>
-<span id="cb79-2"><a href="week-3--working-with-files-part-2.html#cb79-2" tabindex="-1"></a>mate choice 200 4.5 14  22.43   chrXIV:1713227 </span>
-<span id="cb79-3"><a href="week-3--working-with-files-part-2.html#cb79-3" tabindex="-1"></a>mate choice     200 4.61    21  8   chrXXI:9373717 </span>
-<span id="cb79-4"><a href="week-3--working-with-files-part-2.html#cb79-4" tabindex="-1"></a>discriminant function   200 4.83    12  17  chrXII:7504339 </span>
-<span id="cb79-5"><a href="week-3--working-with-files-part-2.html#cb79-5" tabindex="-1"></a>discriminant function   200 4.23    14  8.1 chrXIV:4632223 </span>
-<span id="cb79-6"><a href="week-3--working-with-files-part-2.html#cb79-6" tabindex="-1"></a>PC2 200 4.04    4   30.76   chrIV:11367975 </span>
-<span id="cb79-7"><a href="week-3--working-with-files-part-2.html#cb79-7" tabindex="-1"></a>PC2 200 6.67    7   47  chrVII:26448674 </span>
-<span id="cb79-8"><a href="week-3--working-with-files-part-2.html#cb79-8" tabindex="-1"></a>centroid size   200 6.97    9   47.8    chrIX:19745222 </span>
-<span id="cb79-9"><a href="week-3--working-with-files-part-2.html#cb79-9" tabindex="-1"></a>x2* 200 3.93    7   60  chrUn:29400087 </span>
-<span id="cb79-10"><a href="week-3--working-with-files-part-2.html#cb79-10" tabindex="-1"></a>y2* 200 9.99    4   32  chrIV:11367975 </span>
-<span id="cb79-11"><a href="week-3--working-with-files-part-2.html#cb79-11" tabindex="-1"></a>x3  200 4.45    1   32.3    chrI:15145305 </span>
-<span id="cb79-12"><a href="week-3--working-with-files-part-2.html#cb79-12" tabindex="-1"></a>x4  200 5.13    16  30.9    chrXVI:12111717 </span>
-<span id="cb79-13"><a href="week-3--working-with-files-part-2.html#cb79-13" tabindex="-1"></a>x5* 200 4.54    15  6   chrXV:505537 </span>
-<span id="cb79-14"><a href="week-3--working-with-files-part-2.html#cb79-14" tabindex="-1"></a>y5  200 4.21    4   24.9    chrIV:15721538 </span>
-<span id="cb79-15"><a href="week-3--working-with-files-part-2.html#cb79-15" tabindex="-1"></a>x6  200 3.96    16  29.5    chrXVI:13588796 </span>
-<span id="cb79-16"><a href="week-3--working-with-files-part-2.html#cb79-16" tabindex="-1"></a>y6* 200 4.14    9   30.2    chrIX:18942598 </span>
-<span id="cb79-17"><a href="week-3--working-with-files-part-2.html#cb79-17" tabindex="-1"></a>y15*    200 5.3 2   27  chrII:19324477 </span>
-<span id="cb79-18"><a href="week-3--working-with-files-part-2.html#cb79-18" tabindex="-1"></a>x16 200 5.49    7   60  chrUn:29400087 </span>
-<span id="cb79-19"><a href="week-3--working-with-files-part-2.html#cb79-19" tabindex="-1"></a>x17     200 4.92    1   32.8    chrI:14261764 </span>
-<span id="cb79-20"><a href="week-3--working-with-files-part-2.html#cb79-20" tabindex="-1"></a>Table S2. Significant QTL loci for mate choice and morphology</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb83-1"><a href="week-3--working-with-files-part-2.html#cb83-1" tabindex="-1"></a>Trait   n   LOD Chr Position (cM)   Nearest SNP </span>
+<span id="cb83-2"><a href="week-3--working-with-files-part-2.html#cb83-2" tabindex="-1"></a>mate choice 200 4.5 14  22.43   chrXIV:1713227 </span>
+<span id="cb83-3"><a href="week-3--working-with-files-part-2.html#cb83-3" tabindex="-1"></a>mate choice     200 4.61    21  8   chrXXI:9373717 </span>
+<span id="cb83-4"><a href="week-3--working-with-files-part-2.html#cb83-4" tabindex="-1"></a>discriminant function   200 4.83    12  17  chrXII:7504339 </span>
+<span id="cb83-5"><a href="week-3--working-with-files-part-2.html#cb83-5" tabindex="-1"></a>discriminant function   200 4.23    14  8.1 chrXIV:4632223 </span>
+<span id="cb83-6"><a href="week-3--working-with-files-part-2.html#cb83-6" tabindex="-1"></a>PC2 200 4.04    4   30.76   chrIV:11367975 </span>
+<span id="cb83-7"><a href="week-3--working-with-files-part-2.html#cb83-7" tabindex="-1"></a>PC2 200 6.67    7   47  chrVII:26448674 </span>
+<span id="cb83-8"><a href="week-3--working-with-files-part-2.html#cb83-8" tabindex="-1"></a>centroid size   200 6.97    9   47.8    chrIX:19745222 </span>
+<span id="cb83-9"><a href="week-3--working-with-files-part-2.html#cb83-9" tabindex="-1"></a>x2* 200 3.93    7   60  chrUn:29400087 </span>
+<span id="cb83-10"><a href="week-3--working-with-files-part-2.html#cb83-10" tabindex="-1"></a>y2* 200 9.99    4   32  chrIV:11367975 </span>
+<span id="cb83-11"><a href="week-3--working-with-files-part-2.html#cb83-11" tabindex="-1"></a>x3  200 4.45    1   32.3    chrI:15145305 </span>
+<span id="cb83-12"><a href="week-3--working-with-files-part-2.html#cb83-12" tabindex="-1"></a>x4  200 5.13    16  30.9    chrXVI:12111717 </span>
+<span id="cb83-13"><a href="week-3--working-with-files-part-2.html#cb83-13" tabindex="-1"></a>x5* 200 4.54    15  6   chrXV:505537 </span>
+<span id="cb83-14"><a href="week-3--working-with-files-part-2.html#cb83-14" tabindex="-1"></a>y5  200 4.21    4   24.9    chrIV:15721538 </span>
+<span id="cb83-15"><a href="week-3--working-with-files-part-2.html#cb83-15" tabindex="-1"></a>x6  200 3.96    16  29.5    chrXVI:13588796 </span>
+<span id="cb83-16"><a href="week-3--working-with-files-part-2.html#cb83-16" tabindex="-1"></a>y6* 200 4.14    9   30.2    chrIX:18942598 </span>
+<span id="cb83-17"><a href="week-3--working-with-files-part-2.html#cb83-17" tabindex="-1"></a>y15*    200 5.3 2   27  chrII:19324477 </span>
+<span id="cb83-18"><a href="week-3--working-with-files-part-2.html#cb83-18" tabindex="-1"></a>x16 200 5.49    7   60  chrUn:29400087 </span>
+<span id="cb83-19"><a href="week-3--working-with-files-part-2.html#cb83-19" tabindex="-1"></a>x17     200 4.92    1   32.8    chrI:14261764 </span>
+<span id="cb83-20"><a href="week-3--working-with-files-part-2.html#cb83-20" tabindex="-1"></a>Table S2. Significant QTL loci for mate choice and morphology</span></code></pre></div>
 <p>Now let’s use <code>awk</code> to count the lines of a file, similarly to what <code>wc -l</code> would do.</p>
 <p>As you probably remember, -l is an option that asks for the number of lines only.</p>
 <p>However, wc counts the number of newlines in the file, if the last line does
 not contain a carriage return (i.e. there is no emptyline at the end of the file),
 the result is going be the actual number of lines minus one.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb80-1"><a href="week-3--working-with-files-part-2.html#cb80-1" tabindex="-1"></a>$ wc -l TableS2_QTL_Bay_2017.txt</span></code></pre></div>
-<div class="sourceCode" id="cb81"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb81-1"><a href="week-3--working-with-files-part-2.html#cb81-1" tabindex="-1"></a>19 TableS2_QTL_Bay_2017.txt</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb84-1"><a href="week-3--working-with-files-part-2.html#cb84-1" tabindex="-1"></a>$ wc -l TableS2_QTL_Bay_2017.txt</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb85-1"><a href="week-3--working-with-files-part-2.html#cb85-1" tabindex="-1"></a>19 TableS2_QTL_Bay_2017.txt</span></code></pre></div>
 <p>A workaround is to use <code>awk</code>. <code>Awk</code> is command line program that takes as input a set
 of instructions and one or more files. The instructions are executed on each line
 of the input file(s).</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb82-1"><a href="week-3--working-with-files-part-2.html#cb82-1" tabindex="-1"></a>$ awk &#39;{print NR;}&#39; TableS2_QTL_Bay_2017.txt | tail -1</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb86-1"><a href="week-3--working-with-files-part-2.html#cb86-1" tabindex="-1"></a>$ awk &#39;{print NR;}&#39; TableS2_QTL_Bay_2017.txt | tail -1</span></code></pre></div>
 <p><code>Awk</code> can also search within a file like <code>grep</code> can. Let’s see if there are any significant QTL loci in the chromosome “chrXIV”</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb83-1"><a href="week-3--working-with-files-part-2.html#cb83-1" tabindex="-1"></a>$ awk &#39;/chrXIV/&#39; TableS2_QTL_Bay_2017.txt</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb87-1"><a href="week-3--working-with-files-part-2.html#cb87-1" tabindex="-1"></a>$ awk &#39;/chrXIV/&#39; TableS2_QTL_Bay_2017.txt</span></code></pre></div>
 <p>This chromosome had two significant QTL Loci for mate choice and morphology.</p>
 <p>When to use awk?</p>
 <ul>

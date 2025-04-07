@@ -833,7 +833,7 @@ return to the shell.
 Now you've written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `nano`.
 
 
-## Writing scripts
+## Writing scripts: Bash
 
 A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
 
@@ -844,7 +844,6 @@ We're going to create a new file to put this command in. We'll call it `bad-read
 ```html
 $ nano bad-reads-script.sh
 ```
-
 
 Bad reads have a lot of N's, so we're going to look for  `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we're also going to get the one line above the sequence and the two lines below. We also want to look in all the files that end with `.fastq`, so we're going to use the `*` wildcard.
 
@@ -875,13 +874,62 @@ grep echo "Script finished!"
 ```
 If you run the bash bad-reads-script.sh command again and it will print out "Script finished!"
 
+## Writing scripts: Slurm
+You can also write scripts using a resource manager called "Slurm" (It is a reference to the show Futurama where there is a soda called slurm). Slurm can be really helpful for writing scripts and submitting jobs since you can schedule and run larger jobs. I use this personally in my own research. The set up is pretty similar. First let's create a simple script:
+
+```html
+nano HelloWorld.sh
+```
+For a slurm script we need more information in the header of our script so that it knows what account to run on and the amount of time you want to give to your job:
+
++  All scripts start with `#!/bin/bash`
++ The next line is your email address so you can get an email when your job finishes
++ Then add information on if you want an email for all notifications (began, ended, failed, etc)
++ Next is the name of the job, or job ID
++ The name of your error log file
++ The name of your output log file (usually the same name as your error)
++ The number of processors per task
++ The minimum number of nodes you need for your job. Small jobs don't need a lot of nodes/memory
++ The amount of memory for your job
++ The requested time for your job. Some jobs take a really long time, I had one run for several months! For this class you only need to put in 90 minutes.
++ The partition to submit to, high2 is the one we will be using
+
+After those headers you write out your script!
+
+```html
+#!/bin/bash
+#SBATCH --mail-user=mlarmstrong@ucdavis.edu         # YOUR EMAIL ADDRESS
+#SBATCH --mail-type=ALL                         # NOTIFICATIONS OF SLURM JOB STATUS - ALL, NONE, BEGIN, END, FAIL, REQUEUE
+#SBATCH -J HelloWorld                           # JOB ID
+#SBATCH -e HelloWorld.j%j.err                   # STANDARD ERROR FILE TO WRITE TO
+#SBATCH -o HelloWorld.j%j.out                   # STANDARD OUTPUT FILE TO WRITE TO
+#SBATCH -c 1                                    # NUMBER OF PROCESSORS PER TASK
+#SBATCH --ntasks=1                              # MINIMUM NUMBER OF NODES TO ALLOCATE TO JOB
+#SBATCH --mem=1Gb                               # MEMORY POOL TO ALL CORES
+#SBATCH --time=00-00:11:00                      # REQUESTED WALL TIME
+#SBATCH -p high2                               # PARTITION TO SUBMIT TO
+
+echo "Hello World!" > hello_world_output.txt
+```
+Then when you are ready to run your job you type
+```html
+sbatch HelloWorld.sh
+```
+
+Want to check the status of your job? Type  `squeue -u `yourusername`
+Once your job is done, type `ls`. There should be a new text file in your directory called  `hello_world_output.txt`. What does it say?
+
+```html
+cat hello_world_output.txt
+```
+More information on slurm scripts in on the hpc webpage: https://hpc.ucdavis.edu/faq/slurm
 
 ## Group Work Activity- Writing your own script
 modified from <https://www.cyberciti.biz/faq/hello-world-bash-shell-script/>
 
-Now let's work in small groups to write our own scripts. The script should be called "hello.sh" and you  want it to say "Hello World! Isn't genomics so fun?" 
+Now let's work in small groups to write our own slurm scripts. The script should be called "hello.sh" and you want it to write a text file that says "Hello World! Isn't genomics so fun?" 
 
-Remember your script should start with `#!/bin/bash`. Submit a copy of your script and a screenshot of what happens when your script finishes on canvas under the 'Assignments' tab for 'Week 3: Writing your own script'.
+Remember your script should start with `#!/bin/bash`. Submit a copy of your script on canvas under the 'Assignments' tab for 'Week 3: Writing your own script'.
 
 ## Key Points
 

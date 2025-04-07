@@ -61,3 +61,5 @@ genotype-likelihoods
 group-work-activity--calling-variants-at-a-larger-scale
 key-points-3
 week-4--what-is-a-genetic-variant
+writing-scripts-bash
+writing-scripts-slurm

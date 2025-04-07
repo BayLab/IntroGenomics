@@ -196,7 +196,7 @@ $ ls
 It should be empty because we just created it and haven't put anything in it yet. Next class we will learn to work with files!
 
 
-Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text)
+Let's look at some of the options for the `ls` function using the `man` command (note this will print out several lines of text). `man` (short for manual) displays detailed documentation (also referred as man page or man file) for `bash` commands. It is a powerful resource to explore bash commands, understand their usage and flags. Some manual files are very long. You can scroll through the file using your keyboard’s down arrow or use the Space key to go forward one page and the `b` key to go backwards one page. When you are done reading, hit `q` to quit.
 
 ```html
 $ man ls

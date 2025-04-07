@@ -249,7 +249,9 @@ This will generate two files, one with a .arg extension, this has a record of th
 
 
 ## Group Work Activity- Calling Variants at a Larger Scale
-For this exercise we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. Submit the commands you ran, starting at making the raw_data directory, for this activity on canvas under the 'Assignments' tab for 'Week 4: Calling Variants'.
+For this exercise we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then move everything that we generated into a folder called `old_outputs`. 
+
+Now you can write your own slurm script to call genetic variants. Use the code above to help you process everything in one single script. Make a directory for the `trimmed_reads` and `sam_bam` files each. Submit a copy of your script for this activity on canvas under the 'Assignments' tab for 'Week 4: Calling Variants'.
 
 
 ## Key Points
