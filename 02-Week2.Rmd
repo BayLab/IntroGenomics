@@ -15,6 +15,7 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 We will be following some of the data carpentry tutorial again (Copyright 2016 @ Software Carpentry) "Introduction to the command line for genomics". We have made some modifications to the data carpentry tutorial to fit our course. 
 
 ## Main Objectives:
+- Learn the general sequencing pipeline 
 - Learn how to use navigational shortcuts and repeat recently used commands to make coding more efficient
 - Learn how to view and work with hidden directories and hidden files
 - Learn how to view and search file contents
