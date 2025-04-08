@@ -61,6 +61,16 @@ Another navigational shortcut that can be really helpful is just hitting the up 
 
 
 Now let's download some data to work with! 
+## Sequencing Pipeline
+To give you some context on the data we are working with today let's talk about sequencing! It is important to understand the Illumina sequencing pipeline that produced the fastq files we will be working with. This video from Illumina explains the steps well, and I highly recommend checking it out: https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW. The sequencing workflow involves library preparation, cluster generation, sequencing and data analysis. We won't get into the details of library preparation and cluster generation today, but the video does a good job of explaining it!
+![](./figs/sequencing.jpeg)
+![](./figs/illumina-screenshot.png)
+
+Below is also a figure highlighting the different steps of illumina sequencing, starting with the randomly fragmented genomic DNA and ending with sequence data! The figure is from this paper if you want to see more: https://www.sciencedirect.com/science/article/pii/S1359644608001244#fig3 
+
+![Figure 3. Illumina/Solexa process overview. Genomic DNA is randomly fragmented and adapters are added to each fragment end (a). Single-stranded fragments are then attached randomly inside flow cells (b). Bridge amplification is performed to generate double-stranded fragments (c). Following repeated cycles of denaturation and bridge amplification, millions of DNA copies are present in each flow cell (d). DNA sequence is determined with four-labeled reversible terminators primers and polymerase (e). Unincorporated terminators are washed, and the sequence is determined in each flow cell following laser excitation. The blocked 3′ terminus and fluorophore are removed from the incorporated base and the cycle is repeated (figure adapted from http://www.illumina.com).](./figs/illumina.png)
+After we get our sequencing data back in .fq format, we can then use the package "fastqc" to process that data to fastq files which will help us understand the quality of of sequences. Now let's talk about those files!
+
 
 ## Details on the FASTQ format
 A fastq file is a text file with information on the quality of the sequence data
@@ -75,6 +85,10 @@ include...
 |2|The actual DNA sequence|
 |3|Always begins with a '+' and sometimes the same info in line 1|
 |4|Has a string of characters which represent the quality (phred) scores; must have same number of characters as line 2|
+
+With a full dataset you will also get an html file for each sample that give you more visual representations of your sample quality. These screenshots of a good and bad QC come from tutorials from the bioinformatics core linked here: https://bioinfo-core.org/index.php/9th_Discussion-28_October_2010 We will not have these visuals for our dataset today, but it is helpful to know what else you'd be working with if this was your own dataset!
+
+![](./figs/QC_score.png)
 
 
 ## Our data set: FASTQ files

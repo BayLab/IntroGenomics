@@ -278,7 +278,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="week-2--working-with-files.html#cb6-1" tabindex="-1"></a>$ cd `yourdirectory`</span>
 <span id="cb6-2"><a href="week-2--working-with-files.html#cb6-2" tabindex="-1"></a>$ ls</span></code></pre></div>
 <p>Another navigational shortcut that can be really helpful is just hitting the up arrow on your keyboard. This pulls up the line of code that you ran recently! You can keep hitting the up arrow until you get to a line you want. This can help you save time since you won’t need to retype long lines of code over and over again.</p>
-<p>Now let’s download some data to work with!</p>
+<p>Now let’s download some data to work with!
+## Sequencing Pipeline
+To give you some context on the data we are working with today let’s talk about sequencing! It is important to understand the Illumina sequencing pipeline that produced the fastq files we will be working with. This video from Illumina explains the steps well, and I highly recommend checking it out: <a href="https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW" class="uri">https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW</a>. The sequencing workflow involves library preparation, cluster generation, sequencing and data analysis. We won’t get into the details of library preparation and cluster generation today, but the video does a good job of explaining it!
+<img src="figs/sequencing.jpeg" />
+<img src="figs/illumina-screenshot.png" /></p>
+<p>Below is also a figure highlighting the different steps of illumina sequencing, starting with the randomly fragmented genomic DNA and ending with sequence data! The figure is from this paper if you want to see more: <a href="https://www.sciencedirect.com/science/article/pii/S1359644608001244#fig3" class="uri">https://www.sciencedirect.com/science/article/pii/S1359644608001244#fig3</a></p>
+<p><img src="figs/illumina.png" alt="Figure 3. Illumina/Solexa process overview. Genomic DNA is randomly fragmented and adapters are added to each fragment end (a). Single-stranded fragments are then attached randomly inside flow cells (b). Bridge amplification is performed to generate double-stranded fragments (c). Following repeated cycles of denaturation and bridge amplification, millions of DNA copies are present in each flow cell (d). DNA sequence is determined with four-labeled reversible terminators primers and polymerase (e). Unincorporated terminators are washed, and the sequence is determined in each flow cell following laser excitation. The blocked 3′ terminus and fluorophore are removed from the incorporated base and the cycle is repeated (figure adapted from http://www.illumina.com)." />
+After we get our sequencing data back in .fq format, we can then use the package “fastqc” to process that data to fastq files which will help us understand the quality of of sequences. Now let’s talk about those files!</p>
 </div>
 <div id="details-on-the-fastq-format" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Details on the FASTQ format<a href="week-2--working-with-files.html#details-on-the-fastq-format" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -316,6 +323,8 @@ include…</p>
 </tr>
 </tbody>
 </table>
+<p>With a full dataset you will also get an html file for each sample that give you more visual representations of your sample quality. These screenshots of a good and bad QC come from tutorials from the bioinformatics core linked here: <a href="https://bioinfo-core.org/index.php/9th_Discussion-28_October_2010" class="uri">https://bioinfo-core.org/index.php/9th_Discussion-28_October_2010</a> We will not have these visuals for our dataset today, but it is helpful to know what else you’d be working with if this was your own dataset!</p>
+<p><img src="figs/QC_score.png" /></p>
 </div>
 <div id="our-data-set-fastq-files" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Our data set: FASTQ files<a href="week-2--working-with-files.html#our-data-set-fastq-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>

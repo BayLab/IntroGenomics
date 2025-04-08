@@ -77,3 +77,4 @@ practice-exploring-a-dataframe
 subsetting-datasets-logicals
 class-activity-exploring-data-in-r-practice-subsetting-datasetslogicals
 group-work-activity-practice-exploring-data-in-r
+sequencing-pipeline
