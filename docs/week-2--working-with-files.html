@@ -162,13 +162,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#main-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Main Objectives:</a></li>
 <li class="chapter" data-level="3.2" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#navigational-shortcuts"><i class="fa fa-check"></i><b>3.2</b> Navigational shortcuts</a></li>
-<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.3</b> Details on the FASTQ format</a></li>
-<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.4</b> Our data set: FASTQ files</a></li>
-<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.5</b> Wildcards</a></li>
-<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.6</b> Command History</a></li>
-<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.7</b> Examining Files</a></li>
-<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.8</b> Group Work Activity- Examining a Fastq File</a></li>
-<li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.9</b> Key Points</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#sequencing-pipeline"><i class="fa fa-check"></i><b>3.3</b> Sequencing Pipeline</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.4</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.5</b> Our data set: FASTQ files</a></li>
+<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.6</b> Wildcards</a></li>
+<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.7</b> Command History</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.8</b> Examining Files</a></li>
+<li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.9</b> Group Work Activity- Examining a Fastq File</a></li>
+<li class="chapter" data-level="3.10" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.10</b> Key Points</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html"><i class="fa fa-check"></i><b>4</b> Week 3- Working with Files Part 2</a>
 <ul>
@@ -279,17 +280,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="week-2--working-with-files.html#cb6-1" tabindex="-1"></a>$ cd `yourdirectory`</span>
 <span id="cb6-2"><a href="week-2--working-with-files.html#cb6-2" tabindex="-1"></a>$ ls</span></code></pre></div>
 <p>Another navigational shortcut that can be really helpful is just hitting the up arrow on your keyboard. This pulls up the line of code that you ran recently! You can keep hitting the up arrow until you get to a line you want. This can help you save time since you won’t need to retype long lines of code over and over again.</p>
-<p>Now let’s download some data to work with!
-## Sequencing Pipeline
-To give you some context on the data we are working with today let’s talk about sequencing! It is important to understand the Illumina sequencing pipeline that produced the fastq files we will be working with. This video from Illumina explains the steps well, and I highly recommend checking it out: <a href="https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW" class="uri">https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW</a>. The sequencing workflow involves library preparation, cluster generation, sequencing and data analysis. We won’t get into the details of library preparation and cluster generation today, but the video does a good job of explaining it!
+<p>Now let’s download some data to work with!</p>
+</div>
+<div id="sequencing-pipeline" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Sequencing Pipeline<a href="week-2--working-with-files.html#sequencing-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To give you some context on the data we are working with today let’s talk about sequencing! It is important to understand the Illumina sequencing pipeline that produced the fastq files we will be working with. This video from Illumina explains the steps well, and I highly recommend checking it out: <a href="https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW" class="uri">https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW</a>. The sequencing workflow involves library preparation, cluster generation, sequencing and data analysis. We won’t get into the details of library preparation and cluster generation today, but the video does a good job of explaining it!
 <img src="figs/sequencing.jpeg" />
 <img src="figs/illumina-screenshot.png" /></p>
 <p>Below is also a figure highlighting the different steps of illumina sequencing, starting with the randomly fragmented genomic DNA and ending with sequence data! The figure is from this paper if you want to see more: <a href="https://www.sciencedirect.com/science/article/pii/S1359644608001244#fig3" class="uri">https://www.sciencedirect.com/science/article/pii/S1359644608001244#fig3</a></p>
 <p><img src="figs/illumina.png" alt="Figure 3. Illumina/Solexa process overview. Genomic DNA is randomly fragmented and adapters are added to each fragment end (a). Single-stranded fragments are then attached randomly inside flow cells (b). Bridge amplification is performed to generate double-stranded fragments (c). Following repeated cycles of denaturation and bridge amplification, millions of DNA copies are present in each flow cell (d). DNA sequence is determined with four-labeled reversible terminators primers and polymerase (e). Unincorporated terminators are washed, and the sequence is determined in each flow cell following laser excitation. The blocked 3′ terminus and fluorophore are removed from the incorporated base and the cycle is repeated (figure adapted from http://www.illumina.com)." />
 After we get our sequencing data back in .fq format, we can then use the package “fastqc” to process that data to fastq files which will help us understand the quality of of sequences. Now let’s talk about those files!</p>
 </div>
-<div id="details-on-the-fastq-format" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Details on the FASTQ format<a href="week-2--working-with-files.html#details-on-the-fastq-format" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="details-on-the-fastq-format" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Details on the FASTQ format<a href="week-2--working-with-files.html#details-on-the-fastq-format" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A fastq file is a text file with information on the quality of the sequence data</p>
 <p>Although it looks complicated (and it is), it’s easy to understand the
 <a href="https://knowledge.illumina.com/software/general/software-general-reference_material-list/000002211">fastq</a> format with a little decoding. Some rules about the format
@@ -327,8 +330,8 @@ include…</p>
 <p>With a full dataset you will also get an html file for each sample that give you more visual representations of your sample quality. These screenshots of a good and bad QC come from tutorials from the bioinformatics core linked here: <a href="https://bioinfo-core.org/index.php/9th_Discussion-28_October_2010" class="uri">https://bioinfo-core.org/index.php/9th_Discussion-28_October_2010</a> We will not have these visuals for our dataset today, but it is helpful to know what else you’d be working with if this was your own dataset!</p>
 <p><img src="figs/QC_score.png" /></p>
 </div>
-<div id="our-data-set-fastq-files" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Our data set: FASTQ files<a href="week-2--working-with-files.html#our-data-set-fastq-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="our-data-set-fastq-files" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Our data set: FASTQ files<a href="week-2--working-with-files.html#our-data-set-fastq-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the command <code>wget</code> which needs a link to the file that we want to download. If there’s a file saved on a website somewhere (anywhere on the internet) <code>wget</code> will download it for you. If our data file is on github, which is where most of our data will be stored, we’ll use the command <code>git-clone</code></p>
 <p>In this example we’re going to download all the material in our individual directory. Navigate there and then type the following command:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="week-2--working-with-files.html#cb7-1" tabindex="-1"></a>$ wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week2.tar.gz</span></code></pre></div>
@@ -338,10 +341,10 @@ include…</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="week-2--working-with-files.html#cb9-1" tabindex="-1"></a>untrimmed_fastq sra_metadata TableS2_QTL_Bay_2017.txt</span></code></pre></div>
 <p>Now that we know how to navigate around our directory structure, let’s start working with our sequencing files. We did a sequencing experiment and have two results files, which are stored in our <code>untrimmed_fastq</code> directory.</p>
 </div>
-<div id="wildcards" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Wildcards<a href="week-2--working-with-files.html#wildcards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="wildcards" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Wildcards<a href="week-2--working-with-files.html#wildcards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Navigate to your <code>untrimmed_fastq</code> directory in your week2 individual directory</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="week-2--working-with-files.html#cb10-1" tabindex="-1"></a>$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="week-2--working-with-files.html#cb10-1" tabindex="-1"></a>$ cd /group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq</span></code></pre></div>
 <p>We are interested in looking at the FASTQ files in this directory. We can list
 all files with the .fastq extension using the command:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="week-2--working-with-files.html#cb11-1" tabindex="-1"></a>$ ls *.fastq</span></code></pre></div>
@@ -388,8 +391,8 @@ yet. Try searching the internet for information about Unix wildcards to find
 what you need to solve the bonus problem.</p>
 </blockquote>
 </div>
-<div id="command-history" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Command History<a href="week-2--working-with-files.html#command-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="command-history" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Command History<a href="week-2--working-with-files.html#command-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you want to repeat a command that you’ve run recently, you can access previous
 commands using the up arrow on your keyboard to go back to the most recent
 command. Likewise, the down arrow takes you forward in the command history.</p>
@@ -416,8 +419,8 @@ You will be glad you learned this when you need to re-run very complicated comma
 For more information on advanced usage of <code>history</code>, read section 9.3 of
 <a href="https://www.gnu.org/software/bash/manual/html_node/index.html">Bash manual</a>.</p>
 </div>
-<div id="examining-files" class="section level2 hasAnchor" number="3.7">
-<h2><span class="header-section-number">3.7</span> Examining Files<a href="week-2--working-with-files.html#examining-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="examining-files" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Examining Files<a href="week-2--working-with-files.html#examining-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?</p>
 <p>One way to examine a file is to print out all of the
@@ -428,7 +431,7 @@ contents using the program <code>cat</code>.</p>
 <blockquote>
 <h2 id="class-exercise-2" class="hasAnchor">Class Exercise 2<a href="week-2--working-with-files.html#class-exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Print out the contents of the <code>~/group/rbaygrp/eve198-genomics/'yourdirectory'/Week2/untrimmed_fastq/SRR097977.fastq</code> file. What is the last line of the file?</li>
+<li>Print out the contents of the <code>/group/rbaygrp/eve198-genomics/'yourdirectory'/Week2/untrimmed_fastq/SRR097977.fastq</code> file. What is the last line of the file?</li>
 <li>From your home directory, and without changing directories,
 use one short command to print the contents of all of the files in
 the <code>group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq</code> directory.</li>
@@ -565,11 +568,15 @@ much signal was captured for the base incorporation.</p>
 nucleotide call (<code>C</code>) is also very poor (<code>#</code> = a quality score of 2). This is indeed a very
 bad read.</p>
 </div>
-<div id="group-work-activity--examining-a-fastq-file" class="section level2 hasAnchor" number="3.8">
-<h2><span class="header-section-number">3.8</span> Group Work Activity- Examining a Fastq File<a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="group-work-activity--examining-a-fastq-file" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Group Work Activity- Examining a Fastq File<a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Navigate to eve198-genomics and copy the ‘CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz’ file in the week2_activity directory to your individual directory.</p>
-<p>Next you will need to unzip the fastq file. To do this we will use the command “gunzip”. This unzips a gzipped file. “gzip” zips a file again. It will take a second since this is a larger file than our previous examples. It is actually an urchin sample from a recent genomics project Rachael and I worked on!</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb41-1"><a href="week-2--working-with-files.html#cb41-1" tabindex="-1"></a>gunzip CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz</span></code></pre></div>
+<p>`<code>html cd .. #go back out of your individual directory cd week2_activity cp *fastqc.gz ../</code>yourdirectory`</p>
+<pre><code>
+Next you will need to unzip the fastq file. To do this we will use the command &quot;gunzip&quot;. This unzips a gzipped file. &quot;gzip&quot; zips a file again. It will take a second since this is a larger file than our previous examples. It is actually an urchin sample from a recent genomics project Rachael and I worked on! 
+
+```html
+gunzip CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz</code></pre>
 <p>Then answer the following questions and submit them to the “Week 2: Examining Files” assignment on canvas. I would not recommend using ‘less’ or ‘cat’ on this file due to its size.</p>
 <ol style="list-style-type: decimal">
 <li>Write out the first two lines of CCGPMC004_M0D060025C_S150_L003_R1_001.fastq</li>
@@ -580,8 +587,8 @@ bad read.</p>
 <img src="figs/scoretable1.jpg" alt="Score Table" />
 <img src="figs/scoretable2.jpg" alt="Score Table" /></p>
 </div>
-<div id="key-points-1" class="section level2 hasAnchor" number="3.9">
-<h2><span class="header-section-number">3.9</span> Key Points<a href="week-2--working-with-files.html#key-points-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="key-points-1" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Key Points<a href="week-2--working-with-files.html#key-points-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>The /, ~, and .. characters represent important navigational shortcuts.</p></li>
 <li><p>The <code>history</code> command and the up arrow on your keyboard can be used to repeat recently used commands.</p></li>
@@ -604,10 +611,10 @@ Bonus: <code>ls /usr/bin/*[ac]*</code></li>
 <h2 id="exercise-2-solution" class="hasAnchor">Exercise 2: Solution<a href="week-2--working-with-files.html#exercise-2-solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>The last line of the file is <code>C:CCC::CCCCCCCC&lt;8?6A:C28C&lt;608'&amp;&amp;&amp;,'$</code>.</li>
-<li><code>cat ./~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq/*</code>
-## Exercise 3: Solution
-<code>CAC</code></li>
+<li><code>cat ./~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq/*</code></li>
 </ol>
+<h2 id="exercise-3-solution" class="hasAnchor">Exercise 3: Solution<a href="week-2--working-with-files.html#exercise-3-solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>CAC</code></p>
 </blockquote>
 </blockquote>
 </p>

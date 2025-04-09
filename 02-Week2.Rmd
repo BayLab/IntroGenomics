@@ -62,6 +62,7 @@ Another navigational shortcut that can be really helpful is just hitting the up 
 
 
 Now let's download some data to work with! 
+
 ## Sequencing Pipeline
 To give you some context on the data we are working with today let's talk about sequencing! It is important to understand the Illumina sequencing pipeline that produced the fastq files we will be working with. This video from Illumina explains the steps well, and I highly recommend checking it out: https://youtu.be/fCd6B5HRaZ8?si=68ZqTO2p2wRX-tUW. The sequencing workflow involves library preparation, cluster generation, sequencing and data analysis. We won't get into the details of library preparation and cluster generation today, but the video does a good job of explaining it!
 ![](./figs/sequencing.jpeg)
@@ -118,7 +119,7 @@ Navigate to your `untrimmed_fastq` directory in your week2 individual directory
 
 
 ```html
-$ cd ~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
+$ cd /group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq
 ```
 
 
@@ -285,7 +286,7 @@ This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 > ## Class Exercise 2
 > 
-> 1. Print out the contents of the `~/group/rbaygrp/eve198-genomics/'yourdirectory'/Week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
+> 1. Print out the contents of the `/group/rbaygrp/eve198-genomics/'yourdirectory'/Week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
 > 2.  From your home directory, and without changing directories,
 > use one short command to print the contents of all of the files in
 > the `group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq` directory.
@@ -481,6 +482,12 @@ bad read.
 ## Group Work Activity- Examining a Fastq File
 Navigate to eve198-genomics and copy the 'CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz' file in the week2_activity directory to your individual directory. 
 
+``html
+cd .. #go back out of your individual directory
+cd week2_activity
+cp *fastqc.gz ../`yourdirectory`
+```
+
 Next you will need to unzip the fastq file. To do this we will use the command "gunzip". This unzips a gzipped file. "gzip" zips a file again. It will take a second since this is a larger file than our previous examples. It is actually an urchin sample from a recent genomics project Rachael and I worked on! 
 
 ```html
@@ -516,6 +523,7 @@ https://help.basespace.illumina.com/files-used-by-basespace/quality-scores
 > > ## Exercise 2: Solution
 > > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
 > > 2. `cat ./~/group/rbaygrp/eve198-genomics/yourdirectory/week2/untrimmed_fastq/*`
+> > 
 > > ## Exercise 3: Solution
 > > `CAC`
 >
