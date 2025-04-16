@@ -25,11 +25,7 @@ contents of directories and files, but how do we manipulate files?
 
 ## Creating, moving, copying, and removing
 
-Now we can move around in the file structure, look at files, and search files. But what if we want to copy files or move
-them around or get rid of them? Most of the time, you can do these sorts of file manipulations without the command line,
-but there will be some cases (like when you're working with a remote computer like we are for this lesson) where it will be
-impossible. You'll also find that you may be working with hundreds of files and want to do similar manipulations to all 
-of those files. In cases like this, it's much faster to do these operations at the command line.
+Now we can move around in the file structure, look at files, and search files. But what if we want to copy files or move them around or get rid of them? Most of the time, you can do these sorts of file manipulations without the command line, but there will be some cases (like when you're working with a remote computer like we are for this lesson) where it will be impossible. You'll also find that you may be working with hundreds of files and want to do similar manipulations to all of those files. In cases like this, it's much faster to do these operations at the command line.
 
 ### Copying Files
 
