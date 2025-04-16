@@ -39,7 +39,7 @@ and change the file permissions so that we can read from, but not write to, the 
 
 First, let's make a copy of one of our FASTQ files using the `cp` command. 
 
-Navigate to the `~/data_week2/Week2/data_week2/untrimmed_fastq` directory and enter:
+Navigate to the your directory, then move into your Week2/untrimmedfastq directory with the fastq files we worked with last week. Once you are there, type:
 
 ```html
 $ cp SRR098026.fastq SRR098026-copy.fastq
@@ -58,7 +58,7 @@ called `backup` where we'll store our backup data files.
 ### Creating Directories
 
 The `mkdir` command is used to make a directory. Enter `mkdir`
-followed by a space, then the directory name you want to create:
+followed by a space, then the directory name you want to create.
 
 ```html
 $ mkdir backup
@@ -163,8 +163,7 @@ rm: remove write-protected regular file ‘SRR098026-backup.fastq’?
 You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra 
 measure of security, as there is one more step between us and deleting our data files.
 
-**Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn't
-just nicely put the files in the Trash. They're really gone.
+**Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn't just nicely put the files in the Trash. They're really gone.
 
 By default, `rm` will not delete directories. You can tell `rm` to
 delete a directory using the `-r` (recursive) option. Let's delete the backup directory
@@ -185,7 +184,7 @@ you will be asked whether you want to override your permission settings.
 >
 > Starting in 'yourdirectory', navigate to 'cd /week2/untrimmed_fastq' and do the following:
 >
-> 1. Make sure that you have deleted your backup directory and all files it contains. 
+> 1. Make sure that you have deleted your backup directory and all files it contains since we are going to do it again but with less commands!
 >
 > 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't earned yet how to do this with a wildcard.)  
 >
@@ -325,15 +324,6 @@ $ wc -l bad_reads.txt
 ```html
 537 bad_reads.txt
 ```
-
-
-> ### Class Exercise 3
->
-> 1. How many sequences are there in `SRR098026.fastq`? Remember that every sequence is formed by four lines.
->
->
-> 2. How many sequences in `SRR098026.fastq` contain at least 3 consecutive Ns?
->
 
 We might want to search multiple FASTQ files for sequences that match our search pattern.
 However, we need to be careful, because each time we use the `>` command to redirect output
@@ -672,10 +662,23 @@ $ for filename in *.txt
 > done
 ```
 
-> ### Class Exercise 4
->
-> Remove `_2019` from all of the `.txt` files. 
->
+What if we put the wrong year and actually want to remove the 2019 from all of our .txt files?
+
+```html
+ $ for filename in *_2019.txt
+> do
+> name=$(basename ${filename} _2019.txt)
+> mv ${filename} ${name}.txt
+> done
+```
+Now write your own for loop it to have `_2025` at the end of each of our .txt files!
+```html
+$ for filename in *.txt
+> do
+> name=$(basename ${filename} .txt)
+> mv ${filename}  ${name}_2025.txt
+> done
+```
 
 ## Moving and Downloading Data
 
@@ -1003,45 +1006,6 @@ Remember your script should start with `#!/bin/bash`. Submit a copy of your scri
 > > SRR098026.fastq-@SRR098026.158 HWUSI-EAS1599_1:2:1:1:1505 length=35
 > > SRR098026.fastq:GNNNNNNNNCAAAGTTGATCNNNNNNNNNTGTGCG
 > >     ```
-> > 
->> ### Exercise 3: Solution
->>
->> 1. 
->> ```html
->> $ wc -l SRR098026.fastq
->> ```
->> 
->>
->> ```html
->> 996
->> ```
->> Now you can divide this number by four to get the number of sequences in your fastq file
->>2.
->> ```html
->> $ grep NNN SRR098026.fastq > bad_reads.txt
->> $ wc -l bad_reads.txt
->> ```
->> 
->> ```html
->> 249
->> ```
->> 
->>
->> ### Exercise 4: Solution
->>
->> ```html
->> $ for filename in *_2019.txt
->> > do
->> > name=$(basename ${filename} _2019.txt)
->> > mv ${filename} ${name}.txt
->> > done
->> ```
->> 
->>
-> 
-</p>
-</details>
-&nbsp;
 
 
 ## Additional Information on working with files: 
