@@ -258,37 +258,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This lesson is modified from materials compiled by Serena Caplins from the STEMinist_R lessons produced by several UC Davis graduate student and which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a>.</p>
 <div id="lesson-1-orientation-to-r" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Lesson 1: Orientation to R<a href="week-5--welcome-to-the-r-environment.html#lesson-1-orientation-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>First let’s navigate to our R studio on Farm OnDemand! After we start it up we will want to create a new file called “Week5-IntroR.R” to type our scripts for today. Slides for this week are found here: X</p>
-<p>R can be used for basic arithmetic:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-5--welcome-to-the-r-environment.html#cb1-1" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">10</span><span class="sc">+</span><span class="dv">23</span></span></code></pre></div>
+<p>First let’s navigate to our R studio on Farm OnDemand! Launch your session with the information shown below
+<img src="figs/R_ondemand.png" alt="Fill out this information" /></p>
+<p>After we start it up we will want to create a new file called “Week5-IntroR.R” to type our scripts for today.</p>
+<p>To do this, we will click <code>File</code>, <code>New File</code> then <code>R script</code> . We will just be writing base scripts not R markdown scripts for the time being. Name your file with your <code>name-Week5-introR</code></p>
+<p><code>#</code> before a sentence comments out what you want before you write code. Without a <code>#</code> R will think what you are writing needs to be run as a command! I have used comments in this example to write what the script is for. The top left is the script, the bottom left is the terminal window where code and outputs will be typed, the top right is your environment (yours should be empty and won’t have the ‘git’ option) and the bottom right is where files/plots/etc will go.
+<img src="figs/Rwindow.png" alt="R window" />
+This is what your R window could look like while running popgen code later into the class!
+<img src="figs/Rwindow2.png" alt="R window- population structure example" /></p>
+<p>R can be used for basic arithmetic. Type this into your script and hit enter:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-5--welcome-to-the-r-environment.html#cb1-1" tabindex="-1"></a><span class="co">#adding prompt</span></span>
+<span id="cb1-2"><a href="week-5--welcome-to-the-r-environment.html#cb1-2" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">10</span><span class="sc">+</span><span class="dv">23</span></span></code></pre></div>
 <pre><code>## [1] 38</code></pre>
 <p>It can also store values in variables:</p>
 <p>You can assign an object using an assignment operator <code>&lt;-</code> or <code>=</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-5--welcome-to-the-r-environment.html#cb3-1" tabindex="-1"></a>number<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb3-2"><a href="week-5--welcome-to-the-r-environment.html#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="week-5--welcome-to-the-r-environment.html#cb3-3" tabindex="-1"></a>numbers<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-5--welcome-to-the-r-environment.html#cb3-1" tabindex="-1"></a><span class="co">#storing variables</span></span>
+<span id="cb3-2"><a href="week-5--welcome-to-the-r-environment.html#cb3-2" tabindex="-1"></a>number<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb3-3"><a href="week-5--welcome-to-the-r-environment.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="week-5--welcome-to-the-r-environment.html#cb3-4" tabindex="-1"></a>numbers<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>)</span></code></pre></div>
 <p>You can see your assigned object by typing the name you gave it.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-5--welcome-to-the-r-environment.html#cb4-1" tabindex="-1"></a>number</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-5--welcome-to-the-r-environment.html#cb4-1" tabindex="-1"></a><span class="co">#assigned objects</span></span>
+<span id="cb4-2"><a href="week-5--welcome-to-the-r-environment.html#cb4-2" tabindex="-1"></a>number</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="week-5--welcome-to-the-r-environment.html#cb6-1" tabindex="-1"></a>numbers</span></code></pre></div>
 <pre><code>## [1] 10 11 12 14 16</code></pre>
 <p>Objects can be numbers or characters:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-5--welcome-to-the-r-environment.html#cb8-1" tabindex="-1"></a>cat<span class="ot">&lt;-</span><span class="st">&quot;meow&quot;</span></span>
-<span id="cb8-2"><a href="week-5--welcome-to-the-r-environment.html#cb8-2" tabindex="-1"></a>dog<span class="ot">&lt;-</span><span class="st">&quot;woof&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-5--welcome-to-the-r-environment.html#cb8-1" tabindex="-1"></a><span class="co">#objects as characters</span></span>
+<span id="cb8-2"><a href="week-5--welcome-to-the-r-environment.html#cb8-2" tabindex="-1"></a>cat<span class="ot">&lt;-</span><span class="st">&quot;meow&quot;</span></span>
+<span id="cb8-3"><a href="week-5--welcome-to-the-r-environment.html#cb8-3" tabindex="-1"></a>dog<span class="ot">&lt;-</span><span class="st">&quot;woof&quot;</span></span></code></pre></div>
 <p>We can use colons to get sequences of numbers:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-5--welcome-to-the-r-environment.html#cb9-1" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-5--welcome-to-the-r-environment.html#cb9-1" tabindex="-1"></a><span class="co">#sequence of numbers</span></span>
+<span id="cb9-2"><a href="week-5--welcome-to-the-r-environment.html#cb9-2" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span></code></pre></div>
 <p>Vectors can also include characters (in quotes):
 <code>c()</code>=concatenate, aka link things together!</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-5--welcome-to-the-r-environment.html#cb10-1" tabindex="-1"></a>animals<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;woof&quot;</span>, <span class="st">&quot;meow&quot;</span>, <span class="st">&quot;hiss&quot;</span>, <span class="st">&quot;baa&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-5--welcome-to-the-r-environment.html#cb10-1" tabindex="-1"></a><span class="co">#link things together with this code</span></span>
+<span id="cb10-2"><a href="week-5--welcome-to-the-r-environment.html#cb10-2" tabindex="-1"></a>animals<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;woof&quot;</span>, <span class="st">&quot;meow&quot;</span>, <span class="st">&quot;hiss&quot;</span>, <span class="st">&quot;baa&quot;</span>)</span></code></pre></div>
 </div>
 <div id="manipulating-a-vector-object" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Manipulating a vector object<a href="week-5--welcome-to-the-r-environment.html#manipulating-a-vector-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can get summaries of vectors with <code>summary()</code></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-5--welcome-to-the-r-environment.html#cb11-1" tabindex="-1"></a><span class="fu">summary</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-5--welcome-to-the-r-environment.html#cb11-1" tabindex="-1"></a><span class="co">#summarize what you have done so far</span></span>
+<span id="cb11-2"><a href="week-5--welcome-to-the-r-environment.html#cb11-2" tabindex="-1"></a><span class="fu">summary</span>(n)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.00   25.75   50.50   50.50   75.25  100.00</code></pre>
 <p>We can see how long a vector is with <code>length()</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-5--welcome-to-the-r-environment.html#cb13-1" tabindex="-1"></a><span class="fu">length</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-5--welcome-to-the-r-environment.html#cb13-1" tabindex="-1"></a><span class="co">#how long is vector n</span></span>
+<span id="cb13-2"><a href="week-5--welcome-to-the-r-environment.html#cb13-2" tabindex="-1"></a><span class="fu">length</span>(n)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 <p>You can use square brackets <code>[]</code> to get parts of vectors.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-5--welcome-to-the-r-environment.html#cb15-1" tabindex="-1"></a>n[<span class="dv">50</span>]</span></code></pre></div>
@@ -869,7 +884,7 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 </div>
 <div id="group-work-activity-practice-exploring-data-in-r" class="section level2 hasAnchor" number="6.12">
 <h2><span class="header-section-number">6.12</span> Group Work Activity: Practice Exploring Data in R<a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We are going to use the same iris dataset for our class activity this week and explore it more. Include copied text from your R script in your submission and answers to the following questions. Remember you can work in groups but everything is submitted individually. Go back to the iris dataset, which can be loaded with data(iris)</p>
+<p>We are going to use the same iris dataset for our class activity this week and explore it more. Include copied text from your R script that is relevant to the questions below in your submission and answers to the following questions. Remember you can work in groups but everything is submitted individually. Go back to the iris dataset, which can be loaded with data(iris)</p>
 <blockquote>
 <ul>
 <li>Q1. How many irises have sepals less than 5.5 cm?</li>

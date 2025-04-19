@@ -14,13 +14,23 @@ knitr::opts_chunk$set(echo = TRUE)
 This lesson is modified from materials compiled by Serena Caplins from the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git).
 
 ## Lesson 1: Orientation to R
-First let's navigate to our R studio on Farm OnDemand! After we start it up we will want to create a new file called "Week5-IntroR.R" to type our scripts for today. Slides for this week are found here: X
+First let's navigate to our R studio on Farm OnDemand! Launch your session with the information shown below
+![Fill out this information](./figs/R_ondemand.png)
 
 
-R can be used for basic arithmetic:
+After we start it up we will want to create a new file called "Week5-IntroR.R" to type our scripts for today.
+
+To do this, we will click `File`, `New File`  then `R script` . We will just be writing base scripts not R markdown scripts for the time being. Name your file with your `name-Week5-introR`
+
+`#` before a sentence comments out what you want before you write code. Without a `#` R will think what you are writing needs to be run as a command! I have used comments in this example to write what the script is for. The top left is the script, the bottom left is the terminal window where code and outputs will be typed, the top right is your environment (yours should be empty and won't have the 'git' option) and the bottom right is where files/plots/etc will go.
+![R window](./figs/Rwindow.png)
+This is what your R window could look like while running popgen code later into the class!
+![R window- population structure example](./figs/Rwindow2.png)
+
+R can be used for basic arithmetic. Type this into your script and hit enter:
 
 ```{r , echo=T}
-
+#adding prompt
 5+10+23
 
 ```
@@ -30,7 +40,7 @@ It can also store values in variables:
 
 You can assign an object using an assignment operator `<-` or  `=`.
 ```{r , echo=T}
-
+#storing variables
 number<-10
 
 numbers<-c(10, 11, 12, 14, 16)
@@ -38,7 +48,7 @@ numbers<-c(10, 11, 12, 14, 16)
 
 You can see your assigned object by typing the name you gave it.
 ```{r , echo=T}
-
+#assigned objects
 number
 
 numbers
@@ -47,7 +57,7 @@ numbers
 
 Objects can be numbers or characters:
 ```{r , echo=T}
-
+#objects as characters
 cat<-"meow"
 dog<-"woof"
 
@@ -57,7 +67,7 @@ dog<-"woof"
 
 We can use colons to get sequences of numbers:
 ```{r , echo=T}
-
+#sequence of numbers
 n<-1:100
 
 ```
@@ -65,7 +75,7 @@ n<-1:100
 Vectors can also include characters (in quotes): 
 `c()`=concatenate, aka link things together!
 ```{r , echo=T}
-
+#link things together with this code
 animals<-c("woof", "meow", "hiss", "baa")
 
 ```
@@ -74,14 +84,14 @@ animals<-c("woof", "meow", "hiss", "baa")
 
 We can get summaries of vectors with `summary()`
 ```{r , echo=T}
-
+#summarize what you have done so far
 summary(n)
 
 ```
 
 We can see how long a vector is with `length()`
 ```{r , echo=T}
-
+#how long is vector n
 length(n)
 
 ```  
@@ -462,7 +472,7 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 ```
 
 ## Group Work Activity: Practice Exploring Data in R
-We are going to use the same iris dataset for our class activity this week and explore it more. Include copied text from your R script in your submission and answers to the following questions. Remember you can work in groups but everything is submitted individually. Go back to the iris dataset, which can be loaded with data(iris)
+We are going to use the same iris dataset for our class activity this week and explore it more. Include copied text from your R script that is relevant to the questions below in your submission and answers to the following questions. Remember you can work in groups but everything is submitted individually. Go back to the iris dataset, which can be loaded with data(iris)
 
 > + Q1. How many irises have sepals less than 5.5 cm?
 > + Q2. Which iris individual has the largest petal length? What is the width of it's petal? 
