@@ -21,7 +21,7 @@ You'll find the lecture discussing the definition and identification of genetic 
 - Understand the difference between SAM and BAM file formats and their use
 - Learn how to call a genotype and quantify genotype likelihoods
 
-## Moving and Downloading Data
+## Step 1: Download data
 Below we'll show you some commands to download data onto your instance, or to move data between your computer and the cloud.
 
 ### Getting data from the cloud
@@ -81,7 +81,6 @@ We will be using wget to retrieve data from the class github, but if you want mo
 >
 >It did! Woo!
 
-## Step 1: Download data
 
 Download the data from the IntroGenomics_Data Week 4 repository on github in your individual directory. Make sure you are there first before you do the wget step!
 ```html
