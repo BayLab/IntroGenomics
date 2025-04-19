@@ -78,3 +78,13 @@ subsetting-datasets-logicals
 class-activity-exploring-data-in-r-practice-subsetting-datasetslogicals
 group-work-activity-practice-exploring-data-in-r
 sequencing-pipeline
+additional-information
+more-ways-to-work-with-files
+step-1-download-data
+tools-for-todays-class
+step-1.2-raw-read-quality-control
+step-2-trimming-to-remove-adapters
+step-3-building-an-index-of-our-genome
+step-4-map-reads-to-the-genome
+step-5-sam-to-bam-file-conversion
+step-6-genotype-likelihoods

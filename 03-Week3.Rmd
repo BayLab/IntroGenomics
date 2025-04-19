@@ -35,7 +35,7 @@ and change the file permissions so that we can read from, but not write to, the 
 
 First, let's make a copy of one of our FASTQ files using the `cp` command. 
 
-Navigate to the your directory, then move into your Week2/untrimmedfastq directory with the fastq files we worked with last week. Once you are there, type:
+Navigate to the your directory, then move into your Week2/untrimmed_fastq directory with the fastq files we worked with last week. Once you are there, type:
 
 ```html
 $ cp SRR098026.fastq SRR098026-copy.fastq
@@ -898,6 +898,7 @@ After those headers you write out your script!
 ```html
 #!/bin/bash
 #SBATCH --mail-user=mlarmstrong@ucdavis.edu         # YOUR EMAIL ADDRESS
+#SBATCH --account=rbay-eve198-genomics-grp    #we need this to specify what account we are using
 #SBATCH --mail-type=ALL                         # NOTIFICATIONS OF SLURM JOB STATUS - ALL, NONE, BEGIN, END, FAIL, REQUEUE
 #SBATCH -J HelloWorld                           # JOB ID
 #SBATCH -e HelloWorld.j%j.err                   # STANDARD ERROR FILE TO WRITE TO
