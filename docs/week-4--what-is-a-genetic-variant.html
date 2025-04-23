@@ -419,7 +419,6 @@ You may initially get an error message because fastqc doesn’t see the .fastq f
 <span id="cb21-9"><a href="week-4--what-is-a-genetic-variant.html#cb21-9" tabindex="-1"></a>done</span></code></pre></div>
 <p>You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we’re getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise.</p>
 <p>You’ll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let’s use <code>less</code> to look at one of these files using <code>less</code></p>
-<p>There are several columns of data in a sam file:</p>
 <blockquote>
 <h3 id="class-exercise-3" class="hasAnchor">Class Exercise 3<a href="week-4--what-is-a-genetic-variant.html#class-exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now let’s write a for loop to map the untrimmed files to the genome. How do the alignments compare to the trimmed ones we just did as a class?</p>
@@ -448,11 +447,11 @@ You may initially get an error message because fastqc doesn’t see the .fastq f
 <div class="sourceCode" id="cb24"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb24-1"><a href="week-4--what-is-a-genetic-variant.html#cb24-1" tabindex="-1"></a>cat bam.filelist</span></code></pre></div>
 <p>Run the following code to calculate genotype likelihoods</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb25-1"><a href="week-4--what-is-a-genetic-variant.html#cb25-1" tabindex="-1"></a></span>
-<span id="cb25-2"><a href="week-4--what-is-a-genetic-variant.html#cb25-2" tabindex="-1"></a>../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
+<span id="cb25-2"><a href="week-4--what-is-a-genetic-variant.html#cb25-2" tabindex="-1"></a>angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
 <p>This will generate two files, one with a .arg extension, this has a record of the script we ran to generate the output, and a .maf file that will give you the minor allele frequencies and is the main output file. If you see these two files, Yay!! We did it!</p>
 <p>We can change the parameters of the angsd genotype likelihoods command by altering the values next to <code>-SNP_pval</code>. If we remove the <code>-SNP_pval</code> command entirely we get ~72000 sites retained! Wow! That seems like a lot given our ~20% mapping rate. If you instead increase the p-value threshold to 1e-3 we find 3 SNPs.</p>
 <p>To see what the other parameters do you can run the following:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb26-1"><a href="week-4--what-is-a-genetic-variant.html#cb26-1" tabindex="-1"></a>../../angsd/angsd -h</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb26-1"><a href="week-4--what-is-a-genetic-variant.html#cb26-1" tabindex="-1"></a>angsd -h</span></code></pre></div>
 </div>
 <div id="group-work-activity--calling-variants-at-a-larger-scale" class="section level2 hasAnchor" number="5.9">
 <h2><span class="header-section-number">5.9</span> Group Work Activity- Calling Variants at a Larger Scale<a href="week-4--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
