@@ -259,7 +259,6 @@ You should see a bunch of text telling you all about how well our reads mapped t
 
 You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files using `less`
 
-There are several columns of data in a sam file:
 
 > ### Class Exercise 3
 > Now let's write a for loop to map the untrimmed files to the genome. How do the alignments compare to the trimmed ones we just did as a class? 
@@ -303,7 +302,7 @@ Run the following code to calculate genotype likelihoods
 
 ```html
 
-../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1
+angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1
 
 ```
 
@@ -314,7 +313,7 @@ We can change the parameters of the angsd genotype likelihoods command by alteri
 
 To see what the other parameters do you can run the following:
 ```html
-../../angsd/angsd -h
+angsd -h
 ```
 
 ## Group Work Activity- Calling Variants at a Larger Scale
