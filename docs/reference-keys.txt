@@ -105,3 +105,6 @@ tapply---per-type-apply
 exercise-2.3-apply-and-tapply
 class-exercise-2
 group-work-activity-palmer-penguins
+week-6--plotting-in-r
+class-exercise-1-1
+class-exercise-2-1
