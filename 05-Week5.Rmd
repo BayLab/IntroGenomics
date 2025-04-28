@@ -1,5 +1,5 @@
 ---
-  title: "05-Week5.Rmd"
+title: "05-Week5.Rmd"
 author: "M. Armstrong"
 date: "2025-04-24"
 output:
@@ -11,7 +11,7 @@ editor_options:
     wrap: 72
 ---
 
-```{r setup, include=FALSE}
+```{r setupq5, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -20,9 +20,15 @@ knitr::opts_chunk$set(echo = TRUE)
 This lesson is modified from materials compiled by Serena Caplins from
 the STEMinist_R lessons produced by several UC Davis graduate student
 and which can be found
-[here](https://github.com/ecalfee/STEMinist_R.git).
+[here](https://github.com/ecalfee/STEMinist_R.git). The lecture slides to introduce R more in depth are here: SLIDES
 
-## Lesson 1: Orientation to R
+## Main Objectives
+-   Learn how to use Rstudio through FarmOnDemand 
+-   Understand the different parts of the Rstudio window
+-   Learn how to work with objects in R and general R operations
+-   Learn how to manipulate data and explore a dataframe
+
+## Orientation to R
 
 First let's navigate to our R studio on Farm OnDemand! Launch your
 session with the information shown below ![Fill out this
@@ -550,7 +556,7 @@ week and explore it more. Include copied text from your R script that is
 relevant to the questions below in your submission and answers to the
 following questions. Remember you can work in groups but everything is
 submitted individually. Go back to the iris dataset, which can be loaded
-with data(iris)
+with `data(iris)` and submit code and answers for the following questions:
 
 > -   Q1. How many irises have sepals less than 5.5 cm?
 > -   Q2. Which iris individual has the largest petal length? What is
@@ -574,6 +580,14 @@ with data(iris)
 >     short values of this column, and set their values to 'short'
 >     (Short sepals are those less than 5.5 cm) How many plants with
 >     short sepals are there? How many long?
+
+
+
+## Key Points
+- Useful functions such as `install.packages()`, `library()` can help us upload packages and data from R, while other functions such as `str()`, `dim()`, and `unique()` can help us investigate dataframes
+- To look at our data we can use several commands, including `view()` or `data$columnofinterest` if you only want to look at one variable.
+- Manipulating data in R can be extremely helpful in the analysis stage, and we can get data on `mean()`, `min()`, `max()`, and `summary()` data on different variables of interest
+
 
 <details>
 

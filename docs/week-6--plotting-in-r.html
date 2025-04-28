@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 7 Week 6- Plotting in R | 06-Week6.Rmd</title>
+  <meta name="description" content=" 7 Week 6- Plotting in R | 06-Week6.Rmd" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 7 Week 6- Plotting in R | 06-Week6.Rmd" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 7 Week 6- Plotting in R | 06-Week6.Rmd" />
+  
+  
+  
+
+<meta name="author" content="M. Armstrong" />
+
+
+<meta name="date" content="2025-04-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-5--welcome-to-the-r-environment.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Genomics in Natural Populations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro to Genomics in Natural Populations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#course-learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Course Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#meet-your-instructors"><i class="fa fa-check"></i><b>1.2</b> Meet your instructors!</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-your-farm-account-set-up-class-specific"><i class="fa fa-check"></i><b>1.3</b> Getting your Farm Account set up (class specific)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1--welcome.html"><a href="week-1--welcome.html"><i class="fa fa-check"></i><b>2</b> Week 1- Welcome!</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1--welcome.html"><a href="week-1--welcome.html#main-objectives"><i class="fa fa-check"></i><b>2.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="week-1--welcome.html"><a href="week-1--welcome.html#how-to-access-the-shell-via-farm-ondemand"><i class="fa fa-check"></i><b>2.2</b> How to access the shell via Farm OnDemand</a></li>
+<li class="chapter" data-level="2.3" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-your-file-system"><i class="fa fa-check"></i><b>2.3</b> Navigating your file system</a></li>
+<li class="chapter" data-level="2.4" data-path="week-1--welcome.html"><a href="week-1--welcome.html#shortcut-tab-completion"><i class="fa fa-check"></i><b>2.4</b> Shortcut: Tab Completion</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1--welcome.html"><a href="week-1--welcome.html#creating-our-own-directories"><i class="fa fa-check"></i><b>2.5</b> Creating our own directories</a></li>
+<li class="chapter" data-level="2.6" data-path="week-1--welcome.html"><a href="week-1--welcome.html#full-vs-relative-paths"><i class="fa fa-check"></i><b>2.6</b> Full vs Relative Paths</a></li>
+<li class="chapter" data-level="2.7" data-path="week-1--welcome.html"><a href="week-1--welcome.html#examining-the-contents-of-other-directories"><i class="fa fa-check"></i><b>2.7</b> Examining the contents of other directories</a></li>
+<li class="chapter" data-level="2.8" data-path="week-1--welcome.html"><a href="week-1--welcome.html#group-work-activity--treasure-hunt"><i class="fa fa-check"></i><b>2.8</b> Group Work Activity- Treasure Hunt!</a></li>
+<li class="chapter" data-level="2.9" data-path="week-1--welcome.html"><a href="week-1--welcome.html#key-points"><i class="fa fa-check"></i><b>2.9</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html"><i class="fa fa-check"></i><b>3</b> Week 2- Working with Files</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#main-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#navigational-shortcuts"><i class="fa fa-check"></i><b>3.2</b> Navigational shortcuts</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#sequencing-pipeline"><i class="fa fa-check"></i><b>3.3</b> Sequencing Pipeline</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.4</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.5</b> Our data set: FASTQ files</a></li>
+<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.6</b> Wildcards</a></li>
+<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.7</b> Command History</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.8</b> Examining Files</a></li>
+<li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.9</b> Group Work Activity- Examining a Fastq File</a></li>
+<li class="chapter" data-level="3.10" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.10</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html"><i class="fa fa-check"></i><b>4</b> Week 3- Working with Files Part 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#main-objectives-2"><i class="fa fa-check"></i><b>4.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-moving-copying-and-removing"><i class="fa fa-check"></i><b>4.2</b> Creating, moving, copying, and removing</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#copying-files"><i class="fa fa-check"></i><b>4.2.1</b> Copying Files</a></li>
+<li class="chapter" data-level="4.2.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-directories"><i class="fa fa-check"></i><b>4.2.2</b> Creating Directories</a></li>
+<li class="chapter" data-level="4.2.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#moving-renaming"><i class="fa fa-check"></i><b>4.2.3</b> Moving / Renaming</a></li>
+<li class="chapter" data-level="4.2.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-permissions"><i class="fa fa-check"></i><b>4.2.4</b> File Permissions</a></li>
+<li class="chapter" data-level="4.2.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#removing"><i class="fa fa-check"></i><b>4.2.5</b> Removing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#searching-files"><i class="fa fa-check"></i><b>4.3</b> Searching files</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#redirecting-output"><i class="fa fa-check"></i><b>4.4</b> Redirecting output</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-extensions"><i class="fa fa-check"></i><b>4.5</b> File extensions</a></li>
+<li class="chapter" data-level="4.6" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-for-loops"><i class="fa fa-check"></i><b>4.6</b> Writing for loops</a></li>
+<li class="chapter" data-level="4.7" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#using-basename-in-for-loops"><i class="fa fa-check"></i><b>4.7</b> Using Basename in for loops</a></li>
+<li class="chapter" data-level="4.8" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-and-working-with-data"><i class="fa fa-check"></i><b>4.8</b> Writing Scripts and Working with Data</a></li>
+<li class="chapter" data-level="4.9" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-bash"><i class="fa fa-check"></i><b>4.9</b> Writing scripts: Bash</a></li>
+<li class="chapter" data-level="4.10" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-slurm"><i class="fa fa-check"></i><b>4.10</b> Writing scripts: Slurm</a></li>
+<li class="chapter" data-level="4.11" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script"><i class="fa fa-check"></i><b>4.11</b> Group Work Activity- Writing your own script</a></li>
+<li class="chapter" data-level="4.12" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#key-points-2"><i class="fa fa-check"></i><b>4.12</b> Key Points</a></li>
+<li class="chapter" data-level="4.13" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#additional-information"><i class="fa fa-check"></i><b>4.13</b> Additional Information</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>4.13.1</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#more-ways-to-work-with-files"><i class="fa fa-check"></i><b>4.14</b> More ways to work with files</a>
+<ul>
+<li class="chapter" data-level="4.14.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.14.1</b> Awk</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>5</b> Week 4- What is a Genetic Variant?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#main-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-1-download-data"><i class="fa fa-check"></i><b>5.2</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#getting-data-from-the-cloud"><i class="fa fa-check"></i><b>5.2.1</b> Getting data from the cloud</a></li>
+<li class="chapter" data-level="5.2.2" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#tools-for-todays-class"><i class="fa fa-check"></i><b>5.2.2</b> tools for today’s class</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-1.2-raw-read-quality-control"><i class="fa fa-check"></i><b>5.3</b> Step 1.2: Raw read quality control</a></li>
+<li class="chapter" data-level="5.4" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-2-trimming-to-remove-adapters"><i class="fa fa-check"></i><b>5.4</b> Step 2: Trimming to remove adapters</a></li>
+<li class="chapter" data-level="5.5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-3-building-an-index-of-our-genome"><i class="fa fa-check"></i><b>5.5</b> Step 3: Building an index of our genome</a></li>
+<li class="chapter" data-level="5.6" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-4-map-reads-to-the-genome"><i class="fa fa-check"></i><b>5.6</b> Step 4: Map reads to the genome</a></li>
+<li class="chapter" data-level="5.7" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-5-sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>5.7</b> Step 5: sam to bam file conversion</a></li>
+<li class="chapter" data-level="5.8" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-6-genotype-likelihoods"><i class="fa fa-check"></i><b>5.8</b> Step 6: Genotype likelihoods</a></li>
+<li class="chapter" data-level="5.9" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale"><i class="fa fa-check"></i><b>5.9</b> Group Work Activity- Calling Variants at a Larger Scale</a></li>
+<li class="chapter" data-level="5.10" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#key-points-3"><i class="fa fa-check"></i><b>5.10</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html"><i class="fa fa-check"></i><b>6</b> Week 5- Welcome to the R environment!</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#main-objectives-4"><i class="fa fa-check"></i><b>6.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#orientation-to-r"><i class="fa fa-check"></i><b>6.2</b> Orientation to R</a></li>
+<li class="chapter" data-level="6.3" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#manipulating-a-vector-object"><i class="fa fa-check"></i><b>6.3</b> Manipulating a vector object</a></li>
+<li class="chapter" data-level="6.4" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#operations-act-on-each-element-of-a-vector"><i class="fa fa-check"></i><b>6.4</b> Operations act on each element of a vector:</a></li>
+<li class="chapter" data-level="6.5" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#operations-can-also-work-with-two-vectors"><i class="fa fa-check"></i><b>6.5</b> Operations can also work with two vectors:</a></li>
+<li class="chapter" data-level="6.6" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#a-few-tips-below-for-working-with-objects"><i class="fa fa-check"></i><b>6.6</b> A few tips below for working with objects:</a></li>
+<li class="chapter" data-level="6.7" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#characterizing-a-dataframe"><i class="fa fa-check"></i><b>6.7</b> Characterizing a dataframe</a></li>
+<li class="chapter" data-level="6.8" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#how-to-access-parts-of-the-data"><i class="fa fa-check"></i><b>6.8</b> How to access parts of the data:</a></li>
+<li class="chapter" data-level="6.9" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#data-manipulation"><i class="fa fa-check"></i><b>6.9</b> Data Manipulation</a></li>
+<li class="chapter" data-level="6.10" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#practice-exploring-a-dataframe"><i class="fa fa-check"></i><b>6.10</b> Practice exploring a dataframe</a></li>
+<li class="chapter" data-level="6.11" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#subsetting-datasets-logicals"><i class="fa fa-check"></i><b>6.11</b> Subsetting datasets &amp; logicals</a></li>
+<li class="chapter" data-level="6.12" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r"><i class="fa fa-check"></i><b>6.12</b> Group Work Activity: Practice Exploring Data in R</a></li>
+<li class="chapter" data-level="6.13" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#key-points-4"><i class="fa fa-check"></i><b>6.13</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html"><i class="fa fa-check"></i><b>7</b> Week 6- Plotting in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#main-objectives-5"><i class="fa fa-check"></i><b>7.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#plotting-in-base-r"><i class="fa fa-check"></i><b>7.2</b> Plotting in Base R</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#scatterplots"><i class="fa fa-check"></i><b>7.2.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#histograms"><i class="fa fa-check"></i><b>7.2.2</b> Histograms</a></li>
+<li class="chapter" data-level="7.2.3" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#class-exercise-1"><i class="fa fa-check"></i><b>7.2.3</b> Class Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>7.3</b> Plotting with ggplot2</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#class-exercise-2"><i class="fa fa-check"></i><b>7.3.1</b> Class Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#for-loops-and-the-apply-family-of-functions"><i class="fa fa-check"></i><b>7.4</b> For loops and the apply family of functions</a></li>
+<li class="chapter" data-level="7.5" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#group-work-activity-palmer-penguins"><i class="fa fa-check"></i><b>7.5</b> Group Work Activity: Palmer Penguins!</a></li>
+<li class="chapter" data-level="7.6" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#key-points-5"><i class="fa fa-check"></i><b>7.6</b> Key Points</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">06-Week6.Rmd</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-6--plotting-in-r" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number"> 7</span> Week 6- Plotting in R<a href="week-6--plotting-in-r.html#week-6--plotting-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We’re again drawing some of this material from the STEMinist_R materials
+which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a></p>
+<div id="main-objectives-5" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Main Objectives<a href="week-6--plotting-in-r.html#main-objectives-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Learn how to make various plots in R, including histograms,
+scatterplots and boxplots, as well as learn how to customize those
+plots</li>
+<li>Learn useful commands in R including points(), lines(), abline(),
+hist(), boxplot() and plot() -Learn how to use arguments within
+plot(): main, xlab, ylab, col, pch, cex</li>
+</ul>
+<p>Start by making a new R script titled <code>Week 6- plotting</code> so that you can
+follow along with today’s code! We will again work with the sleep
+dataset on sleep patterns in mammals. This requires installing a package
+(ggplot2) and loading the data (msleep). This dataset includes
+information about mammal sleep times and weights that was taken from a
+study by V. M. Savage and G. B. West. “A quantitative, theoretical
+framework for understanding mammalian sleep. Proceedings of the National
+Academy of Sciences, 104 (3):1051-1056, 2007.”</p>
+<p>The data includes <code>name</code> (common name), <code>genus</code>, <code>vore</code> (carnivore,
+omnivore, etc), <code>order</code>, <code>conservation</code> (status), <code>sleep_total</code> (total
+amount of sleep in hours), <code>sleep_rem</code> (rem sleep in hours),
+<code>sleep_cycle</code> (length of sleep cycle, in hours), <code>awake</code> (amount of time
+spent awake, in hours), <code>brainwt</code> (brain weight in kilograms) and
+<code>bodywt</code> (body weight in kilograms).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-6--plotting-in-r.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="week-6--plotting-in-r.html#cb1-2" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
+</div>
+<div id="plotting-in-base-r" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Plotting in Base R<a href="week-6--plotting-in-r.html#plotting-in-base-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scatterplots" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Scatterplots<a href="week-6--plotting-in-r.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First let’s work on building a scatterplot. This can be a good first
+step for visualizing data and is the base plotting visualization in R.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-6--plotting-in-r.html#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total,msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-6--plotting-in-r.html#cb3-1" tabindex="-1"></a><span class="co"># or plot response variable as a function &quot;~&quot; of the predictor variable</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-6--plotting-in-r.html#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/6-0-1.png" width="576" /></p>
+<ul>
+<li>There are several different arguments within plotting functions that
+can be used to customize your plot.
+<ul>
+<li><code>col</code> changes color</li>
+<li><code>pch</code> changes point character</li>
+<li><code>cex</code> changes size</li>
+<li><code>type</code> changes type (“l” = line, “p” = points, “b” = both)</li>
+<li><code>lty</code> changes line type</li>
+<li><code>bty</code> changes (or removes) the border around the plot (“n” = no
+box, “7” = top + right, “L” = bottom+left, “C” top+left+bottom,
+“U” = left+bottom+right)</li>
+</ul></li>
+</ul>
+<p>You can view different point characters with <code>?pch</code></p>
+<p>There are <strong>many</strong> color options in R. For some general colors you can
+write the name (blue, red, green, etc). There are apparently 657 named
+colors in R (including “slateblue3, and peachpuff4) but you can also use
+the color hexidecimal code for a given color. There are several
+comprehensives guides for colors in R online and one of which can be
+found
+(here)[<a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf" class="uri">https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf</a>]</p>
+<p>Let’s remake the total_sleep against sleep_rem plot and add-in some
+modifiers</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="week-6--plotting-in-r.html#cb5-1" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
+<span id="cb5-2"><a href="week-6--plotting-in-r.html#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-1-1.png" width="576" /></p>
+<p>We can change the axes and title labels using “xlab”, “ylab”, and “main”
+arguments. Let’s add labels to our plot.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="week-6--plotting-in-r.html#cb6-1" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
+<span id="cb6-2"><a href="week-6--plotting-in-r.html#cb6-2" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/6-2-1.png" width="576" /></p>
+<p>You may want to find out which points are on a plot. You can use
+<code>identify()</code> in place of <code>plot()</code> to identify specific points within
+your plot. This function prints out the row numbers for the points that
+you selected.</p>
+<p>We can also add lines to an existing plot with <code>ablines()</code>. Let’s add a
+line fit from a linear model to our plot.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="week-6--plotting-in-r.html#cb7-1" tabindex="-1"></a><span class="co">#first make a plot</span></span>
+<span id="cb7-2"><a href="week-6--plotting-in-r.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span>
+<span id="cb7-3"><a href="week-6--plotting-in-r.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="week-6--plotting-in-r.html#cb7-4" tabindex="-1"></a><span class="co">#then add a line. The function lm runs a linear model on our x, y values.</span></span>
+<span id="cb7-5"><a href="week-6--plotting-in-r.html#cb7-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem))</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-3-1.png" width="576" /></p>
+<p>You can add a legend to a plot with <code>legend()</code> which needs you to
+specify the location.</p>
+<p>To do this, let’s make a cutoff for our points and color them by points
+above and below the cutoff. We’ll use our subsetting skills from last
+week. Feel free to review that section (1.3).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-6--plotting-in-r.html#cb8-1" tabindex="-1"></a><span class="co">#start by defining points by whether they are greater than sleep_total 16 and storing</span></span>
+<span id="cb8-2"><a href="week-6--plotting-in-r.html#cb8-2" tabindex="-1"></a><span class="co">#first make a empty column named colors within the msleep dataframe</span></span>
+<span id="cb8-3"><a href="week-6--plotting-in-r.html#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="week-6--plotting-in-r.html#cb8-4" tabindex="-1"></a>msleep<span class="sc">$</span>colors<span class="ot">=</span><span class="cn">NA</span></span>
+<span id="cb8-5"><a href="week-6--plotting-in-r.html#cb8-5" tabindex="-1"></a><span class="co">#store the colors &quot;red&quot; or &quot;black&quot; in the color column for the rows that satsify the following criteria.</span></span>
+<span id="cb8-6"><a href="week-6--plotting-in-r.html#cb8-6" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&gt;=</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;maroon&quot;</span></span>
+<span id="cb8-7"><a href="week-6--plotting-in-r.html#cb8-7" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&lt;</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;darkgreen&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-6--plotting-in-r.html#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span>msleep<span class="sc">$</span>colors, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/6-4-1.png" width="576" /></p>
+</div>
+<div id="histograms" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Histograms<a href="week-6--plotting-in-r.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to scatterplots you can make histograms and boxplots in base
+R. The same parameter options (pch, col, ylab, xlab, etc) apply for
+these plots as well as scatterplots.</p>
+<p>R will automatically plot a barplot if you give to the <code>plot()</code> function
+a continuous variable and a factor. If you have a vector stored as a
+character converting it to a factor via <code>as.factor</code> will make a boxplot.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-6--plotting-in-r.html#cb10-1" tabindex="-1"></a><span class="co">#let&#39;s make a histogram of sleep_total and fill it with the color palette rainbow() which needs to know how many colors to use</span></span>
+<span id="cb10-2"><a href="week-6--plotting-in-r.html#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="week-6--plotting-in-r.html#cb10-3" tabindex="-1"></a><span class="fu">hist</span>(msleep<span class="sc">$</span>sleep_total, <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-5-1.png" width="576" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-6--plotting-in-r.html#cb11-1" tabindex="-1"></a><span class="co">#let&#39;s make a boxplot of sleep_total and order making eachone a different color (how would you find out how many unique orders are in msleep?)</span></span>
+<span id="cb11-2"><a href="week-6--plotting-in-r.html#cb11-2" tabindex="-1"></a><span class="co">#using plot</span></span>
+<span id="cb11-3"><a href="week-6--plotting-in-r.html#cb11-3" tabindex="-1"></a><span class="co">#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) #this is commented out simply to avoid ploting the same plot twice</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-6--plotting-in-r.html#cb12-1" tabindex="-1"></a><span class="co">#or boxplot</span></span>
+<span id="cb12-2"><a href="week-6--plotting-in-r.html#cb12-2" tabindex="-1"></a><span class="fu">boxplot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>order), <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">19</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/6-6-1.png" width="576" /></p>
+<p>Another example looking at sleep variation across the different types of
+consumers (carnivore, herbivore, insectivore and omnivore):</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-6--plotting-in-r.html#cb13-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>vore),<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">4</span>), <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-7-1.png" width="576" /></p>
+</div>
+<div id="class-exercise-1" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Class Exercise 1<a href="week-6--plotting-in-r.html#class-exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<h1 id="explore-this-dataset-of-chick-weight-and-identify" class="hasAnchor">Explore this dataset of chick weight and identify:<a href="week-6--plotting-in-r.html#explore-this-dataset-of-chick-weight-and-identify" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li>how many chicks are in the dataset (sample size) and how many
+different diets were used in the experiment? Hint **length()
+will be a useful command!</li>
+<li>Visualize the relationship of chick weight over time (scatterplot
+would be useful here!)</li>
+<li>Visualize how different diets impact the weights of the chicks at
+the final day of the experiments (a boxplot would be useful here!)
+Read in the data using <code>data(ChickWeight)</code></li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-6--plotting-in-r.html#cb14-1" tabindex="-1"></a><span class="co"># Note: this dataset can also be accessed directly from the ChickWeight package in R </span></span>
+<span id="cb14-2"><a href="week-6--plotting-in-r.html#cb14-2" tabindex="-1"></a><span class="co"># (see ?ChickWeight)</span></span>
+<span id="cb14-3"><a href="week-6--plotting-in-r.html#cb14-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ChickWeight&quot;</span>)</span></code></pre></div>
+<blockquote>
+<p>For all of your figures try using the package R Color Brewer to
+generate color palettes. Go to <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> to vizualize
+palettes. You can choose palettes that are colorblind safe, print
+friendly, etc. Define a color pallete with 10 colors and re-plot the
+histogram of the weights of the chicks at the final day of the
+experiments in these colors Note: if histogram has n breaks and n is
+less than 10, it will just use first n colors. If n is greater than
+10, it will reuse colors.</p>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-6--plotting-in-r.html#cb15-1" tabindex="-1"></a><span class="co"># Install R Color Brewer</span></span>
+<span id="cb15-2"><a href="week-6--plotting-in-r.html#cb15-2" tabindex="-1"></a><span class="co">#install.packages(&quot;RColorBrewer&quot;)</span></span>
+<span id="cb15-3"><a href="week-6--plotting-in-r.html#cb15-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="plotting-with-ggplot2" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Plotting with ggplot2<a href="week-6--plotting-in-r.html#plotting-with-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>GGPlot is a package that allows you to make a lot of different kinds of
+plots and has become increasingly popular. There are also many tutorials
+on how to use ggplot as well as example code that could be modified to
+fit the data you’re interested in plotting. There is a really helpful
+cheatsheat
+(here)[<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf</a>]</p>
+<p>There is a little bit of a learning curve for ggplot as the syntax is
+structured differently than base R plotting. One thing that remains the
+same and is even more noticible in ggplot is the iterative process of
+building a plot, one aspect at a time.</p>
+<p>Let’s demonstrate what ggplot can do with this dataset on the Effect of
+Vitamin C on Tooth Growth in Guinea Pigs. You can also open your dataset
+with this command which pulls it into a different window with <code>View()</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-6--plotting-in-r.html#cb16-1" tabindex="-1"></a><span class="co">#load in the data</span></span>
+<span id="cb16-2"><a href="week-6--plotting-in-r.html#cb16-2" tabindex="-1"></a><span class="fu">data</span>(ToothGrowth)</span>
+<span id="cb16-3"><a href="week-6--plotting-in-r.html#cb16-3" tabindex="-1"></a><span class="co">#look at the structure of the data</span></span>
+<span id="cb16-4"><a href="week-6--plotting-in-r.html#cb16-4" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
+<pre><code>#&gt; &#39;data.frame&#39;:    60 obs. of  3 variables:
+#&gt;  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+#&gt;  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+#&gt;  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
+<p>This dataset has three columns, <code>len</code> for length of tooth, <code>supp</code> for
+supplement provided, either OJ or VC, and <code>dose</code> for amount of the
+supplement given. OJ was orange juice and VC was abcorbic acid, and they
+wanted to test how these two delivery methods may change tooth growth,
+as well as the different doses. Two of our variables are categorical
+(<code>supp</code> and <code>dose</code>) while tooth length is continuous. What type of data
+you are working with is important when we think about how to visualize
+our data.</p>
+<p>If you do the command <code>ggplot(data=ToothGrowth)</code> you will just see a
+grey box. In order to tell ggplot what to put in the box we use the
+<code>aes()</code>. The <code>aes()</code> function stands for aesthetics and will be used to
+specify our axes and how we want the data grouped.</p>
+<p>Since we have two categories, dose or supplement, and one continuous
+variable that we want to see how it varies by those categorical
+variables, let’s try to plot the amount of tooth growth with the
+supplement given to the guinea pigs.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-6--plotting-in-r.html#cb18-1" tabindex="-1"></a><span class="co">#we specify which axes we want to be x and y with aes()</span></span>
+<span id="cb18-2"><a href="week-6--plotting-in-r.html#cb18-2" tabindex="-1"></a><span class="co">#we&#39;ll then use geom_point to tell it to make a scatterplot </span></span>
+<span id="cb18-3"><a href="week-6--plotting-in-r.html#cb18-3" tabindex="-1"></a><span class="co">#using the data we specified in the first command</span></span>
+<span id="cb18-4"><a href="week-6--plotting-in-r.html#cb18-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>ToothGrowth, <span class="fu">aes</span>(<span class="at">x=</span>supp, <span class="at">y=</span>len))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/6-8-1.png" width="576" /></p>
+<p>This scatterplot visualization isn’t super useful since there are only
+two supplement types, OJ and VC, and the points for tooth length are
+just spread across the Y axis. A boxplot would likely be the best way to
+visualize this data, so let’s try that!</p>
+<p>There are many types of plots in ggplot that can be called with <code>geom_</code>
+including <code>geom_line</code>, <code>geom_boxplot</code> <code>geom_bar</code> and many others!</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="week-6--plotting-in-r.html#cb19-1" tabindex="-1"></a><span class="co">#we specify which axes we want to be x and y with aes()</span></span>
+<span id="cb19-2"><a href="week-6--plotting-in-r.html#cb19-2" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-9-1.png" width="576" /></p>
+<p>What if we want to add color to make the two supplements even more
+distinguishable from one another?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-6--plotting-in-r.html#cb20-1" tabindex="-1"></a><span class="co">#same graph but add color!</span></span>
+<span id="cb20-2"><a href="week-6--plotting-in-r.html#cb20-2" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>supp, <span class="at">fill=</span> supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-10-1.png" width="576" /></p>
+<p>These are the base formats for plots in ggplot2, so it can be fun to
+customize the theme, colorscheme etc to make your graphs more specific
+to your work and easier to interpret. I like to change the background
+from grey to white so that it is less distracting from the data. All of
+these things can be modified if we wish. Many of these options can
+easily be changed with the <code>theme_</code> functions.</p>
+<p>Let’s change to a minimal theme which removes the gray background in the
+back of the plot. Play around with the other themes to see what they
+change. You can change colors with RcolorBrewer again with
+<code>scale_fill_brewer()</code> or <code>scale_fill_manual()</code> to choose the two colors.
+The <code>values=c()</code> part is important when you are using two or more
+colors!</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="week-6--plotting-in-r.html#cb21-1" tabindex="-1"></a><span class="co">#change the theme</span></span>
+<span id="cb21-2"><a href="week-6--plotting-in-r.html#cb21-2" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>dose, <span class="at">fill=</span> supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>, <span class="st">&quot;lightpink&quot;</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-11-1.png" width="576" /></p>
+<p>Now let’s look at the <code>msleep</code> dataset again with <code>view()</code> and make a
+plot of total sleep against REM sleep and then group by “vore”. Load the
+data with the command below:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-6--plotting-in-r.html#cb22-1" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
+<p>Because <code>vore</code> is a character vector we will need to convert it to a
+factor for ggplot to be able to use it as a group or a color. This can
+be easily done with <code>as.factor()</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="week-6--plotting-in-r.html#cb23-1" tabindex="-1"></a><span class="co"># because our vore vector is a character vector we must convert it to a factor before we can use it to group or color</span></span>
+<span id="cb23-2"><a href="week-6--plotting-in-r.html#cb23-2" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore))) <span class="sc">+</span><span class="fu">geom_point</span>() <span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>#&gt; Warning: Removed 22 rows containing missing values or values outside the scale range
+#&gt; (`geom_point()`).</code></pre>
+<p><img src="_main_files/figure-html/6-12-1.png" width="576" /></p>
+<p>If you use <code>View()</code> to look at our dataset you will see there are some
+NAs in our <code>vore</code> column which may give you a warning when you go to
+plot since there is missing data. That looks fine, but we may want to
+add axis labels and change the legend. The code below does just that and
+changes the theme.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="week-6--plotting-in-r.html#cb25-1" tabindex="-1"></a><span class="co"># as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line</span></span>
+<span id="cb25-2"><a href="week-6--plotting-in-r.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="week-6--plotting-in-r.html#cb25-3" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
+<span id="cb25-4"><a href="week-6--plotting-in-r.html#cb25-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb25-5"><a href="week-6--plotting-in-r.html#cb25-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb25-6"><a href="week-6--plotting-in-r.html#cb25-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb25-7"><a href="week-6--plotting-in-r.html#cb25-7" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb25-8"><a href="week-6--plotting-in-r.html#cb25-8" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
+<span id="cb25-9"><a href="week-6--plotting-in-r.html#cb25-9" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
+<span id="cb25-10"><a href="week-6--plotting-in-r.html#cb25-10" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
+<span id="cb25-11"><a href="week-6--plotting-in-r.html#cb25-11" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
+<span id="cb25-12"><a href="week-6--plotting-in-r.html#cb25-12" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
+<span id="cb25-13"><a href="week-6--plotting-in-r.html#cb25-13" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;pink&quot;</span>, </span>
+<span id="cb25-14"><a href="week-6--plotting-in-r.html#cb25-14" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;darkgreen&quot;</span>, </span>
+<span id="cb25-15"><a href="week-6--plotting-in-r.html#cb25-15" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>, </span>
+<span id="cb25-16"><a href="week-6--plotting-in-r.html#cb25-16" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
+<span id="cb25-17"><a href="week-6--plotting-in-r.html#cb25-17" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;grey&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt; Warning: Removed 22 rows containing missing values or values outside the scale range
+#&gt; (`geom_point()`).</code></pre>
+<p><img src="_main_files/figure-html/6-13-1.png" width="576" /></p>
+<p>Our plot at this point is getting very clunky. You can assign what we
+have so far to an object and continue to add parameters without having
+to copy and paste the whole plot. This can also be useful for saving
+your plots as images for powerpoint presentations with <code>ggsave()</code>. This
+will save a photo of your figure on your desktop!</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-6--plotting-in-r.html#cb27-1" tabindex="-1"></a><span class="co">#assign to an object</span></span>
+<span id="cb27-2"><a href="week-6--plotting-in-r.html#cb27-2" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="week-6--plotting-in-r.html#cb27-3" tabindex="-1"></a>plot1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
+<span id="cb27-4"><a href="week-6--plotting-in-r.html#cb27-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb27-5"><a href="week-6--plotting-in-r.html#cb27-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb27-6"><a href="week-6--plotting-in-r.html#cb27-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb27-7"><a href="week-6--plotting-in-r.html#cb27-7" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb27-8"><a href="week-6--plotting-in-r.html#cb27-8" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
+<span id="cb27-9"><a href="week-6--plotting-in-r.html#cb27-9" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
+<span id="cb27-10"><a href="week-6--plotting-in-r.html#cb27-10" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
+<span id="cb27-11"><a href="week-6--plotting-in-r.html#cb27-11" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
+<span id="cb27-12"><a href="week-6--plotting-in-r.html#cb27-12" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
+<span id="cb27-13"><a href="week-6--plotting-in-r.html#cb27-13" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;pink&quot;</span>, </span>
+<span id="cb27-14"><a href="week-6--plotting-in-r.html#cb27-14" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;darkgreen&quot;</span>, </span>
+<span id="cb27-15"><a href="week-6--plotting-in-r.html#cb27-15" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>, </span>
+<span id="cb27-16"><a href="week-6--plotting-in-r.html#cb27-16" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
+<span id="cb27-17"><a href="week-6--plotting-in-r.html#cb27-17" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;grey&quot;</span>))</span>
+<span id="cb27-18"><a href="week-6--plotting-in-r.html#cb27-18" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="week-6--plotting-in-r.html#cb27-19" tabindex="-1"></a>plot1</span></code></pre></div>
+<pre><code>#&gt; Warning: Removed 22 rows containing missing values or values outside the scale range
+#&gt; (`geom_point()`).</code></pre>
+<p><img src="_main_files/figure-html/6-14-1.png" width="576" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-6--plotting-in-r.html#cb29-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;plot1.png&quot;</span>,plot1, <span class="at">width=</span><span class="dv">20</span>, <span class="at">height=</span><span class="dv">20</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>) </span></code></pre></div>
+<pre><code>#&gt; Warning: Removed 22 rows containing missing values or values outside the scale range
+#&gt; (`geom_point()`).</code></pre>
+<p>I use ggplot often with data sets that have multiple character vectors
+and I want to see how they relate to my continuous variables. For
+example in the iris dataframe we may be interested in looking at the
+relationship between Sepal.Length and Sepal.Width for each species. This
+dataset was published by Ronald Fisher in his 1936 paper: “The use of
+multiple measurements in taxonomic problems”. It has three plant species
+(setosa, virginica, versicolor) and four morphological traits measured
+for each sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length
+and Petal.Width.</p>
+<div class="float">
+<img src="figs/iris.png" alt="Iris Diagram for Reference" />
+<div class="figcaption">Iris Diagram for Reference</div>
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="week-6--plotting-in-r.html#cb31-1" tabindex="-1"></a><span class="fu">data</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="week-6--plotting-in-r.html#cb32-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb32-2"><a href="week-6--plotting-in-r.html#cb32-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-15-1.png" width="576" /></p>
+<p>If you want to add a line of best fit to each population you can do that
+with <code>geom_smooth()</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="week-6--plotting-in-r.html#cb33-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb33-2"><a href="week-6--plotting-in-r.html#cb33-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/6-16-1.png" width="576" /></p>
+<p>Finally, if you want to look at each species on it’s own graph at once
+you can look at all of these together with <code>facet_wrap</code> or <code>facet_grid</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="week-6--plotting-in-r.html#cb35-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb35-2"><a href="week-6--plotting-in-r.html#cb35-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb35-3"><a href="week-6--plotting-in-r.html#cb35-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species)<span class="sc">+</span></span>
+<span id="cb35-4"><a href="week-6--plotting-in-r.html#cb35-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/6-17-1.png" width="576" /></p>
+<div id="class-exercise-2" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Class Exercise 2<a href="week-6--plotting-in-r.html#class-exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>Go back to the Guinea Pig Tooth Dataset (ToothGrowth) and visualize
+how the different doses of VC and OJ impact tooth growth. Use
+<code>facet_wrap()</code> and plot the doses of the treatments within each graph,
+with three separate graphs for each dose (0.5, 1 and 2)
+data(ToothGrowth)</p>
+</blockquote>
+<p>Plotting the mean values with error bars for several groups can also be
+useful for data visualization. You can use the function <code>stat_summary</code>
+to find the mean and error around that mean for the given grouping.</p>
+<p>Now let’s look again at the Chick Weight dataset! Here’s a plot looking
+at the mean chickweight by diet.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-6--plotting-in-r.html#cb37-1" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(<span class="at">x=</span>Time, <span class="at">y=</span>weight, <span class="at">group=</span>Diet, <span class="at">color=</span>Diet))<span class="sc">+</span></span>
+<span id="cb37-2"><a href="week-6--plotting-in-r.html#cb37-2" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb37-3"><a href="week-6--plotting-in-r.html#cb37-3" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">linewidth=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb37-4"><a href="week-6--plotting-in-r.html#cb37-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb37-5"><a href="week-6--plotting-in-r.html#cb37-5" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-18-1.png" width="576" /></p>
+</div>
+</div>
+<div id="for-loops-and-the-apply-family-of-functions" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> For loops and the apply family of functions<a href="week-6--plotting-in-r.html#for-loops-and-the-apply-family-of-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A few useful commands: function(), is.na, which, var, length, for(){ },
+points, print, paste, plot, unique, sample</p>
+<p>for loops: In many languages, the best way to repeat a calculation is to
+use a for-loop: For example, we could square each number 1 to 10</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-6--plotting-in-r.html#cb38-1" tabindex="-1"></a>squares <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">10</span>) <span class="co"># use rep to create a vector length 10 of NAs to store the result</span></span>
+<span id="cb38-2"><a href="week-6--plotting-in-r.html#cb38-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) { <span class="co"># for loop</span></span>
+<span id="cb38-3"><a href="week-6--plotting-in-r.html#cb38-3" tabindex="-1"></a>  squares[i] <span class="ot">=</span> i<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb38-4"><a href="week-6--plotting-in-r.html#cb38-4" tabindex="-1"></a>}</span>
+<span id="cb38-5"><a href="week-6--plotting-in-r.html#cb38-5" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>#&gt;  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+</div>
+<div id="group-work-activity-palmer-penguins" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Group Work Activity: Palmer Penguins!<a href="week-6--plotting-in-r.html#group-work-activity-palmer-penguins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="figs/lter_penguins.png" alt="Artwork by" /> For this week’s activity we will
+be working with the dataset <code>palmerpenguins</code>
+<a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a> First install the
+package with the data. There are two datasets, <code>penguins</code> and
+<code>penguins_raw</code>. Learn more about each dataset by doing <code>?penguins</code> or
+<code>?penguins_raw</code> in your console. We will be working with the <code>penguins</code>
+dataset for the homework.</p>
+<p>Use <code>install.packages("palmerpenguins")</code> To download the data. It might
+take a second to download! After it is downloaded check it is there and
+prepare the dataset:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-6--plotting-in-r.html#cb40-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
+<pre><code>#&gt; Warning: package &#39;palmerpenguins&#39; was built under R version 4.4.1</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="week-6--plotting-in-r.html#cb42-1" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">&#39;palmerpenguins&#39;</span>)</span></code></pre></div>
+<p>For this week your goal is to do the following:</p>
+<ol style="list-style-type: decimal">
+<li><p>Without using the <code>view()</code> command, report the names of the unique
+species in this dataset and how many species there are.</p></li>
+<li><p>Using the <code>penguins</code> dataset, how does bill length vary across the
+three species? Consider the best way to visualize this figure, is a
+scatterplot or a boxplot a better fit for showing the variation
+between the species? <strong>Interpret the main takeaway from this figure
+in one to two sentences.</strong></p></li>
+<li><p>Again using the <code>penguins</code> dataset visualize the relationship
+between bill length and bill depth across the three species. This
+should all be in one single graph with a specific color and a line
+of best fit for each of the species. <strong>Interpret the main takeaway
+from this figure in one to two sentences.</strong></p></li>
+</ol>
+<p>Copy the lines in your script used to answer all three of these
+questions into your canvas submission. Be sure to include the answers
+for question 1, interpretations for the figures and the two figures you
+made as well.</p>
+<div class="float">
+<img src="figs/beakdepth.png" alt="Artwork by allison_horst" />
+<div class="figcaption">Artwork by allison_horst</div>
+</div>
+</div>
+<div id="key-points-5" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Key Points<a href="week-6--plotting-in-r.html#key-points-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Making plots in R can be really fun, but is important to think about
+your audience and what you want your plot to convey when making it!
+For example, scatterplots and boxplots are useful for visualizing
+different types of data.</p></li>
+<li><p>You can plot in base R or ggplot, but ggplot can give you more room
+to customize your figures to your liking</p></li>
+</ul>
+<details>
+<summary>
+<span style="color: orange;">Class Exercise Solutions</span>
+</summary>
+<p>
+<blockquote>
+<blockquote>
+<h2 id="class-exercises-solutions" class="hasAnchor">Class Exercises: Solutions<a href="week-6--plotting-in-r.html#class-exercises-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Exercise 1</p>
+<ol style="list-style-type: decimal">
+<li>sample size and different diets in the experiment</li>
+</ol>
+</blockquote>
+</blockquote>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="week-6--plotting-in-r.html#cb43-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span></code></pre></div>
+<pre><code>#&gt; [1] 50</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="week-6--plotting-in-r.html#cb45-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span></code></pre></div>
+<pre><code>#&gt; [1] 4</code></pre>
+<blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>scatterplot of the relationship of chicken weight over time</li>
+</ol>
+</blockquote>
+</blockquote>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="week-6--plotting-in-r.html#cb47-1" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
+<span id="cb47-2"><a href="week-6--plotting-in-r.html#cb47-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
+<span id="cb47-3"><a href="week-6--plotting-in-r.html#cb47-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-19-1.png" width="576" />
+&gt;&gt;
+&gt;&gt; 3) Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="week-6--plotting-in-r.html#cb48-1" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
+<span id="cb48-2"><a href="week-6--plotting-in-r.html#cb48-2" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
+<span id="cb48-3"><a href="week-6--plotting-in-r.html#cb48-3" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
+<span id="cb48-4"><a href="week-6--plotting-in-r.html#cb48-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb48-5"><a href="week-6--plotting-in-r.html#cb48-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
+<span id="cb48-6"><a href="week-6--plotting-in-r.html#cb48-6" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
+<span id="cb48-7"><a href="week-6--plotting-in-r.html#cb48-7" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-20-1.png" width="576" />
+&gt;&gt;</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="week-6--plotting-in-r.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb49-2"><a href="week-6--plotting-in-r.html#cb49-2" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
+<span id="cb49-3"><a href="week-6--plotting-in-r.html#cb49-3" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-21-1.png" width="576" /></p>
+<blockquote>
+<blockquote>
+<h2 id="exercise-2" class="hasAnchor">Exercise 2<a href="week-6--plotting-in-r.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</blockquote>
+</blockquote>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="week-6--plotting-in-r.html#cb50-1" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>supp, <span class="at">fill=</span> supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>dose)<span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>, <span class="st">&quot;lightpink&quot;</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-22-1.png" width="576" /></p>
+</p>
+</details>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-5--welcome-to-the-r-environment.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

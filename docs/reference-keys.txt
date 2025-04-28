@@ -108,3 +108,7 @@ group-work-activity-palmer-penguins
 week-6--plotting-in-r
 class-exercise-1-1
 class-exercise-2-1
+orientation-to-r
+key-points-4
+main-objectives-5
+key-points-5
