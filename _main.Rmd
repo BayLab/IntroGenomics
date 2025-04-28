@@ -1,0 +1,558 @@
+--- 
+title: "Introduction to Genomics"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: " "
+---
+
+# Intro to Genomics in Natural Populations
+
+Placeholder
+
+
+## Course Learning Objectives
+## Meet your instructors!
+## Getting your Farm Account set up (class specific)
+
+<!--chapter:end:index.Rmd-->
+
+
+# Week 1- Welcome!
+
+Placeholder
+
+
+## Main Objectives
+## How to access the shell via Farm OnDemand
+## Navigating your file system
+## Shortcut: Tab Completion
+## Creating our own directories 
+## Full vs Relative Paths
+## Examining the contents of other directories
+## Group Work Activity- Treasure Hunt!
+## Key Points
+
+<!--chapter:end:01-Week1.Rmd-->
+
+
+# Week 2- Working with Files
+
+Placeholder
+
+
+## Main Objectives:
+## Navigational shortcuts
+## Sequencing Pipeline
+## Details on the FASTQ format
+## Our data set: FASTQ files
+## Wildcards
+## Command History
+## Examining Files
+## Group Work Activity- Examining a Fastq File
+## Key Points
+
+<!--chapter:end:02-Week2.Rmd-->
+
+
+# Week 3- Working with Files Part 2
+
+Placeholder
+
+
+## Main Objectives
+## Creating, moving, copying, and removing
+### Copying Files
+### Creating Directories
+### Moving / Renaming 
+### File Permissions
+### Removing
+## Searching files
+## Redirecting output
+## File extensions
+## Writing for loops
+## Using Basename in for loops
+## Writing Scripts and Working with Data
+## Writing scripts: Bash
+## Writing scripts: Slurm
+## Group Work Activity- Writing your own script
+## Key Points
+## Additional Information 
+### Uploading and Downloading Data to your Virtual Machine with scp - UNIX
+## More ways to work with files
+### Awk
+
+<!--chapter:end:03-Week3.Rmd-->
+
+
+# Week 4- What is a Genetic Variant?
+
+Placeholder
+
+
+## Main Objectives
+## Step 1: Download data
+### Getting data from the cloud
+### tools for today's class
+## Step 1.2: Raw read quality control
+## Step 2: Trimming to remove adapters
+## Step 3: Building an index of our genome
+## Step 4: Map reads to the genome
+## Step 5: sam to bam file conversion
+## Step 6: Genotype likelihoods
+## Group Work Activity- Calling Variants at a Larger Scale
+## Key Points
+
+<!--chapter:end:04-Week4.Rmd-->
+
+
+# Week 5- Welcome to the R environment!
+
+Placeholder
+
+
+## Lesson 1: Orientation to R
+## Manipulating a vector object
+## Operations act on each element of a vector:
+## Operations can also work with two vectors:
+## A few tips below for working with objects:
+## Characterizing a dataframe
+## How to access parts of the data:
+## Data Manipulation
+## Practice exploring a dataframe
+## Subsetting datasets & logicals
+## Group Work Activity: Practice Exploring Data in R
+
+<!--chapter:end:05-Week5.Rmd-->
+
+---
+  title: "06-Week6.Rmd"
+author: "M. Armstrong"
+date: "2025-04-24"
+output:
+  bookdown::html_book:
+  toc: yes
+css: toc.css
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setupq6, include=FALSE}
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
+```
+
+# Week 5- Plotting in R
+
+We're again drawing some of this material from the STEMinist_R materials which can be found [here](https://github.com/ecalfee/STEMinist_R.git)
+
+## Main Objectives:
+
+-   Learn how to make various plots in R, including histograms, scatterplots, boxplots and violin plots, as well as learn how to customize those plots
+-   learn useful commands in R including points(), lines(), abline(), hist(), boxplot() and plot() -Learn how to use arguments within plot(): main, xlab, ylab, col, pch, cex
+
+Start by making a new R script titled `Week 6- plotting` so that you can follow along with today's code! We will again work with the sleep dataset on sleep patterns in mammals. This requires installing a package (ggplot2) and loading the data (msleep). This dataset includes information about mammal sleep times and weights that was taken from a study by V. M. Savage and G. B. West. "A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007."
+
+The data includes `name` (common name), `genus`, `vore` (carnivore, omnivore, etc), `order`, `conservation` (status), `sleep_total` (total amount of sleep in hours), `sleep_rem` (rem sleep in hours), `sleep_cycle` (length of sleep cycle, in hours), `awake` (amount of time spent awake, in hours), `brainwt` (brain weight in kilograms) and `bodywt` (body weight in kilograms).
+
+```{r, echo=T}
+
+library(ggplot2)
+data(msleep)
+```
+
+## Plotting in Base R
+
+### Scatterplots
+
+First let's work on building a scatterplot. This can be a good first step for visualizing data and is the base plotting visualization in R.
+
+```{r, echo=T}
+
+plot(msleep$sleep_total,msleep$sleep_rem)
+
+# or plot response variable as a function "~" of the predictor variable
+```
+
+```{r, echo=T}
+
+plot(msleep$sleep_total~msleep$sleep_rem) #you'll notice this swaps the x and y axis
+
+```
+
+-   There are several different arguments within plotting functions that can be used to customize your plot.
+    -   `col` changes color
+    -   `pch` changes point character
+    -   `cex` changes size
+    -   `type` changes type ("l" = line, "p" = points, "b" = both)
+    -   `lty` changes line type
+    -   `bty` changes (or removes) the border around the plot ("n" = no box, "7" = top + right, "L" = bottom+left, "C" top+left+bottom, "U" = left+bottom+right)
+
+You can view different point characters with `?pch`
+
+There are **many** color options in R. For some general colors you can write the name (blue, red, green, etc). There are apparently 657 named colors in R (including "slateblue3, and peachpuff4) but you can also use the color hexidecimal code for a given color. There are several comprehensives guides for colors in R online and one of which can be found (here)[<https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf>]
+
+Let's remake the total_sleep against sleep_rem plot and add-in some modifiers
+
+```{r,  label='6-1', echo=T}
+#Choose a pch and make the color blue and give it a bottom+left border
+plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L")
+
+```
+
+We can change the axes and title labels using "xlab", "ylab", and "main" arguments. Let's add labels to our plot.
+
+```{r, label='6-2', echo=T}
+#Choose a pch and make the color blue and give it a bottom+left border
+plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+
+```
+
+You may want to find out which points are on a plot. You can use `identify()` in place of `plot()` to identify specific points within your plot. This function prints out the row numbers for the points that you selected.
+
+We can also add lines to an existing plot with `ablines()`. Let's add a line fit from a linear model to our plot.
+
+```{r, label='6-3', echo=T}
+#first make a plot
+plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+
+#then add a line. The function lm runs a linear model on our x, y values.
+abline(lm(msleep$sleep_total~msleep$sleep_rem))
+
+```
+
+You can add a legend to a plot with `legend()` which needs you to specify the location.
+
+To do this, let's make a cutoff for our points and color them by points above and below the cutoff. We'll use our subsetting skills from last week. Feel free to review that section (1.3).
+
+```{r, echo=T}
+#start by defining points by whether they are greater than sleep_total 16 and storing
+#first make a empty column named colors within the msleep dataframe
+
+msleep$colors=NA
+#store the colors "red" or "black" in the color column for the rows that satsify the following criteria.
+msleep$colors[msleep$sleep_total >= 17] <-"maroon"
+msleep$colors[msleep$sleep_total < 17] <-"darkgreen"
+```
+
+```{r, label='6-4', echo=T}
+plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col=msleep$colors, bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+
+        
+```
+
+### Histograms
+
+In addition to scatterplots you can make histograms and boxplots in base R. The same parameter options (pch, col, ylab, xlab, etc) apply for these plots as well as scatterplots.
+
+R will automatically plot a barplot if you give to the `plot()` function a continuous variable and a factor. If you have a vector stored as a character converting it to a factor via `as.factor` will make a boxplot.
+
+```{r, label='6-5', echo=T}
+
+#let's make a histogram of sleep_total and fill it with the color palette rainbow() which needs to know how many colors to use
+
+hist(msleep$sleep_total, col=rainbow(10))
+
+
+#let's make a boxplot of sleep_total and order making eachone a different color (how would you find out how many unique orders are in msleep?)
+#using plot
+#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) #this is commented out simply to avoid ploting the same plot twice
+```
+
+```{r, label='6-6', echo=T}
+#or boxplot
+boxplot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) 
+
+```
+
+Another example looking at sleep variation across the different types of consumers (carnivore, herbivore, insectivore and omnivore):
+
+```{r,label='6-7', echo=T}
+plot(msleep$sleep_total~as.factor(msleep$vore),col=rainbow(4), xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)")
+```
+
+### Class Exercise 1
+
+> # Explore this dataset of chick weight and identify:
+>
+> 1)  how many chicks are in the dataset (sample size) and how many different diets were used in the experiment? Hint \*\*length() will be a useful command!
+> 2)  Visualize the relationship of chick weight over time (scatterplot would be useful here!)
+> 3)  Visualize how different diets impact the weights of the chicks at the final day of the experiments (a boxplot would be useful here!) Read in the data using `data(ChickWeight)`
+
+```{r, echo=T}
+# Note: this dataset can also be accessed directly from the ChickWeight package in R 
+# (see ?ChickWeight)
+data("ChickWeight")
+```
+
+> For all of your figures try using the package R Color Brewer to generate color palettes. Go to <http://colorbrewer2.org/> to vizualize palettes. You can choose palettes that are colorblind safe, print friendly, etc. Define a color pallete with 10 colors and re-plot the histogram of the weights of the chicks at the final day of the experiments in these colors Note: if histogram has n breaks and n is less than 10, it will just use first n colors. If n is greater than 10, it will reuse colors.
+
+```{r, echo=T}
+# Install R Color Brewer
+#install.packages("RColorBrewer")
+library("RColorBrewer")
+```
+
+## Plotting with ggplot2
+
+GGPlot is a package that allows you to make a lot of different kinds of plots and has become increasingly popular. There are also many tutorials on how to use ggplot as well as example code that could be modified to fit the data you're interested in plotting. There is a really helpful cheatsheat (here)[<https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf>]
+
+There is a little bit of a learning curve for ggplot as the syntax is structured differently than base R plotting. One thing that remains the same and is even more noticible in ggplot is the iterative process of building a plot, one aspect at a time.
+
+Let's demonstrate what ggplot can do with this dataset on the Effect of Vitamin C on Tooth Growth in Guinea Pigs
+
+```{r, echo=T}
+#load in the data
+data(ToothGrowth)
+#look at the structure of the data
+str(ToothGrowth)
+#you can also open your dataset with this command which pulls it into a different window
+View(ToothGrowth)
+```
+
+This dataset has three columns, `len` for length of tooth, `supp` for supplement provided, either OJ or VC, and `dose` for amount of the supplement given. OJ was orange juice and VC was abcorbic acid, and they wanted to test how these two delivery methods may change tooth growth, as well as the different doses. Two of our variables are categorical (`supp` and `dose`) while tooth length is continuous. What type of data you are working with is important when we think about how to visualize our data.
+
+If you do the command `ggplot(data=ToothGrowth)` you will just see a grey box. In order to tell ggplot what to put in the box we use the `aes()`. The `aes()` function stands for aesthetics and will be used to specify our axes and how we want the data grouped.
+
+Since we have two categories, dose or supplement, and one continuous variable that we want to see how it varies by those categorical variables, let's try to plot the amount of tooth growth with the supplement given to the guinea pigs.
+
+```{r, label='6-8', echo=T}
+#we specify which axes we want to be x and y with aes()
+#we'll then use geom_point to tell it to make a scatterplot using the data we specified in the first command
+ggplot(data=ToothGrowth, aes(x=supp, y=len))+geom_point() 
+
+```
+
+This scatterplot visualization isn't super useful since there are only two supplement types, OJ and VC, and the points for tooth length are just spread across the Y axis. A boxplot would likely be the best way to visualize this data, so let's try that!
+
+There are many types of plots in ggplot that can be called with `geom_` including `geom_line`, `geom_boxplot` `geom_bar` and many others!
+
+```{r,label='6-9', echo=T}
+#we specify which axes we want to be x and y with aes()
+ggplot(ToothGrowth, aes(y=len, x=supp))+ geom_boxplot()
+
+```
+
+What if we want to add color to make the two supplements even more distinguishable from one another?
+
+```{r,  label='6-10',  echo=T}
+#same graph but add color!
+ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot()
+
+```
+
+These are the base formats for plots in ggplot2, so it can be fun to customize the theme, colorscheme etc to make your graphs more specific to your work and easier to interpret. I like to change the background from grey to white so that it is less distracting from the data. All of these things can be modified if we wish. Many of these options can easily be changed with the `theme_` functions.
+
+Let's change to a minimal theme which removes the gray background in the back of the plot. Play around with the other themes to see what they change. You can change colors with RcolorBrewer again with `scale_fill_brewer()` or `scale_fill_manual()` to choose the two colors. The `values=c()` part is important when you are using two or more colors!
+
+```{r,  label='6-11',  echo=T}
+#change the theme
+ggplot(ToothGrowth, aes(y=len, x=dose, fill= supp))+ geom_boxplot() + scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
+
+```
+
+Now let's look at the `msleep` dataset again and make a plot of total sleep against REM sleep and then group by "vore".
+
+```{r, echo=T}
+data(msleep)
+View(msleep)
+```
+
+Because `vore` is a character vector we will need to convert it to a factor for ggplot to be able to use it as a group or a color. This can be easily done with `as.factor()`.
+
+```{r, label='6-12', echo=T}
+# because our vore vector is a character vector we must convert it to a factor before we can use it to group or color
+ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore))) +geom_point() +theme_minimal()
+
+```
+
+If you use `View()` to look at our dataset you will see there are some NAs in our `vore` column which may give you a warning when you go to plot since there is missing data. That looks fine, but we may want to add axis labels and change the legend. The code below does just that and changes the theme.
+
+```{r,label='6-13', echo=T}
+# as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line
+
+ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore)))+
+  geom_point()+
+  labs(y= "Total Sleep (hours)", x= "REM sleep (hours)")+
+  theme_minimal()+
+  scale_color_manual(name="Diet", 
+                        labels = c("Carnivore", 
+                                   "Herbivore", 
+                                   "Insectivore", 
+                                   "Omnivore", 
+                                    "NA"), 
+                        values = c("carni"="pink", 
+                                   "herbi"="darkgreen", 
+                                   "insecti"="orange", 
+                                   "omni"="brown", 
+                                   "NA"="grey"))
+
+```
+
+Our plot at this point is getting very clunky. You can assign what we have so far to an object and continue to add parameters without having to copy and paste the whole plot. This can also be useful for saving your plots as images for powerpoint presentations with `ggsave()`. This will save a photo of your figure on your desktop!
+
+```{r, label='6-14', echo=T}
+#assign to an object
+
+plot1<-ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore)))+
+  geom_point()+
+  labs(y= "Total Sleep (hours)", x= "REM sleep (hours)")+
+  theme_minimal()+
+  scale_color_manual(name="Diet", 
+                        labels = c("Carnivore", 
+                                   "Herbivore", 
+                                   "Insectivore", 
+                                   "Omnivore", 
+                                    "NA"), 
+                        values = c("carni"="pink", 
+                                   "herbi"="darkgreen", 
+                                   "insecti"="orange", 
+                                   "omni"="brown", 
+                                   "NA"="grey"))
+
+plot1
+
+ggsave("plot1.png",plot1, width=20, height=20, units = "cm") 
+```
+
+I use ggplot often with data sets that have multiple character vectors and I want to see how they relate to my continuous variables. For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. This dataset was published by Ronald Fisher in his 1936 paper: "The use of multiple measurements in taxonomic problems". It has three plant species (setosa, virginica, versicolor) and four morphological traits measured for each sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length and Petal.Width.
+
+![Iris Diagram for Reference](./figs/iris.png)
+
+```{r, label='6-15',  echo=T}
+data(iris)
+View(iris)
+
+ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
+  geom_point() + theme_minimal()
+```
+
+If you want to add a line of best fit to each population you can do that with `geom_smooth()`
+
+```{r,  label='6-16',  echo=T}
+ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
+  geom_point()+
+  geom_smooth(method="lm") +theme_minimal()
+
+```
+
+Finally, if you want to look at each species on it's own graph at once you can look at all of these together with `facet_wrap` or `facet_grid`.
+
+```{r,   label='6-17',  echo=T}
+ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
+  geom_point()+
+  facet_wrap(~Species)+
+  geom_smooth(method="lm") +theme_minimal()
+
+```
+
+### Class Exercise 2
+
+> Go back to the Guinea Pig Tooth Dataset (ToothGrowth) and visualize how the different doses of VC and OJ impact tooth growth. Use `facet_wrap()` and plot the doses of the treatments within each graph, with three separate graphs for each dose (0.5, 1 and 2) data(ToothGrowth)
+
+Plotting the mean values with error bars for several groups can also be useful for data visualization. You can use the function `stat_summary` to find the mean and error around that mean for the given grouping.
+
+Now let's look again at the Chick Weight dataset! Here's a plot looking at the mean chickweight by diet.
+
+```{r, ,  label='6-18',  echo=T}
+View(ChickWeight)
+ggplot(ChickWeight, aes(x=Time, y=weight, group=Diet, color=Diet))+
+  stat_summary(fun=mean, geom="point", size=1)+
+  stat_summary(fun=mean, geom="line", size=1)+
+  stat_summary(fun.data = mean_se, geom = "errorbar", 
+               aes(width=0.1), size=0.5) +theme_minimal()
+
+```
+
+## For loops and the apply family of functions
+
+A few useful commands: function(), is.na, which, var, length, for(){ }, points, print, paste, plot, unique, sample
+
+for loops: In many languages, the best way to repeat a calculation is to use a for-loop: For example, we could square each number 1 to 10
+
+```{r, echo=T}
+squares = rep(NA, 10) # use rep to create a vector length 10 of NAs to store the result
+for (i in 1:10) { # for loop
+  squares[i] = i^2
+}
+squares
+
+```
+
+## Group Work Activity: Palmer Penguins!
+![Artwork by @allison_horst](./figs/lter_penguins.png)
+For this week's activity we will be working with the dataset `palmerpenguins` <https://allisonhorst.github.io/palmerpenguins/> First install the package with the data. There are two datasets, `penguins` and `penguins_raw`. Learn more about each dataset by doing `?penguins` or `?penguins_raw` in your console. We will be working with the `penguins` dataset for the homework.
+
+```{r, echo=T}
+install.packages("palmerpenguins") #it might take a second to download
+library(palmerpenguins)
+data(package = 'palmerpenguins')
+```
+
+For this week your goal is to do the following: 
+
+1) Without using the `view()` command, report the names of the unique species in this dataset and how many species there are.
+
+2)  Using the `penguins` dataset, how does bill length vary across the three species? Consider the best way to visualize this figure, is a scatterplot or a boxplot a better fit for showing the variation between the species? **Interpret the main takeaway from this figure in one to two sentences.**
+
+3)  Again using the `penguins` dataset visualize the relationship between bill length and bill depth across the three species. This should all be in one single graph with a specific color and a line of best fit for each of the species. **Interpret the main takeaway from this figure in one to two sentences.**
+
+Copy the lines in your script used to answer all three of these questions into your canvas submission. Be sure to include the answers for question 1, interpretations for the figures and the two figures you made as well.
+
+![Artwork by @allison_horst](./figs/beakdepth.png)
+
+<details>
+
+<summary>[Class Exercise Solutions ]{style="color: red;"}</summary>
+
+<p>
+
+> > ## Exercise 1
+> >
+> > 1)  sample size and different diets in the experiment
+
+```{r, echo=T}
+length(unique(ChickWeight$Chick))
+length(unique(ChickWeight$Diet))
+```
+
+> > 2)  scatterplot of the relationship of chicken weight over time
+
+```{r, echo=T}
+plot(ChickWeight$weight ~ ChickWeight$Time, 
+     xlab = "Time (days)", 
+     ylab = "Weight (gm)")
+```
+
+> 3)  Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments
+
+```{r, echo=T}
+my.new = ChickWeight[ChickWeight$Time == max(ChickWeight$Time), ]
+boxplot(weight ~ Diet, 
+        data = my.new, 
+        xlab = "Diet", 
+        ylab = "Weight (gm)", 
+        main = "Final weights given diet type", 
+        col = c("red", "blue", "orange", "green"))
+```
+
+```{r, echo=T}
+library(RColorBrewer)
+my.colors = brewer.pal(10, "Paired")
+hist(ChickWeight$weight[ChickWeight$Time == max(ChickWeight$Time)], xlab = "Weight (gm)",main = "Weights at final day of experiment", col = my.colors)
+```
+
+> > ## Exercise 2
+
+```{r, echo=T}
+ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + facet_wrap(~dose)+ scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
+```
+
+</p>
+
+</details>
+
+<!--chapter:end:06-Week6.Rmd-->
+
