@@ -179,8 +179,7 @@ Let's demonstrate what ggplot can do with this dataset on the Effect of Vitamin 
 data(ToothGrowth)
 #look at the structure of the data
 str(ToothGrowth)
-#you can also open your dataset with this command which pulls it into a different window
-View(ToothGrowth)
+#you can also open your dataset with this command which pulls it into a different window with View()
 ```
 
 This dataset has three columns, `len` for length of tooth, `supp` for supplement provided, either OJ or VC, and `dose` for amount of the supplement given. OJ was orange juice and VC was abcorbic acid, and they wanted to test how these two delivery methods may change tooth growth, as well as the different doses. Two of our variables are categorical (`supp` and `dose`) while tooth length is continuous. What type of data you are working with is important when we think about how to visualize our data.
@@ -224,11 +223,10 @@ ggplot(ToothGrowth, aes(y=len, x=dose, fill= supp))+ geom_boxplot() + scale_fill
 
 ```
 
-Now let's look at the `msleep` dataset again and make a plot of total sleep against REM sleep and then group by "vore".
+Now let's look at the `msleep` dataset again with  `view()` and make a plot of total sleep against REM sleep and then group by "vore". Load the data with the command below:
 
 ```{r, echo=T}
 data(msleep)
-View(msleep)
 ```
 
 Because `vore` is a character vector we will need to convert it to a factor for ggplot to be able to use it as a group or a color. This can be easily done with `as.factor()`.
@@ -293,9 +291,7 @@ I use ggplot often with data sets that have multiple character vectors and I wan
 ![Iris Diagram for Reference](./figs/iris.png)
 ``` {r, echo=T}
 data(iris)
-View(iris)
 ```
-
 
 ```{r, label= '6-15',  echo=T}
 ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
@@ -304,10 +300,9 @@ ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
 
 If you want to add a line of best fit to each population you can do that with `geom_smooth()`
 
-```{r,  label= '6-16',  echo=T}
+```{r, echo=T, warning=TRUE, label='6-16'}
 ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
-  geom_point()+
-  geom_smooth(method="lm") +theme_minimal()
+  geom_point()+ geom_smooth(method="lm") +theme_minimal()
 
 ```
 

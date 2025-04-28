@@ -1,8 +1,11 @@
 ---
-title: "05-Week5"
+  title: "05-Week5.Rmd"
 author: "M. Armstrong"
-date: "2025-04-07"
-output: html_document
+date: "2025-04-24"
+output:
+  bookdown::html_book:
+  toc: yes
+css: toc.css
 editor_options: 
   markdown: 
     wrap: 72
@@ -186,11 +189,7 @@ ls()
 Call the help files for the functions ls() and rm() + What are the
 arguments for the ls() function? + What does the 'sorted' argument do?
 
-``` html
-?ls
-
-#From the help file:    sorted is a logical indicating if the resulting character should be sorted alphabetically. Note that this is part of ls() may take most of the time.
-```
+From the help file: sorted is a logical indicating if the resulting character should be sorted alphabetically. Note that this is part of ls() may take most of the time.
 
 ## Characterizing a dataframe
 
@@ -264,11 +263,7 @@ str(msleep)
 dim(), ncol(), nrow()- dimensions, number of columns, number of rows
 colnames(), rownames() - column names, row names
 
-Rstudio also allows us to just look into the data file with `View()`
-
-```{r, echo=T}
-View(msleep)
-```
+Rstudio also allows us to just look into the data file with `View()`. Try to look at the msleep data using `View(msleep)`
 
 ## How to access parts of the data:
 
@@ -376,7 +371,7 @@ str(msleep)
 
 Often we want to summarize data. There are many ways of doing this in R:
 
-```{r, echo=T}
+``` {r, echo=T}
 
  # calculate mean() of a column
 mean(msleep$sleep_total)
