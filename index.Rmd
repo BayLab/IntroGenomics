@@ -9,7 +9,7 @@ description: " "
 ---
 # Intro to Genomics in Natural Populations
 Wednesdays 10-11:50am, Storer 1350
-Office Hours TBD
+Office Hours 3pm on Fridays
 
 Instructors:  Rachael Bay (rbay@ucdavis.edu) & Madison Armstrong (mlarmstrong@ucdavis.edu), Office Hours: TBD
 
