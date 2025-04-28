@@ -37,9 +37,7 @@ information](./figs/R_ondemand.png)
 After we start it up we will want to create a new file called
 "Week5-IntroR.R" to type our scripts for today.
 
-To do this, we will click `File`, `New File` then `R script` . We will
-just be writing base scripts not R markdown scripts for the time being.
-Name your file with your `name-Week5-introR`
+To do this, we will click `File`, `New File` then `R script`. Name your file with your `name-Week5-introR`
 
 `#` before a sentence comments out what you want before you write code.
 Without a `#` R will think what you are writing needs to be run as a
