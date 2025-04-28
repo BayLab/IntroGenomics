@@ -144,7 +144,7 @@ editor_options:
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 ```
 
-# Week 5- Plotting in R
+# Week 6- Plotting in R
 
 We're again drawing some of this material from the STEMinist_R materials which can be found [here](https://github.com/ecalfee/STEMinist_R.git)
 

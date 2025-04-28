@@ -103,3 +103,5 @@ apply
 lapply-list-apply
 tapply---per-type-apply
 exercise-2.3-apply-and-tapply
+class-exercise-2
+group-work-activity-palmer-penguins
