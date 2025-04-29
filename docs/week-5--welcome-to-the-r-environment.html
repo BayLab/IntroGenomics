@@ -230,8 +230,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#how-to-access-parts-of-the-data"><i class="fa fa-check"></i><b>6.8</b> How to access parts of the data:</a></li>
 <li class="chapter" data-level="6.9" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#data-manipulation"><i class="fa fa-check"></i><b>6.9</b> Data Manipulation</a></li>
 <li class="chapter" data-level="6.10" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#practice-exploring-a-dataframe"><i class="fa fa-check"></i><b>6.10</b> Practice exploring a dataframe</a></li>
-<li class="chapter" data-level="6.11" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r"><i class="fa fa-check"></i><b>6.11</b> Group Work Activity: Practice Exploring Data in R</a></li>
-<li class="chapter" data-level="6.12" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#key-points-4"><i class="fa fa-check"></i><b>6.12</b> Key Points</a></li>
+<li class="chapter" data-level="6.11" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#subsetting-datasets-logicals"><i class="fa fa-check"></i><b>6.11</b> Subsetting datasets &amp; logicals</a></li>
+<li class="chapter" data-level="6.12" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r"><i class="fa fa-check"></i><b>6.12</b> Group Work Activity: Practice Exploring Data in R</a></li>
+<li class="chapter" data-level="6.13" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#key-points-4"><i class="fa fa-check"></i><b>6.13</b> Key Points</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html"><i class="fa fa-check"></i><b>7</b> Week 6- Plotting in R</a>
 <ul>
@@ -275,7 +276,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This lesson is modified from materials compiled by Serena Caplins from
 the STEMinist_R lessons produced by several UC Davis graduate student
 and which can be found
-<a href="https://github.com/ecalfee/STEMinist_R.git">here</a>. The lecture slides to introduce R more in depth are here: SLIDES</p>
+<a href="https://github.com/ecalfee/STEMinist_R.git">here</a>. The lecture slides
+to introduce R more in depth are here: <a href="./figs/W5_R.pdf">Week 5 Slides</a>)</p>
 <div id="main-objectives-4" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Main Objectives<a href="week-5--welcome-to-the-r-environment.html#main-objectives-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -291,18 +293,13 @@ and which can be found
 session with the information shown below <img src="figs/R_ondemand.png" alt="Fill out this information" /></p>
 <p>After we start it up we will want to create a new file called
 “Week5-IntroR.R” to type our scripts for today.</p>
-<p>To do this, we will click <code>File</code>, <code>New File</code> then <code>R script</code> . We will
-just be writing base scripts not R markdown scripts for the time being.
-Name your file with your <code>name-Week5-introR</code></p>
+<p>To do this, we will click <code>File</code>, <code>New File</code> then <code>R script</code>. Name your
+file with your <code>name-Week5-introR</code></p>
 <p><code>#</code> before a sentence comments out what you want before you write code.
 Without a <code>#</code> R will think what you are writing needs to be run as a
-command! I have used comments in this example to write what the script
-is for. The top left is the script, the bottom left is the terminal
-window where code and outputs will be typed, the top right is your
-environment (yours should be empty and won’t have the ‘git’ option) and
-the bottom right is where files/plots/etc will go. <img src="figs/Rwindow.png" alt="R window" /> This is what your R window could look like
-while running popgen code later into the class! <img src="figs/Rwindow2.png" alt="R window- population structure example" /></p>
-<p>R can be used for basic arithmetic. Type this into your script and hit
+command! I have used comments in this example to write what the script is for. The top left is the script, the bottom left is the terminal window where code and outputs will be typed, the top right is your environment
+<img src="figs/Rwindow.png" alt="R window- example" />
+R can be used for basic arithmetic. Type this into your script and hit
 enter:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-5--welcome-to-the-r-environment.html#cb1-1" tabindex="-1"></a><span class="co">#adding prompt</span></span>
 <span id="cb1-2"><a href="week-5--welcome-to-the-r-environment.html#cb1-2" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">10</span><span class="sc">+</span><span class="dv">23</span></span></code></pre></div>
@@ -326,6 +323,14 @@ enter:</p>
 <p>We can use colons to get sequences of numbers:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-5--welcome-to-the-r-environment.html#cb9-1" tabindex="-1"></a><span class="co">#sequence of numbers</span></span>
 <span id="cb9-2"><a href="week-5--welcome-to-the-r-environment.html#cb9-2" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span></code></pre></div>
+<p>Data Structures include:</p>
+<ol style="list-style-type: decimal">
+<li><p>Vector</p></li>
+<li><p>Lists</p></li>
+<li><p>Matrices</p></li>
+<li><p>Factor</p></li>
+<li><p>Data frame</p></li>
+</ol>
 <p>Vectors can also include characters (in quotes): <code>c()</code>=concatenate, aka
 link things together!</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-5--welcome-to-the-r-environment.html#cb10-1" tabindex="-1"></a><span class="co">#link things together with this code</span></span>
@@ -342,8 +347,10 @@ link things together!</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-5--welcome-to-the-r-environment.html#cb13-1" tabindex="-1"></a><span class="co">#how long is vector n</span></span>
 <span id="cb13-2"><a href="week-5--welcome-to-the-r-environment.html#cb13-2" tabindex="-1"></a><span class="fu">length</span>(n)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
-<p>You can use square brackets <code>[]</code> to get parts of vectors.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-5--welcome-to-the-r-environment.html#cb15-1" tabindex="-1"></a>n[<span class="dv">50</span>]</span></code></pre></div>
+<p>You can use square brackets <code>[]</code> to get parts of vectors. This returns
+how often 50 is present in our <code>n</code> object.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-5--welcome-to-the-r-environment.html#cb15-1" tabindex="-1"></a><span class="co">#how often is 50 present in our n dataset?</span></span>
+<span id="cb15-2"><a href="week-5--welcome-to-the-r-environment.html#cb15-2" tabindex="-1"></a>n[<span class="dv">50</span>]</span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
 </div>
 <div id="operations-act-on-each-element-of-a-vector" class="section level2 hasAnchor" number="6.4">
@@ -384,6 +391,7 @@ and <code>objects()</code></p>
 <pre><code>## [1] &quot;animals&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;n&quot;       &quot;number&quot;  &quot;numbers&quot; &quot;y&quot;</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="week-5--welcome-to-the-r-environment.html#cb33-1" tabindex="-1"></a><span class="fu">objects</span>() <span class="co">#returns the same results as ls() in this case. because we only have objects in our environment.</span></span></code></pre></div>
 <pre><code>## [1] &quot;animals&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;n&quot;       &quot;number&quot;  &quot;numbers&quot; &quot;y&quot;</code></pre>
+<p>This is where those objects show up with you type <code>ls()</code>: <img src="figs/ls.png" alt="Returns a list of what is present in our R environment" /></p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="week-5--welcome-to-the-r-environment.html#cb35-1" tabindex="-1"></a><span class="co"># how to get help for a function; you can also write help()</span></span>
 <span id="cb35-2"><a href="week-5--welcome-to-the-r-environment.html#cb35-2" tabindex="-1"></a>?ls</span>
 <span id="cb35-3"><a href="week-5--welcome-to-the-r-environment.html#cb35-3" tabindex="-1"></a></span>
@@ -394,16 +402,23 @@ and <code>objects()</code></p>
 <span id="cb35-8"><a href="week-5--welcome-to-the-r-environment.html#cb35-8" tabindex="-1"></a><span class="co"># and make sure it got rid of them</span></span>
 <span id="cb35-9"><a href="week-5--welcome-to-the-r-environment.html#cb35-9" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;animals&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;n&quot;       &quot;number&quot;  &quot;y&quot;</code></pre>
+<div class="float">
+<img src="figs/ls2.png" alt="After removal" />
+<div class="figcaption">After removal</div>
+</div>
 <p>Call the help files for the functions ls() and rm() + What are the
 arguments for the ls() function? + What does the ‘sorted’ argument do?</p>
-<p>From the help file: sorted is a logical indicating if the resulting character should be sorted alphabetically. Note that this is part of ls() may take most of the time.</p>
+<p>From the help file: sorted is a logical indicating if the resulting
+character should be sorted alphabetically. Note that this is part of
+ls() may take most of the time.</p>
 </div>
 <div id="characterizing-a-dataframe" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> Characterizing a dataframe<a href="week-5--welcome-to-the-r-environment.html#characterizing-a-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’ll now move from working with objects and vectors to working with
 dataframes:</p>
 <ul>
-<li>Here are a few useful functions:
+<li>Here are a few useful functions! I will go over each as we introduce
+them throughout the lesson today:
 <ul>
 <li>install.packages()</li>
 <li>library()</li>
@@ -430,8 +445,8 @@ package with a #.</strong></p>
 <span id="cb37-4"><a href="week-5--welcome-to-the-r-environment.html#cb37-4" tabindex="-1"></a></span>
 <span id="cb37-5"><a href="week-5--welcome-to-the-r-environment.html#cb37-5" tabindex="-1"></a><span class="fu">library</span> (ggplot2)</span></code></pre></div>
 <p>Load the data (it’s called msleep). This dataset includes information
-about mammal sleep times and weights that was taken from a study by V.
-M. Savage and G. B. West. “A quantitative, theoretical framework for
+bout mammal sleep times and weights that was taken from a study by V. M.
+Savage and G. B. West. “A quantitative, theoretical framework for
 understanding mammalian sleep. Proceedings of the National Academy of
 Sciences, 104 (3):1051-1056, 2007.”</p>
 <p>The data includes <code>name</code> (common name), <code>genus</code>, <code>vore</code> (carnivore,
@@ -485,15 +500,20 @@ and columns)?</p>
 ##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...</code></pre>
 <p>dim(), ncol(), nrow()- dimensions, number of columns, number of rows
 colnames(), rownames() - column names, row names</p>
-<p>Rstudio also allows us to just look into the data file with <code>View()</code>. Try to look at the msleep data using <code>View(msleep)</code></p>
+<p>Rstudio also allows us to just look into the data file with <code>View()</code>.
+Try to look at the msleep data using <code>View(msleep)</code></p>
 </div>
 <div id="how-to-access-parts-of-the-data" class="section level2 hasAnchor" number="6.8">
 <h2><span class="header-section-number">6.8</span> How to access parts of the data:<a href="week-5--welcome-to-the-r-environment.html#how-to-access-parts-of-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also look at a single column at a time. There are three ways to
 access this: $, [,#] or [,“a”].</p>
-<p><strong>Quick Tip:</strong> Think about “rc cola” or “remote control car” to remember
-that [5,] means fifth row and [,5] means fifth column!</p>
-<p>Each way has it’s own advantages:</p>
+<p>Think about “<strong>R</strong>emote <strong>C</strong>ontrol car” to remember that [5,] means
+fifth row and [,5] means fifth column! Rows are listed first and columns
+are listed second.</p>
+<p>Each way has it’s own advantages! The first subsets the third column of
+data, so you need to know where your data of interest is. The second
+subsets the <code>vore</code> column only. The third prints all of the data from
+the <code>vore</code> column in your console window.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="week-5--welcome-to-the-r-environment.html#cb45-1" tabindex="-1"></a>msleep[,<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 83 × 1
 ##    vore 
@@ -537,22 +557,38 @@ that [5,] means fifth row and [,5] means fifth column!</p>
 ## [64] &quot;herbi&quot;   &quot;omni&quot;    &quot;omni&quot;    &quot;insecti&quot; &quot;herbi&quot;   NA        &quot;herbi&quot;  
 ## [71] &quot;herbi&quot;   &quot;herbi&quot;   NA        &quot;omni&quot;    &quot;insecti&quot; &quot;herbi&quot;   &quot;herbi&quot;  
 ## [78] &quot;omni&quot;    &quot;omni&quot;    &quot;carni&quot;   &quot;carni&quot;   &quot;carni&quot;   &quot;carni&quot;</code></pre>
+<p>If you wanted to save these as objects, you need to add an arrow an a
+new name for that object. They should all be the same!</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="week-5--welcome-to-the-r-environment.html#cb51-1" tabindex="-1"></a>column3<span class="ot">&lt;-</span>msleep[,<span class="dv">3</span>]</span>
+<span id="cb51-2"><a href="week-5--welcome-to-the-r-environment.html#cb51-2" tabindex="-1"></a>voreonly<span class="ot">&lt;-</span>msleep[, <span class="st">&quot;vore&quot;</span>]</span>
+<span id="cb51-3"><a href="week-5--welcome-to-the-r-environment.html#cb51-3" tabindex="-1"></a>vores<span class="ot">&lt;-</span>msleep<span class="sc">$</span>vore</span>
+<span id="cb51-4"><a href="week-5--welcome-to-the-r-environment.html#cb51-4" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="week-5--welcome-to-the-r-environment.html#cb51-5" tabindex="-1"></a><span class="fu">head</span>(column3) <span class="co">#do this or View() for all of your new objects!</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 1
+##   vore 
+##   &lt;chr&gt;
+## 1 carni
+## 2 omni 
+## 3 herbi
+## 4 omni 
+## 5 herbi
+## 6 herbi</code></pre>
 <p>Sometimes it is useful to know what class() the column is:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="week-5--welcome-to-the-r-environment.html#cb51-1" tabindex="-1"></a><span class="fu">class</span>(msleep<span class="sc">$</span>vore)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="week-5--welcome-to-the-r-environment.html#cb53-1" tabindex="-1"></a><span class="fu">class</span>(msleep<span class="sc">$</span>vore) <span class="co">#character!</span></span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="week-5--welcome-to-the-r-environment.html#cb53-1" tabindex="-1"></a><span class="fu">class</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="week-5--welcome-to-the-r-environment.html#cb55-1" tabindex="-1"></a><span class="fu">class</span>(msleep<span class="sc">$</span>sleep_total) <span class="co">#numeric!</span></span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>We can also look at a single row at a time. There are two ways to access
 this: 1. by indicating the row number in square brackets next to the
 name of the dataframe <code>name[#,]</code> and by calling the actual name of the
 row (if your rows have names) <code>name["a",]</code>.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="week-5--welcome-to-the-r-environment.html#cb55-1" tabindex="-1"></a>msleep[<span class="dv">43</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="week-5--welcome-to-the-r-environment.html#cb57-1" tabindex="-1"></a>msleep[<span class="dv">43</span>,]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
 ## 1 Little… Myot… inse… Chir… &lt;NA&gt;                19.9         2         0.2   4.1
 ## # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="week-5--welcome-to-the-r-environment.html#cb57-1" tabindex="-1"></a>msleep[msleep<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Mountain beaver&quot;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="week-5--welcome-to-the-r-environment.html#cb59-1" tabindex="-1"></a>msleep[msleep<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Mountain beaver&quot;</span>,]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -561,9 +597,9 @@ row (if your rows have names) <code>name["a",]</code>.</p>
 <p><img src="figs/mtbeaver.png" alt="Mountain Beaver by Coke Smith" />
 <a href="https://www.nps.gov/articles/000/mapping-mountain-beavers-in-point-reyes-a-collaboration-between-the-national-park-service-and-uc-berkeley.htm" class="uri">https://www.nps.gov/articles/000/mapping-mountain-beavers-in-point-reyes-a-collaboration-between-the-national-park-service-and-uc-berkeley.htm</a></p>
 <p>We can select more than one row or column at a time:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="week-5--welcome-to-the-r-environment.html#cb59-1" tabindex="-1"></a> <span class="co"># see two columns</span></span>
-<span id="cb59-2"><a href="week-5--welcome-to-the-r-environment.html#cb59-2" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="week-5--welcome-to-the-r-environment.html#cb59-3" tabindex="-1"></a>msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="week-5--welcome-to-the-r-environment.html#cb61-1" tabindex="-1"></a> <span class="co"># see two columns</span></span>
+<span id="cb61-2"><a href="week-5--welcome-to-the-r-environment.html#cb61-2" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="week-5--welcome-to-the-r-environment.html#cb61-3" tabindex="-1"></a>msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
 <pre><code>## # A tibble: 83 × 2
 ##    name                       sleep_total
 ##    &lt;chr&gt;                            &lt;dbl&gt;
@@ -578,13 +614,13 @@ row (if your rows have names) <code>name["a",]</code>.</p>
 ##  9 Dog                               10.1
 ## 10 Roe deer                           3  
 ## # ℹ 73 more rows</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="week-5--welcome-to-the-r-environment.html#cb61-1" tabindex="-1"></a> <span class="co"># and make a new data frame from these subsets</span></span>
-<span id="cb61-2"><a href="week-5--welcome-to-the-r-environment.html#cb61-2" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="week-5--welcome-to-the-r-environment.html#cb61-3" tabindex="-1"></a>subsleep<span class="ot">&lt;-</span>msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="week-5--welcome-to-the-r-environment.html#cb63-1" tabindex="-1"></a> <span class="co"># and make a new data frame from these subsets</span></span>
+<span id="cb63-2"><a href="week-5--welcome-to-the-r-environment.html#cb63-2" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="week-5--welcome-to-the-r-environment.html#cb63-3" tabindex="-1"></a>subsleep<span class="ot">&lt;-</span>msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
 <p>But what if we actually care about how many <strong>unique</strong> things are in a
 column?</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="week-5--welcome-to-the-r-environment.html#cb62-1" tabindex="-1"></a> <span class="co"># unique()</span></span>
-<span id="cb62-2"><a href="week-5--welcome-to-the-r-environment.html#cb62-2" tabindex="-1"></a><span class="fu">unique</span>(msleep[, <span class="st">&quot;order&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="week-5--welcome-to-the-r-environment.html#cb64-1" tabindex="-1"></a> <span class="co"># unique()</span></span>
+<span id="cb64-2"><a href="week-5--welcome-to-the-r-environment.html#cb64-2" tabindex="-1"></a><span class="fu">unique</span>(msleep[, <span class="st">&quot;order&quot;</span>])</span></code></pre></div>
 <pre><code>## # A tibble: 19 × 1
 ##    order          
 ##    &lt;chr&gt;          
@@ -607,8 +643,8 @@ column?</p>
 ## 17 Monotremata    
 ## 18 Afrosoricida   
 ## 19 Scandentia</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="week-5--welcome-to-the-r-environment.html#cb64-1" tabindex="-1"></a> <span class="co"># table()</span></span>
-<span id="cb64-2"><a href="week-5--welcome-to-the-r-environment.html#cb64-2" tabindex="-1"></a><span class="fu">table</span>(msleep<span class="sc">$</span>order)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="week-5--welcome-to-the-r-environment.html#cb66-1" tabindex="-1"></a> <span class="co"># table()</span></span>
+<span id="cb66-2"><a href="week-5--welcome-to-the-r-environment.html#cb66-2" tabindex="-1"></a><span class="fu">table</span>(msleep<span class="sc">$</span>order)</span></code></pre></div>
 <pre><code>## 
 ##    Afrosoricida    Artiodactyla       Carnivora         Cetacea      Chiroptera 
 ##               1               6              12               3               2 
@@ -618,8 +654,8 @@ column?</p>
 ##               1               1               3               1              12 
 ##     Proboscidea        Rodentia      Scandentia    Soricomorpha 
 ##               2              22               1               5</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="week-5--welcome-to-the-r-environment.html#cb66-1" tabindex="-1"></a> <span class="co"># levels(), if class is factor (and if not we can make it a factor)</span></span>
-<span id="cb66-2"><a href="week-5--welcome-to-the-r-environment.html#cb66-2" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(msleep<span class="sc">$</span>order))</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="week-5--welcome-to-the-r-environment.html#cb68-1" tabindex="-1"></a> <span class="co"># levels(), if class is factor (and if not we can make it a factor) showing the way that the data is displayed</span></span>
+<span id="cb68-2"><a href="week-5--welcome-to-the-r-environment.html#cb68-2" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(msleep<span class="sc">$</span>order))</span></code></pre></div>
 <pre><code>##  [1] &quot;Afrosoricida&quot;    &quot;Artiodactyla&quot;    &quot;Carnivora&quot;       &quot;Cetacea&quot;        
 ##  [5] &quot;Chiroptera&quot;      &quot;Cingulata&quot;       &quot;Didelphimorphia&quot; &quot;Diprotodontia&quot;  
 ##  [9] &quot;Erinaceomorpha&quot;  &quot;Hyracoidea&quot;      &quot;Lagomorpha&quot;      &quot;Monotremata&quot;    
@@ -630,27 +666,36 @@ column?</p>
 <h2><span class="header-section-number">6.9</span> Data Manipulation<a href="week-5--welcome-to-the-r-environment.html#data-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If your data is transposed in a way that isn’t useful to you, you can
 switch it. Note that this often changes the class of each column!</p>
-<p>In R, each column must have the same type of data:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="week-5--welcome-to-the-r-environment.html#cb68-1" tabindex="-1"></a> <span class="co"># t()</span></span>
-<span id="cb68-2"><a href="week-5--welcome-to-the-r-environment.html#cb68-2" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="week-5--welcome-to-the-r-environment.html#cb68-3" tabindex="-1"></a>tr_msleep<span class="ot">&lt;-</span><span class="fu">t</span>(msleep)</span>
-<span id="cb68-4"><a href="week-5--welcome-to-the-r-environment.html#cb68-4" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="week-5--welcome-to-the-r-environment.html#cb68-5" tabindex="-1"></a><span class="fu">str</span>(tr_msleep)</span></code></pre></div>
+<p>In R, all entries within a column must have the same format to be
+interpreted :</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="week-5--welcome-to-the-r-environment.html#cb70-1" tabindex="-1"></a> <span class="co"># t()</span></span>
+<span id="cb70-2"><a href="week-5--welcome-to-the-r-environment.html#cb70-2" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="week-5--welcome-to-the-r-environment.html#cb70-3" tabindex="-1"></a>tr_msleep<span class="ot">&lt;-</span><span class="fu">t</span>(msleep)</span>
+<span id="cb70-4"><a href="week-5--welcome-to-the-r-environment.html#cb70-4" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="week-5--welcome-to-the-r-environment.html#cb70-5" tabindex="-1"></a><span class="fu">str</span>(tr_msleep)</span></code></pre></div>
 <pre><code>##  chr [1:11, 1:83] &quot;Cheetah&quot; &quot;Acinonyx&quot; &quot;carni&quot; &quot;Carnivora&quot; &quot;lc&quot; &quot;12.1&quot; NA ...
 ##  - attr(*, &quot;dimnames&quot;)=List of 2
 ##   ..$ : chr [1:11] &quot;name&quot; &quot;genus&quot; &quot;vore&quot; &quot;order&quot; ...
 ##   ..$ : NULL</code></pre>
 <p>It’s important to know the class of data if you want to manipulate it.
 For example, you can’t add characters. <code>msleep</code> contains several
-different types of data.</p>
-<p>Some common classes are: factors, numeric, integers, characters, logical</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="week-5--welcome-to-the-r-environment.html#cb70-1" tabindex="-1"></a> <span class="co"># class()</span></span>
-<span id="cb70-2"><a href="week-5--welcome-to-the-r-environment.html#cb70-2" tabindex="-1"></a></span>
-<span id="cb70-3"><a href="week-5--welcome-to-the-r-environment.html#cb70-3" tabindex="-1"></a><span class="fu">class</span>(msleep)</span></code></pre></div>
-<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="week-5--welcome-to-the-r-environment.html#cb72-1" tabindex="-1"></a> <span class="co"># str()</span></span>
+different types of data. We see with <code>str()</code> that there are columns of
+data that are characters and numeric.</p>
+<p>Data Types:</p>
+<ul>
+<li><p>Character (names)</p></li>
+<li><p>Numeric (numbers)</p></li>
+<li><p>Logical (T/F)</p></li>
+<li><p>Integer (2L for example)</p></li>
+<li><p>Complex (imaginary #s)</p></li>
+<li><p>Raw (not really used)</p></li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="week-5--welcome-to-the-r-environment.html#cb72-1" tabindex="-1"></a> <span class="co"># class()</span></span>
 <span id="cb72-2"><a href="week-5--welcome-to-the-r-environment.html#cb72-2" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="week-5--welcome-to-the-r-environment.html#cb72-3" tabindex="-1"></a><span class="fu">str</span>(msleep)</span></code></pre></div>
+<span id="cb72-3"><a href="week-5--welcome-to-the-r-environment.html#cb72-3" tabindex="-1"></a><span class="fu">class</span>(msleep)</span></code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="week-5--welcome-to-the-r-environment.html#cb74-1" tabindex="-1"></a> <span class="co"># str()</span></span>
+<span id="cb74-2"><a href="week-5--welcome-to-the-r-environment.html#cb74-2" tabindex="-1"></a><span class="fu">str</span>(msleep) </span></code></pre></div>
 <pre><code>## tibble [83 × 11] (S3: tbl_df/tbl/data.frame)
 ##  $ name        : chr [1:83] &quot;Cheetah&quot; &quot;Owl monkey&quot; &quot;Mountain beaver&quot; &quot;Greater short-tailed shrew&quot; ...
 ##  $ genus       : chr [1:83] &quot;Acinonyx&quot; &quot;Aotus&quot; &quot;Aplodontia&quot; &quot;Blarina&quot; ...
@@ -664,28 +709,28 @@ different types of data.</p>
 ##  $ brainwt     : num [1:83] NA 0.0155 NA 0.00029 0.423 NA NA NA 0.07 0.0982 ...
 ##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...</code></pre>
 <p>Often we want to summarize data. There are many ways of doing this in R:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="week-5--welcome-to-the-r-environment.html#cb74-1" tabindex="-1"></a> <span class="co"># calculate mean() of a column</span></span>
-<span id="cb74-2"><a href="week-5--welcome-to-the-r-environment.html#cb74-2" tabindex="-1"></a><span class="fu">mean</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="week-5--welcome-to-the-r-environment.html#cb76-1" tabindex="-1"></a> <span class="co"># calculate mean() of a column</span></span>
+<span id="cb76-2"><a href="week-5--welcome-to-the-r-environment.html#cb76-2" tabindex="-1"></a><span class="fu">mean</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## [1] 10.43373</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="week-5--welcome-to-the-r-environment.html#cb76-1" tabindex="-1"></a> <span class="co"># max()</span></span>
-<span id="cb76-2"><a href="week-5--welcome-to-the-r-environment.html#cb76-2" tabindex="-1"></a><span class="fu">max</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="week-5--welcome-to-the-r-environment.html#cb78-1" tabindex="-1"></a> <span class="co"># max()</span></span>
+<span id="cb78-2"><a href="week-5--welcome-to-the-r-environment.html#cb78-2" tabindex="-1"></a><span class="fu">max</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## [1] 19.9</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="week-5--welcome-to-the-r-environment.html#cb78-1" tabindex="-1"></a> <span class="co"># min()</span></span>
-<span id="cb78-2"><a href="week-5--welcome-to-the-r-environment.html#cb78-2" tabindex="-1"></a><span class="fu">min</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="week-5--welcome-to-the-r-environment.html#cb80-1" tabindex="-1"></a> <span class="co"># min()</span></span>
+<span id="cb80-2"><a href="week-5--welcome-to-the-r-environment.html#cb80-2" tabindex="-1"></a><span class="fu">min</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## [1] 1.9</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="week-5--welcome-to-the-r-environment.html#cb80-1" tabindex="-1"></a> <span class="co"># summary()</span></span>
-<span id="cb80-2"><a href="week-5--welcome-to-the-r-environment.html#cb80-2" tabindex="-1"></a><span class="fu">summary</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="week-5--welcome-to-the-r-environment.html#cb82-1" tabindex="-1"></a> <span class="co"># summary()</span></span>
+<span id="cb82-2"><a href="week-5--welcome-to-the-r-environment.html#cb82-2" tabindex="-1"></a><span class="fu">summary</span>(msleep<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.90    7.85   10.10   10.43   13.75   19.90</code></pre>
 <p>Sometimes, the values we care about aren’t provided in a data set. When
 this happens, we can create a new column that contains the values we’re
 interested in:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="week-5--welcome-to-the-r-environment.html#cb82-1" tabindex="-1"></a>  <span class="co"># what if what we cared about was our sleep_total/sleep_rem ratio?</span></span>
-<span id="cb82-2"><a href="week-5--welcome-to-the-r-environment.html#cb82-2" tabindex="-1"></a>  <span class="co"># add a sleep_total/sleep_rem ratio column to our msleep dataframe with $</span></span>
-<span id="cb82-3"><a href="week-5--welcome-to-the-r-environment.html#cb82-3" tabindex="-1"></a>msleep<span class="sc">$</span>total_rem<span class="ot">&lt;-</span>msleep<span class="sc">$</span>sleep_total<span class="sc">/</span>msleep<span class="sc">$</span>sleep_rem</span>
-<span id="cb82-4"><a href="week-5--welcome-to-the-r-environment.html#cb82-4" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="week-5--welcome-to-the-r-environment.html#cb82-5" tabindex="-1"></a>  <span class="co"># look at our dataframe again. It now contains 12 columns, one of them being the one we just created.</span></span>
-<span id="cb82-6"><a href="week-5--welcome-to-the-r-environment.html#cb82-6" tabindex="-1"></a><span class="fu">head</span>(msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="week-5--welcome-to-the-r-environment.html#cb84-1" tabindex="-1"></a>  <span class="co"># what if what we cared about was our sleep_total/sleep_rem ratio?</span></span>
+<span id="cb84-2"><a href="week-5--welcome-to-the-r-environment.html#cb84-2" tabindex="-1"></a>  <span class="co"># add a sleep_total/sleep_rem ratio column to our msleep dataframe with $</span></span>
+<span id="cb84-3"><a href="week-5--welcome-to-the-r-environment.html#cb84-3" tabindex="-1"></a>msleep<span class="sc">$</span>total_rem<span class="ot">&lt;-</span>msleep<span class="sc">$</span>sleep_total<span class="sc">/</span>msleep<span class="sc">$</span>sleep_rem</span>
+<span id="cb84-4"><a href="week-5--welcome-to-the-r-environment.html#cb84-4" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="week-5--welcome-to-the-r-environment.html#cb84-5" tabindex="-1"></a>  <span class="co"># look at our dataframe again. It now contains 12 columns, one of them being the one we just created.</span></span>
+<span id="cb84-6"><a href="week-5--welcome-to-the-r-environment.html#cb84-6" tabindex="-1"></a><span class="fu">head</span>(msleep)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -758,10 +803,12 @@ and assign this to a new column named PetalArea.</li>
 <ul>
 <li>What is the maximum sepal length of the irises? What about the
 minimum, median and average sepal length among all flowers in the
-dataset?
-## Subsetting datasets &amp; logicals</li>
+dataset?</li>
 </ul>
 </blockquote>
+</div>
+<div id="subsetting-datasets-logicals" class="section level2 hasAnchor" number="6.11">
+<h2><span class="header-section-number">6.11</span> Subsetting datasets &amp; logicals<a href="week-5--welcome-to-the-r-environment.html#subsetting-datasets-logicals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A few useful commands: equals <code>==</code>, does not equal <code>!=</code>, greater than
 <code>&gt;</code>, less than <code>&lt;</code>, and <code>&amp;</code>, and a pipe which can also indicate “and”
 <code>|</code>.</p>
@@ -771,65 +818,65 @@ use R, and are otherwise equivalent.</p>
 <p><strong>Logical conditions vs. assignment operators:</strong></p>
 <p>Logical values of TRUE and FALSE are special in R. What class is a
 logical value?</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="week-5--welcome-to-the-r-environment.html#cb84-1" tabindex="-1"></a><span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="week-5--welcome-to-the-r-environment.html#cb86-1" tabindex="-1"></a><span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="week-5--welcome-to-the-r-environment.html#cb86-1" tabindex="-1"></a><span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="week-5--welcome-to-the-r-environment.html#cb88-1" tabindex="-1"></a><span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="week-5--welcome-to-the-r-environment.html#cb88-1" tabindex="-1"></a><span class="co"># what class is a logical value?</span></span>
-<span id="cb88-2"><a href="week-5--welcome-to-the-r-environment.html#cb88-2" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="week-5--welcome-to-the-r-environment.html#cb88-3" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="week-5--welcome-to-the-r-environment.html#cb90-1" tabindex="-1"></a><span class="co"># what class is a logical value?</span></span>
+<span id="cb90-2"><a href="week-5--welcome-to-the-r-environment.html#cb90-2" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="week-5--welcome-to-the-r-environment.html#cb90-3" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>Logical values are stored as 0 for FALSE and 1 for TRUE. Which means you
 can do math with them!</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="week-5--welcome-to-the-r-environment.html#cb90-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="week-5--welcome-to-the-r-environment.html#cb92-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="week-5--welcome-to-the-r-environment.html#cb92-1" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="week-5--welcome-to-the-r-environment.html#cb94-1" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="week-5--welcome-to-the-r-environment.html#cb94-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="week-5--welcome-to-the-r-environment.html#cb96-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>))</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="week-5--welcome-to-the-r-environment.html#cb96-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="week-5--welcome-to-the-r-environment.html#cb98-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="week-5--welcome-to-the-r-environment.html#cb98-1" tabindex="-1"></a><span class="sc">!</span><span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="week-5--welcome-to-the-r-environment.html#cb100-1" tabindex="-1"></a><span class="sc">!</span><span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
 <p>Logicals will be the output of various tests:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="week-5--welcome-to-the-r-environment.html#cb100-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="week-5--welcome-to-the-r-environment.html#cb102-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="week-5--welcome-to-the-r-environment.html#cb102-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="week-5--welcome-to-the-r-environment.html#cb104-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="week-5--welcome-to-the-r-environment.html#cb104-1" tabindex="-1"></a> <span class="co"># does not equal</span></span>
-<span id="cb104-2"><a href="week-5--welcome-to-the-r-environment.html#cb104-2" tabindex="-1"></a></span>
-<span id="cb104-3"><a href="week-5--welcome-to-the-r-environment.html#cb104-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="week-5--welcome-to-the-r-environment.html#cb106-1" tabindex="-1"></a> <span class="co"># does not equal</span></span>
+<span id="cb106-2"><a href="week-5--welcome-to-the-r-environment.html#cb106-2" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="week-5--welcome-to-the-r-environment.html#cb106-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="week-5--welcome-to-the-r-environment.html#cb106-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="week-5--welcome-to-the-r-environment.html#cb108-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="week-5--welcome-to-the-r-environment.html#cb108-1" tabindex="-1"></a> <span class="co"># greater than</span></span>
-<span id="cb108-2"><a href="week-5--welcome-to-the-r-environment.html#cb108-2" tabindex="-1"></a></span>
-<span id="cb108-3"><a href="week-5--welcome-to-the-r-environment.html#cb108-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="week-5--welcome-to-the-r-environment.html#cb110-1" tabindex="-1"></a> <span class="co"># greater than</span></span>
+<span id="cb110-2"><a href="week-5--welcome-to-the-r-environment.html#cb110-2" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="week-5--welcome-to-the-r-environment.html#cb110-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="week-5--welcome-to-the-r-environment.html#cb110-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="week-5--welcome-to-the-r-environment.html#cb112-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="week-5--welcome-to-the-r-environment.html#cb112-1" tabindex="-1"></a> <span class="co"># less than</span></span>
-<span id="cb112-2"><a href="week-5--welcome-to-the-r-environment.html#cb112-2" tabindex="-1"></a></span>
-<span id="cb112-3"><a href="week-5--welcome-to-the-r-environment.html#cb112-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="week-5--welcome-to-the-r-environment.html#cb114-1" tabindex="-1"></a> <span class="co"># combining logical conditions with and (&amp;), or(|)</span></span>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="week-5--welcome-to-the-r-environment.html#cb114-1" tabindex="-1"></a> <span class="co"># less than</span></span>
 <span id="cb114-2"><a href="week-5--welcome-to-the-r-environment.html#cb114-2" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="week-5--welcome-to-the-r-environment.html#cb114-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<span id="cb114-3"><a href="week-5--welcome-to-the-r-environment.html#cb114-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="week-5--welcome-to-the-r-environment.html#cb116-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="week-5--welcome-to-the-r-environment.html#cb116-1" tabindex="-1"></a> <span class="co"># combining logical conditions with and (&amp;), or(|)</span></span>
+<span id="cb116-2"><a href="week-5--welcome-to-the-r-environment.html#cb116-2" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="week-5--welcome-to-the-r-environment.html#cb116-3" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="week-5--welcome-to-the-r-environment.html#cb118-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="week-5--welcome-to-the-r-environment.html#cb118-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="week-5--welcome-to-the-r-environment.html#cb120-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="week-5--welcome-to-the-r-environment.html#cb120-1" tabindex="-1"></a> <span class="co"># we can take the opposite of a logical by using !</span></span>
-<span id="cb120-2"><a href="week-5--welcome-to-the-r-environment.html#cb120-2" tabindex="-1"></a></span>
-<span id="cb120-3"><a href="week-5--welcome-to-the-r-environment.html#cb120-3" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="week-5--welcome-to-the-r-environment.html#cb122-1" tabindex="-1"></a> <span class="co"># we can take the opposite of a logical by using !</span></span>
+<span id="cb122-2"><a href="week-5--welcome-to-the-r-environment.html#cb122-2" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="week-5--welcome-to-the-r-environment.html#cb122-3" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>This is very useful because we can use logicals to query a data frame or
 vector.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="week-5--welcome-to-the-r-environment.html#cb122-1" tabindex="-1"></a><span class="co"># in our msleep data frame, which species have total sleep greater than 18 hours?</span></span>
-<span id="cb122-2"><a href="week-5--welcome-to-the-r-environment.html#cb122-2" tabindex="-1"></a><span class="co"># reload the msleep data with library(ggplot2) and data(msleep) if you need to</span></span>
-<span id="cb122-3"><a href="week-5--welcome-to-the-r-environment.html#cb122-3" tabindex="-1"></a></span>
-<span id="cb122-4"><a href="week-5--welcome-to-the-r-environment.html#cb122-4" tabindex="-1"></a>msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="week-5--welcome-to-the-r-environment.html#cb124-1" tabindex="-1"></a><span class="co"># in our msleep data frame, which species have total sleep greater than 18 hours?</span></span>
+<span id="cb124-2"><a href="week-5--welcome-to-the-r-environment.html#cb124-2" tabindex="-1"></a><span class="co"># reload the msleep data with library(ggplot2) and data(msleep) if you need to</span></span>
+<span id="cb124-3"><a href="week-5--welcome-to-the-r-environment.html#cb124-3" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="week-5--welcome-to-the-r-environment.html#cb124-4" tabindex="-1"></a>msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span></span></code></pre></div>
 <pre><code>##       sleep_total
 ##  [1,]       FALSE
 ##  [2,]       FALSE
@@ -914,15 +961,15 @@ vector.</p>
 ## [81,]       FALSE
 ## [82,]       FALSE
 ## [83,]       FALSE</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="week-5--welcome-to-the-r-environment.html#cb124-1" tabindex="-1"></a> <span class="co"># Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are</span></span>
-<span id="cb124-2"><a href="week-5--welcome-to-the-r-environment.html#cb124-2" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="week-5--welcome-to-the-r-environment.html#cb124-3" tabindex="-1"></a><span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)  <span class="co">#22 37 43 62 --&gt; the rows that contain organisms that sleep more than 18 hrs</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="week-5--welcome-to-the-r-environment.html#cb126-1" tabindex="-1"></a> <span class="co"># Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are</span></span>
+<span id="cb126-2"><a href="week-5--welcome-to-the-r-environment.html#cb126-2" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="week-5--welcome-to-the-r-environment.html#cb126-3" tabindex="-1"></a><span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)  <span class="co">#22 37 43 62 --&gt; the rows that contain organisms that sleep more than 18 hrs</span></span></code></pre></div>
 <pre><code>## [1] 22 37 43 62</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="week-5--welcome-to-the-r-environment.html#cb126-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)) <span class="co">#4 --&gt; number of species that sleep more than 18 hrs </span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="week-5--welcome-to-the-r-environment.html#cb128-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)) <span class="co">#4 --&gt; number of species that sleep more than 18 hrs </span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="week-5--welcome-to-the-r-environment.html#cb128-1" tabindex="-1"></a> <span class="co"># which four species are these?</span></span>
-<span id="cb128-2"><a href="week-5--welcome-to-the-r-environment.html#cb128-2" tabindex="-1"></a></span>
-<span id="cb128-3"><a href="week-5--welcome-to-the-r-environment.html#cb128-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="week-5--welcome-to-the-r-environment.html#cb130-1" tabindex="-1"></a> <span class="co"># which four species are these?</span></span>
+<span id="cb130-2"><a href="week-5--welcome-to-the-r-environment.html#cb130-2" tabindex="-1"></a></span>
+<span id="cb130-3"><a href="week-5--welcome-to-the-r-environment.html#cb130-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>),]</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -931,9 +978,9 @@ vector.</p>
 ## 3 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
 ## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
 ## # ℹ 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="week-5--welcome-to-the-r-environment.html#cb130-1" tabindex="-1"></a><span class="co"># what if we only want to see the bats that sleep more than 18 hours per 24 hour period?</span></span>
-<span id="cb130-2"><a href="week-5--welcome-to-the-r-environment.html#cb130-2" tabindex="-1"></a></span>
-<span id="cb130-3"><a href="week-5--welcome-to-the-r-environment.html#cb130-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="week-5--welcome-to-the-r-environment.html#cb132-1" tabindex="-1"></a><span class="co"># what if we only want to see the bats that sleep more than 18 hours per 24 hour period?</span></span>
+<span id="cb132-2"><a href="week-5--welcome-to-the-r-environment.html#cb132-2" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="week-5--welcome-to-the-r-environment.html#cb132-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),]</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -941,14 +988,15 @@ vector.</p>
 ## 2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
 ## # ℹ 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
 </div>
-<div id="group-work-activity-practice-exploring-data-in-r" class="section level2 hasAnchor" number="6.11">
-<h2><span class="header-section-number">6.11</span> Group Work Activity: Practice Exploring Data in R<a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="group-work-activity-practice-exploring-data-in-r" class="section level2 hasAnchor" number="6.12">
+<h2><span class="header-section-number">6.12</span> Group Work Activity: Practice Exploring Data in R<a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We are going to use the same iris dataset for our class activity this
 week and explore it more. Include copied text from your R script that is
 relevant to the questions below in your submission and answers to the
 following questions. Remember you can work in groups but everything is
 submitted individually. Go back to the iris dataset, which can be loaded
-with <code>data(iris)</code> and submit code and answers for the following questions:</p>
+with <code>data(iris)</code> and submit code and answers for the following
+questions:</p>
 <blockquote>
 <ul>
 <li>Q1. How many irises have sepals less than 5.5 cm?</li>
@@ -976,12 +1024,17 @@ short sepals are there? How many long?</li>
 </ul>
 </blockquote>
 </div>
-<div id="key-points-4" class="section level2 hasAnchor" number="6.12">
-<h2><span class="header-section-number">6.12</span> Key Points<a href="week-5--welcome-to-the-r-environment.html#key-points-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="key-points-4" class="section level2 hasAnchor" number="6.13">
+<h2><span class="header-section-number">6.13</span> Key Points<a href="week-5--welcome-to-the-r-environment.html#key-points-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Useful functions such as <code>install.packages()</code>, <code>library()</code> can help us upload packages and data from R, while other functions such as <code>str()</code>, <code>dim()</code>, and <code>unique()</code> can help us investigate dataframes</li>
-<li>To look at our data we can use several commands, including <code>view()</code> or <code>data$columnofinterest</code> if you only want to look at one variable.</li>
-<li>Manipulating data in R can be extremely helpful in the analysis stage, and we can get data on <code>mean()</code>, <code>min()</code>, <code>max()</code>, and <code>summary()</code> data on different variables of interest</li>
+<li>Useful functions such as <code>install.packages()</code>, <code>library()</code> can help
+us upload packages and data from R, while other functions such as
+<code>str()</code>, <code>dim()</code>, and <code>unique()</code> can help us investigate dataframes</li>
+<li>To look at our data we can use several commands, including <code>view()</code>
+or <code>data$columnofinterest</code> if you only want to look at one variable.</li>
+<li>Manipulating data in R can be extremely helpful in the analysis
+stage, and we can get data on <code>mean()</code>, <code>min()</code>, <code>max()</code>, and
+<code>summary()</code> data on different variables of interest</li>
 </ul>
 <details>
 <summary>
@@ -993,45 +1046,45 @@ short sepals are there? How many long?</li>
 <h2 id="class-exercise-solution" class="hasAnchor">Class Exercise: Solution<a href="week-5--welcome-to-the-r-environment.html#class-exercise-solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="week-5--welcome-to-the-r-environment.html#cb132-1" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb132-2"><a href="week-5--welcome-to-the-r-environment.html#cb132-2" tabindex="-1"></a></span>
-<span id="cb132-3"><a href="week-5--welcome-to-the-r-environment.html#cb132-3" tabindex="-1"></a><span class="fu">nrow</span>(iris) <span class="co">#can also use nrows, str and dim</span></span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="week-5--welcome-to-the-r-environment.html#cb134-1" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb134-2"><a href="week-5--welcome-to-the-r-environment.html#cb134-2" tabindex="-1"></a></span>
+<span id="cb134-3"><a href="week-5--welcome-to-the-r-environment.html#cb134-3" tabindex="-1"></a><span class="fu">nrow</span>(iris) <span class="co">#can also use nrows, str and dim</span></span></code></pre></div>
 <pre><code>## [1] 150</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="week-5--welcome-to-the-r-environment.html#cb134-1" tabindex="-1"></a><span class="fu">levels</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="week-5--welcome-to-the-r-environment.html#cb136-1" tabindex="-1"></a><span class="fu">levels</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
 <pre><code>## [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="week-5--welcome-to-the-r-environment.html#cb136-1" tabindex="-1"></a><span class="fu">class</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="week-5--welcome-to-the-r-environment.html#cb138-1" tabindex="-1"></a><span class="fu">class</span>(iris)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="week-5--welcome-to-the-r-environment.html#cb138-1" tabindex="-1"></a><span class="fu">colnames</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="week-5--welcome-to-the-r-environment.html#cb140-1" tabindex="-1"></a><span class="fu">colnames</span>(iris)</span></code></pre></div>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="week-5--welcome-to-the-r-environment.html#cb140-1" tabindex="-1"></a><span class="fu">str</span>(iris) <span class="co">#look at structure</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="week-5--welcome-to-the-r-environment.html#cb142-1" tabindex="-1"></a><span class="fu">str</span>(iris) <span class="co">#look at structure</span></span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="week-5--welcome-to-the-r-environment.html#cb142-1" tabindex="-1"></a><span class="co"># Assign the first flower&#39;s petal&#39;s width and length to new objects called setosa1.petalwidth and setosa1.petallength. Then Calculate the approximate area of the petal of the first flower, setosa1 (assume petal area can be approximated by a rectangle).</span></span>
-<span id="cb142-2"><a href="week-5--welcome-to-the-r-environment.html#cb142-2" tabindex="-1"></a>setosa1.petalwidth<span class="ot">&lt;-</span>iris[<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb142-3"><a href="week-5--welcome-to-the-r-environment.html#cb142-3" tabindex="-1"></a></span>
-<span id="cb142-4"><a href="week-5--welcome-to-the-r-environment.html#cb142-4" tabindex="-1"></a>setosa1.petallength<span class="ot">&lt;-</span>iris[<span class="dv">1</span>,<span class="dv">3</span>]</span>
-<span id="cb142-5"><a href="week-5--welcome-to-the-r-environment.html#cb142-5" tabindex="-1"></a></span>
-<span id="cb142-6"><a href="week-5--welcome-to-the-r-environment.html#cb142-6" tabindex="-1"></a><span class="co">#area of petal of the first flower</span></span>
-<span id="cb142-7"><a href="week-5--welcome-to-the-r-environment.html#cb142-7" tabindex="-1"></a>setosa1area2<span class="ot">&lt;-</span>setosa1.petalwidth<span class="sc">*</span>setosa1.petallength</span>
-<span id="cb142-8"><a href="week-5--welcome-to-the-r-environment.html#cb142-8" tabindex="-1"></a></span>
-<span id="cb142-9"><a href="week-5--welcome-to-the-r-environment.html#cb142-9" tabindex="-1"></a><span class="co">#petal area of each flower</span></span>
-<span id="cb142-10"><a href="week-5--welcome-to-the-r-environment.html#cb142-10" tabindex="-1"></a>iris<span class="sc">$</span>PetalArea<span class="ot">&lt;-</span>iris<span class="sc">$</span>Petal.Length<span class="sc">*</span>iris<span class="sc">$</span>Petal.Width</span>
-<span id="cb142-11"><a href="week-5--welcome-to-the-r-environment.html#cb142-11" tabindex="-1"></a></span>
-<span id="cb142-12"><a href="week-5--welcome-to-the-r-environment.html#cb142-12" tabindex="-1"></a><span class="co">#max sepal length</span></span>
-<span id="cb142-13"><a href="week-5--welcome-to-the-r-environment.html#cb142-13" tabindex="-1"></a><span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="week-5--welcome-to-the-r-environment.html#cb144-1" tabindex="-1"></a><span class="co"># Assign the first flower&#39;s petal&#39;s width and length to new objects called setosa1.petalwidth and setosa1.petallength. Then Calculate the approximate area of the petal of the first flower, setosa1 (assume petal area can be approximated by a rectangle).</span></span>
+<span id="cb144-2"><a href="week-5--welcome-to-the-r-environment.html#cb144-2" tabindex="-1"></a>setosa1.petalwidth<span class="ot">&lt;-</span>iris[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb144-3"><a href="week-5--welcome-to-the-r-environment.html#cb144-3" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="week-5--welcome-to-the-r-environment.html#cb144-4" tabindex="-1"></a>setosa1.petallength<span class="ot">&lt;-</span>iris[<span class="dv">1</span>,<span class="dv">3</span>]</span>
+<span id="cb144-5"><a href="week-5--welcome-to-the-r-environment.html#cb144-5" tabindex="-1"></a></span>
+<span id="cb144-6"><a href="week-5--welcome-to-the-r-environment.html#cb144-6" tabindex="-1"></a><span class="co">#area of petal of the first flower</span></span>
+<span id="cb144-7"><a href="week-5--welcome-to-the-r-environment.html#cb144-7" tabindex="-1"></a>setosa1area2<span class="ot">&lt;-</span>setosa1.petalwidth<span class="sc">*</span>setosa1.petallength</span>
+<span id="cb144-8"><a href="week-5--welcome-to-the-r-environment.html#cb144-8" tabindex="-1"></a></span>
+<span id="cb144-9"><a href="week-5--welcome-to-the-r-environment.html#cb144-9" tabindex="-1"></a><span class="co">#petal area of each flower</span></span>
+<span id="cb144-10"><a href="week-5--welcome-to-the-r-environment.html#cb144-10" tabindex="-1"></a>iris<span class="sc">$</span>PetalArea<span class="ot">&lt;-</span>iris<span class="sc">$</span>Petal.Length<span class="sc">*</span>iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb144-11"><a href="week-5--welcome-to-the-r-environment.html#cb144-11" tabindex="-1"></a></span>
+<span id="cb144-12"><a href="week-5--welcome-to-the-r-environment.html#cb144-12" tabindex="-1"></a><span class="co">#max sepal length</span></span>
+<span id="cb144-13"><a href="week-5--welcome-to-the-r-environment.html#cb144-13" tabindex="-1"></a><span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 7.9</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="week-5--welcome-to-the-r-environment.html#cb144-1" tabindex="-1"></a><span class="co">#minimum sepal length</span></span>
-<span id="cb144-2"><a href="week-5--welcome-to-the-r-environment.html#cb144-2" tabindex="-1"></a><span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="week-5--welcome-to-the-r-environment.html#cb146-1" tabindex="-1"></a><span class="co">#minimum sepal length</span></span>
+<span id="cb146-2"><a href="week-5--welcome-to-the-r-environment.html#cb146-2" tabindex="-1"></a><span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 4.3</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="week-5--welcome-to-the-r-environment.html#cb146-1" tabindex="-1"></a><span class="co">#average sepal length</span></span>
-<span id="cb146-2"><a href="week-5--welcome-to-the-r-environment.html#cb146-2" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="week-5--welcome-to-the-r-environment.html#cb148-1" tabindex="-1"></a><span class="co">#average sepal length</span></span>
+<span id="cb148-2"><a href="week-5--welcome-to-the-r-environment.html#cb148-2" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.843333</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="week-5--welcome-to-the-r-environment.html#cb148-1" tabindex="-1"></a><span class="co">#median sepal length</span></span>
-<span id="cb148-2"><a href="week-5--welcome-to-the-r-environment.html#cb148-2" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="week-5--welcome-to-the-r-environment.html#cb150-1" tabindex="-1"></a><span class="co">#median sepal length</span></span>
+<span id="cb150-2"><a href="week-5--welcome-to-the-r-environment.html#cb150-2" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.8</code></pre>
 </p>
 </details>

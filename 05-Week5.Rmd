@@ -20,10 +20,12 @@ knitr::opts_chunk$set(echo = TRUE)
 This lesson is modified from materials compiled by Serena Caplins from
 the STEMinist_R lessons produced by several UC Davis graduate student
 and which can be found
-[here](https://github.com/ecalfee/STEMinist_R.git). The lecture slides to introduce R more in depth are here: SLIDES
+[here](https://github.com/ecalfee/STEMinist_R.git). The lecture slides
+to introduce R more in depth are here: [Week 5 Slides](./figs/W5_R.pdf))
 
 ## Main Objectives
--   Learn how to use Rstudio through FarmOnDemand 
+
+-   Learn how to use Rstudio through FarmOnDemand
 -   Understand the different parts of the Rstudio window
 -   Learn how to work with objects in R and general R operations
 -   Learn how to manipulate data and explore a dataframe
@@ -37,19 +39,13 @@ information](./figs/R_ondemand.png)
 After we start it up we will want to create a new file called
 "Week5-IntroR.R" to type our scripts for today.
 
-To do this, we will click `File`, `New File` then `R script`. Name your file with your `name-Week5-introR`
+To do this, we will click `File`, `New File` then `R script`. Name your
+file with your `name-Week5-introR`
 
 `#` before a sentence comments out what you want before you write code.
 Without a `#` R will think what you are writing needs to be run as a
-command! I have used comments in this example to write what the script
-is for. The top left is the script, the bottom left is the terminal
-window where code and outputs will be typed, the top right is your
-environment (yours should be empty and won't have the 'git' option) and
-the bottom right is where files/plots/etc will go. ![R
-window](./figs/Rwindow.png) This is what your R window could look like
-while running popgen code later into the class! ![R window- population
-structure example](./figs/Rwindow2.png)
-
+command! I have used comments in this example to write what the script is for. The top left is the script, the bottom left is the terminal window where code and outputs will be typed, the top right is your environment 
+![R window- example](./figs/Rwindow.png)
 R can be used for basic arithmetic. Type this into your script and hit
 enter:
 
@@ -98,6 +94,18 @@ n<-1:100
 
 ```
 
+Data Structures include:
+
+1.  Vector
+
+2.  Lists
+
+3.  Matrices
+
+4.  Factor
+
+5.  Data frame
+
 Vectors can also include characters (in quotes): `c()`=concatenate, aka
 link things together!
 
@@ -125,10 +133,12 @@ length(n)
 
 ```
 
-You can use square brackets `[]` to get parts of vectors.
+You can use square brackets `[]` to get parts of vectors. This returns
+how often 50 is present in our `n` object.
 
 ```{r , echo=T}
 
+#how often is 50 present in our n dataset?
 n[50]
 
 ```
@@ -177,7 +187,12 @@ and `objects()`
 ```{r , echo=T}
 ls()
 objects() #returns the same results as ls() in this case. because we only have objects in our environment.
+```
 
+This is where those objects show up with you type `ls()`: ![Returns a
+list of what is present in our R environment](./figs/ls.png)
+
+```{r, echo=T}
 # how to get help for a function; you can also write help()
 ?ls
 
@@ -190,17 +205,22 @@ ls()
 
 ```
 
+![After removal](./figs/ls2.png)
+
 Call the help files for the functions ls() and rm() + What are the
 arguments for the ls() function? + What does the 'sorted' argument do?
 
-From the help file: sorted is a logical indicating if the resulting character should be sorted alphabetically. Note that this is part of ls() may take most of the time.
+From the help file: sorted is a logical indicating if the resulting
+character should be sorted alphabetically. Note that this is part of
+ls() may take most of the time.
 
 ## Characterizing a dataframe
 
 We'll now move from working with objects and vectors to working with
 dataframes:
 
--   Here are a few useful functions:
+-   Here are a few useful functions! I will go over each as we introduce
+    them throughout the lesson today:
     -   install.packages()
     -   library()
     -   data()
@@ -231,8 +251,8 @@ library (ggplot2)
 ```
 
 Load the data (it's called msleep). This dataset includes information
-about mammal sleep times and weights that was taken from a study by V.
-M. Savage and G. B. West. "A quantitative, theoretical framework for
+bout mammal sleep times and weights that was taken from a study by V. M.
+Savage and G. B. West. "A quantitative, theoretical framework for
 understanding mammalian sleep. Proceedings of the National Academy of
 Sciences, 104 (3):1051-1056, 2007."
 
@@ -267,17 +287,22 @@ str(msleep)
 dim(), ncol(), nrow()- dimensions, number of columns, number of rows
 colnames(), rownames() - column names, row names
 
-Rstudio also allows us to just look into the data file with `View()`. Try to look at the msleep data using `View(msleep)`
+Rstudio also allows us to just look into the data file with `View()`.
+Try to look at the msleep data using `View(msleep)`
 
 ## How to access parts of the data:
 
 We can also look at a single column at a time. There are three ways to
 access this: \$, [,#] or [,"a"].
 
-**Quick Tip:** Think about "rc cola" or "remote control car" to remember
-that [5,] means fifth row and [,5] means fifth column!
+Think about "**R**emote **C**ontrol car" to remember that [5,] means
+fifth row and [,5] means fifth column! Rows are listed first and columns
+are listed second.
 
-Each way has it's own advantages:
+Each way has it's own advantages! The first subsets the third column of
+data, so you need to know where your data of interest is. The second
+subsets the `vore` column only. The third prints all of the data from
+the `vore` column in your console window.
 
 ```{r, echo=T}
 
@@ -287,13 +312,25 @@ msleep$vore
 
 ```
 
+If you wanted to save these as objects, you need to add an arrow an a
+new name for that object.  They should all be the same!
+
+```{r, echo=T}
+
+column3<-msleep[,3]
+voreonly<-msleep[, "vore"]
+vores<-msleep$vore
+
+head(column3) #do this or View() for all of your new objects!
+```
+
 Sometimes it is useful to know what class() the column is:
 
 ```{r, echo=T}
 
-class(msleep$vore)
+class(msleep$vore) #character!
 
-class(msleep$sleep_total)
+class(msleep$sleep_total) #numeric!
 ```
 
 We can also look at a single row at a time. There are two ways to access
@@ -334,7 +371,7 @@ unique(msleep[, "order"])
  # table()
 table(msleep$order)
 
- # levels(), if class is factor (and if not we can make it a factor)
+ # levels(), if class is factor (and if not we can make it a factor) showing the way that the data is displayed
 levels(as.factor(msleep$order))
 
 ```
@@ -344,7 +381,8 @@ levels(as.factor(msleep$order))
 If your data is transposed in a way that isn't useful to you, you can
 switch it. Note that this often changes the class of each column!
 
-In R, each column must have the same type of data:
+In R, all entries within a column must have the same format to be
+interpreted :
 
 ```{r, echo=T}
  # t()
@@ -357,9 +395,22 @@ str(tr_msleep)
 
 It's important to know the class of data if you want to manipulate it.
 For example, you can't add characters. `msleep` contains several
-different types of data.
+different types of data. We see with `str()` that there are columns of
+data that are characters and numeric.
 
-Some common classes are: factors, numeric, integers, characters, logical
+Data Types:
+
+-   Character (names)
+
+-   Numeric (numbers)
+
+-   Logical (T/F)
+
+-   Integer (2L for example)
+
+-   Complex (imaginary #s)
+
+-   Raw (not really used)
 
 ```{r, echo=T}
 
@@ -368,14 +419,13 @@ Some common classes are: factors, numeric, integers, characters, logical
 class(msleep)
 
  # str()
-
-str(msleep)
+str(msleep) 
 
 ```
 
 Often we want to summarize data. There are many ways of doing this in R:
 
-``` {r, echo=T}
+```{r, echo=T}
 
  # calculate mean() of a column
 mean(msleep$sleep_total)
@@ -410,7 +460,7 @@ was published by Ronald Fisher in his 1936 paper: "The use of multiple
 measurements in taxonomic problems". It has three plant species (setosa,
 virginica, versicolor) and four morphological traits measured for each
 sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length and
-Petal.Width. 
+Petal.Width.
 
 ![Iris Diagram for Reference](./figs/iris.png)
 
@@ -449,6 +499,7 @@ dataset with `help(iris)` or `?iris`
 > -   What is the maximum sepal length of the irises? What about the
 >     minimum, median and average sepal length among all flowers in the
 >     dataset?
+
 ## Subsetting datasets & logicals
 
 A few useful commands: equals `==`, does not equal `!=`, greater than
@@ -554,7 +605,8 @@ week and explore it more. Include copied text from your R script that is
 relevant to the questions below in your submission and answers to the
 following questions. Remember you can work in groups but everything is
 submitted individually. Go back to the iris dataset, which can be loaded
-with `data(iris)` and submit code and answers for the following questions:
+with `data(iris)` and submit code and answers for the following
+questions:
 
 > -   Q1. How many irises have sepals less than 5.5 cm?
 > -   Q2. Which iris individual has the largest petal length? What is
@@ -579,13 +631,16 @@ with `data(iris)` and submit code and answers for the following questions:
 >     (Short sepals are those less than 5.5 cm) How many plants with
 >     short sepals are there? How many long?
 
-
-
 ## Key Points
-- Useful functions such as `install.packages()`, `library()` can help us upload packages and data from R, while other functions such as `str()`, `dim()`, and `unique()` can help us investigate dataframes
-- To look at our data we can use several commands, including `view()` or `data$columnofinterest` if you only want to look at one variable.
-- Manipulating data in R can be extremely helpful in the analysis stage, and we can get data on `mean()`, `min()`, `max()`, and `summary()` data on different variables of interest
 
+-   Useful functions such as `install.packages()`, `library()` can help
+    us upload packages and data from R, while other functions such as
+    `str()`, `dim()`, and `unique()` can help us investigate dataframes
+-   To look at our data we can use several commands, including `view()`
+    or `data$columnofinterest` if you only want to look at one variable.
+-   Manipulating data in R can be extremely helpful in the analysis
+    stage, and we can get data on `mean()`, `min()`, `max()`, and
+    `summary()` data on different variables of interest
 
 <details>
 

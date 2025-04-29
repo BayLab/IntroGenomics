@@ -18,8 +18,7 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 # Week 4- What is a Genetic Variant?
 
 You'll find the lecture discussing the definition and identification of
-genetic variation here (via slideshow here: [Week 4
-Slides](./figs/W4%20Mapping.pdf))
+genetic variation here (via slideshow here: [Week 4 Slides](./figs/W4%20Mapping.pdf))
 
 ## Main Objectives
 
