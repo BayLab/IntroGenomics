@@ -273,8 +273,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="week-6--plotting-in-r" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number"> 7</span> Week 6- Plotting in R<a href="week-6--plotting-in-r.html#week-6--plotting-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>We’re again drawing some of this material from the STEMinist_R materials which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a></p>
-<p>We will also be talking a lot about figures and how to make and interpret figures in the lecture slides here: <a href="./figs/W6_Figures.pdf">Week 6 Slides</a>)</p>
+<p>We’re again drawing some of this material from the STEMinist_R materials
+which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a></p>
+<p>We will also be talking a lot about figures and how to make and
+interpret figures in the lecture slides here: <a href="./figs/W6_Figures.pdf">Week 6
+Slides</a>)</p>
 <div id="main-objectives-5" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Main Objectives<a href="week-6--plotting-in-r.html#main-objectives-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -308,24 +311,33 @@ spent awake, in hours), <code>brainwt</code> (brain weight in kilograms) and
 <h3><span class="header-section-number">7.2.1</span> Scatterplots<a href="week-6--plotting-in-r.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First let’s work on building a scatterplot. This can be a good first
 step for visualizing data and is the base plotting visualization in R.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-6--plotting-in-r.html#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total,msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-6--plotting-in-r.html#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
+<p><img src="_main_files/figure-html/6-1.png" width="576" /></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-6--plotting-in-r.html#cb3-1" tabindex="-1"></a><span class="co"># or plot response variable as a function &quot;~&quot; of the predictor variable</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-6--plotting-in-r.html#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-6--plotting-in-r.html#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_rem<span class="sc">~</span>msleep<span class="sc">$</span>sleep_total) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/6-0-1.png" width="576" /></p>
+<blockquote>
+<h4 id="x-vs-y" class="hasAnchor">X vs Y<a href="week-6--plotting-in-r.html#x-vs-y" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When thinking about how to plot the x and y axes on a graph, it is
+important to think about the research question and which variable is
+the independent vs dependent variable. Our graph will show us how y
+changes with x, so we want the x axis to represent the independent
+variable and the y axis will be the dependent variable. In our graph,
+we are interested in how rem sleep in mammals changes with the total
+amount of sleep they get, so we will want the second graph, where
+<code>sleep_total</code> is on the x (dependent variable) and <code>sleep_rem</code> si on
+the y (independent variable). Review the lecture slides again if this
+gets confusing in the homework!</p>
+</blockquote>
 <ul>
-<li>There are several different arguments within plotting functions that
-can be used to customize your plot.
-<ul>
+<li>There are several different arguments within plotting functions
+that can be used to customize your plot.</li>
 <li><code>col</code> changes color</li>
 <li><code>pch</code> changes point character</li>
 <li><code>cex</code> changes size</li>
 <li><code>type</code> changes type (“l” = line, “p” = points, “b” = both)</li>
 <li><code>lty</code> changes line type</li>
-<li><code>bty</code> changes (or removes) the border around the plot (“n” = no
-box, “7” = top + right, “L” = bottom+left, “C” top+left+bottom,
-“U” = left+bottom+right)</li>
-</ul></li>
+<li><code>bty</code> changes (or removes) the border around the plot (“n” = no box, “7” = top + right, “L” = bottom+left, “C” top+left+bottom, “U” = left+bottom+right)</li>
 </ul>
 <p>You can view different point characters with <code>?pch</code></p>
 <p>There are <strong>many</strong> color options in R. For some general colors you can
@@ -711,9 +723,16 @@ to customize your figures to your liking</p></li>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="week-6--plotting-in-r.html#cb47-1" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
 <span id="cb47-2"><a href="week-6--plotting-in-r.html#cb47-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
 <span id="cb47-3"><a href="week-6--plotting-in-r.html#cb47-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/6-19-1.png" width="576" />
-&gt;&gt;
-&gt;&gt; 3) Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments</p>
+<p><img src="_main_files/figure-html/6-19-1.png" width="576" /></p>
+<blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a boxplot where the x-axis represents the different diets
+and the y-axis is the weights of the chicks at the final day of
+the experiments</li>
+</ol>
+</blockquote>
+</blockquote>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="week-6--plotting-in-r.html#cb48-1" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
 <span id="cb48-2"><a href="week-6--plotting-in-r.html#cb48-2" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
 <span id="cb48-3"><a href="week-6--plotting-in-r.html#cb48-3" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
@@ -721,8 +740,7 @@ to customize your figures to your liking</p></li>
 <span id="cb48-5"><a href="week-6--plotting-in-r.html#cb48-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
 <span id="cb48-6"><a href="week-6--plotting-in-r.html#cb48-6" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
 <span id="cb48-7"><a href="week-6--plotting-in-r.html#cb48-7" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/6-20-1.png" width="576" />
-&gt;&gt;</p>
+<p><img src="_main_files/figure-html/6-20-1.png" width="576" /></p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="week-6--plotting-in-r.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb49-2"><a href="week-6--plotting-in-r.html#cb49-2" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
 <span id="cb49-3"><a href="week-6--plotting-in-r.html#cb49-3" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>

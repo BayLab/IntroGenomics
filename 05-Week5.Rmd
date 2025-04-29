@@ -133,13 +133,15 @@ length(n)
 
 ```
 
-You can use square brackets `[]` to get parts of vectors. This returns
-how often 50 is present in our `n` object.
+You can use square brackets `[]` to get parts of vectors. This returns the 50th entry in our vector `n` and the 2nd entry in our vector `animals`.
 
 ```{r , echo=T}
 
-#how often is 50 present in our n dataset?
+#what is the 50th entry in our vector n?
 n[50]
+
+#what is the 2nd entry in our vector animals?
+animals[2] 
 
 ```
 
@@ -324,7 +326,25 @@ vores<-msleep$vore
 head(column3) #do this or View() for all of your new objects!
 ```
 
-Sometimes it is useful to know what class() the column is:
+It's important to know the class of data if you want to manipulate it.
+For example, you can't add characters. `msleep` contains several
+different types of data. We see with `str()` that there are columns of
+data that are characters and numeric.
+
+Data Types/Classes:
+
+-   Character (names)
+
+-   Numeric (numbers)
+
+-   Logical (T/F)
+
+-   Integer (2L for example)
+
+-   Complex (imaginary #s)
+
+-   Raw (not really used)
+
 
 ```{r, echo=T}
 
@@ -333,10 +353,11 @@ class(msleep$vore) #character!
 class(msleep$sleep_total) #numeric!
 ```
 
-We can also look at a single row at a time. There are two ways to access
-this: 1. by indicating the row number in square brackets next to the
-name of the dataframe `name[#,]` and by calling the actual name of the
-row (if your rows have names) `name["a",]`.
+We can also look at a single row at a time. There are two ways to access this: 
+
+- by indicating the row number in square brackets next to the
+name of the dataframe `name[#,]`
+- by calling the actual name of the row (if your rows have names) `name["a",]`.
 
 ```{r, echo=T}
 
@@ -393,35 +414,6 @@ str(tr_msleep)
 
 ```
 
-It's important to know the class of data if you want to manipulate it.
-For example, you can't add characters. `msleep` contains several
-different types of data. We see with `str()` that there are columns of
-data that are characters and numeric.
-
-Data Types:
-
--   Character (names)
-
--   Numeric (numbers)
-
--   Logical (T/F)
-
--   Integer (2L for example)
-
--   Complex (imaginary #s)
-
--   Raw (not really used)
-
-```{r, echo=T}
-
- # class()
-
-class(msleep)
-
- # str()
-str(msleep) 
-
-```
 
 Often we want to summarize data. There are many ways of doing this in R:
 
@@ -572,8 +564,7 @@ Logicals will be the output of various tests:
 !TRUE
 ```
 
-This is very useful because we can use logicals to query a data frame or
-vector.
+This is very useful because we can use logicals to query a data frame or vector.
 
 ```{r, echo=T}
 

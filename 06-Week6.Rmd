@@ -17,9 +17,12 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
 
 # Week 6- Plotting in R
 
-We're again drawing some of this material from the STEMinist_R materials which can be found [here](https://github.com/ecalfee/STEMinist_R.git)
+We're again drawing some of this material from the STEMinist_R materials
+which can be found [here](https://github.com/ecalfee/STEMinist_R.git)
 
-We will also be talking a lot about figures and how to make and interpret figures in the lecture slides here: [Week 6 Slides](./figs/W6_Figures.pdf))
+We will also be talking a lot about figures and how to make and
+interpret figures in the lecture slides here: [Week 6
+Slides](./figs/W6_Figures.pdf))
 
 ## Main Objectives
 
@@ -59,29 +62,40 @@ data(msleep)
 First let's work on building a scatterplot. This can be a good first
 step for visualizing data and is the base plotting visualization in R.
 
-```{r, echo=T}
+```{r, label='6', echo=T}
 
-plot(msleep$sleep_total,msleep$sleep_rem)
+plot(msleep$sleep_total~msleep$sleep_rem)
 
 # or plot response variable as a function "~" of the predictor variable
 ```
 
 ```{r,  label='6-0', echo=T}
 
-plot(msleep$sleep_total~msleep$sleep_rem) #you'll notice this swaps the x and y axis
+plot(msleep$sleep_rem~msleep$sleep_total) #you'll notice this swaps the x and y axis
 
 ```
 
--   There are several different arguments within plotting functions that
-    can be used to customize your plot.
-    -   `col` changes color
-    -   `pch` changes point character
-    -   `cex` changes size
-    -   `type` changes type ("l" = line, "p" = points, "b" = both)
-    -   `lty` changes line type
-    -   `bty` changes (or removes) the border around the plot ("n" = no
-        box, "7" = top + right, "L" = bottom+left, "C" top+left+bottom,
-        "U" = left+bottom+right)
+> #### X vs Y
+>
+> When thinking about how to plot the x and y axes on a graph, it is
+> important to think about the research question and which variable is
+> the independent vs dependent variable. Our graph will show us how y
+> changes with x, so we want the x axis to represent the independent
+> variable and the y axis will be the dependent variable. In our graph,
+> we are interested in how rem sleep in mammals changes with the total
+> amount of sleep they get, so we will want the second graph, where
+> `sleep_total` is on the x (dependent variable) and `sleep_rem` si on
+> the y (independent variable). Review the lecture slides again if this
+> gets confusing in the homework!
+
+ -   There are several different arguments within plotting functions
+     that can be used to customize your plot.
+ -   `col` changes color
+ -   `pch` changes point character
+ -   `cex` changes size
+-   `type` changes type ("l" = line, "p" = points, "b" = both)
+-   `lty` changes line type
+-   `bty` changes (or removes) the border around the plot ("n" = no box, "7" = top + right, "L" = bottom+left, "C" top+left+bottom, "U" = left+bottom+right)
 
 You can view different point characters with `?pch`
 
@@ -526,30 +540,35 @@ made as well.
 -   You can plot in base R or ggplot, but ggplot can give you more room
     to customize your figures to your liking
 
-
 <details>
 
 <summary>[Class Exercise Solutions]{style="color: orange;"}</summary>
 
 <p>
 
->> ## Class Exercises: Solutions
->> Exercise 1
->>
->> 1)  sample size and different diets in the experiment
+> > ## Class Exercises: Solutions
+> >
+> > Exercise 1
+> >
+> > 1)  sample size and different diets in the experiment
+
 ```{r, echo=T}
 length(unique(ChickWeight$Chick))
 length(unique(ChickWeight$Diet))
 ```
->>
->> 2)  scatterplot of the relationship of chicken weight over time
+
+> > 2)  scatterplot of the relationship of chicken weight over time
+
 ```{r, label= '6-19', echo=T}
 plot(ChickWeight$weight ~ ChickWeight$Time, 
      xlab = "Time (days)", 
      ylab = "Weight (gm)")
 ```
->>
->> 3)  Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments
+
+> > 3)  Create a boxplot where the x-axis represents the different diets
+> >     and the y-axis is the weights of the chicks at the final day of
+> >     the experiments
+
 ```{r, label= '6-20', echo=T}
 my.new = ChickWeight[ChickWeight$Time == max(ChickWeight$Time), ]
 boxplot(weight ~ Diet, 
@@ -559,18 +578,19 @@ boxplot(weight ~ Diet,
         main = "Final weights given diet type", 
         col = c("red", "blue", "orange", "green"))
 ```
->>
+
 ```{r, label= '6-21', echo=T}
 library(RColorBrewer)
 my.colors = brewer.pal(10, "Paired")
 hist(ChickWeight$weight[ChickWeight$Time == max(ChickWeight$Time)], xlab = "Weight (gm)",main = "Weights at final day of experiment", col = my.colors)
 ```
 
->> ## Exercise 2
->>
+> > ## Exercise 2
+
 ```{r, label= '6-22', echo=T}
 ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + facet_wrap(~dose)+ scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
 ```
 
 </p>
+
 </details>
