@@ -26,6 +26,7 @@ Slides](./figs/W6_Figures.pdf))
 
 ## Main Objectives
 
+-   Learn how to subset dataframes and how to use logicals
 -   Learn how to make various plots in R, including histograms,
     scatterplots and boxplots, as well as learn how to customize those
     plots
@@ -54,6 +55,118 @@ spent awake, in hours), `brainwt` (brain weight in kilograms) and
 library(ggplot2)
 data(msleep)
 ```
+
+## Subsetting datasets & logicals
+
+A few useful commands: equals `==`, does not equal `!=`, greater than
+`>`, less than `<`, and `&`, and a pipe which can also indicate "and"
+`|`.
+
+Reminder there are two assignment operators in R `<-` and a single
+equals sign `=`. The one you use really depends on how you learned to
+use R, and are otherwise equivalent.
+
+**Logical conditions vs. assignment operators:**
+
+Logical values of TRUE and FALSE are special in R. What class is a
+logical value?
+
+```{r, echo=T}
+TRUE
+FALSE
+
+# what class is a logical value?
+
+class(TRUE)
+
+```
+
+Logical values are stored as 0 for FALSE and 1 for TRUE. Which means you
+can do math with them!
+
+```{r, echo=T}
+
+TRUE + 1
+FALSE + 1
+
+sum(c(TRUE,TRUE,FALSE,FALSE))
+
+!TRUE
+
+!c(TRUE,TRUE,FALSE,FALSE)
+```
+
+Logicals will be the output of various tests:
+
+```{r, echo=T}
+
+1 == 1
+1 == 2
+
+ # does not equal
+
+1 != 1
+1 != 2
+
+ # greater than
+
+1 > 1
+1 >= 1
+
+ # less than
+
+1 < 3
+
+ # combining logical conditions with and (&), or(|)
+
+1 == 1 & 2 == 2
+1 == 1 & 1 == 2
+1 == 1 | 1 == 2
+ 
+ # we can take the opposite of a logical by using !
+
+!TRUE
+```
+
+This is very useful because we can use logicals to query a data frame or
+vector.
+
+```{r, echo=T}
+
+# in our msleep data frame, which species have total sleep greater than 18 hours?
+# reload the msleep data with library(ggplot2) and data(msleep) if you need to
+
+msleep[,"sleep_total"]>18
+
+ # Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are
+
+which(msleep[,"sleep_total"]>18)  #22 37 43 62 --> the rows that contain organisms that sleep more than 18 hrs
+
+length(which(msleep[,"sleep_total"]>18)) #4 --> number of species that sleep more than 18 hrs 
+
+ # which four species are these?
+
+msleep[which(msleep[,"sleep_total"]>18),]
+
+# what if we only want to see the bats that sleep more than 18 hours per 24 hour period?
+
+msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
+
+```
+
+> ### Class Exercise 1
+
+> We are going to use the same iris dataset for our class activity this
+> week and explore it more. Include copied text from your R script that
+> is relevant to the questions below in your submission and answers to
+> the following questions. Remember you can work in groups but
+> everything is submitted individually. Go back to the iris dataset,
+> which can be loaded with `data(iris)` and submit code and answers for
+> the following questions:
+
+> -   Q1. How many irises have sepals less than 5.5 cm?
+> -   Q2. How many of the irises are in this dataset belong to the
+>     species versicolor?
 
 ## Plotting in Base R
 
@@ -88,14 +201,16 @@ plot(msleep$sleep_rem~msleep$sleep_total) #you'll notice this swaps the x and y 
 > the y (independent variable). Review the lecture slides again if this
 > gets confusing in the homework!
 
- -   There are several different arguments within plotting functions
-     that can be used to customize your plot.
- -   `col` changes color
- -   `pch` changes point character
- -   `cex` changes size
+-   There are several different arguments within plotting functions that
+    can be used to customize your plot.
+-   `col` changes color
+-   `pch` changes point character
+-   `cex` changes size
 -   `type` changes type ("l" = line, "p" = points, "b" = both)
 -   `lty` changes line type
--   `bty` changes (or removes) the border around the plot ("n" = no box, "7" = top + right, "L" = bottom+left, "C" top+left+bottom, "U" = left+bottom+right)
+-   `bty` changes (or removes) the border around the plot ("n" = no box,
+    "7" = top + right, "L" = bottom+left, "C" top+left+bottom, "U" =
+    left+bottom+right)
 
 You can view different point characters with `?pch`
 
@@ -200,7 +315,7 @@ consumers (carnivore, herbivore, insectivore and omnivore):
 plot(msleep$sleep_total~as.factor(msleep$vore),col=rainbow(4), xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)")
 ```
 
-### Class Exercise 1
+> ### Class Exercise 2
 
 > # Explore this dataset of chick weight and identify:
 >
@@ -446,7 +561,7 @@ ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
 
 ```
 
-### Class Exercise 2
+> ### Class Exercise 3
 
 > Go back to the Guinea Pig Tooth Dataset (ToothGrowth) and visualize
 > how the different doses of VC and OJ impact tooth growth. Use
@@ -532,6 +647,8 @@ made as well.
 
 ## Key Points
 
+-   Subsetting data is an important part of data exploration
+
 -   Making plots in R can be really fun, but is important to think about
     your audience and what you want your plot to convey when making it!
     For example, scatterplots and boxplots are useful for visualizing
@@ -546,9 +663,28 @@ made as well.
 
 <p>
 
-> > ## Class Exercises: Solutions
+> > # Class Exercises: Solutions
 > >
-> > Exercise 1
+> > ## Exercise 1
+> >
+> > 1)  How many irises have sepals less than 5.5 cm? remember TRUE's
+> >     are 1 and FALSE's are 0 and which() will only return the index
+> >     of TRUE values, so we're counting how many there are
+
+```{r, echo=T}
+sum(iris[,'Sepal.Length']<5.5)
+length(which(iris[,'Sepal.Length']<5.5))  
+```
+
+> > 2)  How many of the irises are in this dataset belong to the species
+> >     versicolor?
+
+```{r, echo=T}
+sum(iris[,'Species']=='versicolor')
+table(iris[,'Species']) ## this gets us all three species
+```
+
+> > ## Exercise 2
 > >
 > > 1)  sample size and different diets in the experiment
 
@@ -585,7 +721,7 @@ my.colors = brewer.pal(10, "Paired")
 hist(ChickWeight$weight[ChickWeight$Time == max(ChickWeight$Time)], xlab = "Weight (gm)",main = "Weights at final day of experiment", col = my.colors)
 ```
 
-> > ## Exercise 2
+> > ## Exercise 3
 
 ```{r, label= '6-22', echo=T}
 ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + facet_wrap(~dose)+ scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()

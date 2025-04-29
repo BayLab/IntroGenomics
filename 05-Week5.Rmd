@@ -133,17 +133,25 @@ length(n)
 
 ```
 
-You can use square brackets `[]` to get parts of vectors. This returns the 50th entry in our vector `n` and the 2nd entry in our vector `animals`.
+You can use square brackets `[]` to get parts of vectors.
 
 ```{r , echo=T}
 
 #what is the 50th entry in our vector n?
 n[50]
 
-#what is the 2nd entry in our vector animals?
-animals[2] 
-
 ```
+
+> ## Class Exercise
+> 1) What is the 2nd entry in our vector animals?
+> 
+> create a new vector with the following code for different field sites to answer questions 2 & 3:  
+```{r, echo=T}
+site_code <- c("BB","ShC","BH","Pes","StC","MR","PV","KH","CM","RP","Car","SR","RM","Dav","JB","Mal","PB","PA","Leu","VD","A")
+```
+> > 2) Without counting, which site is the 10th entry?
+> > 3)  How many sites are there total?
+
 
 ## Operations act on each element of a vector:
 
@@ -447,180 +455,53 @@ head(msleep)
 
 ```
 
-Let's use the built in iris dataset for a class exercise: This dataset
+## Group Work Activity: practice exploring a dataframe
+
+![Iris Diagram for Reference](./figs/iris.png)
+
+We'll use the built-in 'iris' dataset. the command: `data(iris)` \# this
+loads the 'iris' dataset. You can view more information \> about this
+dataset with `help(iris)` or `?iris` This dataset
 was published by Ronald Fisher in his 1936 paper: "The use of multiple
 measurements in taxonomic problems". It has three plant species (setosa,
 virginica, versicolor) and four morphological traits measured for each
 sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length and
 Petal.Width.
 
-![Iris Diagram for Reference](./figs/iris.png)
-
-## Practice exploring a dataframe
-
-Reminder of those useful commands: dataframename[row , col], str(),
-dim(), nrow(), unique(), length(), rownames(), summary(), min(), max(),
-mean(), range(), levels(), factor(), as.factor(), class(), ncol(),
-nrow(), table(), sum(), quantile(), var()
-
-We'll use the built-in 'iris' dataset. the command: `data(iris)` \# this
-loads the 'iris' dataset. You can view more information \> about this
-dataset with `help(iris)` or `?iris`
-
-> ### Class Exercise
->
-> -   How many rows are in the dataset? What are three distinct ways to
->     figure this out?
-
-> -   How many species of flowers are in the dataset? What class is
->     'iris' ?
-
-> -   How many columns does this data frame have? What are their names?
-
-> -   What class did R assign to each column?
-
-> -   Now for writing your own commands. Assign the first flower's
->     petal's width and length to new objects called setosa1.petalwidth
->     and setosa1.petallength. Then Calculate the approximate area of
->     the petal of the first flower, setosa1 (assume petal area can be
->     approximated by a rectangle).
-
-> -   Next, calculate the petal area of each flower in the iris dataset
->     and assign this to a new column named PetalArea.
-
-> -   What is the maximum sepal length of the irises? What about the
->     minimum, median and average sepal length among all flowers in the
->     dataset?
-
-## Subsetting datasets & logicals
-
-A few useful commands: equals `==`, does not equal `!=`, greater than
-`>`, less than `<`, and `&`, and a pipe which can also indicate "and"
-`|`.
-
-Reminder there are two assignment operators in R `<-` and a single
-equals sign `=`. The one you use really depends on how you learned to
-use R, and are otherwise equivalent.
-
-**Logical conditions vs. assignment operators:**
-
-Logical values of TRUE and FALSE are special in R. What class is a
-logical value?
-
-```{r, echo=T}
-TRUE
-FALSE
-
-# what class is a logical value?
-
-class(TRUE)
-
-```
-
-Logical values are stored as 0 for FALSE and 1 for TRUE. Which means you
-can do math with them!
-
-```{r, echo=T}
-
-TRUE + 1
-FALSE + 1
-
-sum(c(TRUE,TRUE,FALSE,FALSE))
-
-!TRUE
-
-!c(TRUE,TRUE,FALSE,FALSE)
-```
-
-Logicals will be the output of various tests:
-
-```{r, echo=T}
-
-1 == 1
-1 == 2
-
- # does not equal
-
-1 != 1
-1 != 2
-
- # greater than
-
-1 > 1
-1 >= 1
-
- # less than
-
-1 < 3
-
- # combining logical conditions with and (&), or(|)
-
-1 == 1 & 2 == 2
-1 == 1 & 1 == 2
-1 == 1 | 1 == 2
- 
- # we can take the opposite of a logical by using !
-
-!TRUE
-```
-
-This is very useful because we can use logicals to query a data frame or vector.
-
-```{r, echo=T}
-
-# in our msleep data frame, which species have total sleep greater than 18 hours?
-# reload the msleep data with library(ggplot2) and data(msleep) if you need to
-
-msleep[,"sleep_total"]>18
-
- # Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are
-
-which(msleep[,"sleep_total"]>18)  #22 37 43 62 --> the rows that contain organisms that sleep more than 18 hrs
-
-length(which(msleep[,"sleep_total"]>18)) #4 --> number of species that sleep more than 18 hrs 
-
- # which four species are these?
-
-msleep[which(msleep[,"sleep_total"]>18),]
-
-# what if we only want to see the bats that sleep more than 18 hours per 24 hour period?
-
-msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
-
-```
-
-## Group Work Activity: Practice Exploring Data in R
-
-We are going to use the same iris dataset for our class activity this
-week and explore it more. Include copied text from your R script that is
+Include copied text from your R script that is
 relevant to the questions below in your submission and answers to the
 following questions. Remember you can work in groups but everything is
 submitted individually. Go back to the iris dataset, which can be loaded
 with `data(iris)` and submit code and answers for the following
 questions:
 
-> -   Q1. How many irises have sepals less than 5.5 cm?
-> -   Q2. Which iris individual has the largest petal length? What is
->     the width of it's petal?
-> -   Q3. How many of the irises are in this dataset belong to the
->     species versicolor?
-> -   Q4. How many irises have petals longer than 6cm? Then create a
->     vector of species name for each iris with sepals longer than 6cm.
-> -   Q5. How many irises have sepals shorter than 5cm, but wider than
->     3cm?
-> -   Q6. How many irises have petals narrower than 0.2cm or shorter
->     than 1.5cm?
-> -   Q7. What is the average width of *setosa iris* sepals that are
->     longer than 5cm?
-> -   Q8. What is the difference between the longest and shortest petal
->     lengths of the species *virginica*?
-> -   Q9. What proportion of flowers in the dataset have petals wider
->     than 1cm?
-> -   Q10. Okay final step! Create a new column within your dataframe,
->     called sepalCategory, and set all values equal to 'long' Subset
->     short values of this column, and set their values to 'short'
->     (Short sepals are those less than 5.5 cm) How many plants with
->     short sepals are there? How many long?
+> -  1)  How many rows are in the dataset? What are three distinct ways to
+>     figure this out?
+
+> -   2) How many species of flowers are in the dataset? What class is
+>     'iris' ?
+
+> -  3)  How many columns does this data frame have? What are their names?
+
+> -  4)  What class did R assign to each column?
+
+> -  5)  Now for writing your own commands. Assign the first flower's
+>     petal's width and length to new objects called setosa1.petalwidth
+>     and setosa1.petallength. Then Calculate the approximate area of
+>     the petal of the first flower, setosa1 (assume petal area can be
+>     approximated by a rectangle).
+
+> -   6) Next, calculate the petal area of each flower in the iris dataset
+>     and assign this to a new column named PetalArea.
+
+> -  7)  What is the maximum sepal length of the irises? What about the
+>     minimum, median and average sepal length among all flowers in the
+>     dataset?
+
+Reminder of those useful commands: dataframename[row , col], str(),
+dim(), nrow(), unique(), length(), rownames(), summary(), min(), max(),
+mean(), range(), levels(), factor(), as.factor(), class(), ncol(),
+nrow(), table(), sum(), quantile(), var()
 
 ## Key Points
 
@@ -640,42 +521,12 @@ questions:
 <p>
 
 > > ## Class Exercise: Solution
-
-```{r, echo=T}
-
-data(iris)
-
-nrow(iris) #can also use nrows, str and dim
-
-levels(iris$Species) 
-class(iris)
-colnames(iris)
-
-str(iris) #look at structure
-
-# Assign the first flower's petal's width and length to new objects called setosa1.petalwidth and setosa1.petallength. Then Calculate the approximate area of the petal of the first flower, setosa1 (assume petal area can be approximated by a rectangle).
-setosa1.petalwidth<-iris[1,2]
-
-setosa1.petallength<-iris[1,3]
-
-#area of petal of the first flower
-setosa1area2<-setosa1.petalwidth*setosa1.petallength
-
-#petal area of each flower
-iris$PetalArea<-iris$Petal.Length*iris$Petal.Width
-
-#max sepal length
-max(iris$Sepal.Length)
-
-#minimum sepal length
-min(iris$Sepal.Length)
-
-#average sepal length
-mean(iris$Sepal.Length)
-
-#median sepal length
-median(iris$Sepal.Length)
-```
+> > 1) animals[2] 
+> > "meow"
+> > 2) site_code[10] 
+> > "RP"
+> > 3) summary(site_code)
+> > 21 sample sites
 
 </p>
 

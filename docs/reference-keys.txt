@@ -112,3 +112,4 @@ orientation-to-r
 key-points-4
 main-objectives-5
 key-points-5
+group-work-activity-practice-exploring-a-dataframe
