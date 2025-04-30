@@ -156,13 +156,13 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 
 > ### Class Exercise 1
 
-> We are going to use the same iris dataset for our class activity this
-> week and explore it more. Include copied text from your R script that
-> is relevant to the questions below in your submission and answers to
-> the following questions. Remember you can work in groups but
-> everything is submitted individually. Go back to the iris dataset,
-> which can be loaded with `data(iris)` and submit code and answers for
-> the following questions:
+> We will be using the iris dataset again which can be loaded with
+> `data(iris)` and submit code and answers for the following questions:
+> It is important to acknowledge that the field of genetics has been
+> built on eugenics, and Fisher (author of this dataset) was a prominent
+> geneticist and eugenicist. More information about this can be accessed
+> here:
+> <https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962>
 
 > -   Q1. How many irises have sepals less than 5.5 cm?
 > -   Q2. How many of the irises are in this dataset belong to the
@@ -528,7 +528,8 @@ dataset was published by Ronald Fisher in his 1936 paper: "The use of
 multiple measurements in taxonomic problems". It has three plant species
 (setosa, virginica, versicolor) and four morphological traits measured
 for each sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length
-and Petal.Width.
+and Petal.Width. As I have mentioned before, it is important to acknowledge that the field of genetics has been built on eugenics, and Fisher (author of this dataset) was a prominent geneticist and eugenicist. More information about this can be accessedhere:
+<https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962>
 
 ![Iris Diagram for Reference](./figs/iris.png)
 

@@ -33,7 +33,7 @@ to introduce R more in depth are here: [Week 5 Slides](./figs/W5_R.pdf))
 ## Orientation to R
 
 First let's navigate to our R studio on Farm OnDemand! Launch your
-session with the information shown below ![Fill out this
+session with the information shown below: Give yourself 2 for memory. ![Fill out this
 information](./figs/R_ondemand.png)
 
 After we start it up we will want to create a new file called
@@ -466,7 +466,7 @@ was published by Ronald Fisher in his 1936 paper: "The use of multiple
 measurements in taxonomic problems". It has three plant species (setosa,
 virginica, versicolor) and four morphological traits measured for each
 sample in centimeters: Sepal.Length, Sepal.Width, Petal.Length and
-Petal.Width.
+Petal.Width. It is important to acknowledge that the field of genetics has been built on eugenics, and Fisher was a prominent geneticist and eugenicist. More information about this can be accessed here: <https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962>
 
 Include copied text from your R script that is
 relevant to the questions below in your submission and answers to the
