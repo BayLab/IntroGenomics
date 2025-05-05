@@ -33,8 +33,9 @@ to introduce R more in depth are here: [Week 5 Slides](./figs/W5_R.pdf))
 ## Orientation to R
 
 First let's navigate to our R studio on Farm OnDemand! Launch your
-session with the information shown below: Give yourself 2 for memory. ![Fill out this
-information](./figs/R_ondemand.png)
+session with the information shown below: Give yourself 2 for memory. 
+
+![Fill out this information](./figs/R_ondemand.png)
 
 After we start it up we will want to create a new file called
 "Week5-IntroR.R" to type our scripts for today.

@@ -482,7 +482,7 @@ bad read.
 ## Group Work Activity- Examining a Fastq File
 Navigate to eve198-genomics and copy the 'CCGPMC004_M0D060025C_S150_L003_R1_001.fastq.gz' file in the week2_activity directory to your individual directory. 
 
-``html
+```html
 cd .. #go back out of your individual directory
 cd week2_activity
 cp *fastqc.gz ../`yourdirectory`

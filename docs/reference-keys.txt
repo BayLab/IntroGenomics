@@ -113,3 +113,16 @@ key-points-4
 main-objectives-5
 key-points-5
 group-work-activity-practice-exploring-a-dataframe
+week-6--population-structure
+main-objectives-6
+download-the-data-in-terminal
+moving-to-r
+set-your-working-directory
+read-vcf-file
+read-in-the-metadata
+population-structure-with-tess3r
+how-do-we-know-which-k-to-pick
+visualizing-population-structure-with-pophelper
+adding-more-meaning-to-our-plot
+group-work-activity--adding-more-context-to-our-plot
+key-points-6

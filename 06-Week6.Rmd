@@ -133,40 +133,34 @@ vector.
 
 ```{r, echo=T}
 
-# in our msleep data frame, which species have total sleep greater than 18 hours?
-# reload the msleep data with library(ggplot2) and data(msleep) if you need to
+# in our msleep data frame, which species have total sleep greater than  or equal to 18 hours?
 
-msleep[,"sleep_total"]>18
+msleep[,"sleep_total"]>=18
 
- # Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are
+# Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are
 
-which(msleep[,"sleep_total"]>18)  #22 37 43 62 --> the rows that contain organisms that sleep more than 18 hrs
+which(msleep[,"sleep_total"]>=18)  #20 22 37 43 62 --> the rows that contain organisms that sleep more than 18 hrs
 
-length(which(msleep[,"sleep_total"]>18)) #4 --> number of species that sleep more than 18 hrs 
+length(which(msleep[,"sleep_total"]>=18)) #5 --> number of species that sleep more than 18 hrs 
 
  # which four species are these?
 
-msleep[which(msleep[,"sleep_total"]>18),]
+msleep[which(msleep[,"sleep_total"]>=18),]
+``` 
+Looks like our species include North American opossum, big brown bats, thick-tailed opposums, little brown bats and giant armadillos. What if we only want to see the bats that sleep more than 18 hours per 24 hour period?
 
-# what if we only want to see the bats that sleep more than 18 hours per 24 hour period?
-
-msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
+```{r, echo=T}
+msleep[which(msleep[,"sleep_total"]>=18 & msleep[,"order"] == "Chiroptera"),] #should give us two species!
 
 ```
 
 > ### Class Exercise 1
 
-> We will be using the iris dataset again which can be loaded with
-> `data(iris)` and submit code and answers for the following questions:
-> It is important to acknowledge that the field of genetics has been
-> built on eugenics, and Fisher (author of this dataset) was a prominent
-> geneticist and eugenicist. More information about this can be accessed
-> here:
-> <https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962>
+> Let's keep looking at the mammal sleep data! 
+> -   Q1. How many mammals sleep 6 hours or less total? Of these species, how many are marine mammals (in the order Cetacea)?
+> -   Q2. Of the mammals that less less than 6 hours or less total, how many of them are carnivores?
+> -   Q3. Identify which mammal(s) sleep the average amount of hours you sleep at night!
 
-> -   Q1. How many irises have sepals less than 5.5 cm?
-> -   Q2. How many of the irises are in this dataset belong to the
->     species versicolor?
 
 ## Plotting in Base R
 
@@ -668,21 +662,26 @@ made as well.
 > >
 > > ## Exercise 1
 > >
-> > 1)  How many irises have sepals less than 5.5 cm? remember TRUE's
-> >     are 1 and FALSE's are 0 and which() will only return the index
-> >     of TRUE values, so we're counting how many there are
-
+> > 1) Q1. How many mammals sleep less than 6 hours total? Of these species, how many are marine mammals (in the order Cetacea)?
+> > 16 species, Pilot whale, common porpoise and bottle-nose dolphin
 ```{r, echo=T}
-sum(iris[,'Sepal.Length']<5.5)
-length(which(iris[,'Sepal.Length']<5.5))  
+length(which(msleep[,"sleep_total"]<=6))
+msleep[which(msleep[,"sleep_total"]<=6 & msleep[,"order"] == "Cetacea"),]
 ```
 
-> > 2)  How many of the irises are in this dataset belong to the species
-> >     versicolor?
+> > 2)  Of the mammals that sleep 6 hours or less, how many of them are herbivores? And what species are included in this list?
+> > 11 species, includes cow, roe deer, goat, tree hyrax, Asian elephant, horse, donkey, giraffe, African elephant, sheep and Brazilian tapir
 
 ```{r, echo=T}
-sum(iris[,'Species']=='versicolor')
-table(iris[,'Species']) ## this gets us all three species
+length(msleep[which(msleep[,"sleep_total"]<=6 & msleep[,"vore"] == "herbi"),])
+(msleep[which(msleep[,"sleep_total"]<=6 & msleep[,"vore"] == "herbi"),])
+```
+> > 3) 
+```{r, echo=T}
+msleep[which(msleep[,"sleep_total"]==10),] #Grivet
+#to do a range
+msleep[msleep$sleep_total >= 8 & msleep$sleep_total <= 10, ] #several species including guiea pigs and lemurs
+
 ```
 
 > > ## Exercise 2

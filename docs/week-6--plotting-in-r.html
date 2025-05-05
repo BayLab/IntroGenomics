@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="week-5--welcome-to-the-r-environment.html"/>
-
+<link rel="next" href="week-6--population-structure.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -246,6 +246,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#group-work-activity-palmer-penguins"><i class="fa fa-check"></i><b>7.6</b> Group Work Activity: Palmer Penguins!</a></li>
 <li class="chapter" data-level="7.7" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#key-points-5"><i class="fa fa-check"></i><b>7.7</b> Key Points</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html"><i class="fa fa-check"></i><b>8</b> Week 6- Population Structure</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#main-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="8.2" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#download-the-data-in-terminal"><i class="fa fa-check"></i><b>8.2</b> Download the data in terminal</a></li>
+<li class="chapter" data-level="8.3" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#moving-to-r"><i class="fa fa-check"></i><b>8.3</b> Moving to R:</a></li>
+<li class="chapter" data-level="8.4" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#set-your-working-directory"><i class="fa fa-check"></i><b>8.4</b> set your working directory</a></li>
+<li class="chapter" data-level="8.5" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#read-vcf-file"><i class="fa fa-check"></i><b>8.5</b> read vcf file</a></li>
+<li class="chapter" data-level="8.6" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#read-in-the-metadata"><i class="fa fa-check"></i><b>8.6</b> read in the metadata</a></li>
+<li class="chapter" data-level="8.7" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#population-structure-with-tess3r"><i class="fa fa-check"></i><b>8.7</b> population structure with tess3r</a></li>
+<li class="chapter" data-level="8.8" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#how-do-we-know-which-k-to-pick"><i class="fa fa-check"></i><b>8.8</b> How do we know which K to pick?</a></li>
+<li class="chapter" data-level="8.9" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#visualizing-population-structure-with-pophelper"><i class="fa fa-check"></i><b>8.9</b> Visualizing population structure with pophelper!</a></li>
+<li class="chapter" data-level="8.10" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#adding-more-meaning-to-our-plot"><i class="fa fa-check"></i><b>8.10</b> Adding more meaning to our plot</a></li>
+<li class="chapter" data-level="8.11" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#group-work-activity--adding-more-context-to-our-plot"><i class="fa fa-check"></i><b>8.11</b> Group Work Activity- Adding more context to our plot</a></li>
+<li class="chapter" data-level="8.12" data-path="week-6--population-structure.html"><a href="week-6--population-structure.html#key-points-6"><i class="fa fa-check"></i><b>8.12</b> Key Points</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -367,10 +382,9 @@ can do math with them!</p>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <p>This is very useful because we can use logicals to query a data frame or
 vector.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-6--plotting-in-r.html#cb40-1" tabindex="-1"></a><span class="co"># in our msleep data frame, which species have total sleep greater than 18 hours?</span></span>
-<span id="cb40-2"><a href="week-6--plotting-in-r.html#cb40-2" tabindex="-1"></a><span class="co"># reload the msleep data with library(ggplot2) and data(msleep) if you need to</span></span>
-<span id="cb40-3"><a href="week-6--plotting-in-r.html#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="week-6--plotting-in-r.html#cb40-4" tabindex="-1"></a>msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-6--plotting-in-r.html#cb40-1" tabindex="-1"></a><span class="co"># in our msleep data frame, which species have total sleep greater than  or equal to 18 hours?</span></span>
+<span id="cb40-2"><a href="week-6--plotting-in-r.html#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="week-6--plotting-in-r.html#cb40-3" tabindex="-1"></a>msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;=</span><span class="dv">18</span></span></code></pre></div>
 <pre><code>#&gt;       sleep_total
 #&gt;  [1,]       FALSE
 #&gt;  [2,]       FALSE
@@ -391,7 +405,7 @@ vector.</p>
 #&gt; [17,]       FALSE
 #&gt; [18,]       FALSE
 #&gt; [19,]       FALSE
-#&gt; [20,]       FALSE
+#&gt; [20,]        TRUE
 #&gt; [21,]       FALSE
 #&gt; [22,]        TRUE
 #&gt; [23,]       FALSE
@@ -455,26 +469,26 @@ vector.</p>
 #&gt; [81,]       FALSE
 #&gt; [82,]       FALSE
 #&gt; [83,]       FALSE</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="week-6--plotting-in-r.html#cb42-1" tabindex="-1"></a> <span class="co"># Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are</span></span>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="week-6--plotting-in-r.html#cb42-1" tabindex="-1"></a><span class="co"># Using which() to identify which rows match the logical values (TRUE) and length to count how many species there are</span></span>
 <span id="cb42-2"><a href="week-6--plotting-in-r.html#cb42-2" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="week-6--plotting-in-r.html#cb42-3" tabindex="-1"></a><span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)  <span class="co">#22 37 43 62 --&gt; the rows that contain organisms that sleep more than 18 hrs</span></span></code></pre></div>
-<pre><code>#&gt; [1] 22 37 43 62</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="week-6--plotting-in-r.html#cb44-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>)) <span class="co">#4 --&gt; number of species that sleep more than 18 hrs </span></span></code></pre></div>
-<pre><code>#&gt; [1] 4</code></pre>
+<span id="cb42-3"><a href="week-6--plotting-in-r.html#cb42-3" tabindex="-1"></a><span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;=</span><span class="dv">18</span>)  <span class="co">#20 22 37 43 62 --&gt; the rows that contain organisms that sleep more than 18 hrs</span></span></code></pre></div>
+<pre><code>#&gt; [1] 20 22 37 43 62</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="week-6--plotting-in-r.html#cb44-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;=</span><span class="dv">18</span>)) <span class="co">#5 --&gt; number of species that sleep more than 18 hrs </span></span></code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="week-6--plotting-in-r.html#cb46-1" tabindex="-1"></a> <span class="co"># which four species are these?</span></span>
 <span id="cb46-2"><a href="week-6--plotting-in-r.html#cb46-2" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="week-6--plotting-in-r.html#cb46-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>),]</span></code></pre></div>
-<pre><code>#&gt; # A tibble: 4 × 11
+<span id="cb46-3"><a href="week-6--plotting-in-r.html#cb46-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;=</span><span class="dv">18</span>),]</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 11
 #&gt;   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
-#&gt; 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
-#&gt; 3 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
-#&gt; 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
+#&gt; 1 North … Dide… omni  Dide… lc                  18         4.9       0.333   6  
+#&gt; 2 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+#&gt; 3 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
+#&gt; 4 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
+#&gt; 5 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
 #&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="week-6--plotting-in-r.html#cb48-1" tabindex="-1"></a><span class="co"># what if we only want to see the bats that sleep more than 18 hours per 24 hour period?</span></span>
-<span id="cb48-2"><a href="week-6--plotting-in-r.html#cb48-2" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="week-6--plotting-in-r.html#cb48-3" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),]</span></code></pre></div>
+<p>Looks like our species include North American opossum, big brown bats, thick-tailed opposums, little brown bats and giant armadillos. What if we only want to see the bats that sleep more than 18 hours per 24 hour period?</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="week-6--plotting-in-r.html#cb48-1" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;=</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),] <span class="co">#should give us two species!</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 2 × 11
 #&gt;   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 #&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -485,20 +499,10 @@ vector.</p>
 <h3 id="class-exercise-1" class="hasAnchor">Class Exercise 1<a href="week-6--plotting-in-r.html#class-exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </blockquote>
 <blockquote>
-<p>We will be using the iris dataset again which can be loaded with
-<code>data(iris)</code> and submit code and answers for the following questions:
-It is important to acknowledge that the field of genetics has been
-built on eugenics, and Fisher (author of this dataset) was a prominent
-geneticist and eugenicist. More information about this can be accessed
-here:
-<a href="https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962" class="uri">https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962</a></p>
-</blockquote>
-<blockquote>
-<ul>
-<li>Q1. How many irises have sepals less than 5.5 cm?</li>
-<li>Q2. How many of the irises are in this dataset belong to the
-species versicolor?</li>
-</ul>
+<p>Let’s keep looking at the mammal sleep data!
+- Q1. How many mammals sleep 6 hours or less total? Of these species, how many are marine mammals (in the order Cetacea)?
+- Q2. Of the mammals that less less than 6 hours or less total, how many of them are carnivores?
+- Q3. Identify which mammal(s) sleep the average amount of hours you sleep at night!</p>
 </blockquote>
 </div>
 <div id="plotting-in-base-r" class="section level2 hasAnchor" number="7.3">
@@ -905,30 +909,84 @@ to customize your figures to your liking</p></li>
 <h1 id="class-exercises-solutions" class="hasAnchor">Class Exercises: Solutions<a href="week-6--plotting-in-r.html#class-exercises-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <h2 id="exercise-1" class="hasAnchor">Exercise 1<a href="week-6--plotting-in-r.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>How many irises have sepals less than 5.5 cm? remember TRUE’s
-are 1 and FALSE’s are 0 and which() will only return the index
-of TRUE values, so we’re counting how many there are</li>
+<li>Q1. How many mammals sleep less than 6 hours total? Of these species, how many are marine mammals (in the order Cetacea)?
+16 species, Pilot whale, common porpoise and bottle-nose dolphin</li>
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="week-6--plotting-in-r.html#cb91-1" tabindex="-1"></a><span class="fu">sum</span>(iris[,<span class="st">&#39;Sepal.Length&#39;</span>]<span class="sc">&lt;</span><span class="fl">5.5</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] 52</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="week-6--plotting-in-r.html#cb93-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(iris[,<span class="st">&#39;Sepal.Length&#39;</span>]<span class="sc">&lt;</span><span class="fl">5.5</span>))  </span></code></pre></div>
-<pre><code>#&gt; [1] 52</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="week-6--plotting-in-r.html#cb91-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&lt;=</span><span class="dv">6</span>))</span></code></pre></div>
+<pre><code>#&gt; [1] 16</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="week-6--plotting-in-r.html#cb93-1" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&lt;=</span><span class="dv">6</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Cetacea&quot;</span>),]</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 3 × 11
+#&gt;   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Pilot … Glob… carni Ceta… cd                   2.7       0.1          NA  21.4
+#&gt; 2 Common… Phoc… carni Ceta… vu                   5.6      NA            NA  18.4
+#&gt; 3 Bottle… Turs… carni Ceta… &lt;NA&gt;                 5.2      NA            NA  18.8
+#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <blockquote>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
-<li>How many of the irises are in this dataset belong to the species
-versicolor?</li>
+<li>Of the mammals that sleep 6 hours or less, how many of them are herbivores? And what species are included in this list?
+11 species, includes cow, roe deer, goat, tree hyrax, Asian elephant, horse, donkey, giraffe, African elephant, sheep and Brazilian tapir</li>
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="week-6--plotting-in-r.html#cb95-1" tabindex="-1"></a><span class="fu">sum</span>(iris[,<span class="st">&#39;Species&#39;</span>]<span class="sc">==</span><span class="st">&#39;versicolor&#39;</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] 50</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="week-6--plotting-in-r.html#cb97-1" tabindex="-1"></a><span class="fu">table</span>(iris[,<span class="st">&#39;Species&#39;</span>]) <span class="do">## this gets us all three species</span></span></code></pre></div>
-<pre><code>#&gt; 
-#&gt;     setosa versicolor  virginica 
-#&gt;         50         50         50</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="week-6--plotting-in-r.html#cb95-1" tabindex="-1"></a><span class="fu">length</span>(msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&lt;=</span><span class="dv">6</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;vore&quot;</span>] <span class="sc">==</span> <span class="st">&quot;herbi&quot;</span>),])</span></code></pre></div>
+<pre><code>#&gt; [1] 11</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="week-6--plotting-in-r.html#cb97-1" tabindex="-1"></a>(msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&lt;=</span><span class="dv">6</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;vore&quot;</span>] <span class="sc">==</span> <span class="st">&quot;herbi&quot;</span>),])</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 11 × 11
+#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+#&gt;  2 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
+#&gt;  3 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7
+#&gt;  4 Tree … Dend… herbi Hyra… lc                   5.3       0.5      NA      18.7
+#&gt;  5 Asian… Elep… herbi Prob… en                   3.9      NA        NA      20.1
+#&gt;  6 Horse  Equus herbi Peri… domesticated         2.9       0.6       1      21.1
+#&gt;  7 Donkey Equus herbi Peri… domesticated         3.1       0.4      NA      20.9
+#&gt;  8 Giraf… Gira… herbi Arti… cd                   1.9       0.4      NA      22.1
+#&gt;  9 Afric… Loxo… herbi Prob… vu                   3.3      NA        NA      20.7
+#&gt; 10 Sheep  Ovis  herbi Arti… domesticated         3.8       0.6      NA      20.2
+#&gt; 11 Brazi… Tapi… herbi Peri… vu                   4.4       1         0.9    19.6
+#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+</blockquote>
+</blockquote>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="week-6--plotting-in-r.html#cb99-1" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">==</span><span class="dv">10</span>),] <span class="co">#Grivet</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 11
+#&gt;   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
+#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Grivet Cerco… omni  Prim… lc                    10       0.7          NA    14
+#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="week-6--plotting-in-r.html#cb101-1" tabindex="-1"></a><span class="co">#to do a range</span></span>
+<span id="cb101-2"><a href="week-6--plotting-in-r.html#cb101-2" tabindex="-1"></a>msleep[msleep<span class="sc">$</span>sleep_total <span class="sc">&gt;=</span> <span class="dv">8</span> <span class="sc">&amp;</span> msleep<span class="sc">$</span>sleep_total <span class="sc">&lt;=</span> <span class="dv">10</span>, ] <span class="co">#several species including guiea pigs and lemurs</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 18 × 11
+#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
+#&gt;  2 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6
+#&gt;  3 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+#&gt;  4 Afric… Cric… omni  Rode… &lt;NA&gt;                 8.3       2        NA      15.7
+#&gt;  5 Lesse… Cryp… omni  Sori… lc                   9.1       1.4       0.15   14.9
+#&gt;  6 Galago Gala… omni  Prim… &lt;NA&gt;                 9.8       1.1       0.55   14.2
+#&gt;  7 Human  Homo  omni  Prim… &lt;NA&gt;                 8         1.9       1.5    16  
+#&gt;  8 Mongo… Lemur herbi Prim… vu                   9.5       0.9      NA      14.5
+#&gt;  9 Rabbit Oryc… herbi Lago… domesticated         8.4       0.9       0.417  15.6
+#&gt; 10 Chimp… Pan   omni  Prim… &lt;NA&gt;                 9.7       1.4       1.42   14.3
+#&gt; 11 Baboon Papio omni  Prim… &lt;NA&gt;                 9.4       1         0.667  14.6
+#&gt; 12 Afric… Rhab… omni  Rode… &lt;NA&gt;                 8.7      NA        NA      15.3
+#&gt; 13 Squir… Saim… omni  Prim… &lt;NA&gt;                 9.6       1.4      NA      14.4
+#&gt; 14 Easte… Scal… inse… Sori… lc                   8.4       2.1       0.167  15.6
+#&gt; 15 Pig    Sus   omni  Arti… domesticated         9.1       2.4       0.5    14.9
+#&gt; 16 Short… Tach… inse… Mono… &lt;NA&gt;                 8.6      NA        NA      15.4
+#&gt; 17 Tree … Tupa… omni  Scan… &lt;NA&gt;                 8.9       2.6       0.233  15.1
+#&gt; 18 Red f… Vulp… carni Carn… &lt;NA&gt;                 9.8       2.4       0.35   14.2
+#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <blockquote>
 <blockquote>
 <h2 id="exercise-2" class="hasAnchor">Exercise 2<a href="week-6--plotting-in-r.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -937,9 +995,9 @@ versicolor?</li>
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="week-6--plotting-in-r.html#cb99-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="week-6--plotting-in-r.html#cb103-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span></code></pre></div>
 <pre><code>#&gt; [1] 50</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="week-6--plotting-in-r.html#cb101-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="week-6--plotting-in-r.html#cb105-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span></code></pre></div>
 <pre><code>#&gt; [1] 4</code></pre>
 <blockquote>
 <blockquote>
@@ -948,9 +1006,9 @@ versicolor?</li>
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="week-6--plotting-in-r.html#cb103-1" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
-<span id="cb103-2"><a href="week-6--plotting-in-r.html#cb103-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
-<span id="cb103-3"><a href="week-6--plotting-in-r.html#cb103-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="week-6--plotting-in-r.html#cb107-1" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
+<span id="cb107-2"><a href="week-6--plotting-in-r.html#cb107-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
+<span id="cb107-3"><a href="week-6--plotting-in-r.html#cb107-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/6-19-1.png" width="576" /></p>
 <blockquote>
 <blockquote>
@@ -961,24 +1019,24 @@ the experiments</li>
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="week-6--plotting-in-r.html#cb104-1" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
-<span id="cb104-2"><a href="week-6--plotting-in-r.html#cb104-2" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
-<span id="cb104-3"><a href="week-6--plotting-in-r.html#cb104-3" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
-<span id="cb104-4"><a href="week-6--plotting-in-r.html#cb104-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>, </span>
-<span id="cb104-5"><a href="week-6--plotting-in-r.html#cb104-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
-<span id="cb104-6"><a href="week-6--plotting-in-r.html#cb104-6" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
-<span id="cb104-7"><a href="week-6--plotting-in-r.html#cb104-7" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="week-6--plotting-in-r.html#cb108-1" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
+<span id="cb108-2"><a href="week-6--plotting-in-r.html#cb108-2" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
+<span id="cb108-3"><a href="week-6--plotting-in-r.html#cb108-3" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
+<span id="cb108-4"><a href="week-6--plotting-in-r.html#cb108-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb108-5"><a href="week-6--plotting-in-r.html#cb108-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
+<span id="cb108-6"><a href="week-6--plotting-in-r.html#cb108-6" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
+<span id="cb108-7"><a href="week-6--plotting-in-r.html#cb108-7" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/6-20-1.png" width="576" /></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="week-6--plotting-in-r.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb105-2"><a href="week-6--plotting-in-r.html#cb105-2" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
-<span id="cb105-3"><a href="week-6--plotting-in-r.html#cb105-3" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="week-6--plotting-in-r.html#cb109-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb109-2"><a href="week-6--plotting-in-r.html#cb109-2" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
+<span id="cb109-3"><a href="week-6--plotting-in-r.html#cb109-3" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
 <p><img src="_main_files/figure-html/6-21-1.png" width="576" /></p>
 <blockquote>
 <blockquote>
 <h2 id="exercise-3" class="hasAnchor">Exercise 3<a href="week-6--plotting-in-r.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="week-6--plotting-in-r.html#cb106-1" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>supp, <span class="at">fill=</span> supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>dose)<span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>, <span class="st">&quot;lightpink&quot;</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="week-6--plotting-in-r.html#cb110-1" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">y=</span>len, <span class="at">x=</span>supp, <span class="at">fill=</span> supp))<span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>dose)<span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>, <span class="st">&quot;lightpink&quot;</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/6-22-1.png" width="576" /></p>
 </p>
 </details>
@@ -990,8 +1048,8 @@ the experiments</li>
           </div>
         </div>
       </div>
-<a href="week-5--welcome-to-the-r-environment.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="week-5--welcome-to-the-r-environment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-6--population-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
