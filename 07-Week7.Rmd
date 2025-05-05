@@ -180,7 +180,7 @@ library(gridExtra)
 p<-plotQ(slist.cukes,imgoutput="join",returnplot=TRUE,exportplot=FALSE,basesize=11,
             splabsize=7,height=7,
             grplab=data.frame(SITE=labset$SITE),subsetgrp=ordered.sites,
-            grplabsize=3,linesize=1,pointsize=3,splab=labs,grplabangle=0,
+            grplabsize=3,linesize=1,pointsize=3,splab=labels,grplabangle=0,
             grplabheight = 5)
 ```
 
@@ -212,7 +212,7 @@ verifyGrplab(grplab=labset[,c("SITE", "Country")]) # to make sure it is there
 p2<-plotQ(slist.cukes,imgoutput="join",returnplot=TRUE,exportplot=FALSE,basesize=11,
             splabsize=7,height=7,
             grplab=labset[,c("SITE", "Country")],subsetgrp=ordered.sites,
-            grplabsize=3,linesize=1,pointsize=3,splab=labs,grplabangle=0,
+            grplabsize=3,linesize=1,pointsize=3,splab=labels,grplabangle=0,
             grplabheight = 5)
 ```
 ```{r, label='7.6', echo=T}
