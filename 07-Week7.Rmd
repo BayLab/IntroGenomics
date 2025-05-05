@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setupq7, include=FALSE}
-knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=6)
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=8)
 ```
 
 # Week 7- Population Structure 
@@ -154,7 +154,7 @@ unique(sites.data$SITE)
 
 Our sites are "OGD" "SGI" "LAS" "JER" "TOF" "CRA" "RBY" "SHE" "MAL" "QUA" "HOP" "TBL" "CAL" "TOL" "PRI" "LEG" "JUA" "SEL" "REN" "MAZ" "AK1" "AK2" "AK3" "AK4". 
 
-![Table 1 from Xuereb et al., 2018](./figs/table_sites.png)
+![*Table 1 from Xuereb et al., 2018*](./figs/table_sites.png)
 
 Table 1 from the paper shows the sites south to north. Luckily the dataset is already sorted appropriately, so now we can just put this into a new object!
 
@@ -188,6 +188,7 @@ p<-plotQ(slist.cukes,imgoutput="join",returnplot=TRUE,exportplot=FALSE,basesize=
 ```{r, label='7.4', echo=T}
 grid.arrange(p$plot[[1]])
 ```
+
 ## Adding more meaning to our plot
 The site names may mean something if you are familiar with this area or have read the paper, but how can we make our plot easier to understand? One way could be to add what countries these samples were taken in so you can get a sense of sampling area. A really useful package for data manipulation that we haven't used yet is called `dplyr()`. Remember to install it with `install.packages()` and then load it with `library()`
 
@@ -223,7 +224,7 @@ grid.arrange(p2$plot[[1]])
 ## Group Work Activity- Adding more context to our plot
 The structure plot is now more organized with samples from south to north, but what if we want clear labels for how those sites split? Remember that Table 1 grouped sites by region, with Ogden Point to Table Island as the "South Region" and Calvert Island to Alaska site 4 as the "North Region".
 
-![Table 1 from Xuereb et al., 2018](./figs/table_sites.png)
+![*Table 1 from Xuereb et al., 2018*](./figs/table_sites.png)
 
 1. Add a column for "Region" in sites.data  dataset. 
 2. Make a new structure plot with a label for `SITE` and `Region`.

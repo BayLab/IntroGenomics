@@ -257,8 +257,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#population-structure-with-tess3r"><i class="fa fa-check"></i><b>8.7</b> population structure with tess3r</a></li>
 <li class="chapter" data-level="8.8" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#how-do-we-know-which-k-to-pick"><i class="fa fa-check"></i><b>8.8</b> How do we know which K to pick?</a></li>
 <li class="chapter" data-level="8.9" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#visualizing-population-structure-with-pophelper"><i class="fa fa-check"></i><b>8.9</b> Visualizing population structure with pophelper!</a></li>
-<li class="chapter" data-level="8.10" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#group-work-activity--adding-more-context-to-our-plot"><i class="fa fa-check"></i><b>8.10</b> Group Work Activity- Adding more context to our plot</a></li>
-<li class="chapter" data-level="8.11" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#key-points-6"><i class="fa fa-check"></i><b>8.11</b> Key Points</a></li>
+<li class="chapter" data-level="8.10" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#adding-more-meaning-to-our-plot"><i class="fa fa-check"></i><b>8.10</b> Adding more meaning to our plot</a></li>
+<li class="chapter" data-level="8.11" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#group-work-activity--adding-more-context-to-our-plot"><i class="fa fa-check"></i><b>8.11</b> Group Work Activity- Adding more context to our plot</a></li>
+<li class="chapter" data-level="8.12" data-path="week-7--population-structure.html"><a href="week-7--population-structure.html#key-points-6"><i class="fa fa-check"></i><b>8.12</b> Key Points</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -426,7 +427,7 @@ More information on the paper and it’s findings are in the lecture slides here
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="week-7--population-structure.html#cb21-1" tabindex="-1"></a><span class="fu">plot</span>(tess3.cukes, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>,</span>
 <span id="cb21-2"><a href="week-7--population-structure.html#cb21-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Number of ancestral populations&quot;</span>,</span>
 <span id="cb21-3"><a href="week-7--population-structure.html#cb21-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Cross-validation score&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/7.1-1.png" width="576" /></p>
+<p><img src="_main_files/figure-html/7.1-1.png" width="768" /></p>
 <p>It looks like there might just be two clusters, since the cross-validation score drops between 1 and 2 ancestral populations. Let’t make a matrix using qmatrix for K+2 and visualize a structure plot with that!</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-7--population-structure.html#cb22-1" tabindex="-1"></a><span class="co"># retrieve tess3 Q matrix for K = 2 clusters </span></span>
 <span id="cb22-2"><a href="week-7--population-structure.html#cb22-2" tabindex="-1"></a>cukes.matrix <span class="ot">&lt;-</span> <span class="fu">qmatrix</span>(tess3.cukes, <span class="at">K =</span> <span class="dv">2</span>)</span></code></pre></div>
@@ -436,7 +437,7 @@ More information on the paper and it’s findings are in the lecture slides here
 <span id="cb23-4"><a href="week-7--population-structure.html#cb23-4" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Ancestry matrix&quot;</span>) <span class="ot">-&gt;</span> bp</span></code></pre></div>
 <pre><code>#&gt; Use CreatePalette() to define color palettes.</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="week-7--population-structure.html#cb25-1" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(cukes.matrix), <span class="at">labels =</span> sites.data<span class="sc">$</span>Sample,<span class="at">las =</span> <span class="dv">3</span>, <span class="at">cex.axis =</span> .<span class="dv">4</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/7.2-1.png" width="576" /></p>
+<p><img src="_main_files/figure-html/7.2-1.png" width="768" /></p>
 <p>Yay our first structure plot! It isn’t orded by site though and it is not easily interpreted. However what we can get from this figure is that it looks like 2 groups are in this dataset, so K=2 makes sense to move forward with.</p>
 </div>
 <div id="visualizing-population-structure-with-pophelper" class="section level2 hasAnchor" number="8.9">
@@ -461,7 +462,7 @@ More information on the paper and it’s findings are in the lecture slides here
 <p>Our sites are “OGD” “SGI” “LAS” “JER” “TOF” “CRA” “RBY” “SHE” “MAL” “QUA” “HOP” “TBL” “CAL” “TOL” “PRI” “LEG” “JUA” “SEL” “REN” “MAZ” “AK1” “AK2” “AK3” “AK4”.</p>
 <div class="float">
 <img src="figs/table_sites.png" alt="Table 1 from Xuereb et al., 2018" />
-<div class="figcaption">Table 1 from Xuereb et al., 2018</div>
+<div class="figcaption"><em>Table 1 from Xuereb et al., 2018</em></div>
 </div>
 <p>Table 1 from the paper shows the sites south to north. Luckily the dataset is already sorted appropriately, so now we can just put this into a new object!</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-7--population-structure.html#cb29-1" tabindex="-1"></a>ordered.sites<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;OGD&quot;</span>, <span class="st">&quot;SGI&quot;</span>, <span class="st">&quot;LAS&quot;</span> ,<span class="st">&quot;JER&quot;</span> ,<span class="st">&quot;TOF&quot;</span> ,<span class="st">&quot;CRA&quot;</span> ,<span class="st">&quot;RBY&quot;</span>, <span class="st">&quot;SHE&quot;</span>, <span class="st">&quot;MAL&quot;</span>, <span class="st">&quot;QUA&quot;</span>, <span class="st">&quot;HOP&quot;</span>, <span class="st">&quot;TBL&quot;</span>, <span class="st">&quot;CAL&quot;</span>, <span class="st">&quot;TOL&quot;</span>, <span class="st">&quot;PRI&quot;</span>, <span class="st">&quot;LEG&quot;</span>, <span class="st">&quot;JUA&quot;</span>, <span class="st">&quot;SEL&quot;</span>, <span class="st">&quot;REN&quot;</span>, <span class="st">&quot;MAZ&quot;</span>, <span class="st">&quot;AK1&quot;</span>, <span class="st">&quot;AK2&quot;</span> ,<span class="st">&quot;AK3&quot;</span>, <span class="st">&quot;AK4&quot;</span>)</span></code></pre></div>
@@ -483,9 +484,11 @@ More information on the paper and it’s findings are in the lecture slides here
 <span id="cb32-6"><a href="week-7--population-structure.html#cb32-6" tabindex="-1"></a>            <span class="at">grplabsize=</span><span class="dv">3</span>,<span class="at">linesize=</span><span class="dv">1</span>,<span class="at">pointsize=</span><span class="dv">3</span>,<span class="at">splab=</span>labels,<span class="at">grplabangle=</span><span class="dv">0</span>,</span>
 <span id="cb32-7"><a href="week-7--population-structure.html#cb32-7" tabindex="-1"></a>            <span class="at">grplabheight =</span> <span class="dv">5</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="week-7--population-structure.html#cb33-1" tabindex="-1"></a><span class="fu">grid.arrange</span>(p<span class="sc">$</span>plot[[<span class="dv">1</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/7.4-1.png" width="576" />
-## Adding more meaning to our plot
-The site names may mean something if you are familiar with this area or have read the paper, but how can we make our plot easier to understand? One way could be to add what countries these samples were taken in so you can get a sense of sampling area. A really useful package for data manipulation that we haven’t used yet is called <code>dplyr()</code>. Remember to install it with <code>install.packages()</code> and then load it with <code>library()</code></p>
+<p><img src="_main_files/figure-html/7.4-1.png" width="768" /></p>
+</div>
+<div id="adding-more-meaning-to-our-plot" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> Adding more meaning to our plot<a href="week-7--population-structure.html#adding-more-meaning-to-our-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The site names may mean something if you are familiar with this area or have read the paper, but how can we make our plot easier to understand? One way could be to add what countries these samples were taken in so you can get a sense of sampling area. A really useful package for data manipulation that we haven’t used yet is called <code>dplyr()</code>. Remember to install it with <code>install.packages()</code> and then load it with <code>library()</code></p>
 <p>The newest thing that you will see with dplyr is <code>%&gt;%</code>. This is called a pipe, and connects lines of code together.</p>
 <p>To add a new column we will need to define what the new column will be named and then provide information to fill that column</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-7--population-structure.html#cb34-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
@@ -514,14 +517,14 @@ The site names may mean something if you are familiar with this area or have rea
 <span id="cb40-7"><a href="week-7--population-structure.html#cb40-7" tabindex="-1"></a>            <span class="at">grplabsize=</span><span class="dv">3</span>,<span class="at">linesize=</span><span class="dv">1</span>,<span class="at">pointsize=</span><span class="dv">3</span>,<span class="at">splab=</span>labels,<span class="at">grplabangle=</span><span class="dv">0</span>,</span>
 <span id="cb40-8"><a href="week-7--population-structure.html#cb40-8" tabindex="-1"></a>            <span class="at">grplabheight =</span> <span class="dv">5</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="week-7--population-structure.html#cb41-1" tabindex="-1"></a><span class="fu">grid.arrange</span>(p2<span class="sc">$</span>plot[[<span class="dv">1</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/7.6-1.png" width="576" /></p>
+<p><img src="_main_files/figure-html/7.6-1.png" width="768" /></p>
 </div>
-<div id="group-work-activity--adding-more-context-to-our-plot" class="section level2 hasAnchor" number="8.10">
-<h2><span class="header-section-number">8.10</span> Group Work Activity- Adding more context to our plot<a href="week-7--population-structure.html#group-work-activity--adding-more-context-to-our-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="group-work-activity--adding-more-context-to-our-plot" class="section level2 hasAnchor" number="8.11">
+<h2><span class="header-section-number">8.11</span> Group Work Activity- Adding more context to our plot<a href="week-7--population-structure.html#group-work-activity--adding-more-context-to-our-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The structure plot is now more organized with samples from south to north, but what if we want clear labels for how those sites split? Remember that Table 1 grouped sites by region, with Ogden Point to Table Island as the “South Region” and Calvert Island to Alaska site 4 as the “North Region”.</p>
 <div class="float">
 <img src="figs/table_sites.png" alt="Table 1 from Xuereb et al., 2018" />
-<div class="figcaption">Table 1 from Xuereb et al., 2018</div>
+<div class="figcaption"><em>Table 1 from Xuereb et al., 2018</em></div>
 </div>
 <ol style="list-style-type: decimal">
 <li>Add a column for “Region” in sites.data dataset.</li>
@@ -546,8 +549,8 @@ The site names may mean something if you are familiar with this area or have rea
 <span id="cb42-15"><a href="week-7--population-structure.html#cb42-15" tabindex="-1"></a><span class="st">&quot;wong&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;#000000&quot;</span>,<span class="st">&quot;#E69F00&quot;</span>,<span class="st">&quot;#56B4E9&quot;</span>,<span class="st">&quot;#009E73&quot;</span>,<span class="st">&quot;#F0E442&quot;</span>,<span class="st">&quot;#006699&quot;</span>,<span class="st">&quot;#D55E00&quot;</span>,<span class="st">&quot;#CC79A7&quot;</span>),</span>
 <span id="cb42-16"><a href="week-7--population-structure.html#cb42-16" tabindex="-1"></a><span class="st">&quot;krzywinski&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;#006E82&quot;</span>,<span class="st">&quot;#8214A0&quot;</span>,<span class="st">&quot;#005AC8&quot;</span>,<span class="st">&quot;#00A0FA&quot;</span>,<span class="st">&quot;#FA78FA&quot;</span>,<span class="st">&quot;#14D2DC&quot;</span>,<span class="st">&quot;#AA0A3C&quot;</span>,<span class="st">&quot;#FA7850&quot;</span>,<span class="st">&quot;#0AB45A&quot;</span>,<span class="st">&quot;#F0F032&quot;</span>,<span class="st">&quot;#A0FA82&quot;</span>,<span class="st">&quot;#FAE6BE&quot;</span>))</span></code></pre></div>
 </div>
-<div id="key-points-6" class="section level2 hasAnchor" number="8.11">
-<h2><span class="header-section-number">8.11</span> Key Points<a href="week-7--population-structure.html#key-points-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="key-points-6" class="section level2 hasAnchor" number="8.12">
+<h2><span class="header-section-number">8.12</span> Key Points<a href="week-7--population-structure.html#key-points-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Moving from terminal to R is important when working with genomic data</li>
 <li>Structure plots can be made using tess3r and are useful for visualizing population structure within your dataset</li>
