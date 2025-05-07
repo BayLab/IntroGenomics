@@ -36,16 +36,17 @@ Unzip the week6 directory and navigate inside. There should be three files: a vc
 Now we will move to R! We will need quite a few packages today since we will be using `tess3r` to identify population structure and then `pophelper` to visualize that structure in a more organized way. We also need to be able to read in a vcf file, so `vcfR` is a useful package for that. `adegenet()` is a package that will help us do additional analyses on our genetic data.
 
 ## Installing Packages
-Remember that you first need `install.packages()` and then use `library()` to load each package! You will need to use `devtools::install_github("bcm-uga/TESS3_encho_sen")` to load `tess3r()`. After you have loaded each package you can get more information on each of them by doing `?tess3r()`.
+Remember that you first need `install.packages()` and then use `library()` to load each package! This can be done for `adegenet`, `ggplot2` and `vcfR`.
 
-For `pophelper()` you will need to install dependencies first with `install.packages(c("ggplot2","gridExtra","label.switching","tidyr","remotes"),repos="https://cloud.r-project.org")` then install pophelper `remotes::install_github('royfrancis/pophelper')`. This might take a while!
+
+You will need to use `devtools::install_github("bcm-uga/TESS3_encho_sen")` to install `tess3r()`. After you have loaded each package you can get more information on each of them by doing `?tess3r()`. For `pophelper()` you will need to install dependencies first with `install.packages(c("ggplot2","gridExtra","label.switching","tidyr","remotes"),repos="https://cloud.r-project.org")` then install pophelper `remotes::install_github('royfrancis/pophelper')`. This might take a while!
 
 ```{r echo=T}
-library(tess3r)
 library(vcfR)
-library(pophelper)
 library(ggplot2)
 library(adegenet)
+library(tess3r)
+library(pophelper)
 ```
 
 ## Set Working Directory
