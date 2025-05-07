@@ -157,9 +157,12 @@ msleep[which(msleep[,"sleep_total"]>=18 & msleep[,"order"] == "Chiroptera"),] #s
 > ### Class Exercise 1
 
 > Let's keep looking at the mammal sleep data! 
-> -   Q1. How many mammals sleep 6 hours or less total? Of these species, how many are marine mammals (in the order Cetacea)?
-> -   Q2. Of the mammals that less less than 6 hours or less total, how many of them are carnivores?
-> -   Q3. Identify which mammal(s) sleep the average amount of hours you sleep at night!
+>
+> - Q1. How many mammals sleep 6 hours or less total? Of these species, how many are marine mammals (in the order Cetacea)?
+>
+> - Q2. Of the mammals that less less than 6 hours or less total, how many of them are carnivores?
+>
+> - Q3. Identify which mammal(s) sleep the average amount of hours you sleep at night!
 
 
 ## Plotting in Base R
@@ -191,7 +194,7 @@ plot(msleep$sleep_rem~msleep$sleep_total) #you'll notice this swaps the x and y 
 > variable and the y axis will be the dependent variable. In our graph,
 > we are interested in how rem sleep in mammals changes with the total
 > amount of sleep they get, so we will want the second graph, where
-> `sleep_total` is on the x (dependent variable) and `sleep_rem` si on
+> `sleep_total` is on the x (dependent variable) and `sleep_rem` is on
 > the y (independent variable). Review the lecture slides again if this
 > gets confusing in the homework!
 
@@ -221,7 +224,7 @@ modifiers
 
 ```{r,  label='6-1', echo=T}
 #Choose a pch and make the color blue and give it a bottom+left border
-plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L")
+plot(msleep$sleep_rem~msleep$sleep_total, pch = 16, col="blue", bty="L")
 
 ```
 
@@ -230,7 +233,7 @@ arguments. Let's add labels to our plot.
 
 ```{r, label='6-2', echo=T}
 #Choose a pch and make the color blue and give it a bottom+left border
-plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+plot(msleep$sleep_rem~msleep$sleep_total, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
 
 ```
 
@@ -244,10 +247,10 @@ line fit from a linear model to our plot.
 
 ```{r, label='6-3', echo=T}
 #first make a plot
-plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+plot(msleep$sleep_rem~msleep$sleep_total, pch = 16, col="blue", bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
 
 #then add a line. The function lm runs a linear model on our x, y values.
-abline(lm(msleep$sleep_total~msleep$sleep_rem))
+abline(lm(msleep$sleep_rem~msleep$sleep_total))
 
 ```
 
@@ -269,7 +272,7 @@ msleep$colors[msleep$sleep_total < 17] <-"darkgreen"
 ```
 
 ```{r, label='6-4', echo=T}
-plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col=msleep$colors, bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+plot(msleep$sleep_rem~msleep$sleep_total, pch = 16, col=msleep$colors, bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
 
         
 ```
@@ -435,7 +438,7 @@ colors!
 
 ```{r,  label= '6-11',  echo=T}
 #change the theme
-ggplot(ToothGrowth, aes(y=len, x=dose, fill= supp))+ geom_boxplot() + scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
+ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
 
 ```
 
@@ -453,7 +456,7 @@ be easily done with `as.factor()`.
 
 ```{r, label= '6-12', echo=T}
 # because our vore vector is a character vector we must convert it to a factor before we can use it to group or color
-ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore))) +geom_point() +theme_minimal()
+ggplot(msleep, aes(y=sleep_rem, x=sleep_total, group=as.factor(vore), color=as.factor(vore))) +geom_point() +theme_minimal()
 
 ```
 
@@ -466,7 +469,7 @@ changes the theme.
 ```{r,label= '6-13', echo=T}
 # as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line
 
-ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore)))+
+ggplot(msleep, aes(y=sleep_rem, x=sleep_total, group=as.factor(vore), color=as.factor(vore)))+
   geom_point()+
   labs(y= "Total Sleep (hours)", x= "REM sleep (hours)")+
   theme_minimal()+
@@ -493,7 +496,7 @@ will save a photo of your figure on your desktop!
 ```{r, label= '6-14', echo=T}
 #assign to an object
 
-plot1<-ggplot(msleep, aes(y=sleep_total, x=sleep_rem, group=as.factor(vore), color=as.factor(vore)))+
+plot1<-ggplot(msleep, aes(y=sleep_rem, x=sleep_total, group=as.factor(vore), color=as.factor(vore)))+
   geom_point()+
   labs(y= "Total Sleep (hours)", x= "REM sleep (hours)")+
   theme_minimal()+
@@ -563,6 +566,10 @@ ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
 > `facet_wrap()` and plot the doses of the treatments within each graph,
 > with three separate graphs for each dose (0.5, 1 and 2)
 > data(ToothGrowth)
+
+```{r, label= '6-22', echo=T}
+ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + facet_wrap(~dose)+ scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
+```
 
 Plotting the mean values with error bars for several groups can also be
 useful for data visualization. You can use the function `stat_summary`
@@ -719,12 +726,6 @@ boxplot(weight ~ Diet,
 library(RColorBrewer)
 my.colors = brewer.pal(10, "Paired")
 hist(ChickWeight$weight[ChickWeight$Time == max(ChickWeight$Time)], xlab = "Weight (gm)",main = "Weights at final day of experiment", col = my.colors)
-```
-
-> > ## Exercise 3
-
-```{r, label= '6-22', echo=T}
-ggplot(ToothGrowth, aes(y=len, x=supp, fill= supp))+ geom_boxplot() + facet_wrap(~dose)+ scale_fill_manual(values=c("darkorange", "lightpink"))+ theme_minimal()
 ```
 
 </p>
