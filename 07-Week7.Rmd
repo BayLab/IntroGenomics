@@ -35,8 +35,10 @@ Unzip the week6 directory and navigate inside. There should be three files: a vc
 ## Moving to R:
 Now we will move to R! We will need quite a few packages today since we will be using `tess3r` to identify population structure and then `pophelper` to visualize that structure in a more organized way. We also need to be able to read in a vcf file, so `vcfR` is a useful package for that. `adegenet()` is a package that will help us do additional analyses on our genetic data.
 
+## Installing Packages
+Remember that you first need `install.packages()` and then use `library()` to load each package! You will need to use `devtools::install_github("bcm-uga/TESS3_encho_sen")` to load `tess3r()`. After you have loaded each package you can get more information on each of them by doing `?tess3r()`.
 
-Remember that you first need `install.packages()` and then use `library()` to load each package! You will need to use `devtools::install_github("bcm-uga/TESS3_encho_sen")` to load `tess3r()`. After you have loaded each package you can get more information on each of them by doing `?tess3r()`
+For `pophelper()` you will need to install dependencies first with `install.packages(c("ggplot2","gridExtra","label.switching","tidyr","remotes"),repos="https://cloud.r-project.org")` then install pophelper `remotes::install_github('royfrancis/pophelper')`. This might take a while!
 
 ```{r echo=T}
 library(tess3r)
@@ -45,15 +47,17 @@ library(pophelper)
 library(ggplot2)
 library(adegenet)
 ```
-## set your working directory
+
+## Set Working Directory
 Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week6 directory in your named directory. To set your working directory you can do the following: `setwd("~/where/you/are/storing/data/week6")`
 
 If you click the files tab on the right you should be able to see all of the files in your working directory too!
 
 
 ## read vcf file
+
 Now let's read in our data! This will take a second and you will get information on the file in your console as it is read in. The number of variants that are processed should be 2,719. Then you can extract the genotypes with the second line of code.
-```{r, echo=F}
+```{r, echo=T}
 vcf_cukes<-read.vcfR("filtered_2719neutral_snps.recode.vcf")
 genotypes_raw<-extract.gt(vcf_cukes)
 ```
@@ -70,7 +74,7 @@ genotypes_cleaned <- as.matrix(apply(genotypes_raw, c(1, 2), function(x) {
 
 ```
 
-Check to see that it worked by doing `View(genos_col)` or `head(genos_col)`. The genotypes should be coded as 0, 1 or 2. Finally let's check the dimensions of our genotype data. The number of individuals should be on the left and the genotypes should be on the right.
+Check to see that it worked by doing `View(genotypes_cleaned)` or `head(genotypes_cleaned)`. The genotypes should be coded as 0, 1 or 2. Finally let's check the dimensions of our genotype data. The number of individuals should be on the left and the genotypes should be on the right.
 
 ```{r, echo=T}
 dim(genotypes_cleaned) #indiv should be on left, genotypes on right
@@ -95,9 +99,9 @@ You can learn more about this package on their tutorial page (https://bcm-uga.gi
 - X argument refers to the genotype matrix
 - coord argument the coord argument corresponds to the geographic coordinates
 - K is the number of clusters or ancestral population
-- reps is the number of reps for cross validation
+- reps is the number of replications for cross validation that we are calling the ancestry correctly for each sample
 
-Normally we would want multiple reps to ensure things are being calcuated correctly, but for class we will only do 2.
+Normally we would want multiple reps to ensure things are being calculated correctly, but for class we will only do 2.
 
 
 ```{r, echo=T}
@@ -117,7 +121,7 @@ plot(tess3.cukes, pch = 19, col = "orange",
      ylab = "Cross-validation score") 
 ```
 
-It looks like there might just be two clusters, since the cross-validation score drops between 1 and 2 ancestral populations. Let't make a matrix using qmatrix for K+2 and visualize a structure plot with that!
+It looks like there might just be two clusters, since the cross-validation score drops between 1 and 2 ancestral populations. Let's make a matrix using qmatrix for K=2 and visualize a structure plot with that.  The qmatrix is a matrix of our ancestry coefficients, aka the matrix of relatedness between our samples! Our qmatrix will be called `cukes.matrix`
 
 ```{r, echo=T}
 # retrieve tess3 Q matrix for K = 2 clusters 
@@ -146,7 +150,7 @@ library(pophelper) #install this package first
 qlist.cukes <- readQTess3(t3list=tess3.cukes)
 is.qlist(qlist=qlist.cukes)#verify format
 ```
-2. Then we need to specify the order that we want our sites to be in and the different labels for our structure plot. The first is our population order. We want it to match the map figure and the table in the paper, so let's order from South to North. To get the sames of the sites we can do the following:
+2. Then we need to specify the order that we want our sites to be in and the different labels for our structure plot. The first is our population order. We want it to match the map figure and the table in the paper, so let's order from South to North. To get the same of the sites we can do the following:
 
 ```{r, echo=T}
 unique(sites.data$SITE)
@@ -228,29 +232,9 @@ The structure plot is now more organized with samples from south to north, but w
 
 1. Add a column for "Region" in sites.data  dataset. 
 2. Make a new structure plot with a label for `SITE` and `Region`.
-3. Modify the color scheme however you'd like! View the pophelper page for more information on how to do so. Think of how you can use color to convey a message with your plot. A few color schemes from pophelper below (link here: <https://www.royfrancis.com/pophelper/articles/index.html#plotting-1>)
+3. Modify the color scheme however you'd like! View the pophelper page for more information on how to do so. Think of how you can use color to convey a message with your plot. A few color schemes from `pophelper()` here: <https://www.royfrancis.com/pophelper/articles/index.html#plotting-1>
 
 Submit your code and a photo of your structure plot to canvas.
-```{r, echo=T}
-clist <- list(
-"shiny"=c("#1D72F5","#DF0101","#77CE61", "#FF9326","#A945FF","#0089B2","#FDF060","#FFA6B2","#BFF217","#60D5FD","#CC1577","#F2B950","#7FB21D","#EC496F","#326397","#B26314","#027368","#A4A4A4","#610B5E"),
-"strong"=c("#11A4C8","#63C2C5","#1D4F9F","#0C516D","#2A2771","#396D35","#80C342","#725DA8","#B62025","#ED2224","#ED1943","#ED3995","#7E277C","#F7EC16","#F8941E","#8C2A1C","#808080"),
-"oceanfive"=c("#00A0B0", "#6A4A3C", "#CC333F", "#EB6841", "#EDC951"),
-"keeled"=c("#48B098", "#91CB62", "#FFEE3B", "#FB9013", "#FF3C28"),
-"vintage"=c("#400F13", "#027368", "#A3BF3F", "#F2B950", "#D93A2B"),
-"muted"=c("#46BDDD","#82DDCE","#F5F06A","#F5CC6A","#F57E6A"),
-"teal"=c("#CFF09E","#A8DBA8","#79BD9A","#3B8686","#0B486B"),
-"merry"=c("#5BC0EB","#FDE74C","#9BC53D","#E55934","#FA7921"),
-"funky"=c("#A6CEE3", "#3F8EAA", "#79C360", "#E52829", "#FDB762","#ED8F47","#9471B4"),
-"retro"=c("#01948E","#A9C4E2","#E23560","#01A7B3","#FDA963","#323665","#EC687D"),
-"cb_paired"=c("#A6CEE3","#1F78B4","#B2DF8A","#33A02C","#FB9A99","#E31A1C","#FDBF6F","#FF7F00","#CAB2D6","#6A3D9A","#FFFF99","#B15928"),
-"cb_set3"=c("#8DD3C7","#FFFFB3","#BEBADA","#FB8072","#80B1D3","#FDB462","#B3DE69","#FCCDE5","#D9D9D9","#BC80BD","#CCEBC5","#FFED6F"),
-"morris"=c("#4D94CC","#34648A","#8B658A","#9ACD32","#CC95CC","#9ACD32","#8B3A39","#CD6601","#CC5C5B","#8A4500"),
-"wong"=c("#000000","#E69F00","#56B4E9","#009E73","#F0E442","#006699","#D55E00","#CC79A7"),
-"krzywinski"=c("#006E82","#8214A0","#005AC8","#00A0FA","#FA78FA","#14D2DC","#AA0A3C","#FA7850","#0AB45A","#F0F032","#A0FA82","#FAE6BE"))
-```
-
-
 
 ## Key Points
 - Moving from terminal to R is important when working with genomic data

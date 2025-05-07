@@ -127,3 +127,5 @@ adding-more-meaning-to-our-plot
 group-work-activity--adding-more-context-to-our-plot
 key-points-6
 week-7--population-structure
+installing-packages
+set-working-directory
