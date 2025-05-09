@@ -171,7 +171,7 @@ This doesn't show us much, just that there is a lot of variation along PC1! But 
 
 ```{r, label='8.2', echo=T}
 #PLOT
-ggplot(tab, aes(x = EV2, y = EV1, color=as.factor(metadata$Site_ID))) + geom_point()
+ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$Site_ID))) + geom_point()
 ```
 This helps but we don't really know what each of these site labels really mean. Let's go back to the metadata and add some more context.
 
@@ -216,11 +216,7 @@ This graph is a lot more informative! We see that the points on PC1 and PC2 are 
 Finally let's really customize our graph with labels, a legend and unique colors! Install/load `library(RcolorbBrewer)` for the colorscheme in the pca. You can type `?RColorBrewer` for a help tab to pop up where you can see the other color palettes in this package.
 
 
-To get the percentages I filled into the labels you can run this code from earlier:
-
-```{r, echo=T}
-print(pc.percent) #to get the values for the pca plot axes
-```
+To get the percentages I filled into the labels you can run this code from earlier: `print(pc.percent)`
 
 ```{r, label= '8.4', echo=T}
 ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country)))+
@@ -229,14 +225,24 @@ ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country)))+
   scale_colour_brewer(palette = "Paired")+
   theme_minimal(base_size=10)
 ```
+What if we want to look at other PC axes? You can modify the code above to instead plot PC3 & 4. Just be sure to update the axis labels. What does this figure show us?
+
+```{r, label= '8.5', echo=T}
+ggplot(tab, aes(x = EV3, y = EV4, color=as.factor(metadata$country)))+
+  geom_point()+
+  labs(x = 'PC3 1.5782740%', y='PC4 1.2831258', color = "country")+
+  scale_colour_brewer(palette = "Paired")+
+  theme_minimal(base_size=10)
+```
+
 
 ## Group Work Activity- What can the other PC axes tell us?
 
-- Q1)  We only explored PC1 and PC2 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC3 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use `Paired` or `Set3` if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels. 
+- Q1)  We only explored PC1 through PC4 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC5 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use `Paired` or `Set3` if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels. 
 
 - Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as "America/Asia".   West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).
 
-Turn in your code for how you made your PCAs, how you added region to your metadata file and the four PCAs for question 1 and 1 PCA for question 2 on canvas.
+Turn in your code for how you made your PCAs, how you added region to your metadata file and the three PCAs for question 1 and one PCA for question 2 on canvas.
 
 
 ## Key Point

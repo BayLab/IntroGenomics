@@ -17,7 +17,7 @@ We will be using data from a paper by Xuereb et al. (2018) paper on *P. californ
 
 ![Map of sampling locations in coastal British Columbia (1–20) and southeastern Alaska (21–24). ](./figs/cukes_map.png)
 More information on the paper and it's findings are in the lecture slides here: [Week 7
-Slides](./figs/W7-structure plots.pdf))
+Slides](./figs/W7-structure plots.pdf)
 
 
 ## Main Objectives:
