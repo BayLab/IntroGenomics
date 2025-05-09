@@ -154,12 +154,15 @@ tab<- data.frame(Sample_ID=pca.mosq$sample.id,
 
 ```
 
+We then need to connect our metadata and our PCA data together. Sample ID in both datasets match, so let's match them up with that!
 
+```{r, echo=T}
+tab$Sample_ID <- metadata$Sample_ID
+```
 
 Now let's plot our data!
 
 ```{r, label='8.1', echo=T}
-#PLOT
 
 ggplot(tab, aes(x = EV1, y = EV2)) +geom_point()
 ```
@@ -168,7 +171,7 @@ This doesn't show us much, just that there is a lot of variation along PC1! But 
 
 ```{r, label='8.2', echo=T}
 #PLOT
-ggplot(tab, aes(x = EV2, y = EV1, color=as.factor(metadata$Site_ID)) +geom_point()
+ggplot(tab, aes(x = EV2, y = EV1, color=as.factor(metadata$Site_ID))) + geom_point()
 ```
 This helps but we don't really know what each of these site labels really mean. Let's go back to the metadata and add some more context.
 

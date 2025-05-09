@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 9 Week 8: PCAs &amp; Mosquitos | 08-Week8</title>
+  <meta name="description" content=" 9 Week 8: PCAs &amp; Mosquitos | 08-Week8" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 9 Week 8: PCAs &amp; Mosquitos | 08-Week8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 9 Week 8: PCAs &amp; Mosquitos | 08-Week8" />
+  
+  
+  
+
+<meta name="author" content="M. Armstrong" />
+
+
+<meta name="date" content="2025-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-7--population-structure-sea-cucumbers.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Genomics in Natural Populations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro to Genomics in Natural Populations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#course-learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Course Learning Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#meet-your-instructors"><i class="fa fa-check"></i><b>1.2</b> Meet your instructors!</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-your-farm-account-set-up-class-specific"><i class="fa fa-check"></i><b>1.3</b> Getting your Farm Account set up (class specific)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1--welcome.html"><a href="week-1--welcome.html"><i class="fa fa-check"></i><b>2</b> Week 1- Welcome!</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1--welcome.html"><a href="week-1--welcome.html#main-objectives"><i class="fa fa-check"></i><b>2.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="week-1--welcome.html"><a href="week-1--welcome.html#how-to-access-the-shell-via-farm-ondemand"><i class="fa fa-check"></i><b>2.2</b> How to access the shell via Farm OnDemand</a></li>
+<li class="chapter" data-level="2.3" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-your-file-system"><i class="fa fa-check"></i><b>2.3</b> Navigating your file system</a></li>
+<li class="chapter" data-level="2.4" data-path="week-1--welcome.html"><a href="week-1--welcome.html#shortcut-tab-completion"><i class="fa fa-check"></i><b>2.4</b> Shortcut: Tab Completion</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1--welcome.html"><a href="week-1--welcome.html#creating-our-own-directories"><i class="fa fa-check"></i><b>2.5</b> Creating our own directories</a></li>
+<li class="chapter" data-level="2.6" data-path="week-1--welcome.html"><a href="week-1--welcome.html#full-vs-relative-paths"><i class="fa fa-check"></i><b>2.6</b> Full vs Relative Paths</a></li>
+<li class="chapter" data-level="2.7" data-path="week-1--welcome.html"><a href="week-1--welcome.html#examining-the-contents-of-other-directories"><i class="fa fa-check"></i><b>2.7</b> Examining the contents of other directories</a></li>
+<li class="chapter" data-level="2.8" data-path="week-1--welcome.html"><a href="week-1--welcome.html#group-work-activity--treasure-hunt"><i class="fa fa-check"></i><b>2.8</b> Group Work Activity- Treasure Hunt!</a></li>
+<li class="chapter" data-level="2.9" data-path="week-1--welcome.html"><a href="week-1--welcome.html#key-points"><i class="fa fa-check"></i><b>2.9</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html"><i class="fa fa-check"></i><b>3</b> Week 2- Working with Files</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#main-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#navigational-shortcuts"><i class="fa fa-check"></i><b>3.2</b> Navigational shortcuts</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#sequencing-pipeline"><i class="fa fa-check"></i><b>3.3</b> Sequencing Pipeline</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.4</b> Details on the FASTQ format</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.5</b> Our data set: FASTQ files</a></li>
+<li class="chapter" data-level="3.6" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.6</b> Wildcards</a></li>
+<li class="chapter" data-level="3.7" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.7</b> Command History</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.8</b> Examining Files</a></li>
+<li class="chapter" data-level="3.9" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#group-work-activity--examining-a-fastq-file"><i class="fa fa-check"></i><b>3.9</b> Group Work Activity- Examining a Fastq File</a></li>
+<li class="chapter" data-level="3.10" data-path="week-2--working-with-files.html"><a href="week-2--working-with-files.html#key-points-1"><i class="fa fa-check"></i><b>3.10</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html"><i class="fa fa-check"></i><b>4</b> Week 3- Working with Files Part 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#main-objectives-2"><i class="fa fa-check"></i><b>4.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-moving-copying-and-removing"><i class="fa fa-check"></i><b>4.2</b> Creating, moving, copying, and removing</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#copying-files"><i class="fa fa-check"></i><b>4.2.1</b> Copying Files</a></li>
+<li class="chapter" data-level="4.2.2" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#creating-directories"><i class="fa fa-check"></i><b>4.2.2</b> Creating Directories</a></li>
+<li class="chapter" data-level="4.2.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#moving-renaming"><i class="fa fa-check"></i><b>4.2.3</b> Moving / Renaming</a></li>
+<li class="chapter" data-level="4.2.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-permissions"><i class="fa fa-check"></i><b>4.2.4</b> File Permissions</a></li>
+<li class="chapter" data-level="4.2.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#removing"><i class="fa fa-check"></i><b>4.2.5</b> Removing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#searching-files"><i class="fa fa-check"></i><b>4.3</b> Searching files</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#redirecting-output"><i class="fa fa-check"></i><b>4.4</b> Redirecting output</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#file-extensions"><i class="fa fa-check"></i><b>4.5</b> File extensions</a></li>
+<li class="chapter" data-level="4.6" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-for-loops"><i class="fa fa-check"></i><b>4.6</b> Writing for loops</a></li>
+<li class="chapter" data-level="4.7" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#using-basename-in-for-loops"><i class="fa fa-check"></i><b>4.7</b> Using Basename in for loops</a></li>
+<li class="chapter" data-level="4.8" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-and-working-with-data"><i class="fa fa-check"></i><b>4.8</b> Writing Scripts and Working with Data</a></li>
+<li class="chapter" data-level="4.9" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-bash"><i class="fa fa-check"></i><b>4.9</b> Writing scripts: Bash</a></li>
+<li class="chapter" data-level="4.10" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#writing-scripts-slurm"><i class="fa fa-check"></i><b>4.10</b> Writing scripts: Slurm</a></li>
+<li class="chapter" data-level="4.11" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#group-work-activity--writing-your-own-script"><i class="fa fa-check"></i><b>4.11</b> Group Work Activity- Writing your own script</a></li>
+<li class="chapter" data-level="4.12" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#key-points-2"><i class="fa fa-check"></i><b>4.12</b> Key Points</a></li>
+<li class="chapter" data-level="4.13" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#additional-information"><i class="fa fa-check"></i><b>4.13</b> Additional Information</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>4.13.1</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#more-ways-to-work-with-files"><i class="fa fa-check"></i><b>4.14</b> More ways to work with files</a>
+<ul>
+<li class="chapter" data-level="4.14.1" data-path="week-3--working-with-files-part-2.html"><a href="week-3--working-with-files-part-2.html#awk"><i class="fa fa-check"></i><b>4.14.1</b> Awk</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>5</b> Week 4- What is a Genetic Variant?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#main-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-1-download-data"><i class="fa fa-check"></i><b>5.2</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#getting-data-from-the-cloud"><i class="fa fa-check"></i><b>5.2.1</b> Getting data from the cloud</a></li>
+<li class="chapter" data-level="5.2.2" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#tools-for-todays-class"><i class="fa fa-check"></i><b>5.2.2</b> tools for today’s class</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-1.2-raw-read-quality-control"><i class="fa fa-check"></i><b>5.3</b> Step 1.2: Raw read quality control</a></li>
+<li class="chapter" data-level="5.4" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-2-trimming-to-remove-adapters"><i class="fa fa-check"></i><b>5.4</b> Step 2: Trimming to remove adapters</a></li>
+<li class="chapter" data-level="5.5" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-3-building-an-index-of-our-genome"><i class="fa fa-check"></i><b>5.5</b> Step 3: Building an index of our genome</a></li>
+<li class="chapter" data-level="5.6" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-4-map-reads-to-the-genome"><i class="fa fa-check"></i><b>5.6</b> Step 4: Map reads to the genome</a></li>
+<li class="chapter" data-level="5.7" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-5-sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>5.7</b> Step 5: sam to bam file conversion</a></li>
+<li class="chapter" data-level="5.8" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#step-6-genotype-likelihoods"><i class="fa fa-check"></i><b>5.8</b> Step 6: Genotype likelihoods</a></li>
+<li class="chapter" data-level="5.9" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#group-work-activity--calling-variants-at-a-larger-scale"><i class="fa fa-check"></i><b>5.9</b> Group Work Activity- Calling Variants at a Larger Scale</a></li>
+<li class="chapter" data-level="5.10" data-path="week-4--what-is-a-genetic-variant.html"><a href="week-4--what-is-a-genetic-variant.html#key-points-3"><i class="fa fa-check"></i><b>5.10</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html"><i class="fa fa-check"></i><b>6</b> Week 5- Welcome to the R environment!</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#main-objectives-4"><i class="fa fa-check"></i><b>6.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#orientation-to-r"><i class="fa fa-check"></i><b>6.2</b> Orientation to R</a></li>
+<li class="chapter" data-level="6.3" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#manipulating-a-vector-object"><i class="fa fa-check"></i><b>6.3</b> Manipulating a vector object</a></li>
+<li class="chapter" data-level="6.4" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#operations-act-on-each-element-of-a-vector"><i class="fa fa-check"></i><b>6.4</b> Operations act on each element of a vector:</a></li>
+<li class="chapter" data-level="6.5" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#operations-can-also-work-with-two-vectors"><i class="fa fa-check"></i><b>6.5</b> Operations can also work with two vectors:</a></li>
+<li class="chapter" data-level="6.6" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#a-few-tips-below-for-working-with-objects"><i class="fa fa-check"></i><b>6.6</b> A few tips below for working with objects:</a></li>
+<li class="chapter" data-level="6.7" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#characterizing-a-dataframe"><i class="fa fa-check"></i><b>6.7</b> Characterizing a dataframe</a></li>
+<li class="chapter" data-level="6.8" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#how-to-access-parts-of-the-data"><i class="fa fa-check"></i><b>6.8</b> How to access parts of the data:</a></li>
+<li class="chapter" data-level="6.9" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#data-manipulation"><i class="fa fa-check"></i><b>6.9</b> Data Manipulation</a></li>
+<li class="chapter" data-level="6.10" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#group-work-activity-practice-exploring-a-dataframe"><i class="fa fa-check"></i><b>6.10</b> Group Work Activity: practice exploring a dataframe</a></li>
+<li class="chapter" data-level="6.11" data-path="week-5--welcome-to-the-r-environment.html"><a href="week-5--welcome-to-the-r-environment.html#key-points-4"><i class="fa fa-check"></i><b>6.11</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html"><i class="fa fa-check"></i><b>7</b> Week 6- Plotting in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#main-objectives-5"><i class="fa fa-check"></i><b>7.1</b> Main Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#subsetting-datasets-logicals"><i class="fa fa-check"></i><b>7.2</b> Subsetting datasets &amp; logicals</a></li>
+<li class="chapter" data-level="7.3" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#plotting-in-base-r"><i class="fa fa-check"></i><b>7.3</b> Plotting in Base R</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#scatterplots"><i class="fa fa-check"></i><b>7.3.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="7.3.2" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#histograms"><i class="fa fa-check"></i><b>7.3.2</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>7.4</b> Plotting with ggplot2</a></li>
+<li class="chapter" data-level="7.5" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#for-loops-and-the-apply-family-of-functions"><i class="fa fa-check"></i><b>7.5</b> For loops and the apply family of functions</a></li>
+<li class="chapter" data-level="7.6" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#group-work-activity-palmer-penguins"><i class="fa fa-check"></i><b>7.6</b> Group Work Activity: Palmer Penguins!</a></li>
+<li class="chapter" data-level="7.7" data-path="week-6--plotting-in-r.html"><a href="week-6--plotting-in-r.html#key-points-5"><i class="fa fa-check"></i><b>7.7</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html"><i class="fa fa-check"></i><b>8</b> Week 7- Population Structure &amp; Sea Cucumbers</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#main-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="8.2" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#download-the-data-in-terminal"><i class="fa fa-check"></i><b>8.2</b> Download the data in terminal</a></li>
+<li class="chapter" data-level="8.3" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#moving-to-r"><i class="fa fa-check"></i><b>8.3</b> Moving to R:</a></li>
+<li class="chapter" data-level="8.4" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#installing-packages"><i class="fa fa-check"></i><b>8.4</b> Installing Packages</a></li>
+<li class="chapter" data-level="8.5" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#set-working-directory"><i class="fa fa-check"></i><b>8.5</b> Set Working Directory</a></li>
+<li class="chapter" data-level="8.6" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#read-vcf-file"><i class="fa fa-check"></i><b>8.6</b> read vcf file</a></li>
+<li class="chapter" data-level="8.7" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#read-in-the-metadata"><i class="fa fa-check"></i><b>8.7</b> read in the metadata</a></li>
+<li class="chapter" data-level="8.8" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#population-structure-with-tess3r"><i class="fa fa-check"></i><b>8.8</b> population structure with tess3r</a></li>
+<li class="chapter" data-level="8.9" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#how-do-we-know-which-k-to-pick"><i class="fa fa-check"></i><b>8.9</b> How do we know which K to pick?</a></li>
+<li class="chapter" data-level="8.10" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#visualizing-population-structure-with-pophelper"><i class="fa fa-check"></i><b>8.10</b> Visualizing population structure with pophelper!</a></li>
+<li class="chapter" data-level="8.11" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#adding-more-meaning-to-our-plot"><i class="fa fa-check"></i><b>8.11</b> Adding more meaning to our plot</a></li>
+<li class="chapter" data-level="8.12" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#group-work-activity--adding-more-context-to-our-plot"><i class="fa fa-check"></i><b>8.12</b> Group Work Activity- Adding more context to our plot</a></li>
+<li class="chapter" data-level="8.13" data-path="week-7--population-structure-sea-cucumbers.html"><a href="week-7--population-structure-sea-cucumbers.html#key-points-6"><i class="fa fa-check"></i><b>8.13</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html"><i class="fa fa-check"></i><b>9</b> Week 8: PCAs &amp; Mosquitos</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#main-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="9.2" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#download-the-data-in-terminal-1"><i class="fa fa-check"></i><b>9.2</b> Download the data in terminal</a></li>
+<li class="chapter" data-level="9.3" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#moving-to-r-installing-packages"><i class="fa fa-check"></i><b>9.3</b> Moving to R &amp; Installing Packages</a></li>
+<li class="chapter" data-level="9.4" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#set-working-directory-1"><i class="fa fa-check"></i><b>9.4</b> Set Working Directory</a></li>
+<li class="chapter" data-level="9.5" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#read-vcf-file-1"><i class="fa fa-check"></i><b>9.5</b> read vcf file</a></li>
+<li class="chapter" data-level="9.6" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#read-in-metadata"><i class="fa fa-check"></i><b>9.6</b> Read in Metadata</a></li>
+<li class="chapter" data-level="9.7" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#prepare-for-plotting"><i class="fa fa-check"></i><b>9.7</b> Prepare for Plotting</a></li>
+<li class="chapter" data-level="9.8" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#group-work-activity--what-can-the-other-pc-axes-tell-us"><i class="fa fa-check"></i><b>9.8</b> Group Work Activity- What can the other PC axes tell us?</a></li>
+<li class="chapter" data-level="9.9" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#key-point"><i class="fa fa-check"></i><b>9.9</b> Key Point</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">08-Week8</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-8-pcas-mosquitos" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number"> 9</span> Week 8: PCAs &amp; Mosquitos<a href="week-8-pcas-mosquitos.html#week-8-pcas-mosquitos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We will be using an <em>Ae. aegypti</em> mosquito population genomic data from a paper by Rose et al. (2020) titled [“Climate and Urbanization Drive Mosquito Preference for Humans”] <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare" class="uri">https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare</a></p>
+<p>These samples were taken across Central Africa, shown in this figure:</p>
+<div class="float">
+<img src="figs/fig1c.map.png" alt="Map of collection localities. Diagonal hatched lines mark the Sahel ecoclimatic zone." />
+<div class="figcaption">Map of collection localities. Diagonal hatched lines mark the Sahel ecoclimatic zone.</div>
+</div>
+<p><em>Ae. aegypti</em> has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.</p>
+<div id="main-objectives-7" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Main Objectives:<a href="week-8-pcas-mosquitos.html#main-objectives-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Learn what an eigenvalue and an eigenvector are and what information they give us</li>
+<li>Learn how to interpret a principle component analysis (PCA)</li>
+<li>Visualize population genomic data using a PCA</li>
+</ul>
+</div>
+<div id="download-the-data-in-terminal-1" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Download the data in terminal<a href="week-8-pcas-mosquitos.html#download-the-data-in-terminal-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We first need to download the data in terminal. So navigate to your directory and do the following command to get the vcf file we need onto your farm desktop. I got the data from a data repository for this paper and modified it to be easier to work with in class.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="week-8-pcas-mosquitos.html#cb1-1" tabindex="-1"></a>cd /group/rbaygrp/eve198-genomics/yourdirectory</span>
+<span id="cb1-2"><a href="week-8-pcas-mosquitos.html#cb1-2" tabindex="-1"></a>wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week8.zip</span></code></pre></div>
+<p>Unzip the week8 directory and navigate inside. There should be two files: <code>simple_meta.csv</code> is our metadata file and <code>NC_035107.small.vcf.gz</code> is our subsetted vcf file with our genomic data.</p>
+</div>
+<div id="moving-to-r-installing-packages" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Moving to R &amp; Installing Packages<a href="week-8-pcas-mosquitos.html#moving-to-r-installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we will move to R! We will need to install several packages today.</p>
+<ul>
+<li>SeqArray()</li>
+<li>gdsfmt()</li>
+<li>SNPRelate()</li>
+<li>ggplot2()</li>
+</ul>
+<p><code>SeqArray()</code> to help us reformat our vcf file to a Genomic Data Structure (GDS) that is easier to read in for our principle component analysis (PCA). We need the package <code>SNPRelate()</code> to create a PCA from our genotype data. You will need to use Biocmanager to install both of these packages, so run <code>if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")</code> and then <code>BiocManager::install(c("SeqArray", "SNPRelate"))</code></p>
+<p>We will also need <code>gdsfmt()</code> to open the newly created GDS formatted file and since it is a dependency for <code>SeqArray()</code> it will actually download with that package installation. This package calculates the eigenvectors and eigenvalues for principal component analysis, meaning that it will look at how the samples are similar and different from one another and plot that variation using principle component axes. We will also need <code>ggplot2()</code>. After installing all of these packages be sure to load them with the commands below:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-8-pcas-mosquitos.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(SeqArray)</span></code></pre></div>
+<pre><code>## Warning: package &#39;SeqArray&#39; was built under R version 4.4.1</code></pre>
+<pre><code>## Loading required package: gdsfmt</code></pre>
+<pre><code>## Warning: package &#39;gdsfmt&#39; was built under R version 4.4.1</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="week-8-pcas-mosquitos.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(gdsfmt) </span>
+<span id="cb6-2"><a href="week-8-pcas-mosquitos.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(SNPRelate)</span></code></pre></div>
+<pre><code>## Warning: package &#39;SNPRelate&#39; was built under R version 4.4.1</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-8-pcas-mosquitos.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+</div>
+<div id="set-working-directory-1" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Set Working Directory<a href="week-8-pcas-mosquitos.html#set-working-directory-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week8 directory in your named directory. To set your working directory you can do the following: <code>setwd("~/where/you/are/storing/data/week8")</code></p>
+<p>If you click the files tab on the right you should be able to see all of the files in your working directory too!</p>
+</div>
+<div id="read-vcf-file-1" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> read vcf file<a href="week-8-pcas-mosquitos.html#read-vcf-file-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now let’s read in our vcf file and convert it to a gds object.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
+<span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
+<pre><code>## Fri May  9 16:05:37 2025
+## Variant Call Format (VCF) Import:
+##     file:
+##         NC_035107.small.vcf.gz (16.5M)
+##     file format: VCFv4.2
+##     genome reference: file:///tigress/noahr/ref/male_altref_iter3.fna
+##     # of sets of chromosomes (ploidy): 2
+##     # of samples: 393
+##     genotype field: GT
+##     genotype storage: bit2
+##     compression method: LZMA_RA
+##     # of samples: 393
+##     INFO: INDEL,IDV,IMF,DP,VDB,RPB,MQB,BQB,MQSB,SGB,MQ0F,AD,ICB,HOB,AC,AN,DP4,MQ
+##     FORMAT: PL,DP,AD,GQ
+## Output:
+##     mosq.gds
+##     [Progress Info: mosq.gds.progress]
+## Parsing &#39;NC_035107.small.vcf.gz&#39;:
+## + genotype/data   { Bit2 2x393x11855 LZMA_ra(20.8%), 505.5K }
+## Digests:
+##     sample.id  [md5: 2b5f70e2de68365f0964ad06b289559e]
+##     variant.id  [md5: 3133b35e9381f455ed19d7f2d567852f]
+##     position  [md5: 36b327c004dc76c2a4a64c7cf2683970]
+##     chromosome  [md5: c4663e7e1b9dd5969b071528bd6912a3]
+##     allele  [md5: 8851ccc0761efcb012f4a1dc3f1979d3]
+##     genotype  [md5: f6a52ad75dadbe4334a441fa925a8bec]
+##     phase  [md5: a7e3dac1ef09ed7704171a972f2c3401]
+##     annotation/id  [md5: 1ba9b45e63d62824dfa5d4fc84bdf4d6]
+##     annotation/qual  [md5: 11dd31fff5ac2e69a8105dc9c7c2f30b]
+##     annotation/filter  [md5: 3cd096d89bf97bb9054e730342351588]
+##     annotation/info/INDEL  [md5: 779b93c1ae44d71319b54cacce624d4e]
+##     annotation/info/IDV  [md5: d971e74c743fc1c4ff8c29c6bcb95c2b]
+##     annotation/info/IMF  [md5: e27641d6da4f2188816db703895dc97a]
+##     annotation/info/DP  [md5: 607e769e651f4b0493ecc4d17ac12bf5]
+##     annotation/info/VDB  [md5: 3f73c463085cef065df88254015e0b1d]
+##     annotation/info/RPB  [md5: e373f3ca1307b9bcbfbfb47d611549d2]
+##     annotation/info/MQB  [md5: d691a113110445b3e2250a4126847d7f]
+##     annotation/info/BQB  [md5: fcc1c68f19e24c75b0e59adcaa8c6f8c]
+##     annotation/info/MQSB  [md5: b50dc791551b470c578f5f4584ba7a5b]
+##     annotation/info/SGB  [md5: 9932a29a48c92426c7bacd8828fe2e16]
+##     annotation/info/MQ0F  [md5: 4a710d3368681e5d988d9ae74fe03afb]
+##     annotation/info/AD  [md5: cb8359395af44553f0879754d1bf442c]
+##     annotation/info/ICB  [md5: 68e46e056d8267853d70c4fc95912472]
+##     annotation/info/HOB  [md5: b9d490a57a492c3a5d6434f5e280d739]
+##     annotation/info/AC  [md5: 33b73e2dc66b4db4dcb8045d1e700f72]
+##     annotation/info/AN  [md5: 90f0bd9ec060ed79be92a16ae82e64a3]
+##     annotation/info/DP4  [md5: 8bb694bd475b48df8c8503e2ff914f94]
+##     annotation/info/MQ  [md5: 3ecc9bd5656be14f8ae9fd949e336cde]
+##     annotation/format/PL  [md5: 474edb72c0e31fd693eff08d68337c85]
+##     annotation/format/DP  [md5: 62a3464d2d00f6c8619851e1c62bc881]
+##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
+##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
+## Done.
+## Fri May  9 16:06:00 2025
+## Optimize the access efficiency ...
+## Clean up the fragments of GDS file:
+##     open the file &#39;mosq.gds&#39; (15.9M)
+##     # of fragments: 1096
+##     save to &#39;mosq.gds.tmp&#39;
+##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
+##     # of fragments: 123
+## Fri May  9 16:06:00 2025</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
+<p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
+<pre><code>## Object of class &quot;SeqVarGDSClass&quot;
+## File: /Users/maddiearmstrong/Desktop/teaching/intro_genomics/IntroGenomics/mosq.gds (15.9M)
+## +    [  ] *
+## |--+ description   [  ] *
+## |--+ sample.id   { Str8 393 LZMA_ra(8.37%), 1.2K } *
+## |--+ variant.id   { Int32 11855 LZMA_ra(9.45%), 4.4K } *
+## |--+ position   { Int32 11855 LZMA_ra(23.4%), 10.9K } *
+## |--+ chromosome   { Str8 11855 LZMA_ra(0.13%), 189B } *
+## |--+ allele   { Str8 11855 LZMA_ra(12.6%), 5.8K } *
+## |--+ genotype   [  ] *
+## |  |--+ data   { Bit2 2x393x11855 LZMA_ra(23.8%), 541.6K } *
+## |  |--+ extra.index   { Int32 3x0 LZMA_ra, 18B } *
+## |  \--+ extra   { Int16 0 LZMA_ra, 18B }
+## |--+ phase   [  ]
+## |  |--+ data   { Bit1 393x11855 LZMA_ra(0.04%), 237B } *
+## |  |--+ extra.index   { Int32 3x0 LZMA_ra, 18B } *
+## |  \--+ extra   { Bit1 0 LZMA_ra, 18B }
+## |--+ annotation   [  ]
+## |  |--+ id   { Str8 11855 LZMA_ra(1.06%), 133B } *
+## |  |--+ qual   { Float32 11855 LZMA_ra(2.90%), 1.3K } *
+## |  |--+ filter   { Int32,factor 11855 LZMA_ra(0.32%), 161B } *
+## |  |--+ info   [  ]
+## |  |  |--+ INDEL   { Bit1 11855 LZMA_ra(6.34%), 101B } *
+## |  |  |--+ IDV   { Int32 11855 LZMA_ra(0.32%), 161B } *
+## |  |  |--+ IMF   { Float32 11855 LZMA_ra(0.32%), 161B } *
+## |  |  |--+ DP   { Int32 11855 LZMA_ra(34.3%), 15.9K } *
+## |  |  |--+ VDB   { Float32 11855 LZMA_ra(89.1%), 41.3K } *
+## |  |  |--+ RPB   { Float32 11855 LZMA_ra(88.6%), 41.0K } *
+## |  |  |--+ MQB   { Float32 11855 LZMA_ra(65.0%), 30.1K } *
+## |  |  |--+ BQB   { Float32 11855 LZMA_ra(89.0%), 41.2K } *
+## |  |  |--+ MQSB   { Float32 11855 LZMA_ra(60.8%), 28.2K } *
+## |  |  |--+ SGB   { Float32 11855 LZMA_ra(82.1%), 38.0K } *
+## |  |  |--+ MQ0F   { Float32 11855 LZMA_ra(0.32%), 157B } *
+## |  |  |--+ AD   { Int32 23710 LZMA_ra(39.3%), 36.4K } *
+## |  |  |--+ ICB   { Float32 11855 LZMA_ra(61.8%), 28.6K } *
+## |  |  |--+ HOB   { Float32 11855 LZMA_ra(58.8%), 27.2K } *
+## |  |  |--+ AC   { Int32 11855 LZMA_ra(25.1%), 11.6K } *
+## |  |  |--+ AN   { Int32 11855 LZMA_ra(21.5%), 10.0K } *
+## |  |  |--+ DP4   { Int32 4x11855 LZMA_ra(35.2%), 65.3K } *
+## |  |  \--+ MQ   { Int32 11855 LZMA_ra(2.40%), 1.1K } *
+## |  \--+ format   [  ]
+## |     |--+ PL   [  ] *
+## |     |  \--+ data   { VL_Int 393x35565 LZMA_ra(32.2%), 6.0M } *
+## |     |--+ DP   [  ] *
+## |     |  \--+ data   { VL_Int 393x11855 LZMA_ra(51.4%), 2.3M } *
+## |     |--+ AD   [  ] *
+## |     |  \--+ data   { VL_Int 393x23710 LZMA_ra(36.0%), 3.2M } *
+## |     \--+ GQ   [  ] *
+## |        \--+ data   { VL_Int 393x11855 LZMA_ra(59.6%), 3.5M } *
+## \--+ sample.annotation   [  ]</code></pre>
+<p>Now that our data is in the right format we can run our PCA! We want it to analyze the full dataset, so we set autosome.only to FALSE. This again tells us how many variants we have and the number of samples in our dataset.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-8-pcas-mosquitos.html#cb14-1" tabindex="-1"></a>pca.mosq<span class="ot">&lt;-</span><span class="fu">snpgdsPCA</span>(genofileseq.mosq, <span class="at">autosome.only=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Principal Component Analysis (PCA) on genotypes:
+## Calculating allele counts/frequencies ...
+## [..................................................]  0%, ETC: ---    [==================================================] 100%, completed, 0s
+## # of selected variants: 11,855
+##     # of samples: 393
+##     # of SNVs: 11,855
+##     using 1 thread
+##     # of principal components: 32
+## CPU capabilities:
+## Fri May  9 16:06:01 2025    (internal increment: 1248)
+## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 1s
+## Fri May  9 16:06:02 2025    Begin (eigenvalues and eigenvectors)
+## Fri May  9 16:06:02 2025    Done.</code></pre>
+<p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
+<pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-8-pcas-mosquitos.html#cb18-1" tabindex="-1"></a><span class="fu">names</span>(pca.mosq) </span></code></pre></div>
+<pre><code>## [1] &quot;sample.id&quot; &quot;snp.id&quot;    &quot;eigenval&quot;  &quot;eigenvect&quot; &quot;varprop&quot;   &quot;TraceXTX&quot; 
+## [7] &quot;Bayesian&quot;  &quot;genmat&quot;</code></pre>
+<p>You should get class is a list and the column names are: “sample.id” “snp.id” “eigenval” “eigenvect” “varprop” “TraceXTX” “Bayesian” “genmat”</p>
+<p>Explore what each of these columns are and print only the top 10 rows</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-8-pcas-mosquitos.html#cb20-1" tabindex="-1"></a><span class="fu">head</span>(pca.mosq<span class="sc">$</span>sample.id, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;Debug011_aegypti_Arabuko_Kenya_01&quot; &quot;Debug011_aegypti_Arabuko_Kenya_02&quot;
+##  [3] &quot;Debug011_aegypti_Arabuko_Kenya_03&quot; &quot;Debug011_aegypti_Arabuko_Kenya_04&quot;
+##  [5] &quot;Debug011_aegypti_Arabuko_Kenya_05&quot; &quot;Debug011_aegypti_Arabuko_Kenya_07&quot;
+##  [7] &quot;Debug011_aegypti_Arabuko_Kenya_08&quot; &quot;Debug011_aegypti_Arabuko_Kenya_09&quot;
+##  [9] &quot;Debug011_aegypti_Arabuko_Kenya_10&quot; &quot;Debug011_aegypti_Arabuko_Kenya_11&quot;</code></pre>
+<ul>
+<li>sample.id is the name of our sample</li>
+<li>snp.id is the name of our snp</li>
+<li>eigenval is the eigenvalue of that snp</li>
+<li>eigenvect is the eigenvector of that snp, or “# of samples” x “eigen.count”</li>
+<li>varprop is the proportion of variation for each principle component</li>
+<li>TraceXTX is the trace of the genetic covariance matrix</li>
+<li>Bayesian is whether we used bayesian normalization (we did not)</li>
+<li>genmat is the genetic covariance matrix</li>
+</ul>
+<p>The column “sample.id” will be important for merging our metadata. The metadata will give more context to our snp data since we can provide information on how to categorize the variation present in our data.</p>
+<p>If we plot or print our <code>pc.percent</code> object we can see that there are 32 pc axes but most of the variation is explained by pc 1 and 2. The amount of variation explained decreases with increasing pc axis number.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-8-pcas-mosquitos.html#cb22-1" tabindex="-1"></a>pc.percent<span class="ot">&lt;-</span>pca.mosq<span class="sc">$</span>varprop<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb22-2"><a href="week-8-pcas-mosquitos.html#cb22-2" tabindex="-1"></a><span class="fu">print</span>(pc.percent)</span></code></pre></div>
+<pre><code>##   [1] 10.4020498  4.9636990  1.5782740  1.2831258  1.1971492  1.1825766
+##   [7]  1.0287042  0.9539680  0.9176371  0.8208863  0.8118421  0.7681545
+##  [13]  0.7077274  0.6783483  0.6143333  0.5738263  0.5599696  0.5438564
+##  [19]  0.5230800  0.5187362  0.4854494  0.4764008  0.4731621  0.4710086
+##  [25]  0.4594423  0.4509300  0.4406212  0.4250621  0.4244937  0.4173459
+##  [31]  0.4153109  0.4009164        NaN        NaN        NaN        NaN
+##  [37]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [43]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [49]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [55]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [61]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [67]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [73]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [79]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [85]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [91]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [97]        NaN        NaN        NaN        NaN        NaN        NaN
+## [103]        NaN        NaN        NaN        NaN        NaN        NaN
+## [109]        NaN        NaN        NaN        NaN        NaN        NaN
+## [115]        NaN        NaN        NaN        NaN        NaN        NaN
+## [121]        NaN        NaN        NaN        NaN        NaN        NaN
+## [127]        NaN        NaN        NaN        NaN        NaN        NaN
+## [133]        NaN        NaN        NaN        NaN        NaN        NaN
+## [139]        NaN        NaN        NaN        NaN        NaN        NaN
+## [145]        NaN        NaN        NaN        NaN        NaN        NaN
+## [151]        NaN        NaN        NaN        NaN        NaN        NaN
+## [157]        NaN        NaN        NaN        NaN        NaN        NaN
+## [163]        NaN        NaN        NaN        NaN        NaN        NaN
+## [169]        NaN        NaN        NaN        NaN        NaN        NaN
+## [175]        NaN        NaN        NaN        NaN        NaN        NaN
+## [181]        NaN        NaN        NaN        NaN        NaN        NaN
+## [187]        NaN        NaN        NaN        NaN        NaN        NaN
+## [193]        NaN        NaN        NaN        NaN        NaN        NaN
+## [199]        NaN        NaN        NaN        NaN        NaN        NaN
+## [205]        NaN        NaN        NaN        NaN        NaN        NaN
+## [211]        NaN        NaN        NaN        NaN        NaN        NaN
+## [217]        NaN        NaN        NaN        NaN        NaN        NaN
+## [223]        NaN        NaN        NaN        NaN        NaN        NaN
+## [229]        NaN        NaN        NaN        NaN        NaN        NaN
+## [235]        NaN        NaN        NaN        NaN        NaN        NaN
+## [241]        NaN        NaN        NaN        NaN        NaN        NaN
+## [247]        NaN        NaN        NaN        NaN        NaN        NaN
+## [253]        NaN        NaN        NaN        NaN        NaN        NaN
+## [259]        NaN        NaN        NaN        NaN        NaN        NaN
+## [265]        NaN        NaN        NaN        NaN        NaN        NaN
+## [271]        NaN        NaN        NaN        NaN        NaN        NaN
+## [277]        NaN        NaN        NaN        NaN        NaN        NaN
+## [283]        NaN        NaN        NaN        NaN        NaN        NaN
+## [289]        NaN        NaN        NaN        NaN        NaN        NaN
+## [295]        NaN        NaN        NaN        NaN        NaN        NaN
+## [301]        NaN        NaN        NaN        NaN        NaN        NaN
+## [307]        NaN        NaN        NaN        NaN        NaN        NaN
+## [313]        NaN        NaN        NaN        NaN        NaN        NaN
+## [319]        NaN        NaN        NaN        NaN        NaN        NaN
+## [325]        NaN        NaN        NaN        NaN        NaN        NaN
+## [331]        NaN        NaN        NaN        NaN        NaN        NaN
+## [337]        NaN        NaN        NaN        NaN        NaN        NaN
+## [343]        NaN        NaN        NaN        NaN        NaN        NaN
+## [349]        NaN        NaN        NaN        NaN        NaN        NaN
+## [355]        NaN        NaN        NaN        NaN        NaN        NaN
+## [361]        NaN        NaN        NaN        NaN        NaN        NaN
+## [367]        NaN        NaN        NaN        NaN        NaN        NaN
+## [373]        NaN        NaN        NaN        NaN        NaN        NaN
+## [379]        NaN        NaN        NaN        NaN        NaN        NaN
+## [385]        NaN        NaN        NaN        NaN        NaN        NaN
+## [391]        NaN        NaN        NaN</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-8-pcas-mosquitos.html#cb24-1" tabindex="-1"></a><span class="fu">plot</span>(pc.percent)</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.0-1.png" width="672" /></p>
+<p>This suggests that we should include many PC axes for our downstream analyses, but for now we will stick with 10.</p>
+</div>
+<div id="read-in-metadata" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Read in Metadata<a href="week-8-pcas-mosquitos.html#read-in-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="week-8-pcas-mosquitos.html#cb25-1" tabindex="-1"></a><span class="co">#Population meta</span></span>
+<span id="cb25-2"><a href="week-8-pcas-mosquitos.html#cb25-2" tabindex="-1"></a>metadata<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&#39;simple_meta.csv&#39;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<p>If we run <code>View(metadata)</code> you can see that our metadata has two columns, <code>Sample_ID</code> and <code>Site_ID</code>. <code>Sample_ID</code> matches our header <code>sample.id</code> in our <code>pca.mosq</code> data. We can combine the metadata with our <code>pca.mosq</code> object and pull the top 10 PC axes. This creates a new object called <code>tab</code>. You can look inside <code>tab</code> using <code>View(tab)</code></p>
+</div>
+<div id="prepare-for-plotting" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Prepare for Plotting<a href="week-8-pcas-mosquitos.html#prepare-for-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="week-8-pcas-mosquitos.html#cb26-1" tabindex="-1"></a><span class="co">#look at pc.percent values in environment</span></span>
+<span id="cb26-2"><a href="week-8-pcas-mosquitos.html#cb26-2" tabindex="-1"></a>tab<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sample_ID=</span>pca.mosq<span class="sc">$</span>sample.id,</span>
+<span id="cb26-3"><a href="week-8-pcas-mosquitos.html#cb26-3" tabindex="-1"></a>                 <span class="at">EV1=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">1</span>], </span>
+<span id="cb26-4"><a href="week-8-pcas-mosquitos.html#cb26-4" tabindex="-1"></a>                 <span class="at">EV2=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">2</span>],</span>
+<span id="cb26-5"><a href="week-8-pcas-mosquitos.html#cb26-5" tabindex="-1"></a>                 <span class="at">EV3=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">3</span>],</span>
+<span id="cb26-6"><a href="week-8-pcas-mosquitos.html#cb26-6" tabindex="-1"></a>                 <span class="at">EV4=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">4</span>],</span>
+<span id="cb26-7"><a href="week-8-pcas-mosquitos.html#cb26-7" tabindex="-1"></a>                 <span class="at">EV5=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">5</span>],</span>
+<span id="cb26-8"><a href="week-8-pcas-mosquitos.html#cb26-8" tabindex="-1"></a>                 <span class="at">EV6=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">6</span>],</span>
+<span id="cb26-9"><a href="week-8-pcas-mosquitos.html#cb26-9" tabindex="-1"></a>                 <span class="at">EV7=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">7</span>], </span>
+<span id="cb26-10"><a href="week-8-pcas-mosquitos.html#cb26-10" tabindex="-1"></a>                 <span class="at">EV8=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">8</span>], </span>
+<span id="cb26-11"><a href="week-8-pcas-mosquitos.html#cb26-11" tabindex="-1"></a>                 <span class="at">EV9=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">9</span>], </span>
+<span id="cb26-12"><a href="week-8-pcas-mosquitos.html#cb26-12" tabindex="-1"></a>                 <span class="at">EV10=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">10</span>])</span></code></pre></div>
+<p>We then need to connect our metadata and our PCA data together. Sample ID in both datasets match, so let’s match them up with that!</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-8-pcas-mosquitos.html#cb27-1" tabindex="-1"></a>tab<span class="sc">$</span>Sample_ID <span class="ot">&lt;-</span> metadata<span class="sc">$</span>Sample_ID</span></code></pre></div>
+<p>Now let’s plot our data!</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="week-8-pcas-mosquitos.html#cb28-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2)) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.1-1.png" width="672" /></p>
+<p>This doesn’t show us much, just that there is a lot of variation along PC1! But we don’t have any information about these samples, so we want to use the metadata to contextualize what we are looking at. So let’s modify the code to fill in our dots by Site_ID. We want to make sure that variable is read as a factor, which is why we add the specification <code>as.factor()</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-8-pcas-mosquitos.html#cb29-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
+<span id="cb29-2"><a href="week-8-pcas-mosquitos.html#cb29-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV2, <span class="at">y =</span> EV1, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>Site_ID))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.2-1.png" width="672" />
+This helps but we don’t really know what each of these site labels really mean. Let’s go back to the metadata and add some more context.</p>
+<p>We are going to use a package called <code>dplyr()</code> to modify our metadata. Remember to <code>install.packages()</code> first and then load the package</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="week-8-pcas-mosquitos.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<p>From reading the paper we can assign an additional column of information for each of our samples with “region”. We need to match up our site IDs to a new column that we will make with country information, but first we need to see how many unique sites there are and the names of those sites:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-8-pcas-mosquitos.html#cb34-1" tabindex="-1"></a><span class="fu">unique</span>(metadata<span class="sc">$</span>Site_ID)</span></code></pre></div>
+<pre><code>##  [1] &quot;ABK&quot;    &quot;GND&quot;    &quot;KAK&quot;    &quot;KBO&quot;    &quot;KWA&quot;    &quot;RAB&quot;    &quot;SHM&quot;    &quot;BUN&quot;   
+##  [9] &quot;KCH&quot;    &quot;VMB&quot;    &quot;KAR&quot;    &quot;ENT&quot;    &quot;FCV&quot;    &quot;LBV&quot;    &quot;LPV&quot;    &quot;RABd&quot;  
+## [17] &quot;BGR&quot;    &quot;GOU&quot;    &quot;OGD&quot;    &quot;AWK&quot;    &quot;BTT&quot;    &quot;BOA&quot;    &quot;KIN&quot;    &quot;KUM&quot;   
+## [25] &quot;OHI&quot;    &quot;THI&quot;    &quot;KED&quot;    &quot;MIN&quot;    &quot;NGO&quot;    &quot;PKT&quot;    &quot;BKK&quot;    &quot;SAN&quot;   
+## [33] &quot;RABaaf&quot; &quot;MASC&quot;</code></pre>
+<p>Now that we know there names, we can write code to add in a new column and assign it by what the site ID says:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-8-pcas-mosquitos.html#cb36-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="week-8-pcas-mosquitos.html#cb36-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-3"><a href="week-8-pcas-mosquitos.html#cb36-3" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BUN&quot;</span>, <span class="st">&quot;KAR&quot;</span>, <span class="st">&quot;ENT&quot;</span>, <span class="st">&quot;KCH&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Uganda&quot;</span>,</span>
+<span id="cb36-4"><a href="week-8-pcas-mosquitos.html#cb36-4" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BTT&quot;</span>, <span class="st">&quot;THI&quot;</span>, <span class="st">&quot;KED&quot;</span>, <span class="st">&quot;MIN&quot;</span>, <span class="st">&quot;NGO&quot;</span>, <span class="st">&quot;PKT&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Senegal&quot;</span>,</span>
+<span id="cb36-5"><a href="week-8-pcas-mosquitos.html#cb36-5" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;AWK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Nigeria&quot;</span>,</span>
+<span id="cb36-6"><a href="week-8-pcas-mosquitos.html#cb36-6" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;MASC&quot;</span> <span class="sc">~</span> <span class="st">&quot;Mauritius&quot;</span>,</span>
+<span id="cb36-7"><a href="week-8-pcas-mosquitos.html#cb36-7" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ABK&quot;</span>  ,  <span class="st">&quot;GND&quot;</span> ,   <span class="st">&quot;KAK&quot;</span> ,   <span class="st">&quot;KBO&quot;</span> ,   <span class="st">&quot;KWA&quot;</span>   , <span class="st">&quot;RAB&quot;</span> ,   <span class="st">&quot;SHM&quot;</span>, <span class="st">&quot;VMB&quot;</span>,  <span class="st">&quot;RABaaf&quot;</span>, <span class="st">&quot;RABd&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Kenya&quot;</span>,</span>
+<span id="cb36-8"><a href="week-8-pcas-mosquitos.html#cb36-8" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BOA&quot;</span>, <span class="st">&quot;KIN&quot;</span>, <span class="st">&quot;KUM&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Ghana&quot;</span>,</span>
+<span id="cb36-9"><a href="week-8-pcas-mosquitos.html#cb36-9" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;FCV&quot;</span>, <span class="st">&quot;LBV&quot;</span>, <span class="st">&quot;LPV&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Gabon&quot;</span>,</span>
+<span id="cb36-10"><a href="week-8-pcas-mosquitos.html#cb36-10" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BGR&quot;</span>, <span class="st">&quot;OGD&quot;</span>, <span class="st">&quot;OHI&quot;</span>, <span class="st">&quot;GOU&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Burkina Faso&quot;</span>,</span>
+<span id="cb36-11"><a href="week-8-pcas-mosquitos.html#cb36-11" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;SAN&quot;</span> <span class="sc">~</span> <span class="st">&quot;Brazil&quot;</span>,</span>
+<span id="cb36-12"><a href="week-8-pcas-mosquitos.html#cb36-12" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;BKK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Thailand&quot;</span></span>
+<span id="cb36-13"><a href="week-8-pcas-mosquitos.html#cb36-13" tabindex="-1"></a>  ))</span></code></pre></div>
+<p>Look at the metadata file again with <code>View(metadata)</code> to check if it worked! There should be a new column called <code>country</code></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-8-pcas-mosquitos.html#cb37-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
+<span id="cb37-2"><a href="week-8-pcas-mosquitos.html#cb37-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country))) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.3-1.png" width="672" /></p>
+<p>This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.</p>
+<p>Finally let’s really customize our graph with labels, a legend and unique colors! Install/load <code>library(RcolorbBrewer)</code> for the colorscheme in the pca. You can type <code>?RColorBrewer</code> for a help tab to pop up where you can see the other color palettes in this package.</p>
+<p>To get the percentages I filled into the labels you can run this code from earlier:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-8-pcas-mosquitos.html#cb38-1" tabindex="-1"></a><span class="fu">print</span>(pc.percent) <span class="co">#to get the values for the pca plot axes</span></span></code></pre></div>
+<pre><code>##   [1] 10.4020498  4.9636990  1.5782740  1.2831258  1.1971492  1.1825766
+##   [7]  1.0287042  0.9539680  0.9176371  0.8208863  0.8118421  0.7681545
+##  [13]  0.7077274  0.6783483  0.6143333  0.5738263  0.5599696  0.5438564
+##  [19]  0.5230800  0.5187362  0.4854494  0.4764008  0.4731621  0.4710086
+##  [25]  0.4594423  0.4509300  0.4406212  0.4250621  0.4244937  0.4173459
+##  [31]  0.4153109  0.4009164        NaN        NaN        NaN        NaN
+##  [37]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [43]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [49]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [55]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [61]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [67]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [73]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [79]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [85]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [91]        NaN        NaN        NaN        NaN        NaN        NaN
+##  [97]        NaN        NaN        NaN        NaN        NaN        NaN
+## [103]        NaN        NaN        NaN        NaN        NaN        NaN
+## [109]        NaN        NaN        NaN        NaN        NaN        NaN
+## [115]        NaN        NaN        NaN        NaN        NaN        NaN
+## [121]        NaN        NaN        NaN        NaN        NaN        NaN
+## [127]        NaN        NaN        NaN        NaN        NaN        NaN
+## [133]        NaN        NaN        NaN        NaN        NaN        NaN
+## [139]        NaN        NaN        NaN        NaN        NaN        NaN
+## [145]        NaN        NaN        NaN        NaN        NaN        NaN
+## [151]        NaN        NaN        NaN        NaN        NaN        NaN
+## [157]        NaN        NaN        NaN        NaN        NaN        NaN
+## [163]        NaN        NaN        NaN        NaN        NaN        NaN
+## [169]        NaN        NaN        NaN        NaN        NaN        NaN
+## [175]        NaN        NaN        NaN        NaN        NaN        NaN
+## [181]        NaN        NaN        NaN        NaN        NaN        NaN
+## [187]        NaN        NaN        NaN        NaN        NaN        NaN
+## [193]        NaN        NaN        NaN        NaN        NaN        NaN
+## [199]        NaN        NaN        NaN        NaN        NaN        NaN
+## [205]        NaN        NaN        NaN        NaN        NaN        NaN
+## [211]        NaN        NaN        NaN        NaN        NaN        NaN
+## [217]        NaN        NaN        NaN        NaN        NaN        NaN
+## [223]        NaN        NaN        NaN        NaN        NaN        NaN
+## [229]        NaN        NaN        NaN        NaN        NaN        NaN
+## [235]        NaN        NaN        NaN        NaN        NaN        NaN
+## [241]        NaN        NaN        NaN        NaN        NaN        NaN
+## [247]        NaN        NaN        NaN        NaN        NaN        NaN
+## [253]        NaN        NaN        NaN        NaN        NaN        NaN
+## [259]        NaN        NaN        NaN        NaN        NaN        NaN
+## [265]        NaN        NaN        NaN        NaN        NaN        NaN
+## [271]        NaN        NaN        NaN        NaN        NaN        NaN
+## [277]        NaN        NaN        NaN        NaN        NaN        NaN
+## [283]        NaN        NaN        NaN        NaN        NaN        NaN
+## [289]        NaN        NaN        NaN        NaN        NaN        NaN
+## [295]        NaN        NaN        NaN        NaN        NaN        NaN
+## [301]        NaN        NaN        NaN        NaN        NaN        NaN
+## [307]        NaN        NaN        NaN        NaN        NaN        NaN
+## [313]        NaN        NaN        NaN        NaN        NaN        NaN
+## [319]        NaN        NaN        NaN        NaN        NaN        NaN
+## [325]        NaN        NaN        NaN        NaN        NaN        NaN
+## [331]        NaN        NaN        NaN        NaN        NaN        NaN
+## [337]        NaN        NaN        NaN        NaN        NaN        NaN
+## [343]        NaN        NaN        NaN        NaN        NaN        NaN
+## [349]        NaN        NaN        NaN        NaN        NaN        NaN
+## [355]        NaN        NaN        NaN        NaN        NaN        NaN
+## [361]        NaN        NaN        NaN        NaN        NaN        NaN
+## [367]        NaN        NaN        NaN        NaN        NaN        NaN
+## [373]        NaN        NaN        NaN        NaN        NaN        NaN
+## [379]        NaN        NaN        NaN        NaN        NaN        NaN
+## [385]        NaN        NaN        NaN        NaN        NaN        NaN
+## [391]        NaN        NaN        NaN</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-8-pcas-mosquitos.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
+<span id="cb40-2"><a href="week-8-pcas-mosquitos.html#cb40-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb40-3"><a href="week-8-pcas-mosquitos.html#cb40-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC1 10.4020498%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC2 4.9636990%&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
+<span id="cb40-4"><a href="week-8-pcas-mosquitos.html#cb40-4" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>)<span class="sc">+</span></span>
+<span id="cb40-5"><a href="week-8-pcas-mosquitos.html#cb40-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.4-1.png" width="672" /></p>
+</div>
+<div id="group-work-activity--what-can-the-other-pc-axes-tell-us" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> Group Work Activity- What can the other PC axes tell us?<a href="week-8-pcas-mosquitos.html#group-work-activity--what-can-the-other-pc-axes-tell-us" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Q1) We only explored PC1 and PC2 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC3 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use <code>Paired</code> or <code>Set3</code> if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels.</p></li>
+<li><p>Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as “America/Asia”. West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).</p></li>
+</ul>
+<p>Turn in your code for how you made your PCAs, how you added region to your metadata file and the four PCAs for question 1 and 1 PCA for question 2 on canvas.</p>
+</div>
+<div id="key-point" class="section level2 hasAnchor" number="9.9">
+<h2><span class="header-section-number">9.9</span> Key Point<a href="week-8-pcas-mosquitos.html#key-point" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>PCAs can be really useful for visualizing variation in genomic data, and by adding different categories with metadata you can detect patterns within your data</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-7--population-structure-sea-cucumbers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
