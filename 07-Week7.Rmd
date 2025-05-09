@@ -12,10 +12,10 @@ output:
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=8)
 ```
 
-# Week 7- Population Structure 
-We will be using data from the [Xuereb et al. 2018 paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589) to learn how to identify population structure and make structure plots using tess3r and pophelper. This data is SNP data from 15 individuals per site across 7 collection sites:
+# Week 7- Population Structure & Sea Cucumbers
+We will be using data from a paper by Xuereb et al. (2018) paper on *P. californicus* titled ["Asymmetric oceanographic processes mediate connectivity and population genetic structure, as revealed by RADseq, in a highly dispersive marine invertebrate (*Parastichopus californicus*)"](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). SNP data from this study will be used today in order to learn how to identify population structure and make structure plots using tess3r and pophelper. This data is SNP data from 15 individuals per site across 7 collection sites:
 
-![Map of sampling locations in coastal British Columbia(1–20) and southeastern Alaska (21–24). ](./figs/cukes_map.png)
+![Map of sampling locations in coastal British Columbia (1–20) and southeastern Alaska (21–24). ](./figs/cukes_map.png)
 More information on the paper and it's findings are in the lecture slides here: SLIDES on structure plots + paper
 
 ## Main Objectives:
@@ -28,7 +28,7 @@ We first need to download the data in terminal. So navigate to your directory an
 
 ``` html
 cd /group/rbaygrp/eve198-genomics/yourdirectory
-wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week6.zip
+wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week7.zip
 ```
 Unzip the week6 directory and navigate inside. There should be three files: a vcf file (with our genetic data), a csv file (with our samples and coordinate data) and a README.txt file. The README.txt gives you information on the dataset you just downloaded. The .csv file in this folder is our metadata, with coordinates for each of our sample sites along with sample names. This will be useful for understanding population structure between populations and across space!
 
@@ -50,7 +50,7 @@ library(pophelper)
 ```
 
 ## Set Working Directory
-Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week6 directory in your named directory. To set your working directory you can do the following: `setwd("~/where/you/are/storing/data/week6")`
+Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week6 directory in your named directory. To set your working directory you can do the following: `setwd("~/where/you/are/storing/data/week7")`
 
 If you click the files tab on the right you should be able to see all of the files in your working directory too!
 

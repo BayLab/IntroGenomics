@@ -129,3 +129,14 @@ key-points-6
 week-7--population-structure
 installing-packages
 set-working-directory
+week-7--population-structure-sea-cucumbers
+week-8-pcas-mosquitos
+main-objectives-7
+download-the-data-in-terminal-1
+moving-to-r-installing-packages
+set-working-directory-1
+read-vcf-file-1
+read-in-metadata
+prepare-for-plotting
+group-work-activity--what-can-the-other-pc-axes-tell-us
+key-point

@@ -33,7 +33,7 @@ to introduce R more in depth are here: [Week 5 Slides](./figs/W5_R.pdf))
 ## Orientation to R
 
 First let's navigate to our R studio on Farm OnDemand! Launch your
-session with the information shown below: Give yourself 2 for memory. 
+session with the information shown below: Give yourself 2 for memory and make sure your conda environment is set to `r-4.4.2`
 
 ![Fill out this information](./figs/R_ondemand.png)
 
