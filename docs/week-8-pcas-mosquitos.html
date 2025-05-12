@@ -348,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Fri May  9 16:05:37 2025
+<pre><code>## Mon May 12 15:59:57 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -401,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Fri May  9 16:06:00 2025
+## Mon May 12 16:00:18 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Fri May  9 16:06:00 2025</code></pre>
+## Mon May 12 16:00:18 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -474,18 +474,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Fri May  9 16:06:01 2025    (internal increment: 1248)
-## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 1s
-## Fri May  9 16:06:02 2025    Begin (eigenvalues and eigenvectors)
-## Fri May  9 16:06:02 2025    Done.</code></pre>
+## Mon May 12 16:00:18 2025    (internal increment: 1248)
+## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
+## Mon May 12 16:00:20 2025    Begin (eigenvalues and eigenvectors)
+## Mon May 12 16:00:20 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-8-pcas-mosquitos.html#cb18-1" tabindex="-1"></a><span class="fu">names</span>(pca.mosq) </span></code></pre></div>
 <pre><code>## [1] &quot;sample.id&quot; &quot;snp.id&quot;    &quot;eigenval&quot;  &quot;eigenvect&quot; &quot;varprop&quot;   &quot;TraceXTX&quot; 
 ## [7] &quot;Bayesian&quot;  &quot;genmat&quot;</code></pre>
-<p>You should get class is a list and the column names are: “sample.id” “snp.id” “eigenval” “eigenvect” “varprop” “TraceXTX” “Bayesian” “genmat”</p>
-<p>Explore what each of these columns are and print only the top 10 rows</p>
+<p>Explore what each of these objects are and print only the top 10 rows</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-8-pcas-mosquitos.html#cb20-1" tabindex="-1"></a><span class="fu">head</span>(pca.mosq<span class="sc">$</span>sample.id, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;Debug011_aegypti_Arabuko_Kenya_01&quot; &quot;Debug011_aegypti_Arabuko_Kenya_02&quot;
 ##  [3] &quot;Debug011_aegypti_Arabuko_Kenya_03&quot; &quot;Debug011_aegypti_Arabuko_Kenya_04&quot;
@@ -495,8 +494,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>sample.id is the name of our sample</li>
 <li>snp.id is the name of our snp</li>
-<li>eigenval is the eigenvalue of that snp</li>
-<li>eigenvect is the eigenvector of that snp, or “# of samples” x “eigen.count”</li>
+<li>eigenval is the eigenvalue</li>
+<li>eigenvect is the eigenvector</li>
 <li>varprop is the proportion of variation for each principle component</li>
 <li>TraceXTX is the trace of the genetic covariance matrix</li>
 <li>Bayesian is whether we used bayesian normalization (we did not)</li>
@@ -572,9 +571,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [379]        NaN        NaN        NaN        NaN        NaN        NaN
 ## [385]        NaN        NaN        NaN        NaN        NaN        NaN
 ## [391]        NaN        NaN        NaN</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-8-pcas-mosquitos.html#cb24-1" tabindex="-1"></a><span class="fu">plot</span>(pc.percent)</span></code></pre></div>
+<p>There are 33 principle components so we can change our plot to only go up to that limit:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-8-pcas-mosquitos.html#cb24-1" tabindex="-1"></a><span class="fu">plot</span>(pc.percent, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">33</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.0-1.png" width="672" /></p>
-<p>This suggests that we should include many PC axes for our downstream analyses, but for now we will stick with 10.</p>
+<p>The main drop off in the graph is around 5 or less, suggesting that those axes explain most of the variation. However let’s include PCs 1 through 10 to explore the data more in depth.</p>
 </div>
 <div id="read-in-metadata" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Read in Metadata<a href="week-8-pcas-mosquitos.html#read-in-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -596,18 +596,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb26-10"><a href="week-8-pcas-mosquitos.html#cb26-10" tabindex="-1"></a>                 <span class="at">EV8=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">8</span>], </span>
 <span id="cb26-11"><a href="week-8-pcas-mosquitos.html#cb26-11" tabindex="-1"></a>                 <span class="at">EV9=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">9</span>], </span>
 <span id="cb26-12"><a href="week-8-pcas-mosquitos.html#cb26-12" tabindex="-1"></a>                 <span class="at">EV10=</span>pca.mosq<span class="sc">$</span>eigenvect[,<span class="dv">10</span>])</span></code></pre></div>
-<p>We then need to connect our metadata and our PCA data together. Sample ID in both datasets match, so let’s match them up with that!</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-8-pcas-mosquitos.html#cb27-1" tabindex="-1"></a>tab<span class="sc">$</span>Sample_ID <span class="ot">&lt;-</span> metadata<span class="sc">$</span>Sample_ID</span></code></pre></div>
+<p>We then need to check that our metadata and our PCA data are identical and that Sample ID in both datasets match, so let’s match them up with that!</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-8-pcas-mosquitos.html#cb27-1" tabindex="-1"></a><span class="fu">identical</span>(tab<span class="sc">$</span>Sample_ID, metadata<span class="sc">$</span>Sample_ID)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 <p>Now let’s plot our data!</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="week-8-pcas-mosquitos.html#cb28-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2)) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-8-pcas-mosquitos.html#cb29-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2)) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.1-1.png" width="672" /></p>
 <p>This doesn’t show us much, just that there is a lot of variation along PC1! But we don’t have any information about these samples, so we want to use the metadata to contextualize what we are looking at. So let’s modify the code to fill in our dots by Site_ID. We want to make sure that variable is read as a factor, which is why we add the specification <code>as.factor()</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-8-pcas-mosquitos.html#cb29-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
-<span id="cb29-2"><a href="week-8-pcas-mosquitos.html#cb29-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV2, <span class="at">y =</span> EV1, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>Site_ID))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="week-8-pcas-mosquitos.html#cb30-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
+<span id="cb30-2"><a href="week-8-pcas-mosquitos.html#cb30-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>Site_ID))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.2-1.png" width="672" />
 This helps but we don’t really know what each of these site labels really mean. Let’s go back to the metadata and add some more context.</p>
 <p>We are going to use a package called <code>dplyr()</code> to modify our metadata. Remember to <code>install.packages()</code> first and then load the package</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="week-8-pcas-mosquitos.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="week-8-pcas-mosquitos.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -617,114 +618,54 @@ This helps but we don’t really know what each of these site labels really mean
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <p>From reading the paper we can assign an additional column of information for each of our samples with “region”. We need to match up our site IDs to a new column that we will make with country information, but first we need to see how many unique sites there are and the names of those sites:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-8-pcas-mosquitos.html#cb34-1" tabindex="-1"></a><span class="fu">unique</span>(metadata<span class="sc">$</span>Site_ID)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="week-8-pcas-mosquitos.html#cb35-1" tabindex="-1"></a><span class="fu">unique</span>(metadata<span class="sc">$</span>Site_ID)</span></code></pre></div>
 <pre><code>##  [1] &quot;ABK&quot;    &quot;GND&quot;    &quot;KAK&quot;    &quot;KBO&quot;    &quot;KWA&quot;    &quot;RAB&quot;    &quot;SHM&quot;    &quot;BUN&quot;   
 ##  [9] &quot;KCH&quot;    &quot;VMB&quot;    &quot;KAR&quot;    &quot;ENT&quot;    &quot;FCV&quot;    &quot;LBV&quot;    &quot;LPV&quot;    &quot;RABd&quot;  
 ## [17] &quot;BGR&quot;    &quot;GOU&quot;    &quot;OGD&quot;    &quot;AWK&quot;    &quot;BTT&quot;    &quot;BOA&quot;    &quot;KIN&quot;    &quot;KUM&quot;   
 ## [25] &quot;OHI&quot;    &quot;THI&quot;    &quot;KED&quot;    &quot;MIN&quot;    &quot;NGO&quot;    &quot;PKT&quot;    &quot;BKK&quot;    &quot;SAN&quot;   
 ## [33] &quot;RABaaf&quot; &quot;MASC&quot;</code></pre>
 <p>Now that we know there names, we can write code to add in a new column and assign it by what the site ID says:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-8-pcas-mosquitos.html#cb36-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="week-8-pcas-mosquitos.html#cb36-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">case_when</span>(</span>
-<span id="cb36-3"><a href="week-8-pcas-mosquitos.html#cb36-3" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BUN&quot;</span>, <span class="st">&quot;KAR&quot;</span>, <span class="st">&quot;ENT&quot;</span>, <span class="st">&quot;KCH&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Uganda&quot;</span>,</span>
-<span id="cb36-4"><a href="week-8-pcas-mosquitos.html#cb36-4" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BTT&quot;</span>, <span class="st">&quot;THI&quot;</span>, <span class="st">&quot;KED&quot;</span>, <span class="st">&quot;MIN&quot;</span>, <span class="st">&quot;NGO&quot;</span>, <span class="st">&quot;PKT&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Senegal&quot;</span>,</span>
-<span id="cb36-5"><a href="week-8-pcas-mosquitos.html#cb36-5" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;AWK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Nigeria&quot;</span>,</span>
-<span id="cb36-6"><a href="week-8-pcas-mosquitos.html#cb36-6" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;MASC&quot;</span> <span class="sc">~</span> <span class="st">&quot;Mauritius&quot;</span>,</span>
-<span id="cb36-7"><a href="week-8-pcas-mosquitos.html#cb36-7" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ABK&quot;</span>  ,  <span class="st">&quot;GND&quot;</span> ,   <span class="st">&quot;KAK&quot;</span> ,   <span class="st">&quot;KBO&quot;</span> ,   <span class="st">&quot;KWA&quot;</span>   , <span class="st">&quot;RAB&quot;</span> ,   <span class="st">&quot;SHM&quot;</span>, <span class="st">&quot;VMB&quot;</span>,  <span class="st">&quot;RABaaf&quot;</span>, <span class="st">&quot;RABd&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Kenya&quot;</span>,</span>
-<span id="cb36-8"><a href="week-8-pcas-mosquitos.html#cb36-8" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BOA&quot;</span>, <span class="st">&quot;KIN&quot;</span>, <span class="st">&quot;KUM&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Ghana&quot;</span>,</span>
-<span id="cb36-9"><a href="week-8-pcas-mosquitos.html#cb36-9" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;FCV&quot;</span>, <span class="st">&quot;LBV&quot;</span>, <span class="st">&quot;LPV&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Gabon&quot;</span>,</span>
-<span id="cb36-10"><a href="week-8-pcas-mosquitos.html#cb36-10" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BGR&quot;</span>, <span class="st">&quot;OGD&quot;</span>, <span class="st">&quot;OHI&quot;</span>, <span class="st">&quot;GOU&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Burkina Faso&quot;</span>,</span>
-<span id="cb36-11"><a href="week-8-pcas-mosquitos.html#cb36-11" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;SAN&quot;</span> <span class="sc">~</span> <span class="st">&quot;Brazil&quot;</span>,</span>
-<span id="cb36-12"><a href="week-8-pcas-mosquitos.html#cb36-12" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;BKK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Thailand&quot;</span></span>
-<span id="cb36-13"><a href="week-8-pcas-mosquitos.html#cb36-13" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-8-pcas-mosquitos.html#cb37-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="week-8-pcas-mosquitos.html#cb37-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">case_when</span>(</span>
+<span id="cb37-3"><a href="week-8-pcas-mosquitos.html#cb37-3" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BUN&quot;</span>, <span class="st">&quot;KAR&quot;</span>, <span class="st">&quot;ENT&quot;</span>, <span class="st">&quot;KCH&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Uganda&quot;</span>,</span>
+<span id="cb37-4"><a href="week-8-pcas-mosquitos.html#cb37-4" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BTT&quot;</span>, <span class="st">&quot;THI&quot;</span>, <span class="st">&quot;KED&quot;</span>, <span class="st">&quot;MIN&quot;</span>, <span class="st">&quot;NGO&quot;</span>, <span class="st">&quot;PKT&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Senegal&quot;</span>,</span>
+<span id="cb37-5"><a href="week-8-pcas-mosquitos.html#cb37-5" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;AWK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Nigeria&quot;</span>,</span>
+<span id="cb37-6"><a href="week-8-pcas-mosquitos.html#cb37-6" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;MASC&quot;</span> <span class="sc">~</span> <span class="st">&quot;Mauritius&quot;</span>,</span>
+<span id="cb37-7"><a href="week-8-pcas-mosquitos.html#cb37-7" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ABK&quot;</span>  ,  <span class="st">&quot;GND&quot;</span> ,   <span class="st">&quot;KAK&quot;</span> ,   <span class="st">&quot;KBO&quot;</span> ,   <span class="st">&quot;KWA&quot;</span>   , <span class="st">&quot;RAB&quot;</span> ,   <span class="st">&quot;SHM&quot;</span>, <span class="st">&quot;VMB&quot;</span>,  <span class="st">&quot;RABaaf&quot;</span>, <span class="st">&quot;RABd&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Kenya&quot;</span>,</span>
+<span id="cb37-8"><a href="week-8-pcas-mosquitos.html#cb37-8" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BOA&quot;</span>, <span class="st">&quot;KIN&quot;</span>, <span class="st">&quot;KUM&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Ghana&quot;</span>,</span>
+<span id="cb37-9"><a href="week-8-pcas-mosquitos.html#cb37-9" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;FCV&quot;</span>, <span class="st">&quot;LBV&quot;</span>, <span class="st">&quot;LPV&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Gabon&quot;</span>,</span>
+<span id="cb37-10"><a href="week-8-pcas-mosquitos.html#cb37-10" tabindex="-1"></a>    Site_ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BGR&quot;</span>, <span class="st">&quot;OGD&quot;</span>, <span class="st">&quot;OHI&quot;</span>, <span class="st">&quot;GOU&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Burkina Faso&quot;</span>,</span>
+<span id="cb37-11"><a href="week-8-pcas-mosquitos.html#cb37-11" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;SAN&quot;</span> <span class="sc">~</span> <span class="st">&quot;Brazil&quot;</span>,</span>
+<span id="cb37-12"><a href="week-8-pcas-mosquitos.html#cb37-12" tabindex="-1"></a>    Site_ID <span class="sc">==</span> <span class="st">&quot;BKK&quot;</span> <span class="sc">~</span> <span class="st">&quot;Thailand&quot;</span></span>
+<span id="cb37-13"><a href="week-8-pcas-mosquitos.html#cb37-13" tabindex="-1"></a>  ))</span></code></pre></div>
 <p>Look at the metadata file again with <code>View(metadata)</code> to check if it worked! There should be a new column called <code>country</code></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-8-pcas-mosquitos.html#cb37-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
-<span id="cb37-2"><a href="week-8-pcas-mosquitos.html#cb37-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country))) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-8-pcas-mosquitos.html#cb38-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
+<span id="cb38-2"><a href="week-8-pcas-mosquitos.html#cb38-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country))) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.3-1.png" width="672" /></p>
 <p>This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.</p>
 <p>Finally let’s really customize our graph with labels, a legend and unique colors! Install/load <code>library(RcolorbBrewer)</code> for the colorscheme in the pca. You can type <code>?RColorBrewer</code> for a help tab to pop up where you can see the other color palettes in this package.</p>
-<p>To get the percentages I filled into the labels you can run this code from earlier:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-8-pcas-mosquitos.html#cb38-1" tabindex="-1"></a><span class="fu">print</span>(pc.percent) <span class="co">#to get the values for the pca plot axes</span></span></code></pre></div>
-<pre><code>##   [1] 10.4020498  4.9636990  1.5782740  1.2831258  1.1971492  1.1825766
-##   [7]  1.0287042  0.9539680  0.9176371  0.8208863  0.8118421  0.7681545
-##  [13]  0.7077274  0.6783483  0.6143333  0.5738263  0.5599696  0.5438564
-##  [19]  0.5230800  0.5187362  0.4854494  0.4764008  0.4731621  0.4710086
-##  [25]  0.4594423  0.4509300  0.4406212  0.4250621  0.4244937  0.4173459
-##  [31]  0.4153109  0.4009164        NaN        NaN        NaN        NaN
-##  [37]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [43]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [49]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [55]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [61]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [67]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [73]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [79]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [85]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [91]        NaN        NaN        NaN        NaN        NaN        NaN
-##  [97]        NaN        NaN        NaN        NaN        NaN        NaN
-## [103]        NaN        NaN        NaN        NaN        NaN        NaN
-## [109]        NaN        NaN        NaN        NaN        NaN        NaN
-## [115]        NaN        NaN        NaN        NaN        NaN        NaN
-## [121]        NaN        NaN        NaN        NaN        NaN        NaN
-## [127]        NaN        NaN        NaN        NaN        NaN        NaN
-## [133]        NaN        NaN        NaN        NaN        NaN        NaN
-## [139]        NaN        NaN        NaN        NaN        NaN        NaN
-## [145]        NaN        NaN        NaN        NaN        NaN        NaN
-## [151]        NaN        NaN        NaN        NaN        NaN        NaN
-## [157]        NaN        NaN        NaN        NaN        NaN        NaN
-## [163]        NaN        NaN        NaN        NaN        NaN        NaN
-## [169]        NaN        NaN        NaN        NaN        NaN        NaN
-## [175]        NaN        NaN        NaN        NaN        NaN        NaN
-## [181]        NaN        NaN        NaN        NaN        NaN        NaN
-## [187]        NaN        NaN        NaN        NaN        NaN        NaN
-## [193]        NaN        NaN        NaN        NaN        NaN        NaN
-## [199]        NaN        NaN        NaN        NaN        NaN        NaN
-## [205]        NaN        NaN        NaN        NaN        NaN        NaN
-## [211]        NaN        NaN        NaN        NaN        NaN        NaN
-## [217]        NaN        NaN        NaN        NaN        NaN        NaN
-## [223]        NaN        NaN        NaN        NaN        NaN        NaN
-## [229]        NaN        NaN        NaN        NaN        NaN        NaN
-## [235]        NaN        NaN        NaN        NaN        NaN        NaN
-## [241]        NaN        NaN        NaN        NaN        NaN        NaN
-## [247]        NaN        NaN        NaN        NaN        NaN        NaN
-## [253]        NaN        NaN        NaN        NaN        NaN        NaN
-## [259]        NaN        NaN        NaN        NaN        NaN        NaN
-## [265]        NaN        NaN        NaN        NaN        NaN        NaN
-## [271]        NaN        NaN        NaN        NaN        NaN        NaN
-## [277]        NaN        NaN        NaN        NaN        NaN        NaN
-## [283]        NaN        NaN        NaN        NaN        NaN        NaN
-## [289]        NaN        NaN        NaN        NaN        NaN        NaN
-## [295]        NaN        NaN        NaN        NaN        NaN        NaN
-## [301]        NaN        NaN        NaN        NaN        NaN        NaN
-## [307]        NaN        NaN        NaN        NaN        NaN        NaN
-## [313]        NaN        NaN        NaN        NaN        NaN        NaN
-## [319]        NaN        NaN        NaN        NaN        NaN        NaN
-## [325]        NaN        NaN        NaN        NaN        NaN        NaN
-## [331]        NaN        NaN        NaN        NaN        NaN        NaN
-## [337]        NaN        NaN        NaN        NaN        NaN        NaN
-## [343]        NaN        NaN        NaN        NaN        NaN        NaN
-## [349]        NaN        NaN        NaN        NaN        NaN        NaN
-## [355]        NaN        NaN        NaN        NaN        NaN        NaN
-## [361]        NaN        NaN        NaN        NaN        NaN        NaN
-## [367]        NaN        NaN        NaN        NaN        NaN        NaN
-## [373]        NaN        NaN        NaN        NaN        NaN        NaN
-## [379]        NaN        NaN        NaN        NaN        NaN        NaN
-## [385]        NaN        NaN        NaN        NaN        NaN        NaN
-## [391]        NaN        NaN        NaN</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-8-pcas-mosquitos.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
+<p>To get the percentages I filled into the labels you can run this code from earlier: <code>print(pc.percent)</code></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="week-8-pcas-mosquitos.html#cb39-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
+<span id="cb39-2"><a href="week-8-pcas-mosquitos.html#cb39-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb39-3"><a href="week-8-pcas-mosquitos.html#cb39-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC1 10.4020498%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC2 4.9636990%&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
+<span id="cb39-4"><a href="week-8-pcas-mosquitos.html#cb39-4" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>)<span class="sc">+</span></span>
+<span id="cb39-5"><a href="week-8-pcas-mosquitos.html#cb39-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/8.4-1.png" width="672" />
+What if we want to look at other PC axes? You can modify the code above to instead plot PC3 &amp; 4. Just be sure to update the axis labels. What does this figure show us?</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-8-pcas-mosquitos.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV3, <span class="at">y =</span> EV4, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
 <span id="cb40-2"><a href="week-8-pcas-mosquitos.html#cb40-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb40-3"><a href="week-8-pcas-mosquitos.html#cb40-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC1 10.4020498%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC2 4.9636990%&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
+<span id="cb40-3"><a href="week-8-pcas-mosquitos.html#cb40-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC3 1.5782740%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC4 1.2831258&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
 <span id="cb40-4"><a href="week-8-pcas-mosquitos.html#cb40-4" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>)<span class="sc">+</span></span>
 <span id="cb40-5"><a href="week-8-pcas-mosquitos.html#cb40-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.4-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.5-1.png" width="672" /></p>
 </div>
 <div id="group-work-activity--what-can-the-other-pc-axes-tell-us" class="section level2 hasAnchor" number="9.8">
 <h2><span class="header-section-number">9.8</span> Group Work Activity- What can the other PC axes tell us?<a href="week-8-pcas-mosquitos.html#group-work-activity--what-can-the-other-pc-axes-tell-us" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Q1) We only explored PC1 and PC2 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC3 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use <code>Paired</code> or <code>Set3</code> if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels.</p></li>
+<li><p>Q1) We only explored PC1 through PC4 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC5 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use <code>Paired</code> or <code>Set3</code> if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels.</p></li>
 <li><p>Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as “America/Asia”. West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).</p></li>
 </ul>
-<p>Turn in your code for how you made your PCAs, how you added region to your metadata file and the four PCAs for question 1 and 1 PCA for question 2 on canvas.</p>
+<p>Turn in your code for how you made your PCAs, how you added region to your metadata file plus the three PCAs for question 1 and one PCA for question 2 on canvas.</p>
 </div>
 <div id="key-point" class="section level2 hasAnchor" number="9.9">
 <h2><span class="header-section-number">9.9</span> Key Point<a href="week-8-pcas-mosquitos.html#key-point" class="anchor-section" aria-label="Anchor link to header"></a></h2>

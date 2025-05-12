@@ -89,14 +89,12 @@ If we want to look at what class the object is and the column headers of our pca
 
 ```{r, echo=T}
 class(pca.mosq)
-
 names(pca.mosq) 
   
 ```
  
-You should get class is a list and the column names are:  "sample.id" "snp.id"    "eigenval"  "eigenvect" "varprop"   "TraceXTX"  "Bayesian"  "genmat" 
 
-Explore what each of these columns are and print only the top 10 rows
+Explore what each of these objects are and print only the top 10 rows
 
 ```{r, echo=T}
 head(pca.mosq$sample.id, n=10)
@@ -104,8 +102,8 @@ head(pca.mosq$sample.id, n=10)
 
 -   sample.id is the name of our sample
 -   snp.id is the name of our snp
--   eigenval is the eigenvalue of that snp
--   eigenvect is the eigenvector of that snp, or "# of samples" x "eigen.count"
+-   eigenval is the eigenvalue
+-   eigenvect is the eigenvector 
 -   varprop is the proportion of variation for each principle component
 -   TraceXTX is the trace of the genetic covariance matrix
 -   Bayesian is whether we used bayesian normalization (we did not)
@@ -119,12 +117,13 @@ pc.percent<-pca.mosq$varprop*100
 print(pc.percent)
 ```
 
+There are 33 principle components so we can change our plot to only go up to that limit:
 
 ```{r, label='8.0', echo=T}
-plot(pc.percent)
+plot(pc.percent, xlim=c(0,33))
 ```
 
-This suggests that we should include many PC axes for our downstream analyses, but for now we will stick with 10.
+The main drop off in the graph is around 5 or less, suggesting that those axes explain most of the variation. However let's include PCs 1 through 10 to explore the data more in depth.
 
 
 ## Read in Metadata
@@ -154,10 +153,10 @@ tab<- data.frame(Sample_ID=pca.mosq$sample.id,
 
 ```
 
-We then need to connect our metadata and our PCA data together. Sample ID in both datasets match, so let's match them up with that!
+We then need to check that our metadata and our PCA data are identical and that Sample ID in both datasets match, so let's match them up with that!
 
 ```{r, echo=T}
-tab$Sample_ID <- metadata$Sample_ID
+identical(tab$Sample_ID, metadata$Sample_ID)
 ```
 
 Now let's plot our data!
@@ -242,7 +241,7 @@ ggplot(tab, aes(x = EV3, y = EV4, color=as.factor(metadata$country)))+
 
 - Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as "America/Asia".   West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).
 
-Turn in your code for how you made your PCAs, how you added region to your metadata file and the three PCAs for question 1 and one PCA for question 2 on canvas.
+Turn in your code for how you made your PCAs, how you added region to your metadata file plus the three PCAs for question 1 and one PCA for question 2 on canvas.
 
 
 ## Key Point
