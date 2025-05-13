@@ -123,7 +123,7 @@ There are 33 principle components so we can change our plot to only go up to tha
 plot(pc.percent, xlim=c(0,33))
 ```
 
-The main drop off in the graph is around 5 or less, suggesting that those axes explain most of the variation. However let's include PCs 1 through 10 to explore the data more in depth.
+The main drop off in the graph is around 3, suggesting that those first three axes explain most of the variation. However let's include PCs 1 through 10 to explore the data more in depth.
 
 
 ## Read in Metadata
