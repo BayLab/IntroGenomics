@@ -14,17 +14,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Week 8: PCAs & Mosquitos
 
-We will be using an *Ae. aegypti* mosquito population genomic data from a paper by Rose et al. (2020) titled ["Climate and Urbanization Drive Mosquito Preference for Humans"] [https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare){.uri}
+We will be using an *Ae. aegypti* mosquito population genomic data to create PCAs.
+
+![Photo by Muhammad Karim: https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim](./figs/Aedes_aegypti.jpg)
+
+This data is from a paper by Rose et al. (2020) titled ["Climate and Urbanization Drive Mosquito Preference for Humans"] [https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare){.uri}
 
 These samples were taken across Central Africa, shown in this figure:
 
-![Map of collection localities. Diagonal hatched lines mark the Sahel ecoclimatic zone. ](./figs/fig1c.map.png)
+![Rose et al. (2020) Map of collection sites. Diagonal hatched lines mark the Sahel ecoclimatic zone.](./figs/fig1c.map.png)
 
-*Ae. aegypti* has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset. 
+*Ae. aegypti* has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.
 
 ## Main Objectives:
 
-- Learn what an eigenvalue and an eigenvector are and what information they give us
+-   Learn what an eigenvalue and an eigenvector are and what information they give us
 -   Learn how to interpret a principle component analysis (PCA)
 -   Visualize population genomic data using a PCA
 
@@ -41,17 +45,16 @@ Unzip the week8 directory and navigate inside. There should be two files: `simpl
 
 ## Moving to R & Installing Packages
 
-Now we will move to R! We will need to install several packages today. 
+Now we will move to R! We will need to install several packages today.
 
-- SeqArray()
-- gdsfmt()
-- SNPRelate()
-- ggplot2()
-
+-   SeqArray()
+-   gdsfmt()
+-   SNPRelate()
+-   ggplot2()
 
 `SeqArray()` to help us reformat our vcf file to a Genomic Data Structure (GDS) that is easier to read in for our principle component analysis (PCA). We need the package `SNPRelate()` to create a PCA from our genotype data. You will need to use Biocmanager to install both of these packages, so run `if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")` and then `BiocManager::install(c("SeqArray", "SNPRelate"))`
 
-We will also need `gdsfmt()` to open the newly created GDS formatted file and since it is a dependency for `SeqArray()`  it will actually download with that package installation. This package calculates the eigenvectors and eigenvalues for principal component analysis, meaning that it will look at how the samples are similar and different from one another and plot that variation using principle component axes. We will also need `ggplot2()`. After installing all of these packages be sure to load them with the commands below:
+We will also need `gdsfmt()` to open the newly created GDS formatted file and since it is a dependency for `SeqArray()` it will actually download with that package installation. This package calculates the eigenvectors and eigenvalues for principal component analysis, meaning that it will look at how the samples are similar and different from one another and plot that variation using principle component axes. We will also need `ggplot2()`. After installing all of these packages be sure to load them with the commands below:
 
 ```{r, echo=T}
 library(SeqArray)
@@ -59,14 +62,16 @@ library(gdsfmt)
 library(SNPRelate)
 library(ggplot2)
 ```
+
 ## Set Working Directory
+
 Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week8 directory in your named directory. To set your working directory you can do the following: `setwd("~/where/you/are/storing/data/week8")`
 
 If you click the files tab on the right you should be able to see all of the files in your working directory too!
 
 ## read vcf file
 
-Now let's read in our vcf file and convert it to a gds object. 
+Now let's read in our vcf file and convert it to a gds object.
 
 ```{r, echo=T}
 vcf.mosq <- "NC_035107.small.vcf.gz"
@@ -75,6 +80,7 @@ genofileseq.mosq <- seqOpen("mosq.gds")
 ```
 
 Let's look at our object `genofileseq.mosq`. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.
+
 ```{r, echo=T}
 genofileseq.mosq
 ```
@@ -92,7 +98,6 @@ class(pca.mosq)
 names(pca.mosq) 
   
 ```
- 
 
 Explore what each of these objects are and print only the top 10 rows
 
@@ -103,7 +108,7 @@ head(pca.mosq$sample.id, n=10)
 -   sample.id is the name of our sample
 -   snp.id is the name of our snp
 -   eigenval is the eigenvalue
--   eigenvect is the eigenvector 
+-   eigenvect is the eigenvector
 -   varprop is the proportion of variation for each principle component
 -   TraceXTX is the trace of the genetic covariance matrix
 -   Bayesian is whether we used bayesian normalization (we did not)
@@ -112,6 +117,7 @@ head(pca.mosq$sample.id, n=10)
 The column "sample.id" will be important for merging our metadata. The metadata will give more context to our snp data since we can provide information on how to categorize the variation present in our data.
 
 If we plot or print our `pc.percent` object we can see that there are 32 pc axes but most of the variation is explained by pc 1 and 2. The amount of variation explained decreases with increasing pc axis number.
+
 ```{r, echo=T}
 pc.percent<-pca.mosq$varprop*100
 print(pc.percent)
@@ -124,7 +130,6 @@ plot(pc.percent, xlim=c(0,33))
 ```
 
 The main drop off in the graph is around 3, suggesting that those first three axes explain most of the variation. However let's include PCs 1 through 10 to explore the data more in depth.
-
 
 ## Read in Metadata
 
@@ -166,18 +171,21 @@ Now let's plot our data!
 ggplot(tab, aes(x = EV1, y = EV2)) +geom_point()
 ```
 
-This doesn't show us much, just that there is a lot of variation along PC1! But we don't have any information about these samples, so we want to use the metadata to contextualize what we are looking at. So let's  modify the code to fill in our dots by Site_ID. We want to make sure that variable is read as a factor, which is why we add the specification `as.factor()`
+This doesn't show us much, just that there is a lot of variation along PC1! But we don't have any information about these samples, so we want to use the metadata to contextualize what we are looking at. So let's modify the code to fill in our dots by Site_ID. We want to make sure that variable is read as a factor, which is why we add the specification `as.factor()`
 
 ```{r, label='8.2', echo=T}
 #PLOT
 ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$Site_ID))) + geom_point()
 ```
+
 This helps but we don't really know what each of these site labels really mean. Let's go back to the metadata and add some more context.
 
 We are going to use a package called `dplyr()` to modify our metadata. Remember to `install.packages()` first and then load the package
+
 ```{r, echo=T}
 library(dplyr)
 ```
+
 From reading the paper we can assign an additional column of information for each of our samples with "region". We need to match up our site IDs to a new column that we will make with country information, but first we need to see how many unique sites there are and the names of those sites:
 
 ```{r, echo=T}
@@ -185,6 +193,7 @@ unique(metadata$Site_ID)
 ```
 
 Now that we know there names, we can write code to add in a new column and assign it by what the site ID says:
+
 ```{r, echo=T}
 metadata <- metadata %>%
   mutate(country = case_when(
@@ -211,9 +220,7 @@ ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country))) +geom_poin
 
 This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.
 
-
 Finally let's really customize our graph with labels, a legend and unique colors! Install/load `library(RcolorbBrewer)` for the colorscheme in the pca. You can type `?RColorBrewer` for a help tab to pop up where you can see the other color palettes in this package.
-
 
 To get the percentages I filled into the labels you can run this code from earlier: `print(pc.percent)`
 
@@ -224,6 +231,7 @@ ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country)))+
   scale_colour_brewer(palette = "Paired")+
   theme_minimal(base_size=10)
 ```
+
 What if we want to look at other PC axes? You can modify the code above to instead plot PC3 & 4. Just be sure to update the axis labels. What does this figure show us?
 
 ```{r, label= '8.5', echo=T}
@@ -234,15 +242,14 @@ ggplot(tab, aes(x = EV3, y = EV4, color=as.factor(metadata$country)))+
   theme_minimal(base_size=10)
 ```
 
-
 ## Group Work Activity- What can the other PC axes tell us?
 
-- Q1)  We only explored PC1 through PC4 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC5 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use `Paired` or `Set3` if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels. 
+-   Q1) We only explored PC1 through PC4 in class, but what can the other PC axes tell us? Plot the remaining PCs (PC5 through PC10) with country as color and interpret what the PCAs are showing you. Feel free to change the color scheme (just make sure you use `Paired` or `Set3` if you are using RColorBrewer so there are enough colors) and make sure to change the axis labels.
 
-- Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as "America/Asia".   West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).
+-   Q2) In the paper, the authors plotted their PCA by region rather than country. Add a new column to your metadata for region and replot PC1 vs PC2. Code Thailand and Brazil as "America/Asia". West Africa includes Senegal, Burkina Faso, Ghana and Nigeria. Central Africa includes Gabon and Uganda. For simplicity sake, code all of the Kenyan sites as Coastal East Africa along with Mauritius (although in the paper Kenya spans both the Central Africa and Coastal categories).
 
 Turn in your code for how you made your PCAs, how you added region to your metadata file plus the three PCAs for question 1 and one PCA for question 2 on canvas.
 
-
 ## Key Point
--  PCAs can be really useful for visualizing variation in genomic data, and by adding different categories with metadata you can detect patterns within your data
+
+-   PCAs can be really useful for visualizing variation in genomic data, and by adding different categories with metadata you can detect patterns within your data
