@@ -348,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Mon May 12 15:59:57 2025
+<pre><code>## Mon May 12 20:13:11 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -401,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Mon May 12 16:00:18 2025
+## Mon May 12 20:13:41 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Mon May 12 16:00:18 2025</code></pre>
+## Mon May 12 20:13:41 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -474,10 +474,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Mon May 12 16:00:18 2025    (internal increment: 1248)
+## Mon May 12 20:13:41 2025    (internal increment: 1248)
 ## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
-## Mon May 12 16:00:20 2025    Begin (eigenvalues and eigenvectors)
-## Mon May 12 16:00:20 2025    Done.</code></pre>
+## Mon May 12 20:13:43 2025    Begin (eigenvalues and eigenvectors)
+## Mon May 12 20:13:43 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
@@ -574,7 +574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are 33 principle components so we can change our plot to only go up to that limit:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-8-pcas-mosquitos.html#cb24-1" tabindex="-1"></a><span class="fu">plot</span>(pc.percent, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">33</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.0-1.png" width="672" /></p>
-<p>The main drop off in the graph is around 5 or less, suggesting that those axes explain most of the variation. However let’s include PCs 1 through 10 to explore the data more in depth.</p>
+<p>The main drop off in the graph is around 3, suggesting that those first three axes explain most of the variation. However let’s include PCs 1 through 10 to explore the data more in depth.</p>
 </div>
 <div id="read-in-metadata" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Read in Metadata<a href="week-8-pcas-mosquitos.html#read-in-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
