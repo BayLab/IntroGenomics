@@ -1,0 +1,81 @@
+"","X","SampleID","Loc1","Loc2","Year","Karyotype_cluster","Weight","Wing_length"
+"80",80,"100PS","NE Spain","Figuerola Del Camp",2014,"AA",97,110
+"10",10,"10PS","Madeira","Madeira",2015,"AB",103,111
+"1",1,"1PS","Madeira","Madeira",2015,"AB",90,110
+"11",11,"21PS","Canary Islands","El Hierro",2014,"BB",104,105
+"12",12,"22PS","Canary Islands","El Hierro",2014,"AB",116,107
+"13",13,"23PS","Canary Islands","El Hierro",2014,"AB",95,106
+"14",14,"24PS","Canary Islands","El Hierro",2014,"AA",103,114
+"15",15,"25PS","Canary Islands","El Hierro",2014,"AB",102,112
+"16",16,"26PS","Canary Islands","Tenerife",2014,"AB",91,111
+"17",17,"27PS","Canary Islands","Tenerife",2014,"BB",94,108
+"18",18,"28PS","Canary Islands","Tenerife",2014,"BB",109,109
+"19",19,"29PS","Canary Islands","Tenerife",2014,"AB",85,106
+"2",2,"2PS","Madeira","Madeira",2015,"AB",93,107
+"20",20,"30PS","Canary Islands","Tenerife",2014,"AB",100,108
+"21",21,"31PS","Canary Islands","Gran Canaria",2015,"AB",99,109
+"22",22,"32PS","Canary Islands","Gran Canaria",2015,"AB",97,109
+"23",23,"33PS","Canary Islands","Gran Canaria",2015,"BB",96,109
+"24",24,"34PS","Canary Islands","Gran Canaria",2015,"AB",105,107
+"25",25,"35PS","Canary Islands","Gran Canaria",2015,"AB",104,112
+"26",26,"36PS","Canary Islands","Fuerteventura",2015,"AA",90,110
+"27",27,"37PS","Canary Islands","Fuerteventura",2015,"AA",108,113
+"28",28,"38PS","Canary Islands","Fuerteventura",2015,"AA",92,115
+"29",29,"39PS","Morocco","El Gara",2008,"AB",NA,NA
+"3",3,"3PS","Madeira","Madeira",2015,"AB",92,112
+"30",30,"40PS","Morocco","El Gara",2008,"AA",92,NA
+"31",31,"41PS","Morocco","El Gara",2008,"BB",NA,NA
+"32",32,"42PS","Morocco","El Gara",2008,"AB",NA,NA
+"33",33,"43PS","Morocco","El Gara",2008,"AA",96,NA
+"34",34,"44PS","Morocco","Beni Mellal",2008,"AB",96,NA
+"35",35,"45PS","Morocco","Beni Mellal",2008,"AA",90,NA
+"36",36,"46PS","Morocco","Beni Mellal",2008,"BB",103,NA
+"37",37,"47PS","Morocco","Beni Mellal",2008,"AB",106,NA
+"38",38,"48PS","Morocco","Beni Mellal",2008,"AA",92,NA
+"39",39,"49PS","Morocco","Beni Mellal",2008,"AA",101,NA
+"4",4,"4PS","Madeira","Madeira",2015,"AB",99,114
+"40",40,"50PS","Morocco","Beni Mellal",2008,"AB",102,NA
+"41",41,"51PS","S Portugal","Tavira",2014,"BB",91,103
+"42",42,"52PS","S Portugal","Tavira",2014,"BB",106,107
+"43",43,"53PS","S Portugal","Tavira",2014,"BB",103,102
+"44",44,"54PS","S Portugal","Odiaxere",2014,"AB",104,113
+"45",45,"55PS","S Portugal","Odiaxere",2014,"AB",104,102
+"46",46,"56PS","S Portugal","Odiaxere",2014,"AB",103,106.5
+"47",47,"57PS","S Portugal","Odiaxere",2014,"BB",108,106
+"48",48,"58PS","S Portugal","Aljezur",2015,"AB",94,107
+"49",49,"59PS","S Portugal","Aljezur",2015,"BB",110,111
+"5",5,"5PS","Madeira","Madeira",2015,"BB",93,105
+"50",50,"60PS","S Portugal","Aljezur",2015,"AB",NA,NA
+"51",51,"61PS","S Spain","Coronil",2015,"AB",101,106
+"52",52,"62PS","S Spain","Coronil",2015,"AA",NA,NA
+"53",53,"63PS","S Spain","Coronil",2015,"AB",93.7,109
+"54",54,"64PS","S Spain","Coronil",2015,"AA",95.7,111
+"55",55,"65PS","S Spain","Coronil",2015,"AA",96,112
+"56",56,"66PS","NW Spain","Leon",2012,"AA",94,NA
+"57",57,"67PS","NW Spain","Leon",2012,"AA",90,NA
+"58",58,"68PS","NW Spain","Leon",2012,"AA",103.1,NA
+"59",59,"69PS","NW Spain","Leon",2012,"AA",83,NA
+"6",6,"6PS","Madeira","Madeira",2015,"AB",99,111
+"60",60,"70PS","NW Spain","Leon",2012,"AA",87.7,NA
+"61",61,"71PS","CE Spain","Albacete",2007,"AA",101,NA
+"62",62,"73PS","CE Spain","Albacete",2007,"AA",94,NA
+"63",63,"74PS","CE Spain","Albacete",2007,"AA",95,NA
+"64",64,"75PS","CE Spain","Albacete",2007,"AA",102,NA
+"65",65,"76PS","NE Spain","Figuerola Del Camp",2014,"AA",88,109.5
+"66",66,"77PS","NE Spain","Figuerola Del Camp",2014,"AA",88,109
+"67",67,"78PS","NE Spain","Figuerola Del Camp",2014,"AA",97,115
+"68",68,"79PS","NE Spain","Figuerola Del Camp",2014,"AA",100,112
+"7",7,"7PS","Madeira","Madeira",2015,"AB",90,110
+"69",69,"80PS","NE Spain","Figuerola Del Camp",2014,"AA",92,107
+"70",70,"81PS","Italy","Monte Brisighella",2009,"AA",92,NA
+"71",71,"82PS","Italy","Monte Brisighella",2009,"AA",89,NA
+"72",72,"83PS","Italy","Monte Brisighella",2009,"AA",98,NA
+"73",73,"84PS","Italy","Monte Brisighella",2009,"AA",92,NA
+"74",74,"85PS","Italy","Monte Brisighella",2009,"AA",112,NA
+"8",8,"8PS","Madeira","Madeira",2015,"BB",94,106
+"75",75,"94PS","CE Spain","Albacete",2007,"AA",91,NA
+"76",76,"96PS","S Spain","Coronil",2015,"AA",108,113
+"77",77,"97PS","S Spain","Coronil",2015,"AA",87.9,110
+"78",78,"98PS","Morocco","El Gara",2008,"AA",92,NA
+"79",79,"99PS","NW Spain","Leon",2012,"AA",92.5,NA
+"9",9,"9PS","Madeira","Madeira",2015,"AB",103,110

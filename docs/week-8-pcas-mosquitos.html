@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="week-7--population-structure-sea-cucumbers.html"/>
-
+<link rel="next" href="week-9-fst-outlier-analysis-and-chunky-quails.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,6 +274,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#group-work-activity--what-can-the-other-pc-axes-tell-us"><i class="fa fa-check"></i><b>9.8</b> Group Work Activity- What can the other PC axes tell us?</a></li>
 <li class="chapter" data-level="9.9" data-path="week-8-pcas-mosquitos.html"><a href="week-8-pcas-mosquitos.html#key-point"><i class="fa fa-check"></i><b>9.9</b> Key Point</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html"><i class="fa fa-check"></i><b>10</b> Week 9: F<sub>st</sub> outlier analysis and chunky quails</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#main-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Main Objectives:</a></li>
+<li class="chapter" data-level="10.2" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#download-the-data"><i class="fa fa-check"></i><b>10.2</b> Download the data</a></li>
+<li class="chapter" data-level="10.3" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#downloading-r-packages"><i class="fa fa-check"></i><b>10.3</b> Downloading R Packages</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank"><i class="fa fa-check"></i><b>10.4</b> Finding outliers using OutFLANK</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file"><i class="fa fa-check"></i><b>10.5</b> Pulling SNP data from the gds file</a></li>
+<li class="chapter" data-level="10.6" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank"><i class="fa fa-check"></i><b>10.6</b> Group Work Activity: PCA &amp; Outflank</a></li>
+<li class="chapter" data-level="10.7" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7"><i class="fa fa-check"></i><b>10.7</b> Key Points</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -352,7 +362,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Thu May 15 18:01:06 2025
+<pre><code>## Fri May 16 15:19:51 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -405,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Thu May 15 18:01:37 2025
+## Fri May 16 15:20:24 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -413,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Thu May 15 18:01:37 2025</code></pre>
+## Fri May 16 15:20:24 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -478,10 +488,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Thu May 15 18:01:37 2025    (internal increment: 1248)
+## Fri May 16 15:20:24 2025    (internal increment: 1248)
 ## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
-## Thu May 15 18:01:39 2025    Begin (eigenvalues and eigenvectors)
-## Thu May 15 18:01:39 2025    Done.</code></pre>
+## Fri May 16 15:20:26 2025    Begin (eigenvalues and eigenvectors)
+## Fri May 16 15:20:26 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
@@ -577,7 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [391]        NaN        NaN        NaN</code></pre>
 <p>There are 33 principle components so we can change our plot to only go up to that limit:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-8-pcas-mosquitos.html#cb24-1" tabindex="-1"></a><span class="fu">plot</span>(pc.percent, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">33</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.0-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.0-1.png" width="768" /></p>
 <p>The main drop off in the graph is around 3, suggesting that those first three axes explain most of the variation. However let’s include PCs 1 through 10 to explore the data more in depth.</p>
 </div>
 <div id="read-in-metadata" class="section level2 hasAnchor" number="9.6">
@@ -605,11 +615,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] TRUE</code></pre>
 <p>Now let’s plot our data!</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="week-8-pcas-mosquitos.html#cb29-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2)) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.1-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.1-1.png" width="768" /></p>
 <p>This doesn’t show us much, just that there is a lot of variation along PC1! But we don’t have any information about these samples, so we want to use the metadata to contextualize what we are looking at. So let’s modify the code to fill in our dots by Site_ID. We want to make sure that variable is read as a factor, which is why we add the specification <code>as.factor()</code></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="week-8-pcas-mosquitos.html#cb30-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
 <span id="cb30-2"><a href="week-8-pcas-mosquitos.html#cb30-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>Site_ID))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.2-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.2-1.png" width="768" /></p>
 <p>This helps but we don’t really know what each of these site labels really mean. Let’s go back to the metadata and add some more context.</p>
 <p>We are going to use a package called <code>dplyr()</code> to modify our metadata. Remember to <code>install.packages()</code> first and then load the package</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="week-8-pcas-mosquitos.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
@@ -645,7 +655,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Look at the metadata file again with <code>View(metadata)</code> to check if it worked! There should be a new column called <code>country</code></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-8-pcas-mosquitos.html#cb38-1" tabindex="-1"></a><span class="co">#PLOT</span></span>
 <span id="cb38-2"><a href="week-8-pcas-mosquitos.html#cb38-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country))) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.3-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.3-1.png" width="768" /></p>
 <p>This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.</p>
 <p>Finally let’s really customize our graph with labels, a legend and unique colors! Install/load <code>library(RcolorbBrewer)</code> for the colorscheme in the pca. You can type <code>?RColorBrewer</code> for a help tab to pop up where you can see the other color palettes in this package.</p>
 <p>To get the percentages I filled into the labels you can run this code from earlier: <code>print(pc.percent)</code></p>
@@ -654,14 +664,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb39-3"><a href="week-8-pcas-mosquitos.html#cb39-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC1 10.4020498%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC2 4.9636990%&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
 <span id="cb39-4"><a href="week-8-pcas-mosquitos.html#cb39-4" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>)<span class="sc">+</span></span>
 <span id="cb39-5"><a href="week-8-pcas-mosquitos.html#cb39-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.4-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.4-1.png" width="768" /></p>
 <p>What if we want to look at other PC axes? You can modify the code above to instead plot PC3 &amp; 4. Just be sure to update the axis labels. What does this figure show us?</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-8-pcas-mosquitos.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV3, <span class="at">y =</span> EV4, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
 <span id="cb40-2"><a href="week-8-pcas-mosquitos.html#cb40-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb40-3"><a href="week-8-pcas-mosquitos.html#cb40-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;PC3 1.5782740%&#39;</span>, <span class="at">y=</span><span class="st">&#39;PC4 1.2831258&#39;</span>, <span class="at">color =</span> <span class="st">&quot;country&quot;</span>)<span class="sc">+</span></span>
 <span id="cb40-4"><a href="week-8-pcas-mosquitos.html#cb40-4" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>)<span class="sc">+</span></span>
 <span id="cb40-5"><a href="week-8-pcas-mosquitos.html#cb40-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/8.5-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/8.5-1.png" width="768" /></p>
 </div>
 <div id="group-work-activity--what-can-the-other-pc-axes-tell-us" class="section level2 hasAnchor" number="9.8">
 <h2><span class="header-section-number">9.8</span> Group Work Activity- What can the other PC axes tell us?<a href="week-8-pcas-mosquitos.html#group-work-activity--what-can-the-other-pc-axes-tell-us" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -684,8 +694,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="week-7--population-structure-sea-cucumbers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="week-7--population-structure-sea-cucumbers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-9-fst-outlier-analysis-and-chunky-quails.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -140,3 +140,11 @@ read-in-metadata
 prepare-for-plotting
 group-work-activity--what-can-the-other-pc-axes-tell-us
 key-point
+week-9-fst-outlier-analysis-and-chunky-quails
+main-objectives-8
+download-the-data
+downloading-r-packages
+finding-outliers-using-outflank
+pulling-snp-data-from-the-gds-file
+group-work-activity-pca-outflank
+key-points-7
