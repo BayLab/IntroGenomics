@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup8, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.width=8)
 ```
 
 # Week 8: PCAs & Mosquitos

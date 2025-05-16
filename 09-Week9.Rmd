@@ -1,0 +1,315 @@
+---
+title: "09-Week9"
+author: "Rachael Bay"
+date: "2025-05-15"
+output:
+  bookdown::html_book:
+    toc: yes
+    css: toc.css
+---
+
+```{r setup9, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width=6)
+```
+
+# Week 9: F<sub>st</sub> outlier analysis and chunky quails
+
+The lecture for this week focused on **F**<sub>st</sub> and outlier analysis can be found here[Week 9 Slides](./figs/Week9.pdf)
+
+
+Last week we used PCA to take a broad look at whether populations were genetically distinct. This week we will look at SNPs that differentiate between populations that may represent signals of selection. If you want to learn morea bout how different methods for detecting signatures of selection I recommend visiting this  page on the marineomics website: https://marineomics.github.io/POP_10_Signatures_of_Selection.html
+
+
+We will use data from the following paper focused on genomic variation in common quails:
+
+[Sanchez-Donoso et al. (2022) Massive genome inversion drives coexistence of divergent morphs in common quails.Current Biology](https://www.cell.com/current-biology/fulltext/S0960-9822(21)01543-8)
+
+We will get more into what the data focuses on later in the lesson, but a few findings from the study is that the quails with and without the inversion differ in their throat coloration, weight (& fat reserves), wing shape and migratory behavior.
+
+![Sanchez-Donoso et al. (2022) Phenotypes of the common quail with and without the inversion from the graphical abstract ](./figs/abstract.png)
+
+We will download the data and take a first look in **bash** and then we will do analysis and generate the plots in **RStudio**.
+
+## Main Objectives:
+- Learn how to identify particular SNPs that are driving patterns of divergence between populations
+- Connect what we learned in previous lessons using PCAs and Structure Plots and how these methods differ from today's outlier analyses
+- Practice keeping scripts organized to ensure reproducibility
+
+
+
+## Download the data
+
+We first need to download the data. Open a terminal and navigate to your directory. Then use wget to download the data folder. We'll then use the tar command to un-compress it.
+
+``` {.html}
+cd /group/rbaygrp/eve198-genomics/yourdirectory
+
+wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week9.tar.gz
+
+tar -xzvf week9.tar.gz
+```
+
+Change directory into the week9 folder. What do you see? 
+
+The SNP data is in a vcf file, just like for previous weeks. You can take a peak at the top of the vcf file like this:
+
+``` {.html}
+head ChunkyQuails.vcf
+```
+
+Take a look at the head of the metadata file. What columns do you see?
+
+## Downloading R Packages
+
+Open R Studio. The first thing we need to do is download a few different packages. 
+
+Today we will be using the **SeqArray** and **SNPRelate** packages to read our data. You used these last week so they should already be installed. For the outlier analysis, we will use a package called **OutFLANK** which also needs the package **qvalue** to run (we call this a 'dependency').
+
+```{r, eval=F}
+
+install.packages("BiocManager") # type "yes" when prompted
+BiocManager::install("qvalue") # When prompted, type "a" - this will take some time
+install_github("whitlock/OutFLANK")
+
+```
+
+
+##R hygiene
+Now that you are getting more comfortable coding in R, it's a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to *ALWAYS* do lots of commenting with `#` so when you come back to your code you know what you did and why
+
+It's good practice to put three main pieces of information at the top of your code. Your name (for when you share code), the last modified date, and the purpose of the code. Looks like this:
+
+```{r, echo=T}
+## Code for finding outliers using OUTFlank
+## Rachael Bay
+## Modified May 28, 2025
+```
+
+After that, I like to have all the libraries that will be needed for the code loaded:
+
+```{r, echo=T,results='hide'}
+library(SeqArray)
+library(SNPRelate)
+library(OutFLANK)
+library(gdsfmt) 
+```
+
+Finally, I like to make objects for all the files that I will use. Again, this is so that if I want to come back to the code later and run the same analysis on different files, it is obvious what I need to change rather than being buried in the code:
+
+```{r, echo=T}
+#setwd("/group/rbaygrp/eve198-genomics/rachael")
+vcf.path="ChunkyQuails.vcf.gz"
+meta.path="ChunkyQuails_meta.csv"
+```
+
+Now we are ready to use the data!
+
+## Finding outliers using OutFLANK
+
+We will read in the vcf file just like we did last week when we did PCA. Give it a try on your own!
+
+> ### Class Exercise 1
+> Using info from Week 8, read in your data!
+>
+> - Q1. Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'. How many samples do you have?
+>
+> - Q2. Read in your metadata file to an object named 'meta' (hint: read.csv()). Take a look at the different columns. "Loc1" is the breeding location. How many unique breeding locations are represented?
+
+```{r, echo=F,results='hide'}
+vcf.q<- "ChunkyQuails.vcf.gz"
+seqVCF2GDS(vcf.q, "ChunkyQuails.gds")
+genofile <- seqOpen("ChunkyQuails.gds")
+```
+
+```{r, echo=F,results='hide'}
+meta <- read.csv("ChunkyQuails_meta.csv")
+table(meta$Loc1)
+length(unique(meta$Loc1))
+```
+
+## Pulling SNP data from the gds file
+
+Later, we will want information on the location of each SNP in the genome. We can pull information from the gds file like this:
+
+```{r, echo=T}
+chromosomes <- read.gdsn(index.gdsn(genofile, "chromosome"))
+positions <- read.gdsn(index.gdsn(genofile, "position"))
+variant.id <- read.gdsn(index.gdsn(genofile, "variant.id"))
+```
+
+Then put everything together in a single dataframe like this:
+
+```{r, echo=T}
+snp.pos <- data.frame(LocusName=variant.id,
+                      chr=as.factor(chromosomes),
+                      pos=positions)
+```
+
+We also want the matrix of SNP genotypes. We can pull this from the gds object using the `snpgdsGetGeno()` command:
+
+```{r, echo=T}
+G <- snpgdsGetGeno(genofile)
+```
+
+Take a look at this matrix. Here I'm just looking at the head of the first 10 columns because the matrix is large!
+
+```{r, echo=T}
+head(G[,1:10])
+```
+
+We have four different values: 0,1,2, and NA. These represent the reference homozygote, heterozygote, alternate homozygote, and missing data respectively. The program that we want to use, OUTFLank requires a '9' instead of 'NA' for missing data. We can do the replacement like this:
+
+```{r, echo=T}
+G[is.na(G)] <- 9
+```
+
+Take a look at the head of the dataframe again. Did it work?
+
+##Calculating F<sub>st</sub> and identifying outliers
+
+What are the dimensions of `G`? How do we interpret that?
+
+Now we can caluclate F<sub>st</sub> for each SNP. We're going to calculate differentiation among locations (the *Loc1* column in your metadata).
+
+WAIT! First we need to determine whether our metadata is in the same order as our genotype matrix.
+
+
+> ### Class Exercise 2
+> ### Is your metadata in the same order as your genotype matrix?
+>
+> - Q1. Get the sample names from your gds object (hint: how did you extract chromosome and position from gds? There is also information in 'sample.id')
+>
+> - Q2. Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file (hint: you did this last week too!)
+
+Phew - NOW we can calculate F<sub>st</sub>!
+
+```{r, echo=T,results='hide'}
+fst <- MakeDiploidFSTMat(G,locusNames=variant.id,popNames=meta$Loc1)
+head(fst)
+```
+
+```{r, label="9-0", echo=T}
+hist(fst$FST,breaks=50)
+```
+
+Once we've calculated F<sub>st</sub> between the two populations for each SNP individually, we want to determine whether some SNPs are outliers - that is, more differentiated than we would expect. OutFLANK does this by fitting a Chi-Squared distribution to the data and looking to see if the tails of the Chi-Squared distribution have more SNPs than expected:
+
+```{r, echo=T}
+OF <- OutFLANK(fst,LeftTrimFraction=0.01,RightTrimFraction=0.01,
+               Hmin=0.05,NumberOfSamples=9,qthreshold=0.01)
+```
+
+```{r, label="9-1", echo=T}
+OutFLANKResultsPlotter(OF,withOutliers=T,
+                       NoCorr=T,Hmin=0.1,binwidth=0.005,
+                       Zoom=F,RightZoomFraction=0.05,titletext=NULL)
+
+```
+
+It's a little hard to tell from these plots, but there may be some SNPs with high F<sub>st</sub> even where the distribution predicts there should be none. To find these SNPs, we ask which SNPs are statistical outliers?
+
+```{r, echo=T}
+P1 <- pOutlierFinderChiSqNoCorr(fst,Fstbar=OF$FSTNoCorrbar,
+                                dfInferred=OF$dfInferred,qthreshold=0.05,Hmin=0.1)
+outliers <- P1$OutlierFlag==TRUE
+table(outliers)
+```
+
+Now we can make a manhattan plot! There are lots of packages to make very beautiful manhattan plots and even highlight particular genes of interest. Here we will just use base R. First, take a look at the dataframe that has information on F<sub>st</sub> and outliers:
+
+```{r, echo=T}
+head(P1)
+```
+
+We are missing chromosome information, which we want to make a beautiful manhattan plot that is colored by chromosome. Remember how we made the `snp.pos` dataframe earlier? Basically we want to merge `P1` and `snp.pos`. 
+
+> ### Class Exercise 3
+> ### Merge two dataframes based on one column
+>
+> - Q1. Merge the P1 and snp.pos dataframes based on the LocusName column. There are many ways to do this. Two of my favorites are 'merge()' or 'left_join()' which is part of dplyr package. Use the help file for one of them and try to merge the two dataframes into a single called "merged.P1"
+>
+
+```{r, echo=F,results='hide'}
+library(dplyr)
+merged.P1 <- left_join(P1,snp.pos,by="LocusName")
+```
+Yay! Now that we have a merged dataframe we can make a manhattan plot:
+
+```{r, label= "9-2", echo=T}
+plot(merged.P1$LocusName,P1$FST,xlab="Position",ylab="FST",col=merged.P1$chr,pch=19,cex=0.5)
+
+```
+
+What do you notice about this plot? Can you think of a possible explanation for this result?
+
+## Group Work Activity: PCA & Outflank
+
+This week's activity will combine skills you learned last week and this week using the quail dataset we familiarized ourselved with during class:
+
+1)  Rerun OUTFlank, but this time use the "Karyotype_cluster" cluster instead of geographic populations. This column tells you what inversion genotype a particular quail has. **Compare this plot to the plot we made in class - why are there similarities and differences?**
+
+2)  Create a PCA of the quail data. You can choose to color by geography or by karyotype (or get fancy with different shapes and colors!) **Interpret the figure you make in one to two sentences**
+
+Copy the lines in your script used to answer these
+questions into your canvas submission. Be sure to include the answers
+for question 1, interpretations for the figures and the two figures you
+made as well.
+
+
+## Key Points
+- Standard organization of R scripts increases reproducibility
+- Fst outliers can be used to find genomic signals of local adaptation
+
+<details>
+
+<summary>[Class Exercise Solutions]{style="color: orange;"}</summary>
+
+<p>
+
+> ## Class Exercises: Solutions
+
+> > ### Exercise 1
+> > 1) Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'. 
+```{r, echo=F}
+seqClose(genofile)
+```
+```{r, echo=T}
+seqVCF2GDS(vcf.path,"ChunkyQuails.gds")
+genofile <- seqOpen("ChunkyQuails.gds")
+```
+> > 2) Read in your metadata file to an object named 'meta'. How many unique breeding locations are represented?
+```{r, echo=T}
+meta <- read.csv(meta.path)
+table(meta$Loc1)
+length(unique(meta$Loc1))
+```
+
+> > ### Exercise 2
+> >
+> > 1)  Get the sample names from your gds object
+
+```{r, echo=T}
+samples <- read.gdsn(index.gdsn(genofile, "sample.id")) 
+```
+
+> > 2)   Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file
+
+```{r, echo=T}
+identical(samples,meta$SampleID)
+```
+
+> > ### Exercise 3
+> >
+> > 1)  Merge the P1 and snp.pos dataframes based on the LocusName column.
+
+```{r, echo=T}
+merged.P1 <- merge(P1,snp.pos,by="LocusName")
+library(dplyr)
+merged.P1 <- left_join(P1,snp.pos,by="LocusName")
+```
+
+
+</p>
+
+</details>
+
