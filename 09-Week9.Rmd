@@ -74,7 +74,7 @@ install_github("whitlock/OutFLANK")
 ```
 
 
-##R hygiene
+## R hygiene
 Now that you are getting more comfortable coding in R, it's a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to *ALWAYS* do lots of commenting with `#` so when you come back to your code you know what you did and why
 
 It's good practice to put three main pieces of information at the top of your code. Your name (for when you share code), the last modified date, and the purpose of the code. Looks like this:
@@ -165,7 +165,7 @@ G[is.na(G)] <- 9
 
 Take a look at the head of the dataframe again. Did it work?
 
-##Calculating F<sub>st</sub> and identifying outliers
+## Calculating F<sub>st</sub> and identifying outliers
 
 What are the dimensions of `G`? How do we interpret that?
 

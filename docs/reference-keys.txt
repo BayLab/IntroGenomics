@@ -148,3 +148,5 @@ finding-outliers-using-outflank
 pulling-snp-data-from-the-gds-file
 group-work-activity-pca-outflank
 key-points-7
+r-hygiene
+calculating-fst-and-identifying-outliers

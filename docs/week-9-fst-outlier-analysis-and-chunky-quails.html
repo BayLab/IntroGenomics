@@ -279,10 +279,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#main-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Main Objectives:</a></li>
 <li class="chapter" data-level="10.2" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#download-the-data"><i class="fa fa-check"></i><b>10.2</b> Download the data</a></li>
 <li class="chapter" data-level="10.3" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#downloading-r-packages"><i class="fa fa-check"></i><b>10.3</b> Downloading R Packages</a></li>
-<li class="chapter" data-level="10.4" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank"><i class="fa fa-check"></i><b>10.4</b> Finding outliers using OutFLANK</a></li>
-<li class="chapter" data-level="10.5" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file"><i class="fa fa-check"></i><b>10.5</b> Pulling SNP data from the gds file</a></li>
-<li class="chapter" data-level="10.6" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank"><i class="fa fa-check"></i><b>10.6</b> Group Work Activity: PCA &amp; Outflank</a></li>
-<li class="chapter" data-level="10.7" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7"><i class="fa fa-check"></i><b>10.7</b> Key Points</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#r-hygiene"><i class="fa fa-check"></i><b>10.4</b> R hygiene</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank"><i class="fa fa-check"></i><b>10.5</b> Finding outliers using OutFLANK</a></li>
+<li class="chapter" data-level="10.6" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file"><i class="fa fa-check"></i><b>10.6</b> Pulling SNP data from the gds file</a></li>
+<li class="chapter" data-level="10.7" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#calculating-fst-and-identifying-outliers"><i class="fa fa-check"></i><b>10.7</b> Calculating F<sub>st</sub> and identifying outliers</a></li>
+<li class="chapter" data-level="10.8" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank"><i class="fa fa-check"></i><b>10.8</b> Group Work Activity: PCA &amp; Outflank</a></li>
+<li class="chapter" data-level="10.9" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7"><i class="fa fa-check"></i><b>10.9</b> Key Points</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -344,8 +346,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) <span class="co"># type &quot;yes&quot; when prompted</span></span>
 <span id="cb3-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-2" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;qvalue&quot;</span>) <span class="co"># When prompted, type &quot;a&quot; - this will take some time</span></span>
 <span id="cb3-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-3" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;whitlock/OutFLANK&quot;</span>)</span></code></pre></div>
-<p>##R hygiene
-Now that you are getting more comfortable coding in R, it’s a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to <em>ALWAYS</em> do lots of commenting with <code>#</code> so when you come back to your code you know what you did and why</p>
+</div>
+<div id="r-hygiene" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> R hygiene<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#r-hygiene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that you are getting more comfortable coding in R, it’s a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to <em>ALWAYS</em> do lots of commenting with <code>#</code> so when you come back to your code you know what you did and why</p>
 <p>It’s good practice to put three main pieces of information at the top of your code. Your name (for when you share code), the last modified date, and the purpose of the code. Looks like this:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-1" tabindex="-1"></a><span class="do">## Code for finding outliers using OUTFlank</span></span>
 <span id="cb4-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-2" tabindex="-1"></a><span class="do">## Rachael Bay</span></span>
@@ -366,8 +370,8 @@ Now that you are getting more comfortable coding in R, it’s a good time to tal
 <span id="cb14-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-3" tabindex="-1"></a>meta.path<span class="ot">=</span><span class="st">&quot;ChunkyQuails_meta.csv&quot;</span></span></code></pre></div>
 <p>Now we are ready to use the data!</p>
 </div>
-<div id="finding-outliers-using-outflank" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Finding outliers using OutFLANK<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="finding-outliers-using-outflank" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Finding outliers using OutFLANK<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will read in the vcf file just like we did last week when we did PCA. Give it a try on your own!</p>
 <blockquote>
 <h3 id="class-exercise-1" class="hasAnchor">Class Exercise 1<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#class-exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -378,8 +382,8 @@ Now that you are getting more comfortable coding in R, it’s a good time to tal
 </ul>
 </blockquote>
 </div>
-<div id="pulling-snp-data-from-the-gds-file" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Pulling SNP data from the gds file<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pulling-snp-data-from-the-gds-file" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Pulling SNP data from the gds file<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Later, we will want information on the location of each SNP in the genome. We can pull information from the gds file like this:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-1" tabindex="-1"></a>chromosomes <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;chromosome&quot;</span>))</span>
 <span id="cb15-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-2" tabindex="-1"></a>positions <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;position&quot;</span>))</span>
@@ -403,7 +407,9 @@ Now that you are getting more comfortable coding in R, it’s a good time to tal
 <p>We have four different values: 0,1,2, and NA. These represent the reference homozygote, heterozygote, alternate homozygote, and missing data respectively. The program that we want to use, OUTFLank requires a ‘9’ instead of ‘NA’ for missing data. We can do the replacement like this:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb21-1" tabindex="-1"></a>G[<span class="fu">is.na</span>(G)] <span class="ot">&lt;-</span> <span class="dv">9</span></span></code></pre></div>
 <p>Take a look at the head of the dataframe again. Did it work?</p>
-<p>##Calculating F<sub>st</sub> and identifying outliers</p>
+</div>
+<div id="calculating-fst-and-identifying-outliers" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Calculating F<sub>st</sub> and identifying outliers<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#calculating-fst-and-identifying-outliers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What are the dimensions of <code>G</code>? How do we interpret that?</p>
 <p>Now we can caluclate F<sub>st</sub> for each SNP. We’re going to calculate differentiation among locations (the <em>Loc1</em> column in your metadata).</p>
 <p>WAIT! First we need to determine whether our metadata is in the same order as our genotype matrix.</p>
@@ -479,8 +485,8 @@ Now that you are getting more comfortable coding in R, it’s a good time to tal
 <p><img src="_main_files/figure-html/9-2-1.png" width="576" /></p>
 <p>What do you notice about this plot? Can you think of a possible explanation for this result?</p>
 </div>
-<div id="group-work-activity-pca-outflank" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Group Work Activity: PCA &amp; Outflank<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="group-work-activity-pca-outflank" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Group Work Activity: PCA &amp; Outflank<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This week’s activity will combine skills you learned last week and this week using the quail dataset we familiarized ourselved with during class:</p>
 <ol style="list-style-type: decimal">
 <li><p>Rerun OUTFlank, but this time use the “Karyotype_cluster” cluster instead of geographic populations. This column tells you what inversion genotype a particular quail has. <strong>Compare this plot to the plot we made in class - why are there similarities and differences?</strong></p></li>
@@ -491,8 +497,8 @@ questions into your canvas submission. Be sure to include the answers
 for question 1, interpretations for the figures and the two figures you
 made as well.</p>
 </div>
-<div id="key-points-7" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> Key Points<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="key-points-7" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Key Points<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Standard organization of R scripts increases reproducibility</li>
 <li>Fst outliers can be used to find genomic signals of local adaptation</li>
@@ -514,7 +520,7 @@ made as well.</p>
 </blockquote>
 </blockquote>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb34-1" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.path,<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Fri May 16 15:32:30 2025
+<pre><code>## Fri May 16 15:42:00 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         ChunkyQuails.vcf.gz (16.8M)
@@ -552,7 +558,7 @@ made as well.</p>
 ##     annotation/format/GQ  [md5: fcbed5e7153bf05cf0718c7a549ba14f]
 ##     annotation/format/PL  [md5: 316019d9afcd850edd107263716149cc]
 ## Done.
-## Fri May 16 15:33:59 2025
+## Fri May 16 15:43:31 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;ChunkyQuails.gds&#39; (15.8M)
@@ -560,7 +566,7 @@ made as well.</p>
 ##     save to &#39;ChunkyQuails.gds.tmp&#39;
 ##     rename &#39;ChunkyQuails.gds.tmp&#39; (15.8M, reduced: 11.1K)
 ##     # of fragments: 74
-## Fri May 16 15:33:59 2025</code></pre>
+## Fri May 16 15:43:31 2025</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb36-1" tabindex="-1"></a>genofile <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
 <blockquote>
 <blockquote>
