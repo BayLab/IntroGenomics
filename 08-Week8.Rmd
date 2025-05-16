@@ -14,17 +14,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Week 8: PCAs & Mosquitos
 
-We will be using an *Ae. aegypti* mosquito population genomic data to create PCAs.
+We will be using an *Ae. aegypti* mosquito population genomic data to create PCAs. Lecture slides here: [Week 8 Slides](./figs/W8-PCA.pdf)
+
+
+This data is from a paper by Rose et al. (2020) titled ["Climate and Urbanization Drive Mosquito Preference for Humans"] [https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare){.uri} 
 
 ![Photo by Muhammad Karim: https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim](./figs/Aedes_aegypti.jpg)
 
-This data is from a paper by Rose et al. (2020) titled ["Climate and Urbanization Drive Mosquito Preference for Humans"] [https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare){.uri}
 
-These samples were taken across Central Africa, shown in this figure:
+These samples were taken across Central Africa, shown in the figure below. *Ae. aegypti* has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.
 
 ![Rose et al. (2020) Map of collection sites. Diagonal hatched lines mark the Sahel ecoclimatic zone.](./figs/fig1c.map.png)
 
-*Ae. aegypti* has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.
+
 
 ## Main Objectives:
 

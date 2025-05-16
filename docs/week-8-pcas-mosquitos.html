@@ -296,18 +296,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="week-8-pcas-mosquitos" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number"> 9</span> Week 8: PCAs &amp; Mosquitos<a href="week-8-pcas-mosquitos.html#week-8-pcas-mosquitos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>We will be using an <em>Ae. aegypti</em> mosquito population genomic data to create PCAs.</p>
+<p>We will be using an <em>Ae. aegypti</em> mosquito population genomic data to create PCAs. Lecture slides here: <a href="./figs/W8-PCA.pdf">Week 8 Slides</a></p>
+<p>This data is from a paper by Rose et al. (2020) titled [“Climate and Urbanization Drive Mosquito Preference for Humans”] <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare" class="uri">https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare</a></p>
 <div class="float">
 <img src="figs/Aedes_aegypti.jpg" alt="Photo by Muhammad Karim: https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim" />
 <div class="figcaption">Photo by Muhammad Karim: <a href="https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim" class="uri">https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim</a></div>
 </div>
-<p>This data is from a paper by Rose et al. (2020) titled [“Climate and Urbanization Drive Mosquito Preference for Humans”] <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare" class="uri">https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare</a></p>
-<p>These samples were taken across Central Africa, shown in this figure:</p>
+<p>These samples were taken across Central Africa, shown in the figure below. <em>Ae. aegypti</em> has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.</p>
 <div class="float">
 <img src="figs/fig1c.map.png" alt="Rose et al. (2020) Map of collection sites. Diagonal hatched lines mark the Sahel ecoclimatic zone." />
 <div class="figcaption">Rose et al. (2020) Map of collection sites. Diagonal hatched lines mark the Sahel ecoclimatic zone.</div>
 </div>
-<p><em>Ae. aegypti</em> has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.</p>
 <div id="main-objectives-7" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Main Objectives:<a href="week-8-pcas-mosquitos.html#main-objectives-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -353,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Mon May 12 20:45:25 2025
+<pre><code>## Thu May 15 17:58:35 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -406,7 +405,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Mon May 12 20:45:55 2025
+## Thu May 15 17:59:05 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -414,7 +413,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Mon May 12 20:45:55 2025</code></pre>
+## Thu May 15 17:59:05 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -479,10 +478,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Mon May 12 20:45:55 2025    (internal increment: 1248)
+## Thu May 15 17:59:05 2025    (internal increment: 1248)
 ## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
-## Mon May 12 20:45:57 2025    Begin (eigenvalues and eigenvectors)
-## Mon May 12 20:45:57 2025    Done.</code></pre>
+## Thu May 15 17:59:07 2025    Begin (eigenvalues and eigenvectors)
+## Thu May 15 17:59:07 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
