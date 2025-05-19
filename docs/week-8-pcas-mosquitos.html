@@ -279,10 +279,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#main-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Main Objectives:</a></li>
 <li class="chapter" data-level="10.2" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#download-the-data"><i class="fa fa-check"></i><b>10.2</b> Download the data</a></li>
 <li class="chapter" data-level="10.3" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#downloading-r-packages"><i class="fa fa-check"></i><b>10.3</b> Downloading R Packages</a></li>
-<li class="chapter" data-level="10.4" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank"><i class="fa fa-check"></i><b>10.4</b> Finding outliers using OutFLANK</a></li>
-<li class="chapter" data-level="10.5" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file"><i class="fa fa-check"></i><b>10.5</b> Pulling SNP data from the gds file</a></li>
-<li class="chapter" data-level="10.6" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank"><i class="fa fa-check"></i><b>10.6</b> Group Work Activity: PCA &amp; Outflank</a></li>
-<li class="chapter" data-level="10.7" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7"><i class="fa fa-check"></i><b>10.7</b> Key Points</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#r-hygiene"><i class="fa fa-check"></i><b>10.4</b> R hygiene</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#finding-outliers-using-outflank"><i class="fa fa-check"></i><b>10.5</b> Finding outliers using OutFLANK</a></li>
+<li class="chapter" data-level="10.6" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file"><i class="fa fa-check"></i><b>10.6</b> Pulling SNP data from the gds file</a></li>
+<li class="chapter" data-level="10.7" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#calculating-fst-and-identifying-outliers"><i class="fa fa-check"></i><b>10.7</b> Calculating F<sub>st</sub> and identifying outliers</a></li>
+<li class="chapter" data-level="10.8" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#group-work-activity-pca-outflank"><i class="fa fa-check"></i><b>10.8</b> Group Work Activity: PCA &amp; Outflank</a></li>
+<li class="chapter" data-level="10.9" data-path="week-9-fst-outlier-analysis-and-chunky-quails.html"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#key-points-7"><i class="fa fa-check"></i><b>10.9</b> Key Points</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -362,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Fri May 16 15:29:40 2025
+<pre><code>## Mon May 19 16:15:21 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -415,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Fri May 16 15:30:11 2025
+## Mon May 19 16:15:41 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -423,7 +425,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Fri May 16 15:30:11 2025</code></pre>
+## Mon May 19 16:15:41 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -488,10 +490,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Fri May 16 15:30:11 2025    (internal increment: 1248)
-## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
-## Fri May 16 15:30:13 2025    Begin (eigenvalues and eigenvectors)
-## Fri May 16 15:30:13 2025    Done.</code></pre>
+## Mon May 19 16:15:41 2025    (internal increment: 1248)
+## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 1s
+## Mon May 19 16:15:42 2025    Begin (eigenvalues and eigenvectors)
+## Mon May 19 16:15:42 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
