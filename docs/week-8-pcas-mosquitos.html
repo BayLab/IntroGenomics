@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This data is from a paper by Rose et al. (2020) titled [“Climate and Urbanization Drive Mosquito Preference for Humans”] <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare" class="uri">https://www.cell.com/current-biology/fulltext/S0960-9822(20)30978-7?referringSource=articleShare</a></p>
 <div class="float">
 <img src="figs/Aedes_aegypti.jpg" alt="Photo by Muhammad Karim: https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim" />
-<div class="figcaption"><strong>Photo by Muhammad Karim: <a href="https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim" class="uri">https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim</a></strong></div>
+<div class="figcaption"><em>Photo by Muhammad Karim: <a href="https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim" class="uri">https://en.wikipedia.org/wiki/User:Muhammad_Mahdi_Karim</a></em></div>
 </div>
 <p>These samples were taken across Central Africa, shown in the figure below. <em>Ae. aegypti</em> has only 3 chromosomes, but the raw dataset is quite large, so we have subsetted the vcf file from this study to contain only the first chromosome. We will use this subsetted vcf to create a principle component analysis (PCA) and learn how to visualize variation in this dataset.</p>
 <div class="float">
@@ -332,7 +332,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We first need to download the data in terminal. So navigate to your directory and do the following command to get the vcf file we need onto your farm desktop. I got the data from a data repository for this paper and modified it to be easier to work with in class.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="week-8-pcas-mosquitos.html#cb1-1" tabindex="-1"></a>cd /group/rbaygrp/eve198-genomics/yourdirectory</span>
 <span id="cb1-2"><a href="week-8-pcas-mosquitos.html#cb1-2" tabindex="-1"></a>wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week8.zip</span></code></pre></div>
-<p>Unzip the week8 directory and navigate inside. There should be two files: <code>simple_meta.csv</code> is our metadata file and <code>NC_035107.small.vcf.gz</code> is our subsetted vcf file with our genomic data.</p>
+<p>If you want to work from your own R studio on your desktop, first you will need to install R &amp; R studio (<a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>).</p>
+<p>Then download the data directly from the class data github: <a href="https://github.com/mlarmstrong/IntroGenomics_Data" class="uri">https://github.com/mlarmstrong/IntroGenomics_Data</a> First click <code>week8.zip</code> and then click the three dots at the top to download.</p>
+<p><img src="figs/github_page.png" /></p>
+<p>Regardless of download method, unzip the week8 directory and navigate inside. There should be two files: <code>simple_meta.csv</code> is our metadata file and <code>NC_035107.small.vcf.gz</code> is our subsetted vcf file with our genomic data.</p>
 </div>
 <div id="moving-to-r-installing-packages" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">9.3</span> Moving to R &amp; Installing Packages<a href="week-8-pcas-mosquitos.html#moving-to-r-installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -356,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="set-working-directory-1" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Set Working Directory<a href="week-8-pcas-mosquitos.html#set-working-directory-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week8 directory in your named directory. To set your working directory you can do the following: <code>setwd("~/where/you/are/storing/data/week8")</code></p>
+<p>Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week8 directory in your named directory. To set your working directory you can do the following: <code>setwd("~/where/you/are/storing/data/week8")</code>. This step can be tricky, so use your files section on R to see where your files are stored and identify the correct working directory path!</p>
 <p>If you click the files tab on the right you should be able to see all of the files in your working directory too!</p>
 </div>
 <div id="read-vcf-file-1" class="section level2 hasAnchor" number="9.5">
@@ -364,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now let’s read in our vcf file and convert it to a gds object.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-8-pcas-mosquitos.html#cb9-1" tabindex="-1"></a>vcf.mosq <span class="ot">&lt;-</span> <span class="st">&quot;NC_035107.small.vcf.gz&quot;</span></span>
 <span id="cb9-2"><a href="week-8-pcas-mosquitos.html#cb9-2" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.mosq, <span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Mon May 19 16:15:21 2025
+<pre><code>## Wed May 21 12:23:09 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         NC_035107.small.vcf.gz (16.5M)
@@ -417,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/AD  [md5: 052e3bfc7f4599ffb8b9f6e59f7ffe48]
 ##     annotation/format/GQ  [md5: 83f2afcd7e0a401e0457904c889ef1cf]
 ## Done.
-## Mon May 19 16:15:41 2025
+## Wed May 21 12:23:39 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;mosq.gds&#39; (15.9M)
@@ -425,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;mosq.gds.tmp&#39;
 ##     rename &#39;mosq.gds.tmp&#39; (15.9M, reduced: 11.4K)
 ##     # of fragments: 123
-## Mon May 19 16:15:41 2025</code></pre>
+## Wed May 21 12:23:39 2025</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-8-pcas-mosquitos.html#cb11-1" tabindex="-1"></a>genofileseq.mosq <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;mosq.gds&quot;</span>)</span></code></pre></div>
 <p>Let’s look at our object <code>genofileseq.mosq</code>. Our dataset has 393 mosquitos and 11855 SNPs. This object also has variant id, position, chromosome, allele, genotype data and additional information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-8-pcas-mosquitos.html#cb12-1" tabindex="-1"></a>genofileseq.mosq</span></code></pre></div>
@@ -483,17 +486,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-8-pcas-mosquitos.html#cb14-1" tabindex="-1"></a>pca.mosq<span class="ot">&lt;-</span><span class="fu">snpgdsPCA</span>(genofileseq.mosq, <span class="at">autosome.only=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## Principal Component Analysis (PCA) on genotypes:
 ## Calculating allele counts/frequencies ...
-## [..................................................]  0%, ETC: ---    [==================================================] 100%, completed, 0s
+## [..................................................]  0%, ETC: ---    [==================================================] 100%, completed, 1s
 ## # of selected variants: 11,855
 ##     # of samples: 393
 ##     # of SNVs: 11,855
 ##     using 1 thread
 ##     # of principal components: 32
 ## CPU capabilities:
-## Mon May 19 16:15:41 2025    (internal increment: 1248)
-## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 1s
-## Mon May 19 16:15:42 2025    Begin (eigenvalues and eigenvectors)
-## Mon May 19 16:15:42 2025    Done.</code></pre>
+## Wed May 21 12:23:40 2025    (internal increment: 1248)
+## [..................................................]  0%, ETC: ---        [==================================================] 100%, completed, 2s
+## Wed May 21 12:23:42 2025    Begin (eigenvalues and eigenvectors)
+## Wed May 21 12:23:42 2025    Done.</code></pre>
 <p>If we want to look at what class the object is and the column headers of our pca object we can run the following code.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-8-pcas-mosquitos.html#cb16-1" tabindex="-1"></a><span class="fu">class</span>(pca.mosq)</span></code></pre></div>
 <pre><code>## [1] &quot;snpgdsPCAClass&quot;</code></pre>
@@ -659,7 +662,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb38-2"><a href="week-8-pcas-mosquitos.html#cb38-2" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country))) <span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/8.3-1.png" width="768" /></p>
 <p>This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.</p>
-<p>Finally let’s really customize our graph with labels, a legend and unique colors! Install/load <code>library(RcolorbBrewer)</code> for the colorscheme in the pca. You can type <code>?RColorBrewer</code> for a help tab to pop up where you can see the other color palettes in this package.</p>
+<p>Finally let’s really customize our graph with labels, a legend and unique colors! Install/load <code>library(RColorBrewer)</code> for the color scheme in the pca. You can type <code>?RColorBrewer</code> for a help tab to pop up where you can see the other color palettes in this package.</p>
 <p>To get the percentages I filled into the labels you can run this code from earlier: <code>print(pc.percent)</code></p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="week-8-pcas-mosquitos.html#cb39-1" tabindex="-1"></a><span class="fu">ggplot</span>(tab, <span class="fu">aes</span>(<span class="at">x =</span> EV1, <span class="at">y =</span> EV2, <span class="at">color=</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>country)))<span class="sc">+</span></span>
 <span id="cb39-2"><a href="week-8-pcas-mosquitos.html#cb39-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
