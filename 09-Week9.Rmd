@@ -63,12 +63,15 @@ Take a look at the head of the metadata file. What columns do you see?
 
 Open R Studio. The first thing we need to do is download a few different packages. 
 
-Today we will be using the **SeqArray** and **SNPRelate** packages to read our data. You used these last week so they should already be installed. For the outlier analysis, we will use a package called **OutFLANK** which also needs the package **qvalue** to run (we call this a 'dependency').
+Today we will be using the **SeqArray** and **SNPRelate** packages to read our data. You used these last week but you were on your desktop, so you will need to install these packages again for Farm.  You will need to use Biocmanager to install both of these packages, so run `if (!require("BiocManager", quietly = TRUE))`.
+
+For the outlier analysis, we will use a package called **OutFLANK** which also needs the package **qvalue** to run (we call this a 'dependency').
 
 ```{r, eval=F}
 
 install.packages("BiocManager") # type "yes" when prompted
-BiocManager::install("qvalue") # When prompted, type "a" - this will take some time
+library(BiocManager)
+BiocManager::install(c("qvalue", "SeqArray", "SNPRelate") # When prompted, type "a" - this will take some time
 install_github("whitlock/OutFLANK")
 
 ```

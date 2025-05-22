@@ -342,10 +342,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="downloading-r-packages" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Downloading R Packages<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#downloading-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open R Studio. The first thing we need to do is download a few different packages.</p>
-<p>Today we will be using the <strong>SeqArray</strong> and <strong>SNPRelate</strong> packages to read our data. You used these last week so they should already be installed. For the outlier analysis, we will use a package called <strong>OutFLANK</strong> which also needs the package <strong>qvalue</strong> to run (we call this a ‘dependency’).</p>
+<p>Today we will be using the <strong>SeqArray</strong> and <strong>SNPRelate</strong> packages to read our data. You used these last week but you were on your desktop, so you will need to install these packages again for Farm. You will need to use Biocmanager to install both of these packages, so run <code>if (!require("BiocManager", quietly = TRUE))</code>.</p>
+<p>For the outlier analysis, we will use a package called <strong>OutFLANK</strong> which also needs the package <strong>qvalue</strong> to run (we call this a ‘dependency’).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) <span class="co"># type &quot;yes&quot; when prompted</span></span>
-<span id="cb3-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-2" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;qvalue&quot;</span>) <span class="co"># When prompted, type &quot;a&quot; - this will take some time</span></span>
-<span id="cb3-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-3" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;whitlock/OutFLANK&quot;</span>)</span></code></pre></div>
+<span id="cb3-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(BiocManager)</span>
+<span id="cb3-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-3" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;qvalue&quot;</span>, <span class="st">&quot;SeqArray&quot;</span>, <span class="st">&quot;SNPRelate&quot;</span>) <span class="co"># When prompted, type &quot;a&quot; - this will take some time</span></span>
+<span id="cb3-4"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-4" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;whitlock/OutFLANK&quot;</span>)</span></code></pre></div>
 </div>
 <div id="r-hygiene" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> R hygiene<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#r-hygiene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -520,7 +522,7 @@ made as well.</p>
 </blockquote>
 </blockquote>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb34-1" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.path,<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Mon May 19 16:17:10 2025
+<pre><code>## Thu May 22 11:28:57 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         ChunkyQuails.vcf.gz (16.8M)
@@ -558,7 +560,7 @@ made as well.</p>
 ##     annotation/format/GQ  [md5: fcbed5e7153bf05cf0718c7a549ba14f]
 ##     annotation/format/PL  [md5: 316019d9afcd850edd107263716149cc]
 ## Done.
-## Mon May 19 16:18:06 2025
+## Thu May 22 11:30:34 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;ChunkyQuails.gds&#39; (15.8M)
@@ -566,7 +568,7 @@ made as well.</p>
 ##     save to &#39;ChunkyQuails.gds.tmp&#39;
 ##     rename &#39;ChunkyQuails.gds.tmp&#39; (15.8M, reduced: 11.1K)
 ##     # of fragments: 74
-## Mon May 19 16:18:06 2025</code></pre>
+## Thu May 22 11:30:34 2025</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb36-1" tabindex="-1"></a>genofile <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
 <blockquote>
 <blockquote>
