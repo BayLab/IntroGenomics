@@ -150,3 +150,6 @@ group-work-activity-pca-outflank
 key-points-7
 r-hygiene
 calculating-fst-and-identifying-outliers
+on-farm
+on-your-own-computer
+unzip-the-folder-look-at-data

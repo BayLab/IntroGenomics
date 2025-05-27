@@ -16,9 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=6)
 
 The lecture for this week focused on **F**<sub>st</sub> and outlier analysis can be found here[Week 9 Slides](./figs/Week9.pdf)
 
-
-Last week we used PCA to take a broad look at whether populations were genetically distinct. This week we will look at SNPs that differentiate between populations that may represent signals of selection. If you want to learn morea bout how different methods for detecting signatures of selection I recommend visiting this  page on the marineomics website: https://marineomics.github.io/POP_10_Signatures_of_Selection.html
-
+Last week we used PCA to take a broad look at whether populations were genetically distinct. This week we will look at SNPs that differentiate between populations that may represent signals of selection. If you want to learn morea bout how different methods for detecting signatures of selection I recommend visiting this page on the marineomics website: <https://marineomics.github.io/POP_10_Signatures_of_Selection.html>
 
 We will use data from the following paper focused on genomic variation in common quails:
 
@@ -26,34 +24,48 @@ We will use data from the following paper focused on genomic variation in common
 
 We will get more into what the data focuses on later in the lesson, but a few findings from the study is that the quails with and without the inversion differ in their throat coloration, weight (& fat reserves), wing shape and migratory behavior.
 
-![Sanchez-Donoso et al. (2022) Phenotypes of the common quail with and without the inversion from the graphical abstract ](./figs/abstract.png)
+![Sanchez-Donoso et al. (2022) Phenotypes of the common quail with and without the inversion from the graphical abstract](./figs/abstract.png)
 
 We will download the data and take a first look in **bash** and then we will do analysis and generate the plots in **RStudio**.
 
 ## Main Objectives:
-- Learn how to identify particular SNPs that are driving patterns of divergence between populations
-- Connect what we learned in previous lessons using PCAs and Structure Plots and how these methods differ from today's outlier analyses
-- Practice keeping scripts organized to ensure reproducibility
 
-
+-   Learn how to identify particular SNPs that are driving patterns of divergence between populations
+-   Connect what we learned in previous lessons using PCAs and Structure Plots and how these methods differ from today's outlier analyses
+-   Practice keeping scripts organized to ensure reproducibility
 
 ## Download the data
 
-We first need to download the data. Open a terminal and navigate to your directory. Then use wget to download the data folder. We'll then use the tar command to un-compress it.
+We first need to download the data.
 
-``` {.html}
+### On Farm
+
+Open a terminal and navigate to your directory. Then use wget to download the data folder. We'll then use the tar command to un-compress it.
+
+``` html
 cd /group/rbaygrp/eve198-genomics/yourdirectory
 
+mkdir Week9
+
+cd Week9
+
 wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week9.tar.gz
+
 
 tar -xzvf week9.tar.gz
 ```
 
-Change directory into the week9 folder. What do you see? 
+### On Your Own Computer
 
-The SNP data is in a vcf file, just like for previous weeks. You can take a peak at the top of the vcf file like this:
+Similar to last week you need to navigate to the class github page where all of the data is stored <https://github.com/mlarmstrong/IntroGenomics_Data> Click on `week9.zip` and then after it takes you to a new page click the three dots in the top right and hit `download`.
 
-``` {.html}
+## Unzip the Folder & Look at Data
+
+Regardless of download method, unzip the week9 directory and navigate inside. What do you see?
+
+The SNP data is in a vcf file, just like for previous weeks. You can take a peek at the top of the vcf file like this:
+
+``` html
 head ChunkyQuails.vcf
 ```
 
@@ -61,9 +73,9 @@ Take a look at the head of the metadata file. What columns do you see?
 
 ## Downloading R Packages
 
-Open R Studio. The first thing we need to do is download a few different packages. 
+Open R Studio on your desktop or on Farm. The first thing we need to do is download a few different packages.
 
-Today we will be using the **SeqArray** and **SNPRelate** packages to read our data. You used these last week but you were on your desktop, so you will need to install these packages again for Farm.  You will need to use Biocmanager to install both of these packages, so run `if (!require("BiocManager", quietly = TRUE))`.
+Today we will be using the **SeqArray** and **SNPRelate** packages to read our data. You used these last week but you were on your desktop, so you will need to install these packages again for Farm. You will need to use Biocmanager to install both of these packages, so run `if (!require("BiocManager", quietly = TRUE))`.
 
 For the outlier analysis, we will use a package called **OutFLANK** which also needs the package **qvalue** to run (we call this a 'dependency').
 
@@ -76,8 +88,8 @@ install_github("whitlock/OutFLANK")
 
 ```
 
-
 ## R hygiene
+
 Now that you are getting more comfortable coding in R, it's a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to *ALWAYS* do lots of commenting with `#` so when you come back to your code you know what you did and why
 
 It's good practice to put three main pieces of information at the top of your code. Your name (for when you share code), the last modified date, and the purpose of the code. Looks like this:
@@ -105,18 +117,19 @@ vcf.path="ChunkyQuails.vcf.gz"
 meta.path="ChunkyQuails_meta.csv"
 ```
 
-Now we are ready to use the data!
+Make sure your working directory is set up to the folder your data is stored in for week 9. Now that our script is organized, we are ready to use the data!
 
 ## Finding outliers using OutFLANK
 
 We will read in the vcf file just like we did last week when we did PCA. Give it a try on your own!
 
 > ### Class Exercise 1
+>
 > Using info from Week 8, read in your data!
 >
-> - Q1. Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'. How many samples do you have?
+> -   Q1. Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'. How many samples do you have?
 >
-> - Q2. Read in your metadata file to an object named 'meta' (hint: read.csv()). Take a look at the different columns. "Loc1" is the breeding location. How many unique breeding locations are represented?
+> -   Q2. Read in your metadata file to an object named 'meta' (hint: read.csv()). Take a look at the different columns. "Loc1" is the breeding location. How many unique breeding locations are represented?
 
 ```{r, echo=F,results='hide'}
 vcf.q<- "ChunkyQuails.vcf.gz"
@@ -176,13 +189,13 @@ Now we can caluclate F<sub>st</sub> for each SNP. We're going to calculate diffe
 
 WAIT! First we need to determine whether our metadata is in the same order as our genotype matrix.
 
-
 > ### Class Exercise 2
+>
 > ### Is your metadata in the same order as your genotype matrix?
 >
-> - Q1. Get the sample names from your gds object (hint: how did you extract chromosome and position from gds? There is also information in 'sample.id')
+> -   Q1. Get the sample names from your gds object (hint: how did you extract chromosome and position from gds? There is also information in 'sample.id')
 >
-> - Q2. Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file (hint: you did this last week too!)
+> -   Q2. Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file (hint: you did this last week too!)
 
 Phew - NOW we can calculate F<sub>st</sub>!
 
@@ -224,18 +237,19 @@ Now we can make a manhattan plot! There are lots of packages to make very beauti
 head(P1)
 ```
 
-We are missing chromosome information, which we want to make a beautiful manhattan plot that is colored by chromosome. Remember how we made the `snp.pos` dataframe earlier? Basically we want to merge `P1` and `snp.pos`. 
+We are missing chromosome information, which we want to make a beautiful manhattan plot that is colored by chromosome. Remember how we made the `snp.pos` dataframe earlier? Basically we want to merge `P1` and `snp.pos`.
 
 > ### Class Exercise 3
+>
 > ### Merge two dataframes based on one column
 >
-> - Q1. Merge the P1 and snp.pos dataframes based on the LocusName column. There are many ways to do this. Two of my favorites are 'merge()' or 'left_join()' which is part of dplyr package. Use the help file for one of them and try to merge the two dataframes into a single called "merged.P1"
->
+> -   Q1. Merge the P1 and snp.pos dataframes based on the LocusName column. There are many ways to do this. Two of my favorites are 'merge()' or 'left_join()' which is part of dplyr package. Use the help file for one of them and try to merge the two dataframes into a single called "merged.P1"
 
 ```{r, echo=F,results='hide'}
 library(dplyr)
 merged.P1 <- left_join(P1,snp.pos,by="LocusName")
 ```
+
 Yay! Now that we have a merged dataframe we can make a manhattan plot:
 
 ```{r, label= "9-2", echo=T}
@@ -253,15 +267,12 @@ This week's activity will combine skills you learned last week and this week usi
 
 2)  Create a PCA of the quail data. You can choose to color by geography or by karyotype (or get fancy with different shapes and colors!) **Interpret the figure you make in one to two sentences**
 
-Copy the lines in your script used to answer these
-questions into your canvas submission. Be sure to include the answers
-for question 1, interpretations for the figures and the two figures you
-made as well.
-
+Copy the lines in your script used to answer these questions into your canvas submission. Be sure to include the answers for question 1, interpretations for the figures and the two figures you made as well.
 
 ## Key Points
-- Standard organization of R scripts increases reproducibility
-- Fst outliers can be used to find genomic signals of local adaptation
+
+-   Standard organization of R scripts increases reproducibility
+-   Fst outliers can be used to find genomic signals of local adaptation
 
 <details>
 
@@ -272,15 +283,20 @@ made as well.
 > ## Class Exercises: Solutions
 
 > > ### Exercise 1
-> > 1) Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'. 
+> >
+> > 1)  Convert your vcf file to a gds file called "ChunkyQuails.gds". Then read make a gds object called 'genofile'.
+
 ```{r, echo=F}
 seqClose(genofile)
 ```
+
 ```{r, echo=T}
 seqVCF2GDS(vcf.path,"ChunkyQuails.gds")
 genofile <- seqOpen("ChunkyQuails.gds")
 ```
-> > 2) Read in your metadata file to an object named 'meta'. How many unique breeding locations are represented?
+
+> > 2)  Read in your metadata file to an object named 'meta'. How many unique breeding locations are represented?
+
 ```{r, echo=T}
 meta <- read.csv(meta.path)
 table(meta$Loc1)
@@ -295,7 +311,7 @@ length(unique(meta$Loc1))
 samples <- read.gdsn(index.gdsn(genofile, "sample.id")) 
 ```
 
-> > 2)   Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file
+> > 2)  Determine whether the sample IDs you extracted from the gds are in the same order as in the metadata file
 
 ```{r, echo=T}
 identical(samples,meta$SampleID)
@@ -311,8 +327,6 @@ library(dplyr)
 merged.P1 <- left_join(P1,snp.pos,by="LocusName")
 ```
 
-
 </p>
 
 </details>
-
