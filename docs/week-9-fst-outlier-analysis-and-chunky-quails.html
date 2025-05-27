@@ -356,41 +356,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="unzip-the-folder-look-at-data" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Unzip the Folder &amp; Look at Data<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#unzip-the-folder-look-at-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Regardless of download method, unzip the week9 directory and navigate inside. What do you see?</p>
-<p>The SNP data is in a vcf file, just like for previous weeks. You can take a peek at the top of the vcf file like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb2-1" tabindex="-1"></a>head ChunkyQuails.vcf</span></code></pre></div>
-<p>Take a look at the head of the metadata file. What columns do you see?</p>
+<p>The SNP data is in a vcf file, just like for previous weeks. Take a look at the head of the metadata file. What columns do you see?</p>
 </div>
 <div id="downloading-r-packages" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Downloading R Packages<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#downloading-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open R Studio on your desktop or on Farm. The first thing we need to do is download a few different packages.</p>
 <p>Today we will be using the <strong>SeqArray</strong> and <strong>SNPRelate</strong> packages to read our data. You used these last week but you were on your desktop, so you will need to install these packages again for Farm. You will need to use Biocmanager to install both of these packages, so run <code>if (!require("BiocManager", quietly = TRUE))</code>.</p>
 <p>For the outlier analysis, we will use a package called <strong>OutFLANK</strong> which also needs the package <strong>qvalue</strong> to run (we call this a ‘dependency’).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) <span class="co"># type &quot;yes&quot; when prompted</span></span>
-<span id="cb3-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(BiocManager)</span>
-<span id="cb3-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-3" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;qvalue&quot;</span>, <span class="st">&quot;SeqArray&quot;</span>, <span class="st">&quot;SNPRelate&quot;</span>) <span class="co"># When prompted, type &quot;a&quot; - this will take some time</span></span>
-<span id="cb3-4"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-4" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;whitlock/OutFLANK&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) <span class="co"># type &quot;yes&quot; when prompted</span></span>
+<span id="cb2-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(BiocManager)</span>
+<span id="cb2-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb2-3" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;qvalue&quot;</span>, <span class="st">&quot;SeqArray&quot;</span>, <span class="st">&quot;SNPRelate&quot;</span>) <span class="co"># When prompted, type &quot;a&quot; - this will take some time</span></span>
+<span id="cb2-4"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb2-4" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;whitlock/OutFLANK&quot;</span>)</span></code></pre></div>
 </div>
 <div id="r-hygiene" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> R hygiene<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#r-hygiene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that you are getting more comfortable coding in R, it’s a good time to talk about how to make your scripts clean, readable, and reusable. The first and likely most important piece of advice is to <em>ALWAYS</em> do lots of commenting with <code>#</code> so when you come back to your code you know what you did and why</p>
 <p>It’s good practice to put three main pieces of information at the top of your code. Your name (for when you share code), the last modified date, and the purpose of the code. Looks like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-1" tabindex="-1"></a><span class="do">## Code for finding outliers using OUTFlank</span></span>
-<span id="cb4-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-2" tabindex="-1"></a><span class="do">## Rachael Bay</span></span>
-<span id="cb4-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-3" tabindex="-1"></a><span class="do">## Modified May 28, 2025</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-1" tabindex="-1"></a><span class="do">## Code for finding outliers using OUTFlank</span></span>
+<span id="cb3-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-2" tabindex="-1"></a><span class="do">## Rachael Bay</span></span>
+<span id="cb3-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb3-3" tabindex="-1"></a><span class="do">## Modified May 28, 2025</span></span></code></pre></div>
 <p>After that, I like to have all the libraries that will be needed for the code loaded:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(SeqArray)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(SeqArray)</span></code></pre></div>
 <pre><code>## Warning: package &#39;SeqArray&#39; was built under R version 4.4.1</code></pre>
 <pre><code>## Loading required package: gdsfmt</code></pre>
 <pre><code>## Warning: package &#39;gdsfmt&#39; was built under R version 4.4.1</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(SNPRelate)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(SNPRelate)</span></code></pre></div>
 <pre><code>## Warning: package &#39;SNPRelate&#39; was built under R version 4.4.1</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(OutFLANK)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(OutFLANK)</span></code></pre></div>
 <pre><code>## Loading required package: qvalue</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(gdsfmt) </span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(gdsfmt) </span></code></pre></div>
 <p>Finally, I like to make objects for all the files that I will use. Again, this is so that if I want to come back to the code later and run the same analysis on different files, it is obvious what I need to change rather than being buried in the code:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-1" tabindex="-1"></a><span class="co">#setwd(&quot;/group/rbaygrp/eve198-genomics/rachael&quot;)</span></span>
-<span id="cb14-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-2" tabindex="-1"></a>vcf.path<span class="ot">=</span><span class="st">&quot;ChunkyQuails.vcf.gz&quot;</span></span>
-<span id="cb14-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-3" tabindex="-1"></a>meta.path<span class="ot">=</span><span class="st">&quot;ChunkyQuails_meta.csv&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb13-1" tabindex="-1"></a><span class="co">#setwd(&quot;/group/rbaygrp/eve198-genomics/rachael&quot;)</span></span>
+<span id="cb13-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb13-2" tabindex="-1"></a>vcf.path<span class="ot">=</span><span class="st">&quot;ChunkyQuails.vcf.gz&quot;</span></span>
+<span id="cb13-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb13-3" tabindex="-1"></a>meta.path<span class="ot">=</span><span class="st">&quot;ChunkyQuails_meta.csv&quot;</span></span></code></pre></div>
 <p>Make sure your working directory is set up to the folder your data is stored in for week 9. Now that our script is organized, we are ready to use the data!</p>
 </div>
 <div id="finding-outliers-using-outflank" class="section level2 hasAnchor" number="10.6">
@@ -408,18 +406,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pulling-snp-data-from-the-gds-file" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> Pulling SNP data from the gds file<a href="week-9-fst-outlier-analysis-and-chunky-quails.html#pulling-snp-data-from-the-gds-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Later, we will want information on the location of each SNP in the genome. We can pull information from the gds file like this:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-1" tabindex="-1"></a>chromosomes <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;chromosome&quot;</span>))</span>
-<span id="cb15-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-2" tabindex="-1"></a>positions <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;position&quot;</span>))</span>
-<span id="cb15-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-3" tabindex="-1"></a>variant.id <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;variant.id&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-1" tabindex="-1"></a>chromosomes <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;chromosome&quot;</span>))</span>
+<span id="cb14-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-2" tabindex="-1"></a>positions <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;position&quot;</span>))</span>
+<span id="cb14-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb14-3" tabindex="-1"></a>variant.id <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;variant.id&quot;</span>))</span></code></pre></div>
 <p>Then put everything together in a single dataframe like this:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb16-1" tabindex="-1"></a>snp.pos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LocusName=</span>variant.id,</span>
-<span id="cb16-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb16-2" tabindex="-1"></a>                      <span class="at">chr=</span><span class="fu">as.factor</span>(chromosomes),</span>
-<span id="cb16-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb16-3" tabindex="-1"></a>                      <span class="at">pos=</span>positions)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-1" tabindex="-1"></a>snp.pos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LocusName=</span>variant.id,</span>
+<span id="cb15-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-2" tabindex="-1"></a>                      <span class="at">chr=</span><span class="fu">as.factor</span>(chromosomes),</span>
+<span id="cb15-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb15-3" tabindex="-1"></a>                      <span class="at">pos=</span>positions)</span></code></pre></div>
 <p>We also want the matrix of SNP genotypes. We can pull this from the gds object using the <code>snpgdsGetGeno()</code> command:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb17-1" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">snpgdsGetGeno</span>(genofile)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb16-1" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">snpgdsGetGeno</span>(genofile)</span></code></pre></div>
 <pre><code>## Genotype matrix: 80 samples X 112195 SNPs</code></pre>
 <p>Take a look at this matrix. Here I’m just looking at the head of the first 10 columns because the matrix is large!</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb19-1" tabindex="-1"></a><span class="fu">head</span>(G[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb18-1" tabindex="-1"></a><span class="fu">head</span>(G[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 ## [1,]    1    2    2    2    2    2    2    2    2     2
 ## [2,]    1    2    2    2    2    2    2    2    2     2
@@ -428,7 +426,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5,]    1    2    2    2    2    2    2    2    2     2
 ## [6,]    2    2    2    1    2    2    2    2    2     2</code></pre>
 <p>We have four different values: 0,1,2, and NA. These represent the reference homozygote, heterozygote, alternate homozygote, and missing data respectively. The program that we want to use, OUTFLank requires a ‘9’ instead of ‘NA’ for missing data. We can do the replacement like this:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb21-1" tabindex="-1"></a>G[<span class="fu">is.na</span>(G)] <span class="ot">&lt;-</span> <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb20-1" tabindex="-1"></a>G[<span class="fu">is.na</span>(G)] <span class="ot">&lt;-</span> <span class="dv">9</span></span></code></pre></div>
 <p>Take a look at the head of the dataframe again. Did it work?</p>
 </div>
 <div id="calculating-fst-and-identifying-outliers" class="section level2 hasAnchor" number="10.8">
@@ -445,27 +443,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 <p>Phew - NOW we can calculate F<sub>st</sub>!</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb22-1" tabindex="-1"></a>fst <span class="ot">&lt;-</span> <span class="fu">MakeDiploidFSTMat</span>(G,<span class="at">locusNames=</span>variant.id,<span class="at">popNames=</span>meta<span class="sc">$</span>Loc1)</span>
-<span id="cb22-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb22-2" tabindex="-1"></a><span class="fu">head</span>(fst)</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb23-1" tabindex="-1"></a><span class="fu">hist</span>(fst<span class="sc">$</span>FST,<span class="at">breaks=</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb21-1" tabindex="-1"></a>fst <span class="ot">&lt;-</span> <span class="fu">MakeDiploidFSTMat</span>(G,<span class="at">locusNames=</span>variant.id,<span class="at">popNames=</span>meta<span class="sc">$</span>Loc1)</span>
+<span id="cb21-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb21-2" tabindex="-1"></a><span class="fu">head</span>(fst)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(fst<span class="sc">$</span>FST,<span class="at">breaks=</span><span class="dv">50</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/9-0-1.png" width="576" /></p>
 <p>Once we’ve calculated F<sub>st</sub> between the two populations for each SNP individually, we want to determine whether some SNPs are outliers - that is, more differentiated than we would expect. OutFLANK does this by fitting a Chi-Squared distribution to the data and looking to see if the tails of the Chi-Squared distribution have more SNPs than expected:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb24-1" tabindex="-1"></a>OF <span class="ot">&lt;-</span> <span class="fu">OutFLANK</span>(fst,<span class="at">LeftTrimFraction=</span><span class="fl">0.01</span>,<span class="at">RightTrimFraction=</span><span class="fl">0.01</span>,</span>
-<span id="cb24-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb24-2" tabindex="-1"></a>               <span class="at">Hmin=</span><span class="fl">0.05</span>,<span class="at">NumberOfSamples=</span><span class="dv">9</span>,<span class="at">qthreshold=</span><span class="fl">0.01</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-1" tabindex="-1"></a><span class="fu">OutFLANKResultsPlotter</span>(OF,<span class="at">withOutliers=</span>T,</span>
-<span id="cb25-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-2" tabindex="-1"></a>                       <span class="at">NoCorr=</span>T,<span class="at">Hmin=</span><span class="fl">0.1</span>,<span class="at">binwidth=</span><span class="fl">0.005</span>,</span>
-<span id="cb25-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-3" tabindex="-1"></a>                       <span class="at">Zoom=</span>F,<span class="at">RightZoomFraction=</span><span class="fl">0.05</span>,<span class="at">titletext=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb23-1" tabindex="-1"></a>OF <span class="ot">&lt;-</span> <span class="fu">OutFLANK</span>(fst,<span class="at">LeftTrimFraction=</span><span class="fl">0.01</span>,<span class="at">RightTrimFraction=</span><span class="fl">0.01</span>,</span>
+<span id="cb23-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb23-2" tabindex="-1"></a>               <span class="at">Hmin=</span><span class="fl">0.05</span>,<span class="at">NumberOfSamples=</span><span class="dv">9</span>,<span class="at">qthreshold=</span><span class="fl">0.01</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb24-1" tabindex="-1"></a><span class="fu">OutFLANKResultsPlotter</span>(OF,<span class="at">withOutliers=</span>T,</span>
+<span id="cb24-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb24-2" tabindex="-1"></a>                       <span class="at">NoCorr=</span>T,<span class="at">Hmin=</span><span class="fl">0.1</span>,<span class="at">binwidth=</span><span class="fl">0.005</span>,</span>
+<span id="cb24-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb24-3" tabindex="-1"></a>                       <span class="at">Zoom=</span>F,<span class="at">RightZoomFraction=</span><span class="fl">0.05</span>,<span class="at">titletext=</span><span class="cn">NULL</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/9-1-1.png" width="576" /></p>
 <p>It’s a little hard to tell from these plots, but there may be some SNPs with high F<sub>st</sub> even where the distribution predicts there should be none. To find these SNPs, we ask which SNPs are statistical outliers?</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb26-1" tabindex="-1"></a>P1 <span class="ot">&lt;-</span> <span class="fu">pOutlierFinderChiSqNoCorr</span>(fst,<span class="at">Fstbar=</span>OF<span class="sc">$</span>FSTNoCorrbar,</span>
-<span id="cb26-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb26-2" tabindex="-1"></a>                                <span class="at">dfInferred=</span>OF<span class="sc">$</span>dfInferred,<span class="at">qthreshold=</span><span class="fl">0.05</span>,<span class="at">Hmin=</span><span class="fl">0.1</span>)</span>
-<span id="cb26-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb26-3" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> P1<span class="sc">$</span>OutlierFlag<span class="sc">==</span><span class="cn">TRUE</span></span>
-<span id="cb26-4"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb26-4" tabindex="-1"></a><span class="fu">table</span>(outliers)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-1" tabindex="-1"></a>P1 <span class="ot">&lt;-</span> <span class="fu">pOutlierFinderChiSqNoCorr</span>(fst,<span class="at">Fstbar=</span>OF<span class="sc">$</span>FSTNoCorrbar,</span>
+<span id="cb25-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-2" tabindex="-1"></a>                                <span class="at">dfInferred=</span>OF<span class="sc">$</span>dfInferred,<span class="at">qthreshold=</span><span class="fl">0.05</span>,<span class="at">Hmin=</span><span class="fl">0.1</span>)</span>
+<span id="cb25-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-3" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> P1<span class="sc">$</span>OutlierFlag<span class="sc">==</span><span class="cn">TRUE</span></span>
+<span id="cb25-4"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb25-4" tabindex="-1"></a><span class="fu">table</span>(outliers)</span></code></pre></div>
 <pre><code>## outliers
 ## FALSE  TRUE 
 ## 31775   285</code></pre>
 <p>Now we can make a manhattan plot! There are lots of packages to make very beautiful manhattan plots and even highlight particular genes of interest. Here we will just use base R. First, take a look at the dataframe that has information on F<sub>st</sub> and outliers:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb28-1" tabindex="-1"></a><span class="fu">head</span>(P1)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb27-1" tabindex="-1"></a><span class="fu">head</span>(P1)</span></code></pre></div>
 <pre><code>##    LocusName        He           FST            T1         T2  FSTNoCorr
 ## 1          1 0.2997116 -0.0159898161 -2.407181e-03 0.15054464 0.04630126
 ## 9          9 0.3408941 -0.0049619118 -8.528996e-04 0.17188930 0.07862600
@@ -504,7 +502,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <p>Yay! Now that we have a merged dataframe we can make a manhattan plot:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb33-1" tabindex="-1"></a><span class="fu">plot</span>(merged.P1<span class="sc">$</span>LocusName,P1<span class="sc">$</span>FST,<span class="at">xlab=</span><span class="st">&quot;Position&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;FST&quot;</span>,<span class="at">col=</span>merged.P1<span class="sc">$</span>chr,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb32-1" tabindex="-1"></a><span class="fu">plot</span>(merged.P1<span class="sc">$</span>LocusName,P1<span class="sc">$</span>FST,<span class="at">xlab=</span><span class="st">&quot;Position&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;FST&quot;</span>,<span class="at">col=</span>merged.P1<span class="sc">$</span>chr,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/9-2-1.png" width="576" /></p>
 <p>What do you notice about this plot? Can you think of a possible explanation for this result?</p>
 </div>
@@ -539,8 +537,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb34-1" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.path,<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
-<pre><code>## Mon May 26 19:31:09 2025
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb33-1" tabindex="-1"></a><span class="fu">seqVCF2GDS</span>(vcf.path,<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
+<pre><code>## Tue May 27 17:45:57 2025
 ## Variant Call Format (VCF) Import:
 ##     file:
 ##         ChunkyQuails.vcf.gz (16.8M)
@@ -578,7 +576,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     annotation/format/GQ  [md5: fcbed5e7153bf05cf0718c7a549ba14f]
 ##     annotation/format/PL  [md5: 316019d9afcd850edd107263716149cc]
 ## Done.
-## Mon May 26 19:32:04 2025
+## Tue May 27 17:46:58 2025
 ## Optimize the access efficiency ...
 ## Clean up the fragments of GDS file:
 ##     open the file &#39;ChunkyQuails.gds&#39; (15.8M)
@@ -586,8 +584,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     save to &#39;ChunkyQuails.gds.tmp&#39;
 ##     rename &#39;ChunkyQuails.gds.tmp&#39; (15.8M, reduced: 11.1K)
 ##     # of fragments: 74
-## Mon May 26 19:32:04 2025</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb36-1" tabindex="-1"></a>genofile <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
+## Tue May 27 17:46:58 2025</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb35-1" tabindex="-1"></a>genofile <span class="ot">&lt;-</span> <span class="fu">seqOpen</span>(<span class="st">&quot;ChunkyQuails.gds&quot;</span>)</span></code></pre></div>
 <blockquote>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
@@ -595,14 +593,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb37-1" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(meta.path)</span>
-<span id="cb37-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb37-2" tabindex="-1"></a><span class="fu">table</span>(meta<span class="sc">$</span>Loc1)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb36-1" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(meta.path)</span>
+<span id="cb36-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb36-2" tabindex="-1"></a><span class="fu">table</span>(meta<span class="sc">$</span>Loc1)</span></code></pre></div>
 <pre><code>## 
 ## Canary Islands       CE Spain          Italy        Madeira        Morocco 
 ##             18              5              5             10             13 
 ##       NE Spain       NW Spain     S Portugal        S Spain 
 ##              6              6             10              7</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb39-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(meta<span class="sc">$</span>Loc1))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb38-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(meta<span class="sc">$</span>Loc1))</span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <blockquote>
 <blockquote>
@@ -612,7 +610,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb41-1" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;sample.id&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb40-1" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">&quot;sample.id&quot;</span>)) </span></code></pre></div>
 <blockquote>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
@@ -620,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb42-1" tabindex="-1"></a><span class="fu">identical</span>(samples,meta<span class="sc">$</span>SampleID)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb41-1" tabindex="-1"></a><span class="fu">identical</span>(samples,meta<span class="sc">$</span>SampleID)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <blockquote>
 <blockquote>
@@ -630,9 +628,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb44-1" tabindex="-1"></a>merged.P1 <span class="ot">&lt;-</span> <span class="fu">merge</span>(P1,snp.pos,<span class="at">by=</span><span class="st">&quot;LocusName&quot;</span>)</span>
-<span id="cb44-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb44-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb44-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb44-3" tabindex="-1"></a>merged.P1 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(P1,snp.pos,<span class="at">by=</span><span class="st">&quot;LocusName&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb43-1" tabindex="-1"></a>merged.P1 <span class="ot">&lt;-</span> <span class="fu">merge</span>(P1,snp.pos,<span class="at">by=</span><span class="st">&quot;LocusName&quot;</span>)</span>
+<span id="cb43-2"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb43-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-3"><a href="week-9-fst-outlier-analysis-and-chunky-quails.html#cb43-3" tabindex="-1"></a>merged.P1 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(P1,snp.pos,<span class="at">by=</span><span class="st">&quot;LocusName&quot;</span>)</span></code></pre></div>
 </p>
 </details>
 

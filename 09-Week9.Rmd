@@ -63,13 +63,7 @@ Similar to last week you need to navigate to the class github page where all of 
 
 Regardless of download method, unzip the week9 directory and navigate inside. What do you see?
 
-The SNP data is in a vcf file, just like for previous weeks. You can take a peek at the top of the vcf file like this:
-
-``` html
-head ChunkyQuails.vcf
-```
-
-Take a look at the head of the metadata file. What columns do you see?
+The SNP data is in a vcf file, just like for previous weeks. Take a look at the head of the metadata file. What columns do you see?
 
 ## Downloading R Packages
 
