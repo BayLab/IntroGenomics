@@ -154,7 +154,7 @@ msleep[which(msleep[,"sleep_total"]>=18 & msleep[,"order"] == "Chiroptera"),] #s
 
 ```
 
-> ### Class Exercise 1
+> ## Class Exercise 1
 
 > Let's keep looking at the mammal sleep data! 
 >
@@ -312,7 +312,7 @@ consumers (carnivore, herbivore, insectivore and omnivore):
 plot(msleep$sleep_total~as.factor(msleep$vore),col=rainbow(4), xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)")
 ```
 
-> ### Class Exercise 2
+> ## Class Exercise 2
 
 > # Explore this dataset of chick weight and identify:
 >
@@ -559,7 +559,7 @@ ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
 
 ```
 
-> ### Class Exercise 3
+> ## Class Exercise 3
 
 > Go back to the Guinea Pig Tooth Dataset (ToothGrowth) and visualize
 > how the different doses of VC and OJ impact tooth growth. Use
@@ -690,7 +690,7 @@ msleep[which(msleep[,"sleep_total"]==10),] #Grivet
 msleep[msleep$sleep_total >= 8 & msleep$sleep_total <= 10, ] #several species including guiea pigs and lemurs
 
 ```
-
+> >
 > > ## Exercise 2
 > >
 > > 1)  sample size and different diets in the experiment

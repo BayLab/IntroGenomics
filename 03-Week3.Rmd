@@ -176,7 +176,7 @@ $ rm -r backup
 This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory, 
 you will be asked whether you want to override your permission settings. 
 
-> ### Class Exercise 1
+> ## Class Exercise 1
 >
 > Starting in 'yourdirectory', navigate to 'cd /week2/untrimmed_fastq' and do the following:
 >
@@ -254,7 +254,7 @@ CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 ```
 
 
-> ### Class Exercise 2
+> ## Class Exercise 2
 >
 > 1. Search for the sequence `GNATNACCACTTCC` in the `SRR098026.fastq` file.
 > Have your search return all matching lines and the name (or identifier) for each sequence
@@ -882,7 +882,7 @@ Remember your script should start with `#!/bin/bash`. Submit a copy of your scri
 
 <details><summary><span style="color: orange;">Class Exercise Solutions</span></summary>
 <p>
-
+> > # Exercise: Solutions
 > > ## Exercise 1: Solution
 > >
 > > 1. `rm -r backup`  
@@ -896,7 +896,7 @@ Remember your script should start with `#!/bin/bash`. Submit a copy of your scri
 > > -r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq
 > > ```
 > > 
-> > ### Exercise 2: Solution  
+> > ## Exercise 2: Solution  
 > > 1. `grep -B1 GNATNACCACTTCC SRR098026.fastq` 
 > > 
 > >     ```

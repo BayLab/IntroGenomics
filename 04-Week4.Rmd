@@ -217,7 +217,7 @@ multiqc. More information on this tool here:
 <https://github.com/MultiQC/MultiQC>. For now we will just be looking at
 each html individually.
 
-> ### Class Exercise 1: looking at your fastqc.html files!
+> ## Class Exercise 1: looking at your fastqc.html files!
 >
 > Navigate to `home/group/rbaygrp/eve198-genomics/yourdirectory/week4`
 > to find your html files you created with fastqc. Try clicking on
@@ -268,7 +268,7 @@ You can check if the trimmed files are there with:
 ls *trimmed*
 ```
 
-> ### Class Exercise 2
+> ## Class Exercise 2
 >
 > Run fastqc on our .trimmed reads and compare the html with the
 > .untrimmed files. What main difference do you see between them?
@@ -319,7 +319,7 @@ You'll also notice that we have made a bunch of .sam files. THis stands
 for Sequence Alignment Map file. Let's use `less` to look at one of
 these files using `less`
 
-> ### Class Exercise 3
+> ## Class Exercise 3
 >
 > Now let's write a for loop to map the untrimmed files to the genome.
 > How do the alignments compare to the trimmed ones we just did as a
@@ -429,9 +429,9 @@ tab for 'Week 4: Calling Variants'.
 
 <p>
 
-> > ## Exercise: Solutions
+> > # Exercise: Solutions
 > >
-> > Exercise 1. just look at your html files! Exercise 2. We should no
+> > ## Exercise 1. just look at your html files! Exercise 2. We should no
 > > longer see the red error flag for the per base sequence quality or
 > > base pairs conten. code: fastqc \*trimmed.fastq.gz Exercise 3: The
 > > full genome and full read files should have a much higher mapping

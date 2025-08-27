@@ -153,3 +153,5 @@ calculating-fst-and-identifying-outliers
 on-farm
 on-your-own-computer
 unzip-the-folder-look-at-data
+but-how-do-we-know-which-k-to-pick
+group-work-activity--adding-even-more-context-to-our-plot

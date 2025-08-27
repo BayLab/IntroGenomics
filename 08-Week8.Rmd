@@ -1,7 +1,7 @@
 ---
 title: "08-Week8"
 author: "M. Armstrong"
-date: "2025-05-08"
+date: "2025-08-27"
 output:
   bookdown::html_book:
     toc: yes
@@ -107,22 +107,8 @@ names(pca.mosq)
   
 ```
 
-Explore what each of these objects are and print only the top 10 rows
-
-```{r, echo=T}
-head(pca.mosq$sample.id, n=10)
-```
-
--   sample.id is the name of our sample
--   snp.id is the name of our snp
--   eigenval is the eigenvalue
--   eigenvect is the eigenvector
--   varprop is the proportion of variation for each principle component
--   TraceXTX is the trace of the genetic covariance matrix
--   Bayesian is whether we used bayesian normalization (we did not)
--   genmat is the genetic covariance matrix
-
-The column "sample.id" will be important for merging our metadata. The metadata will give more context to our snp data since we can provide information on how to categorize the variation present in our data.
+> > ## Class Exercise 1
+> Explore what each of these objects are and print only the top 10 rows. Which column do you think will be important for when we are merging our metadata to our snp data? 
 
 If we plot or print our `pc.percent` object we can see that there are 32 pc axes but most of the variation is explained by pc 1 and 2. The amount of variation explained decreases with increasing pc axis number.
 
@@ -221,12 +207,10 @@ metadata <- metadata %>%
 
 Look at the metadata file again with `View(metadata)` to check if it worked! There should be a new column called `country`
 
-```{r, label='8.3', echo=T}
-#PLOT
-ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country))) +geom_point()
-```
+> > ## Class Exercise 2
+> > Now let's plot another PCA with PC1 and PC2, but this time color by country
 
-This graph is a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.
+This graph should be a lot more informative! We see that the points on PC1 and PC2 are heavily grouping by country.
 
 Finally let's really customize our graph with labels, a legend and unique colors! Install/load `library(RColorBrewer)` for the color scheme in the pca. You can type `?RColorBrewer` for a help tab to pop up where you can see the other color palettes in this package.
 
@@ -240,15 +224,8 @@ ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country)))+
   theme_minimal(base_size=10)
 ```
 
-What if we want to look at other PC axes? You can modify the code above to instead plot PC3 & 4. Just be sure to update the axis labels. What does this figure show us?
-
-```{r, label= '8.5', echo=T}
-ggplot(tab, aes(x = EV3, y = EV4, color=as.factor(metadata$country)))+
-  geom_point()+
-  labs(x = 'PC3 1.5782740%', y='PC4 1.2831258', color = "country")+
-  scale_colour_brewer(palette = "Paired")+
-  theme_minimal(base_size=10)
-```
+> > ## Class Exercise 3
+> > What if we want to look at other PC axes? You can modify the code above to instead plot PC3 & 4. Just be sure to update the axis labels. What does this figure show us?
 
 ## Group Work Activity- What can the other PC axes tell us?
 
@@ -261,3 +238,46 @@ Turn in your code for how you made your PCAs, how you added region to your metad
 ## Key Point
 
 -   PCAs can be really useful for visualizing variation in genomic data, and by adding different categories with metadata you can detect patterns within your data
+
+
+<details>
+
+<summary>[Class Exercise Solutions]{style="color: orange;"}</summary>
+
+<p>
+
+> > # Class Exercises: Solutions
+> >
+> > ## Exercise 1
+> >
+```{r, echo=T}
+head(pca.mosq$sample.id, n=10)
+```
+> >
+-   sample.id is the name of our sample
+-   snp.id is the name of our snp
+-   eigenval is the eigenvalue
+-   eigenvect is the eigenvector
+-   varprop is the proportion of variation for each principle component
+-   TraceXTX is the trace of the genetic covariance matrix
+-   Bayesian is whether we used bayesian normalization (we did not)
+-   genmat is the genetic covariance matrix
+> >
+The column "sample.id" will be important for merging our metadata. The metadata will give more context to our snp data since we can provide information on how to categorize the variation present in our data.
+
+> > ## Exercise 2
+> > recoloring PCA by country
+```{r, label='8.3', echo=T}
+#PLOT
+ggplot(tab, aes(x = EV1, y = EV2, color=as.factor(metadata$country))) +geom_point()
+```
+
+> > ##  Exercise 3
+> > plotting additional PC axes
+```{r, label= '8.5', echo=T}
+ggplot(tab, aes(x = EV3, y = EV4, color=as.factor(metadata$country)))+
+  geom_point()+
+  labs(x = 'PC3 1.5782740%', y='PC4 1.2831258', color = "country")+
+  scale_colour_brewer(palette = "Paired")+
+  theme_minimal(base_size=10)
+```

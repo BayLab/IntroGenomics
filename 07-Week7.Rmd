@@ -1,11 +1,14 @@
 ---
 title: "07-Week7"
 author: "M. Armstrong"
-date: "2025-05-02"
+date: "2025-08-27"
 output:
   bookdown::html_book:
     toc: yes
     css: toc.css
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setupq7, include=FALSE}
@@ -13,36 +16,67 @@ knitr::opts_chunk$set(comment = "#>", echo = TRUE, fig.width=8)
 ```
 
 # Week 7- Population Structure & Sea Cucumbers
-We will be using data from a paper by Xuereb et al. (2018) paper on *P. californicus* titled ["Asymmetric oceanographic processes mediate connectivity and population genetic structure, as revealed by RADseq, in a highly dispersive marine invertebrate (*Parastichopus californicus*)"](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). More information on the paper and it's findings are in the lecture slides here: [Week 7
-Slides](./figs/W7-structure plots.pdf)
 
-![http://galleries.neaq.org/2016/06/sea-cucumbers-east-meets-west.html](./figs/sea.cuke.jpg)
+We will be using data from a paper by Xuereb et al. (2018) paper on *P.
+californicus* titled ["Asymmetric oceanographic processes mediate
+connectivity and population genetic structure, as revealed by RADseq, in
+a highly dispersive marine invertebrate (*Parastichopus
+californicus*)"](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589).
+More information on the paper and it's findings are in the lecture
+slides here: [Week 7 Slides](./figs/W7-structure%20plots.pdf)
 
-SNP data from this study will be used today in order to learn how to identify population structure in sea cucumber populations and make structure plots using tess3r and pophelper. This data is SNP data from 15 individuals per site across 7 collection sites:
+![<http://galleries.neaq.org/2016/06/sea-cucumbers-east-meets-west.html>](./figs/sea.cuke.jpg)
 
-![Map of sampling locations in coastal British Columbia (1–20) and southeastern Alaska (21–24). ](./figs/cukes_map.png)
+SNP data from this study will be used today in order to learn how to
+identify population structure in sea cucumber populations and make
+structure plots using tess3r and pophelper. This data is SNP data from
+15 individuals per site across 7 collection sites:
 
-
+![Map of sampling locations in coastal British Columbia (1–20) and
+southeastern Alaska (21–24).](./figs/cukes_map.png)
 
 ## Main Objectives:
-- Learn what a structure plot is and how it can give us useful information on population structure in our dataset
-- Learn how to make a structure plot using tess3r and pophelper
-- Practice moving from terminal to R when working with big data
+
+-   Learn what a structure plot is and how it can give us useful
+    information on population structure in our dataset
+-   Learn how to make a structure plot using tess3r and pophelper
+-   Practice moving from terminal to R when working with big data
 
 ## Download the data in terminal
-We first need to download the data in terminal. So navigate to your directory and do the following command to get the vcf file we need onto your farm desktop. I got the data from the dryad (data repository) for this paper and zipped it to be more easily downloaded: https://datadryad.org/dataset/doi:10.5061/dryad.db6177b
+
+We first need to download the data in terminal. So navigate to your
+directory and do the following command to get the vcf file we need onto
+your farm desktop. I got the data from the dryad (data repository) for
+this paper and zipped it to be more easily downloaded:
+<https://datadryad.org/dataset/doi:10.5061/dryad.db6177b>
 
 ``` html
 cd /group/rbaygrp/eve198-genomics/yourdirectory
 wget https://raw.githubusercontent.com/mlarmstrong/IntroGenomics_Data/main/week7.zip
 ```
-Unzip the week7 directory and navigate inside. There should be three files: a vcf file (with our genetic data), a csv file (with our samples and coordinate data) and a README.txt file. The README.txt gives you information on the dataset you just downloaded. The .csv file in this folder is our metadata, with coordinates for each of our sample sites along with sample names. This will be useful for understanding population structure between populations and across space!
+
+Unzip the week7 directory and navigate inside. There should be three
+files: a vcf file (with our genetic data), a csv file (with our samples
+and coordinate data) and a README.txt file. The README.txt gives you
+information on the dataset you just downloaded. The .csv file in this
+folder is our metadata, with coordinates for each of our sample sites
+along with sample names. This will be useful for understanding
+population structure between populations and across space!
 
 ## Moving to R:
-Now we will move to R! We will need quite a few packages today since we will be using `tess3r` to identify population structure and then `pophelper` to visualize that structure in a more organized way. We also need to be able to read in a vcf file, so `vcfR` is a useful package for that. `adegenet()` is a package that will help us do additional analyses on our genetic data.
+
+Now we will move to R! We will need quite a few packages today since we
+will be using `tess3r` to identify population structure and then
+`pophelper` to visualize that structure in a more organized way. We also
+need to be able to read in a vcf file, so `vcfR` is a useful package for
+that. `adegenet()` is a package that will help us do additional analyses
+on our genetic data.
 
 ## Installing Packages
-Remember that you first need `install.packages()` and then use `library()` to load each package! This can be done for `ggplot2` and `vcfR`. The package `devtools` will also be used to install `tess3r`.
+
+Remember that you first need `install.packages()` and then use
+`library()` to load each package! This can be done for `ggplot2` and
+`vcfR`. The package `devtools` will also be used to install `tess3r`.
 
 ```{r, echo=T}
 library(vcfR)
@@ -50,7 +84,15 @@ library(ggplot2)
 library(devtools)
 ```
 
-You will need to use `devtools::install_github("bcm-uga/TESS3_encho_sen")` to install `tess3r()`. After you have loaded each package you can get more information on each of them by doing `?tess3r()`. For `pophelper()` you will need to install dependencies first with `install.packages(c("ggplot2","gridExtra","label.switching","tidyr","remotes"),repos="https://cloud.r-project.org")` then install pophelper `remotes::install_github('royfrancis/pophelper')`. This might take a while!
+You will need to use
+`devtools::install_github("bcm-uga/TESS3_encho_sen")` to install
+`tess3r()`. After you have loaded each package you can get more
+information on each of them by doing `?tess3r()`. For `pophelper()` you
+will need to install dependencies first with
+`install.packages(c("ggplot2","gridExtra","label.switching","tidyr","remotes"),repos="https://cloud.r-project.org")`
+then install pophelper
+`remotes::install_github('royfrancis/pophelper')`. This might take a
+while!
 
 ```{r echo=T}
 library(tess3r)
@@ -58,19 +100,33 @@ library(pophelper)
 ```
 
 ## Set Working Directory
-Now that we are working with downloaded data it is important to set your working directory in R so you know where to store your files. I would recommend just saving your script and all of the data for today into your week6 directory in your named directory. To set your working directory you can do the following: `setwd("~/where/you/are/storing/data/week7")`
 
-If you click the files tab on the right you should be able to see all of the files in your working directory too!
+Now that we are working with downloaded data it is important to set your
+working directory in R so you know where to store your files. I would
+recommend just saving your script and all of the data for today into
+your week6 directory in your named directory. To set your working
+directory you can do the following:
+`setwd("~/where/you/are/storing/data/week7")`
 
+If you click the files tab on the right you should be able to see all of
+the files in your working directory too!
 
 ## read vcf file
 
-Now let's read in our data! This will take a second and you will get information on the file in your console as it is read in. The number of variants that are processed should be 2,719. Then you can extract the genotypes with the second line of code.
+Now let's read in our data! This will take a second and you will get
+information on the file in your console as it is read in. The number of
+variants that are processed should be 2,719. Then you can extract the
+genotypes with the second line of code.
+
 ```{r, echo=T}
 vcf_cukes<-read.vcfR("filtered_2719neutral_snps.recode.vcf")
 genotypes_raw<-extract.gt(vcf_cukes)
 ```
-If you do `head(genos_raw)` you can see that the format is 0/0 or 1/1 for homozygotes and 0/1 for heterozygotes. We actually want to convert this to instead be 0 for homozyous reference, 1 for heterozygotes and 2 for homozyogous alternate. To do this, you can run the following code:
+
+If you do `head(genos_raw)` you can see that the format is 0/0 or 1/1
+for homozygotes and 0/1 for heterozygotes. We actually want to convert
+this to instead be 0 for homozyous reference, 1 for heterozygotes and 2
+for homozyogous alternate. To do this, you can run the following code:
 
 ```{r echo=T}
 ## Replace genotype codes with numeric values
@@ -83,12 +139,18 @@ genotypes_cleaned <- as.matrix(apply(genotypes_raw, c(1, 2), function(x) {
 
 ```
 
-Check to see that it worked by doing `View(genotypes_cleaned)` or `head(genotypes_cleaned)`. The genotypes should be coded as 0, 1 or 2. Finally let's check the dimensions of our genotype data. The number of individuals should be on the left and the genotypes should be on the right.
+Check to see that it worked by doing `View(genotypes_cleaned)` or
+`head(genotypes_cleaned)`. The genotypes should be coded as 0, 1 or 2.
+Finally let's check the dimensions of our genotype data. The number of
+individuals should be on the left and the genotypes should be on the
+right.
 
 ```{r, echo=T}
 dim(genotypes_cleaned) #indiv should be on left, genotypes on right
 ```
-It looks like it is actually flipped, so let's fix that! The command `t()` will help us transpose our data
+
+It looks like it is actually flipped, so let's fix that! The command
+`t()` will help us transpose our data
 
 ```{r, echo=T}
 genotypes<- t(genotypes_cleaned) 
@@ -96,7 +158,12 @@ dim(genotypes) #now it is right!
 ```
 
 ## read in the metadata
-Now let's read in the coordinate data for our sample sites! We will also make an object "coordinates" to hold our lat/long data for the tess3 object later. Our `sites.data` should a length of 717 to match our genotype data.
+
+Now let's read in the coordinate data for our sample sites! We will also
+make an object "coordinates" to hold our lat/long data for the tess3
+object later. Our `sites.data` should a length of 717 to match our
+genotype data.
+
 ```{r, echo=T}
 sites.data<-read.csv('strata.cucumbers.717ind.csv', header=TRUE, sep=",")
 coordinates<-as.matrix(cbind(sites.data$LAT, sites.data$LONG))
@@ -104,37 +171,35 @@ dim(sites.data)
 ```
 
 ## population structure with tess3r
-You can learn more about this package on their tutorial page (https://bcm-uga.github.io/TESS3_encho_sen/articles/main-vignette.html), but in short tess3 is a function that computes population structure by estimating ancestry proportions and ancestral allele frequencies. In the code below:
-- X argument refers to the genotype matrix
-- coord argument the coord argument corresponds to the geographic coordinates
-- K is the number of clusters or ancestral population
-- reps is the number of replications for cross validation that we are calling the ancestry correctly for each sample
 
-Normally we would want multiple reps to ensure things are being calculated correctly, but for class we will only do 2.
+You can learn more about this package on their tutorial page
+(<https://bcm-uga.github.io/TESS3_encho_sen/articles/main-vignette.html>),
+but in short tess3 is a function that computes population structure by
+estimating ancestry proportions and ancestral allele frequencies. In the
+code below: - X argument refers to the genotype matrix - coord argument
+the coord argument corresponds to the geographic coordinates - K is the
+number of clusters or ancestral population - reps is the number of
+replications for cross validation that we are calling the ancestry
+correctly for each sample
 
+Normally we would want multiple reps to ensure things are being
+calculated correctly, but for class we will only do 2.
 
 ```{r, echo=T}
 tess3.cukes <- tess3(X=genotypes, coord =as.matrix(cbind(sites.data$LAT, sites.data$LONG)), K=1:8,
                      ploidy=2, lambda=0, keep="best",rep=2)
 ```
 
-## How do we know which K to pick?
-This will take a second since it is real genomic data! We started with 8 clusters. But how do we actually choose a K? 
+This will take a second since it is real genomic data! We started with 8
+clusters.
 
-In order to get an accurate estimate of the "best" K for our data we first need to run a larger range of K, here 1:8, and then look at our data and see how the cross-validation score compares to the number of predicted ancestral populations. We can do that with the code below:
-
-The plot function generates a plot for root mean-squared errors computed on a subset of loci used for cross-validation:
-```{r, label='7.1', echo=T}
-plot(tess3.cukes, pch = 19, col = "orange",
-     xlab = "Number of ancestral populations",
-     ylab = "Cross-validation score") 
-```
-
-It looks like there might just be two clusters, since the cross-validation score drops between 1 and 2 ancestral populations. Let's make a matrix using qmatrix for K=2 and visualize a structure plot with that.  The qmatrix is a matrix of our ancestry coefficients, aka the matrix of relatedness between our samples! Our qmatrix will be called `cukes.matrix`
+Next to make a structure plot, we need to first call the data and assign
+how many K "clusters" we want. For example, if we want to assign 8
+clusters we would run the following:
 
 ```{r, echo=T}
-# retrieve tess3 Q matrix for K = 2 clusters 
-cukes.matrix <- qmatrix(tess3.cukes, K = 2)
+# retrieve tess3 Q matrix for K = 8 clusters 
+cukes.matrix <- qmatrix(tess3.cukes, K = 8)
 ```
 
 ```{r, label='7.2', echo=T}
@@ -145,48 +210,96 @@ barplot(cukes.matrix, border = NA, space = 0,
 axis(1, at = 1:nrow(cukes.matrix), labels = sites.data$Sample,las = 3, cex.axis = .4) 
 ```
 
-Yay our first structure plot! It isn't orded by site though and it is not easily interpreted. However what we can get from this figure is that it looks like 2 groups are in this dataset, so K=2 makes sense to move forward with.
+Yay our first structure plot! It isn't ordered by site though and it is
+not as easily interpreted for why different individuals might vary.
+
+## But how do we know which K to pick?
+
+In order to get an accurate estimate of the "best" K for our data we
+first need to run a larger range of K, here 1:8, and then look at our
+data and see how the cross-validation score compares to the number of
+predicted ancestral populations. We can do that with the code below:
+
+The plot function generates a plot for root mean-squared errors computed
+on a subset of loci used for cross-validation:
+
+```{r, label='7.1', echo=T}
+plot(tess3.cukes, pch = 19, col = "orange",
+     xlab = "Number of ancestral populations",
+     ylab = "Cross-validation score") 
+```
+
+> ## Class Exercise 1
+>
+> Where the cross-validation score drops is which K is likely the best
+> fit. Which K do you think is the best fit for our data? Let's plot a
+> couple different structure plots (K=2, K=4 and K=6) for data
+> visualization and determine the best K. You can modify the code above
+> by changing the K value and rerunning the plots.
+
+Now that we have determined the best K for our dataset, let's visualize
+things!
 
 ## Visualizing population structure with pophelper!
-Pophelper is a really useful tool for visualizing population strucutre graphs. You can view the tutorial here for more information: https://www.royfrancis.com/pophelper/articles/index.html#plotting-1. We can do a lot of customization in pophelper, and this figure shows what our final result will look like!
+
+Pophelper is a really useful tool for visualizing population structure
+graphs. You can view the tutorial here for more information:
+<https://www.royfrancis.com/pophelper/articles/index.html#plotting-1>.
+We can do a lot of customization in pophelper, and this figure shows
+what our final result will look like!
 
 ![Pophelper Overview](./figs/plotq-overview.png)
 
-1. First we need to convert our tess3 object to a qlist for pophelper
+1.  First we need to convert our tess3 object to a qlist for pophelper
 
 ```{r, echo=T}
 library(pophelper) #install this package first
 qlist.cukes <- readQTess3(t3list=tess3.cukes)
 is.qlist(qlist=qlist.cukes)#verify format
 ```
-2. Then we need to specify the order that we want our sites to be in and the different labels for our structure plot. The first is our population order. We want it to match the map figure and the table in the paper, so let's order from South to North. To get the same of the sites we can do the following:
+
+2.  Then we need to specify the order that we want our sites to be in
+    and the different labels for our structure plot. The first is our
+    population order. We want it to match the map figure and the table
+    in the paper, so let's order from South to North. To get the same of
+    the sites we can do the following:
 
 ```{r, echo=T}
 unique(sites.data$SITE)
 ```
 
-Our sites are "OGD" "SGI" "LAS" "JER" "TOF" "CRA" "RBY" "SHE" "MAL" "QUA" "HOP" "TBL" "CAL" "TOL" "PRI" "LEG" "JUA" "SEL" "REN" "MAZ" "AK1" "AK2" "AK3" "AK4". 
+Our sites are "OGD" "SGI" "LAS" "JER" "TOF" "CRA" "RBY" "SHE" "MAL"
+"QUA" "HOP" "TBL" "CAL" "TOL" "PRI" "LEG" "JUA" "SEL" "REN" "MAZ" "AK1"
+"AK2" "AK3" "AK4".
 
 ![*Table 1 from Xuereb et al., 2018*](./figs/table_sites.png)
 
-Table 1 from the paper shows the sites south to north. Luckily the dataset is already sorted appropriately, so now we can just put this into a new object!
+Table 1 from the paper shows the sites south to north. Luckily the
+dataset is already sorted appropriately, so now we can just put this
+into a new object!
 
 ```{r, echo=T}
 ordered.sites=c("OGD", "SGI", "LAS" ,"JER" ,"TOF" ,"CRA" ,"RBY", "SHE", "MAL", "QUA", "HOP", "TBL", "CAL", "TOL", "PRI", "LEG", "JUA", "SEL", "REN", "MAZ", "AK1", "AK2" ,"AK3", "AK4")
 ```
 
-We also want to label our two structure plots with what K equals, so add that with the object "labels"
+We also want to label our two structure plots with what K equals, so add
+that with the object "labels"
+
 ```{r, echo=T}
 labels <- c("K=2", "K=3")
 ```
-3. Now that we have our labels we can pull the data that we want from our different files
+
+3.  Now that we have our labels we can pull the data that we want from
+    our different files
 
 ```{r, echo=T}
 slist.cukes <- alignK(qlist.cukes[2:3],type="auto")
 labset<-data.frame(sites.data)
 ```
 
-4. Now we can plot our data! To visualize we can load one final library, `gridExtra()`
+4.  Now we can plot our data! To visualize we can load one final
+    library, `gridExtra()`
+
 ```{r, label='7.3', echo=T}
 library(gridExtra)
 #plot samples separated by site
@@ -197,17 +310,24 @@ p<-plotQ(slist.cukes,imgoutput="join",returnplot=TRUE,exportplot=FALSE,basesize=
             grplabheight = 5)
 ```
 
-
 ```{r, label='7.4', echo=T}
 grid.arrange(p$plot[[1]])
 ```
 
 ## Adding more meaning to our plot
-The site names may mean something if you are familiar with this area or have read the paper, but how can we make our plot easier to understand? One way could be to add what countries these samples were taken in so you can get a sense of sampling area. A really useful package for data manipulation that we haven't used yet is called `dplyr()`. Remember to install it with `install.packages()` and then load it with `library()`
 
-The newest thing that you will see with dplyr is ` %>% `. This is called a pipe, and connects lines of code together.
+The site names may mean something if you are familiar with this area or
+have read the paper, but how can we make our plot easier to understand?
+One way could be to add what countries these samples were taken in so
+you can get a sense of sampling area. A really useful package for data
+manipulation that we haven't used yet is called `dplyr()`. Remember to
+install it with `install.packages()` and then load it with `library()`
 
-To add a new column we will need to define what the new column will be named and then provide information to fill that column
+The newest thing that you will see with dplyr is `%>%`. This is called a
+pipe, and connects lines of code together.
+
+To add a new column we will need to define what the new column will be
+named and then provide information to fill that column
 
 ```{r,  echo=T}
 library(dplyr)
@@ -217,37 +337,88 @@ sites.data<-sites.data %>%
     SITE %in% c("AK1", "AK2" ,"AK3", "AK4") ~ "Alaska, USA"))
 ```
 
-View `sites.data` before moving on to ensure you got the column! Now we can repeat some of the code we have above to remake our structure plot.
+View `sites.data` before moving on to ensure you got the column!
+
+> ## Class Exercise 2
+>
+> Now we can rerun some of the code we have above to remake our
+> structure plot with "Site" and "Country" labels.
+
+## Group Work Activity- Adding even more context to our plot
+
+The structure plot is now more organized with samples from south to
+north, but what if we want clear labels for how those sites split?
+Remember that Table 1 grouped sites by region, with Ogden Point to Table
+Island as the "South Region" and Calvert Island to Alaska site 4 as the
+"North Region".
+
+![*Table 1 from Xuereb et al., 2018*](./figs/table_sites.png)
+
+1.  Add a column for "Region" in sites.data dataset.
+2.  Make a new structure plot with a label for `SITE` and `Region`.
+3.  Modify the color scheme however you'd like! View the pophelper page
+    for more information on how to do so. Think of how you can use color
+    to convey a message with your plot. A few color schemes from
+    `pophelper()` here:
+    <https://www.royfrancis.com/pophelper/articles/index.html#plotting-1>
+
+Submit your code and a photo of your structure plot to canvas.
+
+## Key Points
+
+-   Moving from terminal to R is important when working with genomic
+    data
+-   Structure plots can be made using tess3r and are useful for
+    visualizing population structure within your dataset
+-   Pophelper is a useful tool for customizing these structure plots
+
+<details>
+
+<summary>[Class Exercise Solutions]{style="color: orange;"}</summary>
+
+<p>
+
+> > # Class Exercises: Solutions
+> >
+> > ## Exercise 1
+> >
+> > It looks like there might just be two clusters, since the
+> > cross-validation score drops between 1 and 2 ancestral populations.
+> > Let's make a matrix using qmatrix for K=2 and visualize a structure
+> > plot with that. The qmatrix is a matrix of our ancestry
+> > coefficients, aka the matrix of relatedness between our samples! Our
+> > qmatrix will be called `cukes.matrix`
+
+```{r, echo=T}
+# retrieve tess3 Q matrix for K = 2 clusters 
+cukes.matrix <- qmatrix(tess3.cukes, K = 2)
+```
 
 ```{r, label='7.5', echo=T}
+#now the barplot
+barplot(cukes.matrix, border = NA, space = 0, 
+        xlab = "Individuals", ylab = "Ancestry proportions", 
+        main = "Ancestry matrix") -> bp
+axis(1, at = 1:nrow(cukes.matrix), labels = sites.data$Sample,las = 3, cex.axis = .4) 
+```
+
+> > ## Exercise 2 
+> > structure plot with site and country labels
+
+```{r, label='7.6', echo=T}
 labset<-data.frame(sites.data)
 verifyGrplab(grplab=labset[,c("SITE", "Country")]) # to make sure it is there
-
 p2<-plotQ(slist.cukes,imgoutput="join",returnplot=TRUE,exportplot=FALSE,basesize=11,
             splabsize=7,height=7,
             grplab=labset[,c("SITE", "Country")],subsetgrp=ordered.sites,
             grplabsize=3,linesize=1,pointsize=3,splab=labels,grplabangle=0,
             grplabheight = 5)
 ```
-```{r, label='7.6', echo=T}
+
+```{r, label='7.7', echo=T}
 grid.arrange(p2$plot[[1]])
 ```
 
+</p>
 
-## Group Work Activity- Adding more context to our plot
-The structure plot is now more organized with samples from south to north, but what if we want clear labels for how those sites split? Remember that Table 1 grouped sites by region, with Ogden Point to Table Island as the "South Region" and Calvert Island to Alaska site 4 as the "North Region".
-
-![*Table 1 from Xuereb et al., 2018*](./figs/table_sites.png)
-
-1. Add a column for "Region" in sites.data  dataset. 
-2. Make a new structure plot with a label for `SITE` and `Region`.
-3. Modify the color scheme however you'd like! View the pophelper page for more information on how to do so. Think of how you can use color to convey a message with your plot. A few color schemes from `pophelper()` here: <https://www.royfrancis.com/pophelper/articles/index.html#plotting-1>
-
-Submit your code and a photo of your structure plot to canvas.
-
-## Key Points
-- Moving from terminal to R is important when working with genomic data
-- Structure plots can be made using tess3r and are useful for visualizing population structure within your dataset
-- Pophelper is a useful tool for customizing these structure plots
-
-
+</details>
